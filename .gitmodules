@@ -3,3 +3,6 @@
 	url = https://github.com/diegonmarcos/diegonmarcos.github.io.git
 	shallow = true
 	ignore = all
+[submodule "0_hub/cloud-me-pub-profiles-___"]
+	path = 0_hub/cloud-me-pub-profiles-___
+	url = https://github.com/diegonmarcos/cloud-me-pub-profiles-___.git
