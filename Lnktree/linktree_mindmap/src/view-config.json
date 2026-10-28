@@ -1,0 +1,16 @@
+{
+  "_description": "Mindmap-only presentation config — colors, root metadata, default icon. Combined with the linktree-owned link data in linktree/src/data/ (exposed here via src/data symlink) to build GraphData. Section colors: Professional=green (career), Personal Profiles=pink (life), Personal Tools=amber (utilities).",
+  "root": {
+    "id":        "dnm",
+    "label":     "DNM",
+    "fullLabel": "Diego Nepomuceno Marcos",
+    "icon":      "user",
+    "color":     "#2196F3"
+  },
+  "section_colors": {
+    "professional-profiles": "#4CAF50",
+    "personal-profiles":     "#E91E63",
+    "projects":        "#FF9800"
+  },
+  "default_icon": "world"
+}

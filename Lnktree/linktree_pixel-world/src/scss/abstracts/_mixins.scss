@@ -1,0 +1,91 @@
+// ==========================================================================
+// Mixins - Linktree Pixel World
+// ==========================================================================
+
+@use 'sass:list';
+@use 'variables' as *;
+
+// -----------------------------------------------------------------------------
+// Glass Panel (pixel-themed)
+// -----------------------------------------------------------------------------
+@mixin glass($bg: $glass-bg, $border: $glass-border) {
+  background: $bg;
+  border: 1px solid $border;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+// -----------------------------------------------------------------------------
+// Pixel Border (retro double-border look)
+// -----------------------------------------------------------------------------
+@mixin pixel-border($color: $color-text) {
+  border: 2px solid $color;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.3);
+}
+
+// -----------------------------------------------------------------------------
+// Flexbox Helpers
+// -----------------------------------------------------------------------------
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-col($gap: 0) {
+  display: flex;
+  flex-direction: column;
+  @if $gap != 0 { gap: $gap; }
+}
+
+@mixin flex-row($gap: 0) {
+  display: flex;
+  flex-direction: row;
+  @if $gap != 0 { gap: $gap; }
+}
+
+// -----------------------------------------------------------------------------
+// Positioning
+// -----------------------------------------------------------------------------
+@mixin absolute-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@mixin fixed-fill {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+// -----------------------------------------------------------------------------
+// Transitions
+// -----------------------------------------------------------------------------
+@mixin transition-fast($properties...) {
+  @if list.length($properties) == 0 {
+    transition: all $duration-fast $ease-out;
+  } @else {
+    $transitions: ();
+    @each $prop in $properties {
+      $transitions: list.append($transitions, $prop $duration-fast $ease-out, comma);
+    }
+    transition: $transitions;
+  }
+}
+
+@mixin transition-normal($properties...) {
+  @if list.length($properties) == 0 {
+    transition: all $duration-normal $ease-out;
+  } @else {
+    $transitions: ();
+    @each $prop in $properties {
+      $transitions: list.append($transitions, $prop $duration-normal $ease-out, comma);
+    }
+    transition: $transitions;
+  }
+}

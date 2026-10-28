@@ -1,0 +1,68 @@
+// ==========================================================================
+// Keyboard Hints - Linktree Mindmap
+// ==========================================================================
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+#keyboard-hints {
+  position: fixed;
+  bottom: calc($space-lg * 4);
+  left: $space-lg;
+  padding: $space-md;
+  border-radius: $radius-md;
+  z-index: $z-ui;
+  opacity: 0;
+  transform: translateY(10px);
+  @include transition-normal(opacity, transform);
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 768px) {
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+
+    &.visible {
+      transform: translateX(-50%) translateY(0);
+    }
+  }
+}
+
+.hint-title {
+  font-size: $font-size-xs;
+  font-weight: 600;
+  color: $color-text;
+  margin-bottom: $space-sm;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.hint-row {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
+  font-size: $font-size-xs;
+  color: $color-text-muted;
+  margin-bottom: $space-xs;
+
+  &:last-of-type {
+    margin-bottom: $space-md;
+  }
+}
+
+kbd {
+  display: inline-block;
+  padding: 2px 6px;
+  font-family: $font-main;
+  font-size: 10px;
+  font-weight: 600;
+  color: $color-text;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  min-width: 20px;
+  text-align: center;
+}

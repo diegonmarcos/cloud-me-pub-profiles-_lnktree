@@ -1,0 +1,127 @@
+// ==========================================================================
+// Controls - Linktree Mindmap (Enhanced)
+// ==========================================================================
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+// Glass panel base (used by controls, back button, etc.)
+.glass-panel {
+  @include glass;
+}
+
+// Icon button
+.icon-btn {
+  width: 40px;
+  height: 40px;
+  @include flex-center;
+  @include glass;
+  border-radius: $radius-md;
+  @include interactive;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+
+  svg {
+    width: 20px;
+    height: 20px;
+    stroke: $color-text-muted;
+    @include transition-fast(stroke);
+  }
+
+  &:hover svg {
+    stroke: $color-text;
+  }
+
+  // Wide variant (with text)
+  &:has(span) {
+    width: auto;
+    padding: 0 $space-md;
+    gap: $space-sm;
+  }
+}
+
+// Small icon button
+.icon-btn-sm {
+  padding: $space-sm $space-md;
+  @include glass;
+  border-radius: $radius-sm;
+  font-size: $font-size-xs;
+  color: $color-text-muted;
+  @include interactive;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+
+  &:hover {
+    color: $color-text;
+    @include glass-hover;
+  }
+}
+
+// Button states
+.icon-btn {
+  &.active {
+    background: rgba($color-root, 0.2);
+    border-color: rgba($color-root, 0.4);
+
+    svg {
+      stroke: $color-root;
+    }
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+// Controls container
+#controls {
+  position: fixed;
+  bottom: $space-lg;
+  left: 50%;
+  transform: translateX(-50%);
+  @include flex-row($space-xs);
+  align-items: center;
+  justify-content: center;
+  padding: $space-xs;
+  border-radius: $radius-lg;
+  z-index: $z-ui;
+}
+
+// Zoom indicator
+#zoom-indicator {
+  min-width: 48px;
+  padding: 0 $space-sm;
+  font-size: $font-size-xs;
+  font-weight: 600;
+  color: $color-text-muted;
+  text-align: center;
+  line-height: 40px;
+  font-variant-numeric: tabular-nums;
+}
+
+// Controls divider
+.controls-divider {
+  width: 1px;
+  height: 24px;
+  background: $glass-border;
+  margin: 0 $space-xs;
+}
+
+// Back button
+#btn-back {
+  position: fixed;
+  top: $space-lg;
+  left: $space-lg;
+  z-index: $z-ui;
+  padding: $space-sm $space-md;
+  gap: $space-sm;
+
+  span {
+    font-size: $font-size-sm;
+    font-weight: 500;
+  }
+}

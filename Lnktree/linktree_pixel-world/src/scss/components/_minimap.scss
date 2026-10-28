@@ -1,0 +1,24 @@
+// ==========================================================================
+// Minimap - Corner overlay showing zone layout
+// ==========================================================================
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+#minimap-container {
+  position: fixed;
+  bottom: $space-md;
+  left: $space-md;
+  z-index: $z-tooltip;
+  @include glass;
+  @include pixel-border(rgba(255, 255, 255, 0.3));
+  border-radius: $radius-sm;
+  padding: 3px;
+  line-height: 0;
+}
+
+#minimap {
+  display: block;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}

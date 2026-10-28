@@ -1,0 +1,343 @@
+// ==========================================================================
+// FAB Scoped CSS - Complete Isolation (Vue-style scoping)
+// ==========================================================================
+// Uses data attributes to isolate FAB styles from ALL other CSS
+// This file MUST be imported LAST to override everything else
+
+// ---------------------------------------------------------------------------
+// PIXEL WORLD FAB (Top Left)
+// ---------------------------------------------------------------------------
+
+[data-fab="pixelworld"] {
+    position: fixed !important;
+    top: 1rem !important;
+    left: 1rem !important;
+    z-index: 2500 !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 56px !important;
+    height: 56px !important;
+    box-sizing: border-box !important;
+
+    background: linear-gradient(135deg, rgba(100, 200, 150, 0.8), rgba(50, 180, 200, 0.8)) !important;
+    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 50% !important;
+    box-shadow: 0 4px 16px rgba(100, 200, 150, 0.4), 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+
+    cursor: pointer !important;
+    text-decoration: none !important;
+    overflow: hidden !important;
+
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+
+    @media (max-width: 768px) {
+        width: 45px !important;
+        height: 45px !important;
+        top: max(1rem, env(safe-area-inset-top, 1rem)) !important;
+        left: max(1rem, env(safe-area-inset-left, 1rem)) !important;
+    }
+
+    [data-fab-img] {
+        width: 24px !important;
+        height: 24px !important;
+        filter: invert(1) brightness(1.2) !important;
+        position: relative !important;
+        z-index: 1 !important;
+
+        transition: none !important;
+        animation: none !important;
+        transform: none !important;
+
+        @media (max-width: 768px) {
+            width: 20px !important;
+            height: 20px !important;
+        }
+    }
+
+    &.hidden {
+        opacity: 0 !important;
+        pointer-events: none !important;
+        transition: none !important;
+    }
+}
+
+// ---------------------------------------------------------------------------
+// MINDMAP FAB (Top Right)
+// ---------------------------------------------------------------------------
+
+[data-fab="mindmap"] {
+    // Force fixed position
+    position: fixed !important;
+    top: 1rem !important;
+    right: 1rem !important;
+    z-index: 2500 !important;
+
+    // Layout
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 56px !important;
+    height: 56px !important;
+    box-sizing: border-box !important;
+
+    // Appearance
+    background: linear-gradient(135deg, rgba(150, 100, 255, 0.8), rgba(100, 150, 255, 0.8)) !important;
+    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 50% !important;
+    box-shadow: 0 4px 16px rgba(150, 100, 255, 0.4), 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+
+    // Behavior
+    cursor: pointer !important;
+    text-decoration: none !important;
+    overflow: hidden !important;
+
+    // NO ANIMATIONS OR TRANSITIONS
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+
+    @media (max-width: 768px) {
+        width: 45px !important;
+        height: 45px !important;
+        // Use safe-area-inset to account for mobile browser chrome
+        top: max(1rem, env(safe-area-inset-top, 1rem)) !important;
+        right: max(1rem, env(safe-area-inset-right, 1rem)) !important;
+    }
+
+    // Mindmap FAB Image
+    [data-fab-img] {
+        width: 24px !important;
+        height: 24px !important;
+        filter: invert(1) brightness(1.2) !important;
+        position: relative !important;
+        z-index: 1 !important;
+
+        // NO ANIMATIONS OR TRANSITIONS
+        transition: none !important;
+        animation: none !important;
+        transform: none !important;
+
+        @media (max-width: 768px) {
+            width: 20px !important;
+            height: 20px !important;
+        }
+    }
+
+    // Hidden state (when overlay is open)
+    &.hidden {
+        opacity: 0 !important;
+        pointer-events: none !important;
+
+        // NO TRANSITION ON HIDE
+        transition: none !important;
+    }
+}
+
+// ---------------------------------------------------------------------------
+// CONTROLS FAB CONTAINER (Bottom Right)
+// ---------------------------------------------------------------------------
+
+[data-fab="controls-container"] {
+    // Force fixed position
+    position: fixed !important;
+    bottom: 2rem !important;
+    right: 2rem !important;
+    z-index: 1000 !important;
+
+    // Layout
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 1rem !important;
+
+    // NO ANIMATIONS OR TRANSITIONS
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+
+    @media (max-width: 768px) {
+        // Use safe-area-inset to account for mobile browser chrome
+        // This prevents FAB movement when address bar hides/shows
+        bottom: max(1rem, env(safe-area-inset-bottom, 1rem)) !important;
+        right: max(1rem, env(safe-area-inset-right, 1rem)) !important;
+    }
+}
+
+// ---------------------------------------------------------------------------
+// CONTROLS LIST (Icon Buttons)
+// ---------------------------------------------------------------------------
+
+[data-fab="controls-list"] {
+    // Layout
+    display: flex !important;
+    flex-direction: column-reverse !important;
+    align-items: center !important;
+    gap: 0.75rem !important;
+
+    // Default hidden
+    opacity: 0 !important;
+    pointer-events: none !important;
+
+    // NO ANIMATIONS OR TRANSITIONS
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+
+    // Open state
+    &.open {
+        opacity: 1 !important;
+        pointer-events: auto !important;
+    }
+}
+
+// ---------------------------------------------------------------------------
+// ICON BUTTONS (Inside Controls List)
+// ---------------------------------------------------------------------------
+
+[data-fab="icon-btn"] {
+    // Layout
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 48px !important;
+    height: 48px !important;
+    box-sizing: border-box !important;
+    padding: 0 !important;
+
+    // Appearance
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-radius: 50% !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+
+    // Behavior
+    cursor: pointer !important;
+
+    // NO ANIMATIONS OR TRANSITIONS
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+
+    // Icon button images
+    [data-fab-img] {
+        width: 22px !important;
+        height: 22px !important;
+        opacity: 0.5 !important;
+        filter: invert(1) !important;
+
+        // NO ANIMATIONS OR TRANSITIONS
+        transition: none !important;
+        animation: none !important;
+        transform: none !important;
+    }
+
+    // Hover state
+    &:hover {
+        background: rgba(255, 255, 255, 0.15) !important;
+        border-color: rgba(255, 255, 255, 0.25) !important;
+
+        // NO TRANSFORM ON HOVER
+        transform: none !important;
+
+        [data-fab-img] {
+            opacity: 0.8 !important;
+        }
+    }
+
+    // Active state
+    &.active {
+        background: rgba(255, 255, 255, 0.2) !important;
+        border-color: rgba(255, 255, 255, 0.4) !important;
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.2) !important;
+
+        [data-fab-img] {
+            opacity: 1 !important;
+        }
+    }
+}
+
+// ---------------------------------------------------------------------------
+// CONTROLS FAB BUTTON (Settings Icon)
+// ---------------------------------------------------------------------------
+
+[data-fab="controls-fab"] {
+    // Layout
+    width: 56px !important;
+    height: 56px !important;
+    box-sizing: border-box !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: relative !important;
+    overflow: hidden !important;
+
+    // Appearance
+    background: linear-gradient(135deg, rgba(150, 100, 255, 0.8), rgba(100, 150, 255, 0.8)) !important;
+    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+    box-shadow: 0 4px 16px rgba(150, 100, 255, 0.4), 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+
+    // Behavior
+    cursor: pointer !important;
+
+    // NO ANIMATIONS OR TRANSITIONS
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+
+    @media (max-width: 768px) {
+        width: 45px !important;
+        height: 45px !important;
+    }
+
+    // Controls FAB image
+    [data-fab-img] {
+        width: 24px !important;
+        height: 24px !important;
+        filter: invert(1) brightness(1.2) !important;
+        position: relative !important;
+        z-index: 1 !important;
+
+        // NO ANIMATIONS OR TRANSITIONS
+        transition: none !important;
+        animation: none !important;
+        transform: none !important;
+
+        @media (max-width: 768px) {
+            width: 20px !important;
+            height: 20px !important;
+        }
+    }
+
+    // Open state (different color)
+    &.open {
+        background: linear-gradient(135deg, rgba(255, 100, 150, 0.8), rgba(255, 150, 100, 0.8)) !important;
+
+        // NO TRANSFORM ON OPEN
+        transform: none !important;
+    }
+}
+
+// ---------------------------------------------------------------------------
+// GLOBAL FORCE DISABLE (Backup)
+// ---------------------------------------------------------------------------
+
+// Force disable on ALL FAB data attributes
+[data-fab],
+[data-fab] *,
+[data-fab-img] {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+}

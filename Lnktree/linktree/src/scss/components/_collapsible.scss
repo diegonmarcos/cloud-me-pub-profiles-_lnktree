@@ -1,0 +1,91 @@
+// ==========================================================================
+// Collapsible / More Toggle
+// ==========================================================================
+
+@use '../abstracts/variables' as *;
+
+.more-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background: transparent;
+    border: none;
+    padding: 1.5rem 0;
+    margin: 0.5rem 0;
+    cursor: pointer;
+    position: relative;
+    transition: all $transition-fast;
+
+    // Horizontal line (gradient divider)
+    &::before,
+    &::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(
+            to right,
+            transparent,
+            rgba(255, 255, 255, 0.3),
+            rgba(255, 255, 255, 0.3),
+            transparent
+        );
+        transition: all $transition-fast;
+    }
+
+    // Chevron icon container
+    .arrow {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 1rem;
+        font-size: 1.4rem;
+        color: rgba(255, 255, 255, 0.6);
+        transition: all $transition-medium;
+        transform: rotate(0deg);
+    }
+
+    // Hover state
+    &:hover {
+        &::before,
+        &::after {
+            background: linear-gradient(
+                to right,
+                transparent,
+                rgba(255, 0, 255, 0.4),
+                rgba(0, 255, 255, 0.4),
+                transparent
+            );
+            box-shadow: 0 0 8px rgba(255, 0, 255, 0.3);
+        }
+
+        .arrow {
+            color: rgba(255, 255, 255, 1);
+            text-shadow:
+                0 0 10px rgba(255, 0, 255, 0.6),
+                0 0 20px rgba(0, 255, 255, 0.4);
+            transform: scale(1.1);
+        }
+    }
+
+    // Open state - flip chevron
+    &.open .arrow {
+        transform: rotate(180deg);
+    }
+
+    &.open:hover .arrow {
+        transform: rotate(180deg) scale(1.1);
+    }
+}
+
+.collapsible-content {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.5s ease-out, opacity $transition-medium;
+
+    &.open {
+        opacity: 1;
+        overflow: visible;
+    }
+}

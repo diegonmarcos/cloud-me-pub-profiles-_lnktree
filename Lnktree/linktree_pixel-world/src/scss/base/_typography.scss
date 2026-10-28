@@ -1,0 +1,17 @@
+// ==========================================================================
+// Typography - Linktree Pixel World
+// ==========================================================================
+
+@use '../abstracts/variables' as *;
+
+kbd {
+  display: inline-block;
+  padding: 2px 6px;
+  font-family: $font-pixel;
+  font-size: $font-size-xs;
+  color: $color-text;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: $radius-sm;
+  line-height: 1.4;
+}

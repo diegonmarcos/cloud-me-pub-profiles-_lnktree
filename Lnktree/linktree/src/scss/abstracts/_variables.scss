@@ -1,0 +1,30 @@
+// ==========================================================================
+// Variables
+// ==========================================================================
+
+// Colors
+$color-bg: #000;
+$color-text: #fff;
+$color-text-muted: #ccc;
+$color-accent: #2196F3;
+$color-success: #4CAF50;
+$color-danger: #f44336;
+
+// Typography
+$font-main: 'Inter', sans-serif;
+$font-display: 'Archivo Black', sans-serif;
+
+// Glass Effect
+$glass-bg: rgba(255, 255, 255, 0.08);
+$glass-border: rgba(255, 255, 255, 0.18);
+$glass-blur: blur(10px);
+
+// Border Radius
+$border-radius-sm: 12px;
+$border-radius-md: 20px;
+$border-radius-lg: 28px;
+$border-radius-xl: 24px;
+
+// Transitions
+$transition-fast: 0.3s ease;
+$transition-medium: 0.4s ease;

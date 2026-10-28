@@ -1,0 +1,14 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Coelho Marcos;Diego;
+FN:Diego Coelho Marcos
+EMAIL;TYPE=PERSONAL:me@diegonmarcos.com
+TEL;TYPE=MOBILE:+34 634 76 98 33
+ADR;TYPE=HOME:;;Harzer Straße 42;Berlin;Berlin;12059;Germany
+URL;TYPE=Socials:@diegonmarcos
+URL;TYPE=Linktree:https://linktree.diegonmarcos.com
+URL;TYPE=Telegram:https://t.me/diegonmarcos
+URL;TYPE=WhatsApp:https://api.whatsapp.com/send?phone=34634769833
+URL;TYPE=Website:https://diegonmarcos.com
+BDAY:1987-07-18
+END:VCARD

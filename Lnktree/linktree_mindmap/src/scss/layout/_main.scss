@@ -1,0 +1,95 @@
+// ==========================================================================
+// Main Layout - Linktree Mindmap
+// ==========================================================================
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+// Background particles layer (CSS-based, created via JS)
+#particles-layer {
+  z-index: $z-bg;
+}
+
+// UI Overlay container
+#ui-overlay {
+  @include fixed-fill;
+  z-index: $z-ui;
+  pointer-events: none;
+
+  // Allow pointer events on interactive UI elements
+  #controls,
+  #btn-back,
+  #btn-home,
+  #link-panel,
+  #keyboard-hints,
+  #breadcrumb,
+  #minimap {
+    pointer-events: auto;
+  }
+}
+
+// Home button (top right)
+#btn-home {
+  position: fixed;
+  top: $space-lg;
+  right: $space-lg;
+  z-index: $z-ui;
+}
+
+// Controls container (bottom right)
+#controls {
+  position: fixed;
+  bottom: $space-lg;
+  right: $space-lg;
+  @include flex-col($space-xs);
+  padding: $space-sm;
+  border-radius: $radius-lg;
+}
+
+// Back button (top left)
+#btn-back {
+  position: fixed;
+  top: $space-lg;
+  left: $space-lg;
+  @include flex-row($space-sm);
+  padding: $space-sm $space-md;
+  border-radius: $radius-full;
+
+  span {
+    font-size: $font-size-sm;
+    font-weight: 500;
+  }
+}
+
+// Loading indicator (center)
+#loading {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  @include flex-row($space-md);
+  padding: $space-md $space-lg;
+  border-radius: $radius-lg;
+  z-index: $z-loading;
+  pointer-events: none; // Don't block canvas events
+
+  .spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid $glass-border;
+    border-top-color: $color-root;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+
+  span {
+    font-size: $font-size-sm;
+    color: $color-text-muted;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

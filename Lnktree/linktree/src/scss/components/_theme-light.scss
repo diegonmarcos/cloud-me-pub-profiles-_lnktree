@@ -1,0 +1,139 @@
+// ==========================================================================
+// Light Theme — opt-in via `body.light-theme`. Toggled by modules/themeToggle.ts.
+// Strategy: override surfaces, text, borders, and invert the icon SVGs.
+// Hides the dark-only background video. Coexists with .lite-mode (the
+// performance kill switches still apply on top of light-theme).
+// ==========================================================================
+
+body.light-theme {
+    background: #f3f4f6 !important;
+    color: #1a1a1a !important;
+
+    // Hide the dark background video — the light theme has no dark-blue
+    // backdrop, the video would clash.
+    #background-video,
+    video.background-video,
+    .video-bg,
+    .video-background {
+        display: none !important;
+    }
+
+    // Top-level container & link sections — light-grey glass.
+    .container,
+    .link-section,
+    .section-box {
+        background: rgba(255, 255, 255, 0.85) !important;
+        color: #1a1a1a !important;
+        border-color: rgba(0, 0, 0, 0.08) !important;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06) !important;
+    }
+
+    // Headings.
+    h1, h2, h3, h4,
+    .box-title, .section-title, .subsection-title {
+        color: #111 !important;
+        background: none !important;
+        -webkit-text-fill-color: #111 !important;
+    }
+
+    // Body links — dark text on light surface.
+    .link, .tool-link {
+        color: #1a1a1a !important;
+        background: rgba(0, 0, 0, 0.04) !important;
+        border-color: rgba(0, 0, 0, 0.08) !important;
+    }
+    .link:hover, .tool-link:hover {
+        background: rgba(0, 0, 0, 0.08) !important;
+    }
+
+    // Tools dashboard column headers.
+    .tools-column__header {
+        color: #444 !important;
+    }
+
+    // SVG icons are white-stroked for the dark theme — invert them to
+    // become dark-stroked under the light theme. Photo images (.profile-pic,
+    // banner images) are excluded — only UI icon elements get inverted.
+    img.icon,
+    .inline-icon,
+    .icon-btn img,
+    [data-fab-img] {
+        filter: invert(1) !important;
+    }
+
+    // Box/section titles — sticky headers with explicit white text + glass bg.
+    .box-title {
+        color: #111 !important;
+        background: rgba(255, 255, 255, 0.92) !important;
+        border-color: rgba(0, 0, 0, 0.1) !important;
+    }
+
+    // Collapsible arrow chevron.
+    .arrow {
+        color: rgba(0, 0, 0, 0.45) !important;
+    }
+
+    // Hamburger nav panel — glass on dark becomes near-invisible on white.
+    .hamburger-nav {
+        background: rgba(255, 255, 255, 0.97) !important;
+        border-right-color: rgba(0, 0, 0, 0.1) !important;
+        box-shadow: 4px 0 24px rgba(0, 0, 0, 0.1) !important;
+    }
+    .hamburger-group + .hamburger-group {
+        border-top-color: rgba(0, 0, 0, 0.08) !important;
+    }
+    .hamburger-item {
+        color: #1a1a1a !important;
+        &:hover { background: rgba(0, 0, 0, 0.06) !important; }
+    }
+    .hamburger-group__label {
+        color: rgba(0, 0, 0, 0.45) !important;
+    }
+
+    // Footer.
+    .linktree-footer {
+        background: rgba(255, 255, 255, 0.75) !important;
+        color: #1a1a1a !important;
+    }
+    .linktree-footer-btn {
+        color: #1a1a1a !important;
+        background: rgba(0, 0, 0, 0.05) !important;
+    }
+
+    // FAB controls.
+    .controls-fab,
+    .icon-btn {
+        background: rgba(0, 0, 0, 0.06) !important;
+        border-color: rgba(0, 0, 0, 0.1) !important;
+    }
+    .icon-btn.active {
+        background: rgba(0, 0, 0, 0.12) !important;
+    }
+
+    // Status modal.
+    .status-modal-content {
+        background: #fff !important;
+        color: #111 !important;
+    }
+
+    // Swiper pagination dots.
+    .swiper-pagination-bullet {
+        background: rgba(0, 0, 0, 0.3) !important;
+    }
+    .swiper-pagination-bullet-active {
+        background: rgba(0, 0, 0, 0.7) !important;
+    }
+
+    // Multi-row separator between stacked tools-dashboard rows — flips
+    // from white-on-dark to black-on-light to stay visible.
+    .row-divider {
+        background: linear-gradient(
+            90deg,
+            transparent 0%,
+            rgba(0, 0, 0, 0.12) 20%,
+            rgba(0, 0, 0, 0.22) 50%,
+            rgba(0, 0, 0, 0.12) 80%,
+            transparent 100%
+        ) !important;
+    }
+}

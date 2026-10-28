@@ -1,0 +1,32 @@
+// ==========================================================================
+// Performance utilities — let the browser skip render work for off-screen
+// boxes and isolate compositor layers. All free wins (no visual change).
+// Lite-mode and reduced-motion users keep these too — they're net wins
+// regardless of the user's perf preference.
+// ==========================================================================
+
+// content-visibility: auto lets the browser skip rendering for elements
+// outside the viewport. contain-intrinsic-size reserves space so the
+// scrollbar doesn't jump as boxes are realised.
+.section-box,
+.swiper-slide {
+  content-visibility: auto;
+  contain-intrinsic-size: 1000px 800px;
+}
+
+// contain: layout paint style — promises the box's bounds and styles can't
+// affect siblings. Compositor isolates each box; paint cost stops at the
+// box edge.
+.link-section,
+.tools-column,
+.profile-icons {
+  contain: layout paint style;
+}
+
+// isolation: isolate forces a new stacking context, so backdrop-filter
+// blur work doesn't infect siblings.
+.section-box,
+.controls-fab-container,
+.linktree-footer {
+  isolation: isolate;
+}

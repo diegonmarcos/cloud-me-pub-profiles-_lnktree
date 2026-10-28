@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>DNM | Icon View</title>
+    <meta name="description" content="Cloud SuperApp launcher layout over Diego Nepomuceno Marcos' links">
+    <link rel="icon" type="image/jpeg" href="public/favicon.jpg">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://diegonmarcos.github.io/linktree_icon-view/">
+    <meta property="og:title" content="Diego Nepomuceno Marcos | Icon View">
+    <meta property="og:description" content="Folder navigation over the linktree, in the Cloud SuperApp layout">
+
+    <!-- Matomo Tag Manager -->
+    <script>
+    var _mtm = window._mtm = window._mtm || [];
+    _mtm.push({'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start'});
+    (function() {
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.async=true; g.src='https://analytics.diegonmarcos.com/matomo/js/container_odwLIyPV.js'; s.parentNode.insertBefore(g,s);
+    })();
+    </script>
+
+    <link rel="stylesheet" href="style.css">
+    <!-- Portal-local additions. MUST come after style.css — that is
+         cloud-superapp's stylesheet, reached through the src/scss symlink. -->
+    <link rel="stylesheet" href="overrides.css">
+    <script async src="https://analytics.diegonmarcos.com/umami/script.js" data-website-id="937cbde7-5ec2-450c-9d6a-8117423ac12f"></script>
+</head>
+<!-- data-section drives the section accent in cloud-superapp's stylesheet; this
+     portal is the Cloud section's Apps page, rendered over linktree data. -->
+<body data-section="cloud">
+    <!-- Shell chrome copied from cloud-superapp's cloud/apps page so the two are
+         the same layout, not merely the same palette. style.css IS
+         cloud-superapp's stylesheet (src/scss is a symlink), so every class here
+         resolves against the same rules the Kotlin-derived UI uses.
+
+         LauncherStatusStripView has no web equivalent for real device metrics,
+         so the left/right clusters are static in cloud-superapp too; only the
+         clock is live. Same here. -->
+    <div class="shell">
+        <div class="status-strip">
+            <div class="status-strip__row">
+                <div class="status-strip__cluster status-strip__cluster--left"><span class="status-strip__chip is-active">5G</span><span class="status-strip__chip is-active">WiFi</span><span class="status-strip__chip is-active">WG</span><span class="status-strip__chip">KDE</span><span class="status-strip__chip is-active">BT</span><span class="status-strip__chip">USB</span></div>
+                <span class="status-strip__camera" aria-hidden="true"></span>
+                <div class="status-strip__cluster status-strip__cluster--right"><span class="status-strip__chip">R 62%</span><span class="status-strip__chip">S 48%</span><span class="status-strip__chip">C 17%</span><span class="status-strip__chip is-active" role="img" aria-label="Battery 84%"><svg width="22" height="11" viewBox="0 0 24 12" aria-hidden="true" focusable="false"><rect x="0.5" y="0.5" width="19" height="11" rx="2.5" fill="none" stroke="currentColor"/><rect x="2" y="2" width="13.4" height="8" rx="1" fill="currentColor"/><rect x="21" y="4" width="2" height="4" rx="1" fill="currentColor"/></svg></span></div>
+            </div>
+            <div class="status-strip__row status-strip__row--clock">
+                <button class="status-strip__clock" id="status-clock" type="button" aria-label="Clock">--:--</button>
+            </div>
+            <div class="status-strip__hairline" aria-hidden="true"></div>
+        </div>
+
+        <div class="galaxy-backdrop" aria-hidden="true"></div>
+
+        <!-- The three stars and the islands are the launcher's own controls.
+             They are rendered because they are part of this layout, and left
+             decorative because their targets (drawer, recents, notifications,
+             media session) do not exist for a link browser. Wiring dead
+             handlers to them would be worse than leaving them still. -->
+        <button class="star star--sirius" type="button" aria-hidden="true" tabindex="-1">✦</button>
+        <button class="star star--canopus" type="button" aria-hidden="true" tabindex="-1">✦</button>
+        <button class="star star--centauri" type="button" aria-hidden="true" tabindex="-1">✦</button>
+
+        <main class="content" id="content"></main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+.linktree-footer {
+    scroll-snap-align: start;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr));
+    justify-items: center;
+    align-items: start;
+    gap: 1.5rem;
+    padding: 3rem 1rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+.linktree-footer-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    min-width: 0;
+    max-width: 100%;
+}
+
+.linktree-footer-btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.3s ease;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.15);
+        border-color: rgba(255, 255, 255, 0.3);
+    }
+}
+
+.linktree-footer-title {
+    margin: 0;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.footer-icons {
+    display: flex;
+    gap: 1rem;
+}
+
+// Platform icons (Web / Android / Apple) — smaller, ghosted variant of
+// the round github-footer-btn. Same hover treatment; smaller size keeps
+// the column scannable at a glance.
+.footer-platform-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.78);
+    transition: all 0.3s ease;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.14);
+        color: #fff;
+    }
+
+    &--disabled {
+        opacity: 0.45;
+        pointer-events: none; // until we have an actual iOS target
+    }
+}
+
+.github-footer-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.7);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.15);
+        color: white;
+    }
+}
+
+.github-holographic {
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+            45deg,
+            rgba(255, 0, 128, 0.3),
+            rgba(0, 255, 255, 0.3),
+            rgba(255, 255, 0, 0.3),
+            rgba(128, 0, 255, 0.3)
+        );
+        background-size: 300% 300%;
+        animation: holographicShift 3s ease infinite;
+        border-radius: 50%;
+        opacity: 0.6;
+    }
+}

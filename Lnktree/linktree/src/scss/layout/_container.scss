@@ -1,0 +1,154 @@
+// ==========================================================================
+// Container
+// ==========================================================================
+
+@use '../abstracts/variables' as *;
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    background: $glass-bg;
+    border-radius: $border-radius-xl;
+    border: 1px solid $glass-border;
+    box-shadow:
+        0 8px 32px 0 rgba(0, 0, 0, 0.37),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+    backdrop-filter: $glass-blur;
+    -webkit-backdrop-filter: $glass-blur;
+    animation: containerBorderGlow 4s ease-in-out infinite;
+    overflow: visible;
+
+    &::before {
+        content: '';
+        position: absolute;
+        width: 100px;
+        height: 3px;
+        background: linear-gradient(
+            90deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.05) 15%,
+            rgba(255, 255, 255, 0.15) 35%,
+            rgba(255, 255, 255, 0.25) 50%,
+            rgba(255, 255, 255, 0.15) 65%,
+            rgba(255, 255, 255, 0.05) 85%,
+            transparent 100%
+        );
+        border-radius: 50%;
+        filter: blur(6px);
+        pointer-events: none;
+        z-index: 10;
+        opacity: 0.5;
+    }
+}
+
+// Section Box Containers
+.section-box {
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.06) 0%,
+        rgba(255, 255, 255, 0.02) 50%,
+        rgba(255, 255, 255, 0.06) 100%
+    );
+    height: 100dvh;
+    box-sizing: border-box;
+    overflow-y: hidden;
+    border-radius: 24px;
+    padding: 1dvh 1dvh 3dvh 1dvh;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow:
+        0 4px 24px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: all 0.5s cubic-bezier(0.4, 0.0, 0.2, 1);
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+
+    &:hover {
+        border-color: rgba(255, 255, 255, 0.2);
+        box-shadow:
+            0 8px 32px rgba(0, 0, 0, 0.35),
+            inset 0 1px 0 rgba(255, 255, 255, 0.15),
+            0 0 20px rgba(255, 255, 255, 0.05);
+    }
+
+    .carousel-row {
+        margin-bottom: 0;
+    }
+}
+
+.professional-profiles-section {
+    border-left: 3px solid rgba(100, 150, 255, 0.4);
+}
+
+.personal-profiles-section {
+    border-left: 3px solid rgba(255, 100, 150, 0.4);
+    transition: transform 0.5s cubic-bezier(0.4, 0.0, 0.2, 1),
+                margin-top 0.5s cubic-bezier(0.4, 0.0, 0.2, 1),
+                all 0.5s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.projects-section {
+    border-left: 3px solid rgba(150, 255, 100, 0.4);
+    transition: transform 0.5s cubic-bezier(0.4, 0.0, 0.2, 1),
+                margin-top 0.5s cubic-bezier(0.4, 0.0, 0.2, 1),
+                all 0.5s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+// Card view modes:
+// - cards-view-single-card (default): the 3 groups stacked full-height,
+//   one card visible at a time via swiper — normal browsing.
+// - cards-view-all-cards (zoom out): each group stays in its original
+//   (stacked) position, but its Swiper is torn down (see carousel.ts
+//   teardownCarousels()) and ALL of its cards are shown at once, wrapped
+//   to fit the screen width. The 3 groups are forced into equal thirds
+//   of the viewport (instead of 100dvh snap sections) so all 3 are on
+//   screen together; a group with too many cards to fit its third
+//   scrolls internally rather than pushing the other groups off-screen.
+html.cards-view-all-cards {
+    scroll-snap-type: none;
+    overflow-y: hidden;
+}
+
+:root.cards-view-all-cards main {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+:root.cards-view-all-cards .section-box {
+    flex: 1 1 0;
+    height: auto;
+    min-height: 0;
+    overflow-y: auto;
+    scroll-snap-align: none;
+}
+
+:root.cards-view-all-cards .swiper-wrapper {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0.5rem;
+    height: auto;
+}
+
+// Fixed width + aspect-ratio (matching the single-card view's roughly
+// 3:4 portrait shape) instead of height: auto, so shrunk cards keep
+// their proportions rather than getting squashed by wrapped content.
+:root.cards-view-all-cards .swiper-slide {
+    flex: 0 1 140px;
+    width: 140px;
+    aspect-ratio: 3 / 4;
+    height: auto;
+}
+
+:root.cards-view-all-cards .swiper-button-prev,
+:root.cards-view-all-cards .swiper-button-next,
+:root.cards-view-all-cards .swiper-pagination {
+    display: none;
+}

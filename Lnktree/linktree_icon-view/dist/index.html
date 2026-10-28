@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>DNM | Icon View</title>
+    <meta name="description" content="Cloud SuperApp launcher layout over Diego Nepomuceno Marcos' links">
+    <link rel="icon" type="image/jpeg" href="public/favicon.jpg">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://diegonmarcos.github.io/linktree_icon-view/">
+    <meta property="og:title" content="Diego Nepomuceno Marcos | Icon View">
+    <meta property="og:description" content="Folder navigation over the linktree, in the Cloud SuperApp layout">
+
+    <!-- Matomo Tag Manager -->
+    <script>
+    var _mtm = window._mtm = window._mtm || [];
+    _mtm.push({'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start'});
+    (function() {
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.async=true; g.src='https://analytics.diegonmarcos.com/matomo/js/container_odwLIyPV.js'; s.parentNode.insertBefore(g,s);
+    })();
+    </script>
+
+    <link rel="stylesheet" href="style.css">
+    <!-- Portal-local additions. MUST come after style.css — that is
+         cloud-superapp's stylesheet, reached through the src/scss symlink. -->
+    <link rel="stylesheet" href="overrides.css">
+    <script async src="https://analytics.diegonmarcos.com/umami/script.js" data-website-id="937cbde7-5ec2-450c-9d6a-8117423ac12f"></script>
+<!-- sw-register: injected by mod_sw_register — DO NOT EDIT BY HAND. Re-runs are idempotent (the marker comment above gates the injection). -->
+<script>
+(function () {
+  // ── Visible boot log: ALWAYS something in console, even if every other
+  // script breaks. If the user sees nothing here, the inline script tag
+  // itself was blocked (CSP, extension, etc.) — not a SW bug.
+  var TAG = '[sw-register]';
+  var t0 = Date.now();
+  console.info(TAG, 'boot', { url: location.href, ua: navigator.userAgent.slice(0, 60) });
+
+  if (!('serviceWorker' in navigator) || !location.protocol.startsWith('http')) {
+    console.info(TAG, 'skip — no serviceWorker or non-http(s) origin');
+    return;
+  }
+
+  var hadController = navigator.serviceWorker.controller !== null;
+  console.info(TAG, 'controller-at-boot', hadController ? navigator.serviceWorker.controller.scriptURL : 'null');
+
+  // ── Kill-switch ALWAYS available on window: dev can call from console
+  //    or the auto-watchdog below uses it when the page stays blank.
+  window.__resetSW = function (reason) {
+    console.warn(TAG, '__resetSW invoked', { reason: reason || 'manual' });
+    return navigator.serviceWorker.getRegistrations()
+      .then(function (regs) {
+        console.info(TAG, 'unregistering ' + regs.length + ' SW(s)');
+        return Promise.all(regs.map(function (r) { return r.unregister(); }));
+      })
+      .then(function () {
+        return caches.keys().then(function (keys) {
+          console.info(TAG, 'purging ' + keys.length + ' cache(s)', keys);
+          return Promise.all(keys.map(function (k) { return caches.delete(k); }));
+        });
+      })
+      .then(function () {
+        console.info(TAG, 'reset complete — reloading');
+        location.reload();
+      });
+  };
+
+  // ── Reload on controllerchange ONLY when an OLD SW was replaced by a NEW one
+  //    (post-deploy update). Skip on first-ever activation — reloading then
+  //    aborts the in-flight `defer` script.js and the SPA never boots.
+  var reloading = false;
+  navigator.serviceWorker.addEventListener('controllerchange', function () {
+    console.info(TAG, 'controllerchange', {
+      newController: navigator.serviceWorker.controller ? navigator.serviceWorker.controller.scriptURL : 'null',
+      hadController: hadController,
+      willReload: hadController && !reloading
+    });
+    if (!hadController || reloading) return;
+    reloading = true;
+    location.reload();
+  });
+
+  function reg() {
+    console.info(TAG, 'registering ./script-service-worker.js');
+    navigator.serviceWorker.register('./script-service-worker.js', { updateViaCache: 'none' })
+      .then(function (r) {
+        try { r.update(); } catch (e) { /* best effort */ }
+        console.info(TAG, 'register OK', {
+          scope: r.scope,
+          installing: !!r.installing,
+          waiting: !!r.waiting,
+          active: !!r.active
+        });
+      })
+      .catch(function (e) {
+        console.error(TAG, 'register FAILED', e && e.message);
+      });
+  }
+  if ('requestIdleCallback' in window) requestIdleCallback(reg); else setTimeout(reg, 1);
+
+  // ── Watchdog: if a SW is controlling the page AND the body's #app stays
+  //    empty after 4 seconds AND there's no SPA mark in the DOM, assume the
+  //    SW poisoned the response (stale precache, hash mismatch, partial
+  //    fetch). Auto-reset and reload — the next load fetches fresh from
+  //    network with no SW controller.
+  //
+  //    Only fires when hadController = true (i.e. NOT first-ever load).
+  //    The 4s threshold is conservative — even a slow 3G load completes
+  //    its critical-path script within 2s.
+  if (hadController) {
+    setTimeout(function () {
+      var app = document.getElementById('app');
+      var appEmpty = !app || (app.childElementCount === 0 && !app.textContent);
+      var bodyEmpty = !document.body || document.body.childElementCount <= 1;
+      console.info(TAG, 'watchdog t+' + (Date.now() - t0) + 'ms', {
+        appEmpty: appEmpty, bodyEmpty: bodyEmpty,
+        controller: navigator.serviceWorker.controller ? 'yes' : 'no'
+      });
+      if (appEmpty && bodyEmpty && navigator.serviceWorker.controller && !reloading) {
+        reloading = true;
+        window.__resetSW('watchdog: app + body still empty after 4s with SW in control');
+      }
+    }, 4000);
+  }
+})();
+</script>
+<!-- console-log: injected by mod_console_log — DO NOT EDIT BY HAND. Re-runs are idempotent (the marker comment above gates the injection). Single-namespace observability SDK (Sentry/OpenObserve-style). All logic ships in console-logs.js (compiled from console-logs.ts). Loaded synchronously, NO async/defer, so console.* + window.onerror + unhandledrejection are patched BEFORE any other script runs. Public API on window.consoleLogs.{captureException, captureMessage, addBreadcrumb, path, sessionId, exists, size, read, readJSON, tail, clear, download}. JSON Lines on disk in the origin's OPFS sandbox at console.log. -->
+<script src="console-logs.js"></script>
+<!-- end console-log -->
+</head>
+<!-- data-section drives the section accent in cloud-superapp's stylesheet; this
+     portal is the Cloud section's Apps page, rendered over linktree data. -->
+<body data-section="cloud">
+    <!-- Shell chrome copied from cloud-superapp's cloud/apps page so the two are
+         the same layout, not merely the same palette. style.css IS
+         cloud-superapp's stylesheet (src/scss is a symlink), so every class here
+         resolves against the same rules the Kotlin-derived UI uses.
+
+         LauncherStatusStripView has no web equivalent for real device metrics,
+         so the left/right clusters are static in cloud-superapp too; only the
+         clock is live. Same here. -->
+    <div class="shell">
+        <div class="status-strip">
+            <div class="status-strip__row">
+                <div class="status-strip__cluster status-strip__cluster--left"><span class="status-strip__chip is-active">5G</span><span class="status-strip__chip is-active">WiFi</span><span class="status-strip__chip is-active">WG</span><span class="status-strip__chip">KDE</span><span class="status-strip__chip is-active">BT</span><span class="status-strip__chip">USB</span></div>
+                <span class="status-strip__camera" aria-hidden="true"></span>
+                <div class="status-strip__cluster status-strip__cluster--right"><span class="status-strip__chip">R 62%</span><span class="status-strip__chip">S 48%</span><span class="status-strip__chip">C 17%</span><span class="status-strip__chip is-active" role="img" aria-label="Battery 84%"><svg width="22" height="11" viewBox="0 0 24 12" aria-hidden="true" focusable="false"><rect x="0.5" y="0.5" width="19" height="11" rx="2.5" fill="none" stroke="currentColor"/><rect x="2" y="2" width="13.4" height="8" rx="1" fill="currentColor"/><rect x="21" y="4" width="2" height="4" rx="1" fill="currentColor"/></svg></span></div>
+            </div>
+            <div class="status-strip__row status-strip__row--clock">
+                <button class="status-strip__clock" id="status-clock" type="button" aria-label="Clock">--:--</button>
+            </div>
+            <div class="status-strip__hairline" aria-hidden="true"></div>
+        </div>
+
+        <div class="galaxy-backdrop" aria-hidden="true"></div>
+
+        <!-- The three stars and the islands are the launcher's own controls.
+             They are rendered because they are part of this layout, and left
+             decorative because their targets (drawer, recents, notifications,
+             media session) do not exist for a link browser. Wiring dead
+             handlers to them would be worse than leaving them still. -->
+        <button class="star star--sirius" type="button" aria-hidden="true" tabindex="-1">✦</button>
+        <button class="star star--canopus" type="button" aria-hidden="true" tabindex="-1">✦</button>
+        <button class="star star--centauri" type="button" aria-hidden="true" tabindex="-1">✦</button>
+
+        <main class="content" id="content"></main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

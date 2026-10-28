@@ -1,0 +1,48 @@
+// ==========================================================================
+// Cookie Consent Banner
+// ==========================================================================
+
+@use "sass:color";
+@use '../abstracts/variables' as *;
+
+.cookie-consent-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(51, 51, 51, 0.9);
+    color: $color-text;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    p {
+        margin: 0 0 10px 0;
+        font-size: 0.9rem;
+    }
+
+    .btn {
+        background: $color-success;
+        color: white;
+        padding: 8px 15px;
+        border: none;
+        border-radius: $border-radius-sm;
+        cursor: pointer;
+        font-size: 0.9rem;
+        margin: 5px;
+        transition: background 0.15s ease;
+
+        &:hover { background: color.adjust($color-success, $lightness: -5%); }
+
+        &.decline-btn {
+            background: $color-danger;
+            &:hover { background: color.adjust($color-danger, $lightness: -10%); }
+        }
+    }
+}

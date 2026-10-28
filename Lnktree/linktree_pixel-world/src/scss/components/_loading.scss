@@ -1,0 +1,40 @@
+// ==========================================================================
+// Loading - Linktree Pixel World
+// ==========================================================================
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+#loading {
+  @include fixed-fill;
+  @include flex-center;
+  @include flex-col($space-md);
+  z-index: $z-loading;
+  background: $bg-dark;
+  @include transition-normal(opacity);
+
+  &.fade-out {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  span {
+    font-family: $font-pixel;
+    font-size: $font-size-lg;
+    color: $color-text-muted;
+    letter-spacing: 2px;
+  }
+}
+
+.loading-sprite {
+  width: 32px;
+  height: 32px;
+  border: 3px solid rgba(255, 255, 255, 0.15);
+  border-top-color: $color-root;
+  border-radius: 50%;
+  animation: spin 800ms linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

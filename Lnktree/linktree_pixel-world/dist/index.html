@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>DNM | Pixel World</title>
+    <meta name="description" content="Retro pixel art RPG link hub - explore buildings to discover links">
+    <link rel="icon" type="image/jpeg" href="public/favicon.jpg">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://diegonmarcos.github.io/linktree_pixel-world/">
+    <meta property="og:title" content="Diego Nepomuceno Marcos | Pixel World">
+    <meta property="og:description" content="Retro pixel art RPG link hub">
+
+    <!-- Matomo Tag Manager -->
+    <script>
+    var _mtm = window._mtm = window._mtm || [];
+    _mtm.push({'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start'});
+    (function() {
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.async=true; g.src='https://analytics.diegonmarcos.com/matomo/js/container_odwLIyPV.js'; s.parentNode.insertBefore(g,s);
+    })();
+    </script>
+
+    <link rel="stylesheet" href="style.css">
+<!-- Umami Analytics -->
+<script async src="https://analytics.diegonmarcos.com/umami/script.js" data-website-id="937cbde7-5ec2-450c-9d6a-8117423ac12f"></script>
+<!-- End Umami Analytics -->
+
+    <!-- Data-driven framework: PORTAL_DATA["linktree-pixel-world"] hydrated by front-data-json-js-wrapper.sh -->
+    <script src="data-linktree-pixel-world.json.js"></script>
+    <script>(function(){var d=globalThis.PORTAL_DATA&&PORTAL_DATA["linktree-pixel-world"];if(d&&d.title)document.title=d.title;})();</script>
+<!-- sw-register: injected by mod_sw_register — DO NOT EDIT BY HAND. Re-runs are idempotent (the marker comment above gates the injection). -->
+<script>
+(function () {
+  // ── Visible boot log: ALWAYS something in console, even if every other
+  // script breaks. If the user sees nothing here, the inline script tag
+  // itself was blocked (CSP, extension, etc.) — not a SW bug.
+  var TAG = '[sw-register]';
+  var t0 = Date.now();
+  console.info(TAG, 'boot', { url: location.href, ua: navigator.userAgent.slice(0, 60) });
+
+  if (!('serviceWorker' in navigator) || !location.protocol.startsWith('http')) {
+    console.info(TAG, 'skip — no serviceWorker or non-http(s) origin');
+    return;
+  }
+
+  var hadController = navigator.serviceWorker.controller !== null;
+  console.info(TAG, 'controller-at-boot', hadController ? navigator.serviceWorker.controller.scriptURL : 'null');
+
+  // ── Kill-switch ALWAYS available on window: dev can call from console
+  //    or the auto-watchdog below uses it when the page stays blank.
+  window.__resetSW = function (reason) {
+    console.warn(TAG, '__resetSW invoked', { reason: reason || 'manual' });
+    return navigator.serviceWorker.getRegistrations()
+      .then(function (regs) {
+        console.info(TAG, 'unregistering ' + regs.length + ' SW(s)');
+        return Promise.all(regs.map(function (r) { return r.unregister(); }));
+      })
+      .then(function () {
+        return caches.keys().then(function (keys) {
+          console.info(TAG, 'purging ' + keys.length + ' cache(s)', keys);
+          return Promise.all(keys.map(function (k) { return caches.delete(k); }));
+        });
+      })
+      .then(function () {
+        console.info(TAG, 'reset complete — reloading');
+        location.reload();
+      });
+  };
+
+  // ── Reload on controllerchange ONLY when an OLD SW was replaced by a NEW one
+  //    (post-deploy update). Skip on first-ever activation — reloading then
+  //    aborts the in-flight `defer` script.js and the SPA never boots.
+  var reloading = false;
+  navigator.serviceWorker.addEventListener('controllerchange', function () {
+    console.info(TAG, 'controllerchange', {
+      newController: navigator.serviceWorker.controller ? navigator.serviceWorker.controller.scriptURL : 'null',
+      hadController: hadController,
+      willReload: hadController && !reloading
+    });
+    if (!hadController || reloading) return;
+    reloading = true;
+    location.reload();
+  });
+
+  function reg() {
+    console.info(TAG, 'registering ./script-service-worker.js');
+    navigator.serviceWorker.register('./script-service-worker.js')
+      .then(function (r) {
+        console.info(TAG, 'register OK', {
+          scope: r.scope,
+          installing: !!r.installing,
+          waiting: !!r.waiting,
+          active: !!r.active
+        });
+      })
+      .catch(function (e) {
+        console.error(TAG, 'register FAILED', e && e.message);
+      });
+  }
+  if ('requestIdleCallback' in window) requestIdleCallback(reg); else setTimeout(reg, 1);
+
+  // ── Watchdog: if a SW is controlling the page AND the body's #app stays
+  //    empty after 4 seconds AND there's no SPA mark in the DOM, assume the
+  //    SW poisoned the response (stale precache, hash mismatch, partial
+  //    fetch). Auto-reset and reload — the next load fetches fresh from
+  //    network with no SW controller.
+  //
+  //    Only fires when hadController = true (i.e. NOT first-ever load).
+  //    The 4s threshold is conservative — even a slow 3G load completes
+  //    its critical-path script within 2s.
+  if (hadController) {
+    setTimeout(function () {
+      var app = document.getElementById('app');
+      var appEmpty = !app || (app.childElementCount === 0 && !app.textContent);
+      var bodyEmpty = !document.body || document.body.childElementCount <= 1;
+      console.info(TAG, 'watchdog t+' + (Date.now() - t0) + 'ms', {
+        appEmpty: appEmpty, bodyEmpty: bodyEmpty,
+        controller: navigator.serviceWorker.controller ? 'yes' : 'no'
+      });
+      if (appEmpty && bodyEmpty && navigator.serviceWorker.controller && !reloading) {
+        reloading = true;
+        window.__resetSW('watchdog: app + body still empty after 4s with SW in control');
+      }
+    }, 4000);
+  }
+})();
+</script>
+<!-- console-log: injected by mod_console_log — DO NOT EDIT BY HAND. Re-runs are idempotent (the marker comment above gates the injection). Single-namespace observability SDK (Sentry/OpenObserve-style). All logic ships in console-logs.js (compiled from console-logs.ts). Loaded synchronously, NO async/defer, so console.* + window.onerror + unhandledrejection are patched BEFORE any other script runs. Public API on window.consoleLogs.{captureException, captureMessage, addBreadcrumb, path, sessionId, exists, size, read, readJSON, tail, clear, download}. JSON Lines on disk in the origin's OPFS sandbox at console.log. -->
+<script src="console-logs.js"></script>
+<!-- end console-log -->
+  </head>
+<body>
+    <!-- WebGL Background Canvas - GPU starfield -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- PixiJS canvas injected after bg-canvas by JS -->
+
+    <!-- Zone Transition Overlay -->
+    <div id="zone-transition"></div>
+
+    <!-- UI Overlay -->
+    <div id="ui-overlay">
+        <!-- World Title (persistent top bar) -->
+        <div id="world-title">
+            <span id="world-title-text"></span>
+        </div>
+
+        <!-- Zone Label (top center, temporary) -->
+        <div id="zone-label" hidden>
+            <span id="zone-label-text"></span>
+        </div>
+
+        <!-- Minimap (bottom-left) -->
+        <div id="minimap-container">
+            <canvas id="minimap"></canvas>
+        </div>
+
+        <!-- HUD (top-right) -->
+        <nav id="hud">
+            <a href="https://diegonmarcos.github.io/linktree/" class="hud-btn" title="Linktree">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                    <polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>
+            </a>
+            <a href="https://diegonmarcos.github.io/linktree_mindmap/" class="hud-btn" title="Mindmap">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="3"/>
+                    <circle cx="4" cy="6" r="2"/><line x1="6" y1="7" x2="9.5" y2="10"/>
+                    <circle cx="20" cy="6" r="2"/><line x1="18" y1="7" x2="14.5" y2="10"/>
+                    <circle cx="4" cy="18" r="2"/><line x1="6" y1="17" x2="9.5" y2="14"/>
+                    <circle cx="20" cy="18" r="2"/><line x1="18" y1="17" x2="14.5" y2="14"/>
+                </svg>
+            </a>
+            <button id="btn-25d" class="hud-btn" title="Toggle 2.5D view (V)" aria-label="Toggle perspective">3D</button>
+        </nav>
+
+        <!-- Mobile D-Pad -->
+        <div id="dpad" hidden>
+            <button class="dpad-btn dpad-up" aria-label="Move up" data-dir="up">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4l-8 8h16z"/></svg>
+            </button>
+            <button class="dpad-btn dpad-left" aria-label="Move left" data-dir="left">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M4 12l8-8v16z"/></svg>
+            </button>
+            <button class="dpad-btn dpad-action" aria-label="Interact" data-dir="action">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><circle cx="12" cy="12" r="6"/></svg>
+            </button>
+            <button class="dpad-btn dpad-right" aria-label="Move right" data-dir="right">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20 12l-8-8v16z"/></svg>
+            </button>
+            <button class="dpad-btn dpad-down" aria-label="Move down" data-dir="down">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 20l8-8H4z"/></svg>
+            </button>
+        </div>
+
+        <!-- RPG Dialog Box (link viewer) -->
+        <div id="dialog-box" hidden>
+            <div id="dialog-border">
+                <div id="dialog-title"></div>
+                <ul id="dialog-links"></ul>
+                <div id="dialog-hint"></div>
+            </div>
+        </div>
+
+        <!-- Loading -->
+        <div id="loading">
+            <div class="loading-sprite"></div>
+            <span>Loading...</span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

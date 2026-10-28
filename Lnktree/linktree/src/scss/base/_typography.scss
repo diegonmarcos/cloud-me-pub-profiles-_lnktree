@@ -1,0 +1,63 @@
+// ==========================================================================
+// Typography
+// ==========================================================================
+
+@use '../abstracts/variables' as *;
+
+h1 {
+    font-family: $font-display;
+    font-size: 2.3rem;
+    margin: 0;
+    position: relative;
+    display: inline-block;
+    background: linear-gradient(
+        110deg,
+        #aaa 0%, #aaa 46%, #ddd 48%, #fff 50%, #ddd 52%, #aaa 54%, #aaa 100%
+    );
+    background-size: 800% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: slideToUnlockShine 20s linear infinite;
+}
+
+p {
+    font-size: 1.0rem;
+    margin-top: 0.5rem;
+}
+
+.section-title {
+    font-family: $font-display;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+.subsection-title {
+    font-family: $font-display;
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: $color-text-muted;
+}
+
+.box-title {
+    font-family: $font-display;
+    font-size: 1.4rem;
+    margin: 0 0 1rem 0;
+    padding: 0.75rem 0;
+    text-align: center;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.85);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-radius: 12px 12px 0 0;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}

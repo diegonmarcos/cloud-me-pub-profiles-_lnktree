@@ -1,0 +1,189 @@
+// ==========================================================================
+// Galaxy Background - RICH VISUALS with PROPER OPTIMIZATION
+// ==========================================================================
+// Stars rendered via WebGL (particles.ts)
+// Nebulas and shooting stars via CSS with containment
+
+@use '../abstracts/variables' as *;
+
+// ---------------------------------------------------------------------------
+// WebGL Stars Canvas - GPU Accelerated
+// ---------------------------------------------------------------------------
+
+#stars-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; // Above body background, below graph
+  pointer-events: none;
+}
+
+// ---------------------------------------------------------------------------
+// Galaxy Container - Nebula overlays
+// ---------------------------------------------------------------------------
+
+#galaxy-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 2; // Above stars canvas, below graph
+  overflow: hidden;
+  pointer-events: none;
+  // Containment prevents layout thrashing
+  contain: layout style paint;
+
+  // Subtle vignette overlay
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      ellipse 100% 100% at 50% 50%,
+      transparent 30%,
+      rgba(0, 0, 0, 0.4) 100%
+    );
+    pointer-events: none;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Nebula Clouds - Static gradients (NO animation)
+// ---------------------------------------------------------------------------
+
+.nebula {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  // No will-change, no animation = no GPU memory pressure
+}
+
+// Blue nebula - upper left (MORE VISIBLE)
+.nebula-1 {
+  background: radial-gradient(
+    ellipse 60% 50% at 20% 20%,
+    rgba(100, 149, 237, 0.35) 0%,
+    rgba(100, 149, 237, 0.15) 40%,
+    transparent 70%
+  );
+}
+
+// Purple/pink nebula - right side (MORE VISIBLE)
+.nebula-2 {
+  background: radial-gradient(
+    ellipse 55% 60% at 85% 50%,
+    rgba(199, 125, 255, 0.30) 0%,
+    rgba(180, 100, 220, 0.12) 45%,
+    transparent 75%
+  );
+}
+
+// Teal/green nebula - lower left (MORE VISIBLE)
+.nebula-3 {
+  background: radial-gradient(
+    ellipse 50% 45% at 10% 80%,
+    rgba(80, 200, 170, 0.25) 0%,
+    rgba(60, 180, 150, 0.10) 40%,
+    transparent 70%
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Shooting Stars - CSS Animation (only 2 for performance)
+// Uses transform only (GPU accelerated)
+// ---------------------------------------------------------------------------
+
+.shooting-stars {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  contain: layout style paint;
+}
+
+.shooting-star {
+  position: absolute;
+  width: 120px;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.8) 30%,
+    rgba(255, 255, 255, 1) 50%,
+    rgba(255, 255, 255, 0.6) 70%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  border-radius: 2px;
+  opacity: 0;
+  // GPU layer for smooth animation
+  transform: translateZ(0);
+  // Only animate opacity and transform (cheap properties)
+}
+
+.shooting-star-1 {
+  top: 12%;
+  left: -150px;
+  animation: shoot-1 12s ease-in-out 3s infinite;
+}
+
+.shooting-star-2 {
+  top: 55%;
+  left: -150px;
+  animation: shoot-2 15s ease-in-out 9s infinite;
+}
+
+// Shooting star animations - transform only (GPU)
+@keyframes shoot-1 {
+  0%, 85%, 100% {
+    opacity: 0;
+    transform: translateZ(0) rotate(-30deg) translateX(0);
+  }
+  3% {
+    opacity: 1;
+  }
+  12% {
+    opacity: 0;
+    transform: translateZ(0) rotate(-30deg) translateX(calc(100vw + 300px));
+  }
+}
+
+@keyframes shoot-2 {
+  0%, 88%, 100% {
+    opacity: 0;
+    transform: translateZ(0) rotate(-25deg) translateX(0);
+  }
+  2% {
+    opacity: 1;
+  }
+  10% {
+    opacity: 0;
+    transform: translateZ(0) rotate(-25deg) translateX(calc(100vw + 300px));
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Mobile Optimizations
+// ---------------------------------------------------------------------------
+
+@media (max-width: 768px) {
+  // Disable shooting stars on mobile
+  .shooting-star {
+    display: none;
+  }
+
+  // Reduce nebula opacity
+  .nebula {
+    opacity: 0.7;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Reduced Motion Preference
+// ---------------------------------------------------------------------------
+
+@media (prefers-reduced-motion: reduce) {
+  .shooting-star {
+    animation: none !important;
+    display: none;
+  }
+}

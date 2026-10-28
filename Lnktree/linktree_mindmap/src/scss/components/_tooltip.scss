@@ -1,0 +1,57 @@
+// ==========================================================================
+// Tooltip - Linktree Mindmap
+// ==========================================================================
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+#tooltip {
+  position: fixed;
+  max-width: 250px;
+  padding: $space-md;
+  border-radius: $radius-md;
+  @include glass;
+  z-index: $z-tooltip;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(8px) scale(0.95);
+  @include transition-fast(opacity, transform);
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  #tooltip-title {
+    font-size: $font-size-sm;
+    font-weight: 600;
+    margin-bottom: $space-xs;
+    color: $color-text;
+  }
+
+  #tooltip-subtitle {
+    font-size: $font-size-xs;
+    color: $color-text-muted;
+    margin: 0;
+  }
+
+  #tooltip-badge {
+    display: inline-block;
+    margin-top: $space-sm;
+    padding: 2px 8px;
+    font-size: 10px;
+    font-weight: 600;
+    color: $color-text;
+    border-radius: $radius-full;
+    opacity: 0.9;
+  }
+}
+
+// Node badge (on canvas)
+.node-badge {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: $radius-full;
+  color: $color-text;
+}

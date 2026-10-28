@@ -1,0 +1,62 @@
+// ==========================================================================
+// Breadcrumb - Linktree Mindmap
+// ==========================================================================
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+#breadcrumb {
+  position: fixed;
+  top: $space-lg;
+  left: 50%;
+  transform: translateX(-50%) translateY(-10px);
+  max-width: 90%;
+  padding: $space-sm $space-md;
+  border-radius: $radius-md;
+  z-index: $z-ui;
+  opacity: 0;
+  @include transition-normal(opacity, transform);
+
+  &:not([hidden]) {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+#breadcrumb-nav {
+  display: flex;
+  align-items: center;
+  gap: $space-xs;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.breadcrumb-item {
+  background: transparent;
+  border: none;
+  padding: $space-xs $space-sm;
+  border-radius: $radius-sm;
+  font-size: $font-size-xs;
+  font-weight: 500;
+  color: $color-text-muted;
+  cursor: pointer;
+  @include transition-fast(color, background);
+
+  &:hover {
+    color: var(--accent, $color-text);
+    background: rgba(255, 255, 255, 0.1);
+  }
+}
+
+.breadcrumb-sep {
+  color: $color-text-dim;
+  font-size: $font-size-xs;
+}
+
+.breadcrumb-current {
+  font-size: $font-size-xs;
+  font-weight: 600;
+  padding: $space-xs $space-sm;
+}

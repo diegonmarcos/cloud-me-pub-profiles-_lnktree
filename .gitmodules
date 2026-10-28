@@ -1,0 +1,5 @@
+[submodule "0_deployer"]
+	path = 0_deployer
+	url = https://github.com/diegonmarcos/diegonmarcos.github.io.git
+	shallow = true
+	ignore = all

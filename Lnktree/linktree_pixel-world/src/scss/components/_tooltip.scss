@@ -1,0 +1,63 @@
+// ==========================================================================
+// Tooltip - Linktree Pixel World
+// ==========================================================================
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+#tooltip {
+  position: fixed;
+  z-index: $z-tooltip;
+  @include glass;
+  @include pixel-border(rgba(255, 221, 87, 0.6));
+  border-radius: $radius-md;
+  padding: $space-sm $space-md;
+  max-width: 280px;
+  pointer-events: none;
+  @include transition-fast(opacity, transform);
+  transform: translateY(4px);
+  opacity: 0;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#tooltip-content {
+  @include flex-col(4px);
+}
+
+#tooltip-title {
+  font-family: $font-pixel;
+  font-size: $font-size-sm;
+  font-weight: bold;
+  color: $glow-interact;
+  white-space: nowrap;
+}
+
+#tooltip-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  @include flex-col(2px);
+}
+
+.tooltip-link-item {
+  font-family: $font-pixel;
+  font-size: $font-size-xs;
+  color: $color-text;
+  padding: 1px 0;
+
+  &::before {
+    content: '\203A '; // ›
+    color: $glow-interact;
+  }
+}
+
+#tooltip-hint {
+  font-family: $font-pixel;
+  font-size: $font-size-xs;
+  color: $color-text-muted;
+  white-space: nowrap;
+}

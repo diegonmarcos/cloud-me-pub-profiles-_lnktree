@@ -1,0 +1,148 @@
+// ==========================================================================
+// Lite Mode - Solid background, no animations
+// ==========================================================================
+
+.lite-mode {
+    // ─── Universal performance kill switches ───────────────────────────────
+    // Strip every animation, transition, filter, backdrop-filter and shadow
+    // anywhere on the page when lite mode is active. Big GPU + CPU win.
+    *, *::before, *::after {
+        animation: none !important;
+        animation-duration: 0s !important;
+        animation-delay: 0s !important;
+        transition: none !important;
+        filter: none !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+
+    // Use a system font stack (skip web font load + reflow).
+    body, * {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    }
+
+    // Nuke the background video — hidden videos still decode in many
+    // browsers; `display:none` is the only reliable stop.
+    #background-video,
+    video.background-video,
+    .video-bg,
+    .video-background {
+        display: none !important;
+    }
+
+    // Hide swiper navigation arrows that compute layout per frame.
+    .swiper-button-prev::after,
+    .swiper-button-next::after {
+        text-shadow: none !important;
+    }
+
+    // ─── Existing visual fallbacks (no blur, solid surfaces) ───────────────
+    // Container: mimics frosted glass look without blur
+    .container {
+        background: linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.1) 0%,
+            rgba(255, 255, 255, 0.05) 50%,
+            rgba(255, 255, 255, 0.1) 100%
+        ), rgba(60, 60, 70, 0.92) !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        border: 1px solid rgba(255, 255, 255, 0.18) !important;
+        box-shadow:
+            0 8px 32px 0 rgba(0, 0, 0, 0.37),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+        animation: none !important;
+
+        &::before {
+            display: none !important;
+        }
+    }
+
+    // Remove button border effects
+    .icon-btn,
+    .swiper-button-prev,
+    .swiper-button-next {
+        background: rgba(255, 255, 255, 0.15) !important;
+        border: none !important;
+        box-shadow: none !important;
+    }
+
+    // Remove holographic effects from icons
+    .social-icons a,
+    .contact-icons a {
+        border: none !important;
+        box-shadow: none !important;
+
+        &::before,
+        &::after {
+            display: none !important;
+        }
+    }
+
+    // Link sections: mimics glass card look
+    .link-section {
+        background: rgba(255, 255, 255, 0.08) !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+        box-shadow:
+            0 4px 16px rgba(0, 0, 0, 0.2),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+
+        &::before {
+            display: none !important;
+        }
+    }
+
+    // Links: simple style with lightweight hover
+    .link {
+        border: none !important;
+        box-shadow: none !important;
+        transition: background 0.2s ease !important;
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.18) !important;
+        }
+    }
+
+    // Title: white text, no shine
+    h1 {
+        animation: none !important;
+        background: none !important;
+        -webkit-text-fill-color: #fff !important;
+        color: #fff !important;
+    }
+
+    // Social icons: lightweight hover
+    .social-icons a,
+    .contact-icons a {
+        transition: opacity 0.2s ease !important;
+
+        &:hover {
+            opacity: 0.7 !important;
+            transform: none !important;
+        }
+    }
+
+    // Link sections: lightweight hover
+    .link-section {
+        transition: background 0.2s ease !important;
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.12) !important;
+            transform: none !important;
+        }
+    }
+
+    // Swiper pagination: no glow
+    .swiper-pagination-bullet-active {
+        box-shadow: none !important;
+    }
+
+    // Show static image from video poster
+    #background-video {
+        background-image: url('public/images/background_static.jpg') !important;
+        background-size: cover !important;
+        background-position: center !important;
+    }
+}

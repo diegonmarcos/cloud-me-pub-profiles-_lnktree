@@ -1,0 +1,29 @@
+// ==========================================================================
+// Registered custom properties — give the compositor type info so that
+// transitions on these vars interpolate per-frame on the GPU instead of
+// per-keyframe on the main thread. Browsers without @property support
+// silently ignore the @property block; the vars still work.
+// ==========================================================================
+
+// Holographic shimmer offset — drives gradient `background-position` on
+// `.profile-icons a::before` and `.tool-link::before`. Animatable as a length.
+@property --shimmer-shift {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 0px;
+}
+
+// Glow color used by `.container` / `.icon-btn.active` — animatable, so
+// theme transitions cross-fade smoothly.
+@property --glow-color {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: rgba(255, 255, 255, 0.4);
+}
+
+// Hue rotation amount — drives the rainbow keyframe on icons.
+@property --icon-hue {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}

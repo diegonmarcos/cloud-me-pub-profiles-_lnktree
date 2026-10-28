@@ -1,0 +1,45 @@
+// ==========================================================================
+// HUD - Linktree Pixel World
+// ==========================================================================
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+#hud {
+  position: fixed;
+  top: $space-md;
+  right: $space-md;
+  z-index: $z-ui;
+  @include flex-row($space-sm);
+}
+
+.hud-btn {
+  @include flex-center;
+  width: 36px;
+  height: 36px;
+  @include glass;
+  border-radius: $radius-md;
+  @include transition-fast(background, border-color);
+  color: $color-text-muted;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: $glass-border-hover;
+    color: $color-text;
+  }
+
+  &:active {
+    transform: scale(0.92);
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  &.active {
+    background: rgba($glow-interact, 0.3);
+    border-color: $glow-interact;
+    color: $color-text;
+  }
+}

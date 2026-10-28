@@ -1,0 +1,193 @@
+// ==========================================================================
+// Link Panel - Linktree Mindmap (Enhanced)
+// ==========================================================================
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+#link-panel {
+  --panel-accent: #{$color-root};
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  width: 90%;
+  max-width: 400px;
+  max-height: 80vh;
+  padding: $space-lg;
+  border-radius: $radius-xl;
+  @include glass(rgba(20, 20, 30, 0.9), $glass-border, 20px);
+  z-index: $z-panel;
+  opacity: 0;
+  @include transition-normal(opacity, transform);
+  overflow-y: auto;
+  @include custom-scrollbar;
+
+  &.visible {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  // Header
+  #link-panel-header {
+    display: flex;
+    align-items: center;
+    gap: $space-md;
+    margin-bottom: $space-lg;
+    padding-right: $space-xl;
+  }
+
+  #link-panel-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: $radius-md;
+    @include flex-center;
+    flex-shrink: 0;
+
+    img {
+      width: 24px;
+      height: 24px;
+      filter: brightness(0) invert(1);
+    }
+  }
+
+  // Close button
+  #link-panel-close {
+    position: absolute;
+    top: $space-md;
+    right: $space-md;
+    width: 32px;
+    height: 32px;
+    @include flex-center;
+    @include glass;
+    border-radius: $radius-full;
+    @include interactive;
+
+    svg {
+      width: 16px;
+      height: 16px;
+      stroke: $color-text-muted;
+    }
+
+    &:hover svg {
+      stroke: $color-text;
+    }
+  }
+
+  // Title
+  #link-panel-title {
+    font-size: $font-size-lg;
+    font-weight: 600;
+    flex: 1;
+  }
+
+  // Links container
+  #link-panel-links {
+    @include flex-col($space-sm);
+  }
+}
+
+// Link group header
+.link-group-header {
+  font-size: $font-size-xs;
+  font-weight: 600;
+  color: $color-text-dim;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: $space-sm 0;
+  margin-top: $space-sm;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+// Link card inside panel
+.link-card {
+  --link-accent: #{$color-root};
+
+  position: relative;
+  @include flex-row($space-md);
+  padding: $space-md;
+  border-radius: $radius-md;
+  @include glass;
+  @include interactive;
+  text-decoration: none;
+  overflow: hidden;
+
+  &:hover {
+    @include glass-hover;
+    transform: translateX(4px);
+    border-color: rgba(var(--link-accent), 0.3);
+
+    .link-arrow {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+  }
+
+  .link-icon {
+    width: 32px;
+    height: 32px;
+    @include flex-center;
+    flex-shrink: 0;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: $radius-sm;
+
+    img {
+      width: 20px;
+      height: 20px;
+      filter: brightness(0) invert(1);
+    }
+  }
+
+  .link-label {
+    flex: 1;
+    font-size: $font-size-sm;
+    font-weight: 500;
+    color: $color-text;
+  }
+
+  .link-arrow {
+    width: 16px;
+    height: 16px;
+    stroke: $color-text-muted;
+    opacity: 0;
+    transform: translate(-4px, 4px);
+    @include transition-fast(opacity, transform);
+  }
+
+  // Ripple effect
+  .ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(0);
+    animation: ripple-animation $duration-ripple ease-out;
+    pointer-events: none;
+  }
+}
+
+@keyframes ripple-animation {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+// Backdrop when panel is open
+.panel-backdrop {
+  @include fixed-fill;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: $z-panel - 1;
+  opacity: 0;
+  @include transition-normal(opacity);
+  pointer-events: none;
+
+  &.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}

@@ -1,0 +1,223 @@
+// ==========================================================================
+// Mixins
+// ==========================================================================
+
+@use 'variables' as *;
+
+// Holographic Icon Effect
+@mixin holographic-icon {
+    position: relative;
+    display: inline-block;
+    padding: 14px;
+    border-radius: 50%;
+    background: $glass-bg;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    transition: all $transition-medium;
+    cursor: pointer;
+    overflow: hidden;
+    isolation: isolate;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 50%;
+        background: linear-gradient(45deg,
+            rgba(255, 0, 128, 0.3),
+            rgba(0, 255, 255, 0.3),
+            rgba(255, 255, 0, 0.3),
+            rgba(128, 0, 255, 0.3),
+            rgba(0, 255, 128, 0.3),
+            rgba(255, 128, 0, 0.3)
+        );
+        opacity: 0;
+        transition: opacity $transition-medium;
+        z-index: 0;
+        // animation, background-size, backdrop-filter only attach on :hover
+        // (gating an opacity:0 filtered+animated layer otherwise keeps the
+        // compositor pinning a raster surface alive every frame)
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: -10%;
+        left: -150%;
+        width: 150%;
+        height: 120%;
+        background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.1) 30%,
+            rgba(255, 200, 255, 0.3) 50%,
+            rgba(200, 255, 255, 0.3) 55%,
+            rgba(255, 255, 200, 0.3) 60%,
+            rgba(255, 255, 255, 0.1) 70%,
+            transparent 100%
+        );
+        transform: rotate(45deg);
+        opacity: 0;
+        transition: all 0.6s ease;
+        z-index: 2;
+        border-radius: 50%;
+    }
+
+    &:hover {
+        transform: translateY(-3px) scale(1.08);
+        border: 2px solid transparent;
+        background:
+            linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05)),
+            linear-gradient(45deg, #ff0080, #00ffff, #ffff00, #8000ff, #00ff80, #ff8000);
+        background-origin: border-box;
+        background-clip: padding-box, border-box;
+        box-shadow:
+            0 0 15px rgba(255, 0, 255, 0.4),
+            0 0 30px rgba(0, 255, 255, 0.2),
+            0 6px 16px rgba(0, 0, 0, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(12px) saturate(200%);
+        -webkit-backdrop-filter: blur(12px) saturate(200%);
+
+        &::before {
+            opacity: 1;
+            background-size: 300% 300%;
+            animation: holographicShift 3s ease infinite;
+            backdrop-filter: $glass-blur;
+            -webkit-backdrop-filter: $glass-blur;
+        }
+        &::after { opacity: 1; left: 150%; }
+    }
+
+    img {
+        width: 24px;
+        height: 24px;
+        filter: invert(1) brightness(1.1);
+        transition: all $transition-medium;
+        position: relative;
+        z-index: 1;
+    }
+
+    &:hover img {
+        filter: invert(1) brightness(1.3)
+            drop-shadow(0 0 6px rgba(255, 0, 255, 0.6))
+            drop-shadow(0 0 8px rgba(0, 255, 255, 0.4))
+            hue-rotate(0deg);
+        animation: iconRainbow 2s linear infinite;
+    }
+}
+
+// Holographic Icon Effect (Squared with rounded corners)
+@mixin holographic-icon-square {
+    position: relative;
+    display: inline-block;
+    padding: 14px;
+    border-radius: 12px;
+    background: $glass-bg;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    transition: all $transition-medium;
+    cursor: pointer;
+    overflow: hidden;
+    isolation: isolate;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 12px;
+        background: linear-gradient(45deg,
+            rgba(255, 0, 128, 0.3),
+            rgba(0, 255, 255, 0.3),
+            rgba(255, 255, 0, 0.3),
+            rgba(128, 0, 255, 0.3),
+            rgba(0, 255, 128, 0.3),
+            rgba(255, 128, 0, 0.3)
+        );
+        opacity: 0;
+        transition: opacity $transition-medium;
+        z-index: 0;
+        // animation, background-size, backdrop-filter only attach on :hover
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: -10%;
+        left: -150%;
+        width: 150%;
+        height: 120%;
+        background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.1) 30%,
+            rgba(255, 200, 255, 0.3) 50%,
+            rgba(200, 255, 255, 0.3) 55%,
+            rgba(255, 255, 200, 0.3) 60%,
+            rgba(255, 255, 255, 0.1) 70%,
+            transparent 100%
+        );
+        transform: rotate(45deg);
+        opacity: 0;
+        transition: all 0.6s ease;
+        z-index: 2;
+        border-radius: 12px;
+    }
+
+    &:hover {
+        transform: translateY(-3px) scale(1.08);
+        border: 2px solid transparent;
+        background:
+            linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05)),
+            linear-gradient(45deg, #ff0080, #00ffff, #ffff00, #8000ff, #00ff80, #ff8000);
+        background-origin: border-box;
+        background-clip: padding-box, border-box;
+        box-shadow:
+            0 0 15px rgba(255, 0, 255, 0.4),
+            0 0 30px rgba(0, 255, 255, 0.2),
+            0 6px 16px rgba(0, 0, 0, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(12px) saturate(200%);
+        -webkit-backdrop-filter: blur(12px) saturate(200%);
+
+        &::before {
+            opacity: 1;
+            background-size: 300% 300%;
+            animation: holographicShift 3s ease infinite;
+            backdrop-filter: $glass-blur;
+            -webkit-backdrop-filter: $glass-blur;
+        }
+        &::after { opacity: 1; left: 150%; }
+    }
+
+    img {
+        width: 24px;
+        height: 24px;
+        filter: invert(1) brightness(1.1);
+        transition: all $transition-medium;
+        position: relative;
+        z-index: 1;
+    }
+
+    &:hover img {
+        filter: invert(1) brightness(1.3)
+            drop-shadow(0 0 6px rgba(255, 0, 255, 0.6))
+            drop-shadow(0 0 8px rgba(0, 255, 255, 0.4))
+            hue-rotate(0deg);
+        animation: iconRainbow 2s linear infinite;
+    }
+}
+
+// Glass Card Effect
+@mixin glass-card {
+    background: $glass-bg;
+    border-radius: $border-radius-xl;
+    border: 1px solid $glass-border;
+    box-shadow:
+        0 8px 32px 0 rgba(0, 0, 0, 0.37),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+    backdrop-filter: $glass-blur;
+    -webkit-backdrop-filter: $glass-blur;
+}

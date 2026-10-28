@@ -1,0 +1,402 @@
+// ==========================================================================
+// Social & Contact Icons
+// ==========================================================================
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.social-icons, .contact-icons {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+
+    a { @include holographic-icon; }
+}
+
+.contact-icons {
+    margin-top: 1rem;
+}
+
+.profile-icons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
+    a {
+        @include holographic-icon-square;
+        padding: 8px;
+        border-radius: 8px;
+
+        img {
+            width: 20px;
+            height: 20px;
+        }
+    }
+}
+
+.inline-icon {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    filter: invert(1);
+    margin: 0 2px;
+}
+
+// Mindmap Link Button (top right corner) - matches FAB style
+.mindmap-btn {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 2500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg,
+        rgba(150, 100, 255, 0.8),
+        rgba(100, 150, 255, 0.8)
+    );
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    cursor: pointer;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow:
+        0 4px 16px rgba(150, 100, 255, 0.4),
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    text-decoration: none;
+    overflow: hidden;
+
+    @media (max-width: 768px) {
+        width: 45px;
+        height: 45px;
+    }
+
+    img {
+        width: 24px;
+        height: 24px;
+        filter: invert(1) brightness(1.2);
+        position: relative;
+        z-index: 1;
+
+        @media (max-width: 768px) {
+            width: 20px;
+            height: 20px;
+        }
+    }
+}
+
+// Mindmap Overlay Modal
+.mindmap-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    // backdrop-filter only attaches when &.active (opacity:1, pointer-events:auto)
+
+    &.active {
+        opacity: 1;
+        pointer-events: auto;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+}
+
+// Hide mindmap button when overlay is open
+.mindmap-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.mindmap-overlay-content {
+    position: relative;
+    width: 95%;
+    height: 95%;
+    background: rgba(20, 20, 30, 0.95);
+    border-radius: 24px;
+    border: 2px solid rgba(150, 100, 255, 0.4);
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.5),
+        0 0 40px rgba(150, 100, 255, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    transform: scale(0.9);
+    transition: transform 0.4s ease;
+
+    .mindmap-overlay.active & {
+        transform: scale(1);
+    }
+}
+
+.mindmap-overlay-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg,
+        rgba(255, 100, 150, 0.8),
+        rgba(255, 150, 100, 0.8)
+    );
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    color: white;
+    font-size: 28px;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 2001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all $transition-medium;
+    box-shadow:
+        0 4px 16px rgba(255, 100, 150, 0.4),
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    &:hover {
+        transform: scale(1.1);
+        box-shadow:
+            0 6px 20px rgba(255, 100, 150, 0.6),
+            0 12px 40px rgba(0, 0, 0, 0.4),
+            inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        border-color: rgba(255, 255, 255, 0.5);
+    }
+}
+
+#mindmap-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 24px;
+}
+
+// Icon View Toggle Button (bottom left corner) - matches FAB style
+.iconview-btn {
+    position: fixed;
+    bottom: 1rem;
+    left: 1rem;
+    z-index: 2500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg,
+        rgba(100, 200, 150, 0.8),
+        rgba(80, 160, 200, 0.8)
+    );
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    cursor: pointer;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow:
+        0 4px 16px rgba(100, 200, 150, 0.4),
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    text-decoration: none;
+    overflow: hidden;
+
+    @media (max-width: 768px) {
+        width: 45px;
+        height: 45px;
+    }
+
+    img {
+        width: 24px;
+        height: 24px;
+        filter: invert(1) brightness(1.2);
+        position: relative;
+        z-index: 1;
+
+        @media (max-width: 768px) {
+            width: 20px;
+            height: 20px;
+        }
+    }
+}
+
+// Icon View Overlay Modal
+.iconview-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+
+    &.is-open {
+        opacity: 1;
+        pointer-events: auto;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+}
+
+// Hide iconview button when overlay is open
+.iconview-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+// Full-bleed, not a dialog. The 95% box with a rounded green border, a drop
+// shadow and 3rem of padding was sized for the OLD in-page grid; around an
+// embedded phone UI it reads as a window with an app inside it rather than as
+// the app. Edge to edge is what makes it feel like the device.
+//
+// The padding in particular was actively harmful: the portal draws its own
+// status strip at the very top of its viewport, and 3rem above it pushed the
+// strip into the middle of a floating panel.
+//
+// The portal still constrains ITSELF — cloud-superapp's .shell caps at
+// --phone-max-width (480px) and centres — so filling the viewport here gives a
+// phone-width screen on a black field, which is the intended effect. Fighting
+// that with a second, outer constraint just shrank the phone.
+.iconview-overlay-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    border: 0;
+    border-radius: 0;
+    overflow: hidden;
+    padding: 0;
+    // Scale-in kept, but from 0.98: a 0.9 pop on a full-viewport surface reads
+    // as the whole page lurching rather than as a panel opening.
+    transform: scale(0.98);
+    transition: transform 0.4s ease;
+
+    .iconview-overlay.is-open & {
+        transform: scale(1);
+    }
+}
+
+// Bottom-right, not top-right. Now that the overlay is full-bleed the portal's
+// own status strip runs along the very top, and its right-hand cluster (radio
+// chips, RAM/storage/CPU, battery) sits exactly where this button used to be —
+// on a viewport narrower than the shell's 480px cap they overlap outright.
+// Bottom-right is empty in that layout and reads as a floating dismiss.
+.iconview-overlay-close {
+    position: absolute;
+    bottom: 1.25rem;
+    right: 1.25rem;
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg,
+        rgba(255, 100, 150, 0.8),
+        rgba(255, 150, 100, 0.8)
+    );
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    color: white;
+    font-size: 28px;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 2001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all $transition-medium;
+    box-shadow:
+        0 4px 16px rgba(255, 100, 150, 0.4),
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    &:hover {
+        transform: scale(1.1);
+        box-shadow:
+            0 6px 20px rgba(255, 100, 150, 0.6),
+            0 12px 40px rgba(0, 0, 0, 0.4),
+            inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        border-color: rgba(255, 255, 255, 0.5);
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Icon View iframe — the grid itself now lives in the linktree_icon-view
+// portal. Everything that used to style it in-page (.iconview-content,
+// -breadcrumb, -grid, -tile, -folder*) was deleted with the renderer: leaving
+// dead selectors behind is how a future reader concludes the view is still
+// rendered here.
+// ---------------------------------------------------------------------------
+
+#iconview-iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    // The portal paints its own purple->black gradient; a transparent iframe
+    // would show the linktree page through it during load.
+    background: #000;
+}
+
+
+// Icon Button
+.icon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    img {
+        width: 22px;
+        height: 22px;
+        opacity: 0.5;
+        filter: invert(1);
+    }
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.15);
+        border-color: rgba(255, 255, 255, 0.25);
+
+        img {
+            opacity: 0.8;
+        }
+    }
+
+    &.active {
+        background: rgba(255, 255, 255, 0.2);
+        border-color: rgba(255, 255, 255, 0.4);
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+
+        img {
+            opacity: 1;
+        }
+    }
+}

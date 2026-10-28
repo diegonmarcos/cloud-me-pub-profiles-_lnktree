@@ -1,0 +1,108 @@
+// ==========================================================================
+// Animations - Linktree Mindmap
+// ==========================================================================
+
+@use '../abstracts/variables' as *;
+
+// Fade in
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// Fade in up
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Scale in
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// Pulse glow
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+// Breathe (for nodes)
+@keyframes breathe {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+}
+
+// Float (ambient drift)
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(2px, -3px);
+  }
+  50% {
+    transform: translate(-1px, 2px);
+  }
+  75% {
+    transform: translate(-2px, -1px);
+  }
+}
+
+// Twinkle (for particles)
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+// Utility classes
+.animate-fade-in {
+  animation: fadeIn $duration-normal $ease-out;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp $duration-normal $ease-out;
+}
+
+.animate-scale-in {
+  animation: scaleIn $duration-normal $ease-spring;
+}
+
+.animate-breathe {
+  animation: breathe $duration-breathe ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float $duration-drift ease-in-out infinite;
+}

@@ -1,0 +1,38 @@
+{
+  "name": "linktree",
+  "version": "1.0.0",
+  "description": "Linktree - Personal links hub",
+  "main": "dist/main.js",
+  "type": "module",
+  "scripts": {
+    "build:css": "sass src_static/scss/main.scss style.css --style=compressed --no-source-map",
+    "build:ts": "tsc",
+    "build:bundle": "esbuild src_static/typescript/main.ts --bundle --outfile=script.js --format=iife --target=es2020 --minify",
+    "build": "npm run build:ts && npm run build:bundle && npm run build:css",
+    "dev:css": "sass src_static/scss/main.scss src_static/style.css --style=expanded --source-map --watch",
+    "dev:ts": "tsc --watch",
+    "dev:bundle": "esbuild src_static/typescript/main.ts --bundle --outfile=src_static/script.js --format=iife --target=es2020 --sourcemap --watch",
+    "dev": "npm run build:bundle",
+    "watch:css": "sass --watch src_static/scss/main.scss:src_static/style.css",
+    "watch:ts": "npm run dev:bundle",
+    "typecheck": "tsc --noEmit"
+  },
+  "author": "Diego Nepomuceno Marcos",
+  "license": "ISC",
+  "dependencies": {
+    "swiper": "^11.0.0"
+  },
+  "devDependencies": {
+    "@types/jsdom": "^21.1.7",
+    "@types/node": "^22.0.0",
+    "@types/qrcode": "^1.5.5",
+    "esbuild": "^0.20.2",
+    "jsdom": "^25.0.0",
+    "qr-code-styling": "^1.9.2",
+    "qrcode": "^1.5.4",
+    "sass": "^1.77.0",
+    "sharp": "^0.33.5",
+    "tsx": "^4.19.0",
+    "typescript": "^5.9.3"
+  }
+}

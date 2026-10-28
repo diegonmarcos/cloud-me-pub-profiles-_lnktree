@@ -1,0 +1,185 @@
+// ==========================================================================
+// Mixins - Linktree Mindmap
+// ==========================================================================
+
+@use 'variables' as *;
+
+// -----------------------------------------------------------------------------
+// Glass Effect
+// -----------------------------------------------------------------------------
+@mixin glass($bg: $glass-white, $border: $glass-border, $blur: $blur-glass) {
+  background: $bg;
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+  border: 1px solid $border;
+}
+
+@mixin glass-hover {
+  background: $glass-white-hover;
+  border-color: $glass-border-hover;
+}
+
+// -----------------------------------------------------------------------------
+// Glow Effect
+// -----------------------------------------------------------------------------
+@mixin glow($color, $size: $shadow-glow-md) {
+  box-shadow: $size rgba($color, 0.4);
+}
+
+@mixin text-glow($color) {
+  text-shadow: 0 0 10px rgba($color, 0.5), 0 0 20px rgba($color, 0.3);
+}
+
+// -----------------------------------------------------------------------------
+// Flexbox Helpers
+// -----------------------------------------------------------------------------
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-col($gap: 0) {
+  display: flex;
+  flex-direction: column;
+  @if $gap != 0 {
+    gap: $gap;
+  }
+}
+
+@mixin flex-row($gap: 0) {
+  display: flex;
+  flex-direction: row;
+  @if $gap != 0 {
+    gap: $gap;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Positioning
+// -----------------------------------------------------------------------------
+@mixin absolute-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@mixin fixed-fill {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+// -----------------------------------------------------------------------------
+// Transitions
+// -----------------------------------------------------------------------------
+@mixin transition-fast($properties...) {
+  @if length($properties) == 0 {
+    transition: all $duration-fast $ease-out;
+  } @else {
+    $transitions: ();
+    @each $prop in $properties {
+      $transitions: append($transitions, $prop $duration-fast $ease-out, comma);
+    }
+    transition: $transitions;
+  }
+}
+
+@mixin transition-normal($properties...) {
+  @if length($properties) == 0 {
+    transition: all $duration-normal $ease-out;
+  } @else {
+    $transitions: ();
+    @each $prop in $properties {
+      $transitions: append($transitions, $prop $duration-normal $ease-out, comma);
+    }
+    transition: $transitions;
+  }
+}
+
+@mixin transition-slow($properties...) {
+  @if length($properties) == 0 {
+    transition: all $duration-slow $ease-out;
+  } @else {
+    $transitions: ();
+    @each $prop in $properties {
+      $transitions: append($transitions, $prop $duration-slow $ease-out, comma);
+    }
+    transition: $transitions;
+  }
+}
+
+@mixin transition-spring($properties...) {
+  @if length($properties) == 0 {
+    transition: all $duration-normal $ease-spring;
+  } @else {
+    $transitions: ();
+    @each $prop in $properties {
+      $transitions: append($transitions, $prop $duration-normal $ease-spring, comma);
+    }
+    transition: $transitions;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Interactive States
+// -----------------------------------------------------------------------------
+@mixin interactive {
+  cursor: pointer;
+  @include transition-fast;
+
+  &:hover {
+    @include glass-hover;
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-root;
+    outline-offset: 2px;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Hide/Show
+// -----------------------------------------------------------------------------
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// -----------------------------------------------------------------------------
+// Scrollbar
+// -----------------------------------------------------------------------------
+@mixin custom-scrollbar {
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $glass-border;
+    border-radius: $radius-full;
+
+    &:hover {
+      background: $glass-border-hover;
+    }
+  }
+}

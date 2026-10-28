@@ -1,0 +1,174 @@
+// ==========================================================================
+// Terminal Theme — opt-in via `body.terminal-theme`, selected from the
+// Theme Switcher. A demonstration of a different design direction for this
+// page: green-phosphor CRT instead of the default glassmorphic dark.
+//
+// Design idea: treat the page as a terminal session rather than a card
+// deck. Flat black, one accent colour, monospace everywhere, square
+// corners, hairline rules instead of shadows, and a scanline overlay. No
+// blur and no gradients — which also makes it cheap to composite.
+// ==========================================================================
+
+$phosphor:        #33ff66;
+$phosphor-dim:    rgba(51, 255, 102, 0.55);
+$phosphor-faint:  rgba(51, 255, 102, 0.14);
+$terminal-bg:     #050806;
+$terminal-panel:  #0a0f0b;
+$mono: 'SF Mono', 'JetBrains Mono', 'Fira Code', ui-monospace, Menlo, Consolas, monospace;
+
+body.terminal-theme {
+    background: $terminal-bg !important;
+    color: $phosphor !important;
+    font-family: $mono !important;
+
+    * {
+        font-family: $mono !important;
+        border-radius: 0 !important;
+        text-shadow: none !important;
+    }
+
+    // No video, no glass — the whole look is flat by design.
+    #background-video,
+    video.background-video,
+    .video-bg,
+    .video-background {
+        display: none !important;
+    }
+
+    .container,
+    .link-section,
+    .section-box,
+    .status-modal-content {
+        background: $terminal-panel !important;
+        color: $phosphor !important;
+        border: 1px solid $phosphor-faint !important;
+        box-shadow: none !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+
+        &::before { display: none !important; }
+    }
+
+    // Headings read as shell prompts.
+    h1, h2, h3, h4,
+    .box-title, .section-title, .subsection-title {
+        color: $phosphor !important;
+        background: none !important;
+        -webkit-text-fill-color: $phosphor !important;
+        text-transform: lowercase;
+        letter-spacing: 0.04em;
+    }
+    h1::before,
+    .box-title::before {
+        content: '$ ';
+        opacity: 0.5;
+    }
+
+    .box-title {
+        background: $terminal-panel !important;
+        border-bottom: 1px solid $phosphor-faint !important;
+    }
+
+    .link, .tool-link {
+        color: $phosphor !important;
+        background: transparent !important;
+        border: 1px solid $phosphor-faint !important;
+
+        &:hover {
+            background: rgba(51, 255, 102, 0.1) !important;
+            border-color: $phosphor-dim !important;
+        }
+    }
+
+    .tools-column__header,
+    .arrow,
+    .hamburger-group__label,
+    .fab-group__label {
+        color: $phosphor-dim !important;
+    }
+
+    // White-stroked UI icons → phosphor green. `brightness(0)` flattens the
+    // source to black first so the hue-rotate lands on a predictable value
+    // regardless of the icon's original stroke colour.
+    img.icon,
+    .inline-icon,
+    .icon-btn img,
+    [data-fab-img] {
+        filter: brightness(0) invert(72%) sepia(85%) saturate(1200%) hue-rotate(75deg) brightness(1.05) !important;
+    }
+
+    .controls-fab,
+    .hamburger-btn {
+        background: $terminal-panel !important;
+        border: 1px solid $phosphor-dim !important;
+        box-shadow: none !important;
+    }
+    .hamburger-btn span { background: $phosphor !important; }
+
+    .icon-btn {
+        background: transparent !important;
+        border: 1px solid $phosphor-faint !important;
+
+        &.active {
+            background: rgba(51, 255, 102, 0.16) !important;
+            border-color: $phosphor !important;
+        }
+    }
+
+    .hamburger-nav {
+        background: $terminal-bg !important;
+        border-right: 1px solid $phosphor-faint !important;
+        box-shadow: none !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+    .hamburger-item {
+        color: $phosphor !important;
+        &:hover { background: rgba(51, 255, 102, 0.1) !important; }
+        &.active { background: rgba(51, 255, 102, 0.16) !important; }
+    }
+    .hamburger-group + .hamburger-group {
+        border-top-color: $phosphor-faint !important;
+    }
+
+    .linktree-footer {
+        background: $terminal-bg !important;
+        color: $phosphor-dim !important;
+        border-top: 1px solid $phosphor-faint !important;
+    }
+    .linktree-footer-btn {
+        color: $phosphor !important;
+        background: transparent !important;
+        border: 1px solid $phosphor-faint !important;
+    }
+
+    .swiper-pagination-bullet { background: $phosphor-faint !important; }
+    .swiper-pagination-bullet-active { background: $phosphor !important; }
+
+    .row-divider {
+        background: $phosphor-faint !important;
+    }
+
+    // Diagnostics / Commits / About panels inherit the terminal palette.
+    .diag-label { color: $phosphor-dim !important; }
+    .diag-value { color: $phosphor !important; }
+    .diag-section { border-color: $phosphor-faint !important; }
+}
+
+// Scanline overlay. Static — no animation, so it costs one composited
+// layer and nothing per frame, and it does not trip reduced-motion.
+// Sits below the hamburger nav (z-index 9998) so the menu stays crisp.
+body.terminal-theme::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 9997;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0) 0,
+        rgba(0, 0, 0, 0) 2px,
+        rgba(0, 0, 0, 0.22) 3px,
+        rgba(0, 0, 0, 0.22) 4px
+    );
+}

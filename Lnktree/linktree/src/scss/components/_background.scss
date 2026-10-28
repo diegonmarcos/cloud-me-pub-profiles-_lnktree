@@ -1,0 +1,17 @@
+// ==========================================================================
+// Background Video
+// ==========================================================================
+
+#background-video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -2;
+    background-size: cover;
+    transform: translateZ(0);
+    will-change: transform;
+}

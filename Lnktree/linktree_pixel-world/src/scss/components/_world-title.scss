@@ -1,0 +1,44 @@
+// ==========================================================================
+// World Title - Persistent top bar showing current world/zone
+// ==========================================================================
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+#world-title {
+  position: fixed;
+  top: $space-sm;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: $z-ui;
+  @include glass(rgba(13, 13, 26, 0.7), rgba(255, 255, 255, 0.08));
+  border-radius: $radius-md;
+  padding: $space-xs $space-lg;
+  pointer-events: none;
+  @include transition-normal(opacity);
+
+  &.winter {
+    @include glass(rgba(20, 20, 40, 0.7), rgba(168, 216, 234, 0.2));
+  }
+
+  &.summer {
+    @include glass(rgba(13, 13, 26, 0.7), rgba(56, 183, 100, 0.2));
+  }
+}
+
+#world-title-text {
+  font-family: $font-pixel;
+  font-size: $font-size-sm;
+  color: $color-text-muted;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  .winter & {
+    color: rgba(168, 216, 234, 0.8);
+  }
+
+  .summer & {
+    color: rgba(78, 203, 113, 0.8);
+  }
+}

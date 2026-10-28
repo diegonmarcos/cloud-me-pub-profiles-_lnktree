@@ -1,0 +1,290 @@
+// ==========================================================================
+// Performance Controls (FAB Corner Button)
+// ==========================================================================
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+// FAB Container (Bottom-Right Corner)
+.controls-fab-container {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    opacity: 1;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+
+    &.fab-hidden {
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(8px);
+    }
+
+    @media (max-width: 768px) {
+        bottom: 1rem;
+        right: 1rem;
+    }
+}
+
+// Controls List (Icon buttons that roll up)
+.controls-list {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 0.75rem;
+    opacity: 0;
+    pointer-events: none;
+
+    &.open {
+        opacity: 1;
+        pointer-events: auto;
+    }
+}
+
+// FAB Button (Settings Icon)
+.controls-fab {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg,
+        rgba(150, 100, 255, 0.8),
+        rgba(100, 150, 255, 0.8)
+    );
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow:
+        0 4px 16px rgba(150, 100, 255, 0.4),
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+
+    @media (max-width: 768px) {
+        width: 45px;
+        height: 45px;
+    }
+
+    img {
+        width: 24px;
+        height: 24px;
+        filter: invert(1) brightness(1.2);
+        position: relative;
+        z-index: 1;
+
+        @media (max-width: 768px) {
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+    // Open state
+    &.open {
+        background: linear-gradient(135deg,
+            rgba(255, 100, 150, 0.8),
+            rgba(255, 150, 100, 0.8)
+        );
+    }
+}
+
+// FAB groups with labels
+.fab-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.4rem;
+    padding: 0.4rem 0;
+
+    & + .fab-group {
+        border-top: 1px solid rgba(255,255,255,0.1);
+        padding-top: 0.6rem;
+        margin-top: 0.2rem;
+    }
+
+    &__label {
+        font-size: 0.6rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        opacity: 0.5;
+        align-self: flex-end;
+        padding-right: 0.25rem;
+    }
+}
+
+// Hamburger menu (top-left)
+.hamburger-menu {
+    position: fixed !important;
+    top: 1rem !important;
+    left: 1rem !important;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+
+    &.fab-hidden {
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-8px);
+    }
+}
+
+.hamburger-btn {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg,
+        rgba(150, 100, 255, 0.8),
+        rgba(100, 150, 255, 0.8)
+    );
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow:
+        0 4px 16px rgba(150, 100, 255, 0.4),
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 0.75rem;
+
+    @media (max-width: 768px) {
+        width: 45px;
+        height: 45px;
+    }
+
+    span {
+        display: block;
+        width: 18px;
+        height: 2px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 2px;
+        transition: transform 0.2s, opacity 0.2s;
+    }
+
+    &[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    &[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    &[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+}
+
+.hamburger-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100dvh;
+    background: rgba(255, 255, 255, 0.08);
+    border-right: 1px solid rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 4px 0 32px rgba(0, 0, 0, 0.3);
+    padding: 5rem 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    transform: translateX(-100%);
+    transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 9998;
+    overflow-y: auto;
+
+    &.is-open { transform: translateX(0); }
+}
+
+.hamburger-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+
+    & + .hamburger-group {
+        border-top: 1px solid rgba(255,255,255,0.1);
+        padding-top: 0.5rem;
+        margin-top: 0.25rem;
+    }
+
+    &__label {
+        font-size: 0.9rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        opacity: 0.5;
+        padding: 0.1rem 0.5rem;
+    }
+}
+
+.hamburger-item {
+    text-align: left;
+    background: transparent;
+    border: none;
+    border-radius: 0.4rem;
+    padding: 0.6rem 0.75rem;
+    cursor: pointer;
+    font-size: 1.275rem;
+    width: 100%;
+    transition: background 0.15s;
+
+    &:hover { background: rgba(255,255,255,0.1); }
+
+    // Currently-selected item (the active theme).
+    &.active { background: rgba(255,255,255,0.16); }
+}
+
+// Collapsible child menu — a parent row that expands a nested list.
+.hamburger-submenu {
+    display: flex;
+    flex-direction: column;
+
+    &__children {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    // ponytail: fixed max-height ceiling instead of a measured one — the
+    // open value just has to exceed the tallest submenu (4 theme rows).
+    // Switch to a JS scrollHeight measurement if a submenu ever grows past
+    // roughly a dozen items.
+    &.is-open &__children {
+        max-height: 30rem;
+    }
+}
+
+.hamburger-item--parent {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    .hamburger-item__chevron {
+        display: inline-block;
+        font-size: 0.85em;
+        opacity: 0.6;
+        transition: transform 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    &[aria-expanded="true"] .hamburger-item__chevron {
+        transform: rotate(90deg);
+    }
+}
+
+.hamburger-item--child {
+    font-size: 1.1rem;
+    padding-left: 2rem;
+    opacity: 0.9;
+
+    // Tree guide so children read as belonging to the parent above.
+    border-left: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 0 0.4rem 0.4rem 0;
+    margin-left: 0.85rem;
+    width: calc(100% - 0.85rem);
+}
+

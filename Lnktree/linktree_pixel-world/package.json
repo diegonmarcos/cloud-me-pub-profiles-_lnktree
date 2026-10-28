@@ -1,0 +1,26 @@
+{
+  "name": "linktree-pixel-world",
+  "version": "1.0.0",
+  "description": "Linktree Pixel World - Retro RPG pixel art link hub",
+  "main": "dist/main.js",
+  "type": "module",
+  "scripts": {
+    "build:css": "sass src/scss/main.scss style.css --style=compressed --no-source-map",
+    "build:ts": "tsc",
+    "build:bundle": "esbuild src/typescript/main.ts --bundle --outfile=dist/script.js --format=iife --target=es2020 --minify",
+    "build": "npm run build:ts && npm run build:bundle && npm run build:css",
+    "dev:css": "sass src/scss/main.scss src/style.css --style=expanded --source-map --watch",
+    "dev:bundle": "esbuild src/typescript/main.ts --bundle --outfile=src/script.js --format=iife --target=es2020 --sourcemap --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "author": "Diego Nepomuceno Marcos",
+  "license": "ISC",
+  "dependencies": {
+    "pixi.js": "^8.6.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.20.2",
+    "sass": "^1.77.0",
+    "typescript": "^5.9.3"
+  }
+}

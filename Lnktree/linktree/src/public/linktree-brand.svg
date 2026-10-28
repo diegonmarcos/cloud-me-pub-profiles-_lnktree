@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="Diego Coelho Marcos — personal brand">
+  <defs>
+    <radialGradient id="bg" cx="0.35" cy="0.30" r="0.85">
+      <stop offset="0" stop-color="#a78bfa"/>
+      <stop offset="0.45" stop-color="#7f6df2"/>
+      <stop offset="1" stop-color="#34208c"/>
+    </radialGradient>
+    <linearGradient id="letter" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#e9d5ff"/>
+    </linearGradient>
+    <linearGradient id="rim" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#c4b5fd" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#7f6df2" stop-opacity="0.55"/>
+    </linearGradient>
+  </defs>
+  <circle cx="256" cy="256" r="244" fill="url(#bg)"/>
+  <circle cx="256" cy="256" r="238" fill="none" stroke="url(#rim)" stroke-width="10"/>
+  <path d="M 168 132 L 168 380 L 282 380 C 357 380 410 325 410 256 C 410 187 357 132 282 132 Z" fill="url(#letter)"/>
+  <path d="M 218 178 L 218 334 L 282 334 C 329 334 362 299 362 256 C 362 213 329 178 282 178 Z" fill="url(#bg)"/>
+</svg>

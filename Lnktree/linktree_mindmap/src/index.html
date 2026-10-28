@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>DNM | Mindmap</title>
+    <meta name="description" content="Interactive mindmap visualization of Diego Nepomuceno Marcos links">
+    <link rel="icon" type="image/jpeg" href="public/favicon.jpg">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://diegonmarcos.github.io/linktree_mindmap/">
+    <meta property="og:title" content="Diego Nepomuceno Marcos | Mindmap">
+    <meta property="og:description" content="Interactive mindmap visualization">
+
+    <!-- Matomo Tag Manager -->
+    <script>
+    var _mtm = window._mtm = window._mtm || [];
+    _mtm.push({'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start'});
+    (function() {
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.async=true; g.src='https://analytics.diegonmarcos.com/matomo/js/container_odwLIyPV.js'; s.parentNode.insertBefore(g,s);
+    })();
+    </script>
+
+    <link rel="stylesheet" href="style.css">
+<!-- Umami Analytics -->
+<script async src="https://analytics.diegonmarcos.com/umami/script.js" data-website-id="937cbde7-5ec2-450c-9d6a-8117423ac12f"></script>
+<!-- End Umami Analytics -->
+
+    <!-- Data-driven framework: PORTAL_DATA["linktree-mindmap"] hydrated by front-data-json-js-wrapper.sh -->
+    <script src="data-linktree-mindmap.json.js"></script>
+    <script>(function(){var d=globalThis.PORTAL_DATA&&PORTAL_DATA["linktree-mindmap"];if(d&&d.title)document.title=d.title;})();</script>
+  </head>
+<body>
+    <!-- WebGL Stars Canvas - GPU ACCELERATED -->
+    <canvas id="stars-canvas"></canvas>
+
+    <!-- Galaxy Background - Nebulas + Shooting Stars -->
+    <div id="galaxy-bg">
+        <div class="nebula nebula-1"></div>
+        <div class="nebula nebula-2"></div>
+        <div class="nebula nebula-3"></div>
+        <div class="shooting-stars">
+            <div class="shooting-star shooting-star-1"></div>
+            <div class="shooting-star shooting-star-2"></div>
+        </div>
+    </div>
+
+    <!-- Main graph (CSS/DOM-based) -->
+    <div id="graph-container" aria-label="Interactive mindmap visualization">
+        <svg id="edges-svg" xmlns="http://www.w3.org/2000/svg"></svg>
+        <div id="graph-world"></div>
+    </div>
+
+    <!-- UI Overlay -->
+    <div id="ui-overlay">
+        <!-- Breadcrumb Trail (top center) -->
+        <div id="breadcrumb" class="glass-panel" hidden>
+            <nav id="breadcrumb-nav" aria-label="Breadcrumb"></nav>
+        </div>
+
+        <!-- Tooltip -->
+        <div id="tooltip" class="glass-panel" hidden>
+            <h3 id="tooltip-title"></h3>
+            <p id="tooltip-subtitle"></p>
+            <span id="tooltip-badge" class="node-badge" hidden></span>
+        </div>
+
+        <!-- Link Panel -->
+        <div id="link-panel" class="glass-panel" hidden>
+            <div id="link-panel-header">
+                <div id="link-panel-icon"></div>
+                <h2 id="link-panel-title"></h2>
+                <button id="link-panel-close" class="icon-btn" aria-label="Close">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 6L6 18M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            <div id="link-panel-links"></div>
+        </div>
+
+        <!-- Minimap -->
+        <div id="minimap" class="glass-panel">
+            <canvas id="minimap-canvas" width="150" height="100"></canvas>
+            <div id="minimap-viewport"></div>
+        </div>
+
+        <!-- Controls -->
+        <div id="controls" class="glass-panel">
+            <button id="btn-reset" class="icon-btn" title="Reset View (R)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                    <path d="M3 3v5h5"/>
+                </svg>
+            </button>
+            <button id="btn-zoom-in" class="icon-btn" title="Zoom In (+)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"/>
+                    <path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/>
+                </svg>
+            </button>
+            <span id="zoom-indicator" title="Current zoom level">100%</span>
+            <button id="btn-zoom-out" class="icon-btn" title="Zoom Out (-)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"/>
+                    <path d="M21 21l-4.35-4.35M8 11h6"/>
+                </svg>
+            </button>
+            <div class="controls-divider"></div>
+            <button id="btn-fullscreen" class="icon-btn" title="Fullscreen (F)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Back button (hidden by default) -->
+        <button id="btn-back" class="glass-panel icon-btn" hidden title="Back to full view (Esc)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            <span>Back</span>
+        </button>
+
+        <!-- Home button (always visible) - Link back to linktree -->
+        <a href="https://diegonmarcos.github.io/linktree/" id="btn-home" class="glass-panel icon-btn" title="Back to Linktree">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+        </a>
+
+        <!-- Keyboard Hints (shown on first visit) -->
+        <div id="keyboard-hints" class="glass-panel" hidden>
+            <div class="hint-title">Keyboard Shortcuts</div>
+            <div class="hint-row"><kbd>↑↓←→</kbd> Navigate nodes</div>
+            <div class="hint-row"><kbd>Enter</kbd> Open links</div>
+            <div class="hint-row"><kbd>Esc</kbd> Go back</div>
+            <div class="hint-row"><kbd>+/-</kbd> Zoom</div>
+            <div class="hint-row"><kbd>/</kbd> Search</div>
+            <button id="hints-close" class="icon-btn-sm">Got it</button>
+        </div>
+
+        <!-- Loading indicator -->
+        <div id="loading" class="glass-panel">
+            <div class="spinner"></div>
+            <span>Loading...</span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

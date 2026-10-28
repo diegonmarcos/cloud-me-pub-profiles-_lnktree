@@ -1,0 +1,702 @@
+[
+  {
+    "sha": "65c22df",
+    "message": "fix(analytics): matomo tag pointed at /js/, but matomo is mounted at /matomo",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-27T20:23:51Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/65c22dfa791b2c45c8f9a7fe2e8af4b9ebcf6cbb"
+  },
+  {
+    "sha": "2a09843",
+    "message": "ci: persist built dist [skip ci]",
+    "author": "github-actions[bot]",
+    "date": "2026-08-25T21:37:18Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/2a09843e3767cdda6c13f963a62d2b9f24885ecb"
+  },
+  {
+    "sha": "57c9b03",
+    "message": "refactor(refs): repoint android app links from cloud-unix to cloud-android",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-25T21:11:56Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/57c9b0342f530cb23de65c1a24d94f107e9ca190"
+  },
+  {
+    "sha": "788c6c0",
+    "message": "refactor(repos): rename front-asset-cdn -> front-unity",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-18T13:08:08Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/788c6c0748360af36128cd21433446b695e3f54d"
+  },
+  {
+    "sha": "16c4786",
+    "message": "fix(links): restore symlinks flattened by the rename rewrite",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-18T12:06:44Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/16c478687fb0f6ebba02fdccdc5e3b8bc2847086"
+  },
+  {
+    "sha": "7704000",
+    "message": "fix(links): repair references broken by the cloud-* rename",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-18T12:02:40Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/7704000fb2be769518a90d231630b076eec2280f"
+  },
+  {
+    "sha": "e5038e7",
+    "message": "refactor(repos): rename fleet repos to cloud-* namespace",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-18T11:43:02Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/e5038e75da2c57c44f6da81e57f594819d43a654"
+  },
+  {
+    "sha": "abe6d90",
+    "message": "ci: persist built dist [skip ci]",
+    "author": "github-actions[bot]",
+    "date": "2026-08-17T16:50:59Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/abe6d90ddbc4107ebc577d6fba5a47fb4bb1b149"
+  },
+  {
+    "sha": "78f86ec",
+    "message": "linktree: emit generated commits.json to src/data-generated/, not src/data/",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-17T16:46:50Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/78f86ece5f12319417d6ce2a9a22f6daf1520723"
+  },
+  {
+    "sha": "9cde721",
+    "message": "ci: treat generated commits.json as a build artifact, not consolidated data",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-17T16:33:53Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/9cde721bfe9b75e3e1200b1fb14dead0c287941d"
+  },
+  {
+    "sha": "327ef5c",
+    "message": "linktree: bake commit history at build time via new gh_commits module",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-17T16:28:11Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/327ef5ca4c67b8953128ca22c39af0861287f72c"
+  },
+  {
+    "sha": "7066ab3",
+    "message": "ci: persist built dist [skip ci]",
+    "author": "github-actions[bot]",
+    "date": "2026-08-17T08:28:41Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/7066ab3a1ee7e9304c4139483d773d79fbe84ed9"
+  },
+  {
+    "sha": "68e4238",
+    "message": "linktree: unify theme switcher, nest submenus, add Commits/About/Dev Tools panels",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-17T08:26:29Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/68e4238f21718cb2fa3e361c57a246d7fa875e2e"
+  },
+  {
+    "sha": "a780f4a",
+    "message": "linktree: dark mode always default; fix light mode colour bugs",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-17T07:31:16Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/a780f4acc463cbf9931492be9b9670e560fc3e0c"
+  },
+  {
+    "sha": "68361b6",
+    "message": "refactor: adopt cloud's config tiers and a0_ docs prefix",
+    "author": "Claude",
+    "date": "2026-08-12T10:14:31Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/68361b66c3944a6802839f4e92e94300e072e4f4"
+  },
+  {
+    "sha": "c43403c",
+    "message": "refactor(configs): adopt cloud's two-module layout — 1_configs + 1_front-configs",
+    "author": "Claude",
+    "date": "2026-08-10T15:18:48Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/c43403ccf343fc5a68c192ab1dd0be2523e59a77"
+  },
+  {
+    "sha": "119d156",
+    "message": "ci: persist built dist [skip ci]",
+    "author": "github-actions[bot]",
+    "date": "2026-08-07T11:23:04Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/119d1562788af1d66f4b3e7b405a1825f5e4d077"
+  },
+  {
+    "sha": "337748f",
+    "message": "Merge remote-tracking branch 'origin/main'",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-07T11:21:29Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/337748f8690d2822a6eb3d510fe972167808d0fe"
+  },
+  {
+    "sha": "d865919",
+    "message": "linktree: cards-view-all-cards keeps card aspect ratio, all 3 groups on one screen",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-07T11:20:30Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/d86591908570c0a5294ae31c566160a728735e94"
+  },
+  {
+    "sha": "0b84554",
+    "message": "ci: persist built dist [skip ci]",
+    "author": "github-actions[bot]",
+    "date": "2026-08-07T10:51:14Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/0b84554e61e75d17b7ad92d7b1f2af1b4fe50bd9"
+  },
+  {
+    "sha": "f06a991",
+    "message": "linktree: cards-view-all-cards wraps all cards visible at once, no scroll",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-07T10:48:56Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/f06a991c9be3c28a0754fc20f8d19b63c0b6c312"
+  },
+  {
+    "sha": "75fd23d",
+    "message": "Merge remote-tracking branch 'origin/main'",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-07T10:49:43Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/75fd23de23a37cb95f19b4fa0ffb3ab5d8e6a0eb"
+  },
+  {
+    "sha": "ff6c1ea",
+    "message": "linktree: cards-view-all-cards wraps all cards visible at once, no scroll",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-07T10:48:56Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/ff6c1eae2bf2a9fa9ed814d92a156ce9b39a1e2c"
+  },
+  {
+    "sha": "9380510",
+    "message": "ci: persist built dist [skip ci]",
+    "author": "github-actions[bot]",
+    "date": "2026-08-07T09:41:58Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/938051091afbf78bdbf1a4018b42f77d124000fe"
+  },
+  {
+    "sha": "e9e1ac6",
+    "message": "linktree: cards-view-all-cards now expands each group's cards rightward in place",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-07T09:37:38Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/e9e1ac67a6c802695d232ac456b121e341e209a3"
+  },
+  {
+    "sha": "03b68ff",
+    "message": "Merge remote-tracking branch 'origin/main'",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-07T09:38:53Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/03b68ffdbb5ea5c6acf99d0d50f6fabf2ece89a4"
+  },
+  {
+    "sha": "4b98d22",
+    "message": "linktree: cards-view-all-cards now expands each group's cards rightward in place",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-07T09:37:38Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/4b98d2212febef7bd72105d8c059344c2d3d447f"
+  },
+  {
+    "sha": "b8a8219",
+    "message": "ci: persist built dist [skip ci]",
+    "author": "github-actions[bot]",
+    "date": "2026-08-07T09:10:10Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/b8a8219cbe8c6c1657ffa5bc7efbd1324549ba9b"
+  },
+  {
+    "sha": "bb3a2fc",
+    "message": "linktree: card view modes side-by-side, fix missing About icon",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-07T09:08:16Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/bb3a2fcaf14fbb4cb01f7d2a00fa0550588baab6"
+  },
+  {
+    "sha": "df73e35",
+    "message": "linktree: card view modes side-by-side, fix missing About icon",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-07T09:08:16Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/df73e35740c97e3ab6d68bdc1739f153f4594a8b"
+  },
+  {
+    "sha": "6534634",
+    "message": "ci: persist built dist [skip ci]",
+    "author": "github-actions[bot]",
+    "date": "2026-08-07T08:47:36Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/6534634705177eec32ae98a030bdd023820dae19"
+  },
+  {
+    "sha": "45f4a51",
+    "message": "Merge remote-tracking branch 'origin/main'",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-07T08:45:37Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/45f4a51ca13c2b2b440c846e86c46c1dd075d4e6"
+  },
+  {
+    "sha": "42e1cb5",
+    "message": "linktree: fix flaky FAB hover auto-close, shrink hamburger menu font 25%",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-07T08:45:34Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/42e1cb5bea1dfe5c5d82dffb2d0086af16ded183"
+  },
+  {
+    "sha": "8f6fede",
+    "message": "ci: persist built dist [skip ci]",
+    "author": "github-actions[bot]",
+    "date": "2026-08-07T07:28:01Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/8f6fede6da25f66d27e6135d95aadea2df8c36e7"
+  },
+  {
+    "sha": "0fa5397",
+    "message": "linktree: unify FAB/hamburger menus into shared data, add zoom out/in",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-07T07:26:06Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/0fa539711e09f22d21fa7f4ffcc5fc39ae1b4f1d"
+  },
+  {
+    "sha": "50dfaa3",
+    "message": "linktree: unify FAB/hamburger menus into shared data, add zoom out/in",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-07T07:26:06Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/50dfaa31e055378ec93f5bb992fbf2118f734198"
+  },
+  {
+    "sha": "fc1b2d9",
+    "message": "linktree: repo news — fetch last 30 days instead of 10 commits",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-06T19:05:21Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/fc1b2d9b3113886a738753227f49533256e444c9"
+  },
+  {
+    "sha": "eb28a61",
+    "message": "linktree: add SW cache clear, repo news, and source links to Dev Control",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-06T18:24:01Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/eb28a61b304c8e25e31fa87120058619464cdbe6"
+  },
+  {
+    "sha": "d0b3481",
+    "message": "ci: persist built dist [skip ci]",
+    "author": "github-actions[bot]",
+    "date": "2026-08-06T12:38:46Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/d0b3481f7f94dad1cd5451df2acd399b292003b0"
+  },
+  {
+    "sha": "3aaa5fb",
+    "message": "linktree: dev control — close restores FABs, Eruda toggle, logcat viewer with copy/export/post",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-06T12:35:54Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/3aaa5fba8399d5cee787fe40dd609307060d1c1c"
+  },
+  {
+    "sha": "6a2a443",
+    "message": "ci: persist built dist [skip ci]",
+    "author": "github-actions[bot]",
+    "date": "2026-08-06T12:10:01Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/6a2a443a0d7731dfa61bb96d4ae88b3c8ae5dd71"
+  },
+  {
+    "sha": "ac13814",
+    "message": "linktree: hamburger nav use glass theme, double font sizes",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-06T11:59:29Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/ac13814ab6b979e10879fd04c39bbf20872e254a"
+  },
+  {
+    "sha": "ad2f611",
+    "message": "ci: persist built dist [skip ci]",
+    "author": "github-actions[bot]",
+    "date": "2026-08-06T11:52:10Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/ad2f61170920bf071924dedf589ab29e0aa7c893"
+  },
+  {
+    "sha": "3f91dc2",
+    "message": "linktree: scroll-hide FABs via touch+scroll events with CSS fade transition",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-06T11:49:18Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/3f91dc2943489eb2adade033dfdba3edcf379937"
+  },
+  {
+    "sha": "08d7cc4",
+    "message": "linktree: card view button resets to default swiper, not stale gallery",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-06T11:37:47Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/08d7cc4f0e66a1dca746cd04570d38b2dfbd4256"
+  },
+  {
+    "sha": "7c09c46",
+    "message": "ci: persist built dist [skip ci]",
+    "author": "github-actions[bot]",
+    "date": "2026-08-06T11:33:11Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/7c09c46b8336355b1685c8ca23bd4f3540cfea65"
+  },
+  {
+    "sha": "ff36722",
+    "message": "linktree: hamburger = full-height left drawer, match UI gradient/glass",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-06T11:29:41Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/ff3672218da5d09db951252b1f15b714a39772ae"
+  },
+  {
+    "sha": "36a99f6",
+    "message": "ci: persist built dist [skip ci]",
+    "author": "github-actions[bot]",
+    "date": "2026-08-06T11:18:52Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/36a99f6d68bb767f37574f259f49c9e1b7621441"
+  },
+  {
+    "sha": "65594c3",
+    "message": "linktree: consolidate FABs into grouped bottom-right + add hamburger menu top-left",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-06T11:16:14Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/65594c3f6060665911346f5f3fcd96f9229ad563"
+  },
+  {
+    "sha": "6c97351",
+    "message": "ci: persist built dist [skip ci]",
+    "author": "github-actions[bot]",
+    "date": "2026-08-06T10:45:38Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/6c9735156968fb2ccbc4e5e302028f2a340bc378"
+  },
+  {
+    "sha": "dc4d301",
+    "message": "linktree: add title-card slide kind — centered title, no banner or icons",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-06T10:43:26Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/dc4d3015120011a1323ed5af05713399b4ce0cc7"
+  },
+  {
+    "sha": "bb75bb1",
+    "message": "ci: persist built dist [skip ci]",
+    "author": "github-actions[bot]",
+    "date": "2026-08-06T10:19:38Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/bb75bb1db37a8d5d5a89737eff12dcdf8039eb31"
+  },
+  {
+    "sha": "b6f401b",
+    "message": "linktree: add home/labs/portfolio swiper mount points in correct order",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-06T10:17:30Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/b6f401bb0c94c0fe2fca0f009c55ee6d65406454"
+  },
+  {
+    "sha": "6235eef",
+    "message": "linktree: fix qr-code-generator PROJECT_ROOT — use process.cwd() not import.meta.url",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-06T09:49:42Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/6235eefe12695a0b3cdf8cf9e55d95f1eb2e341d"
+  },
+  {
+    "sha": "3dab117",
+    "message": "linktree: remove jsdom skip check from qrcode-gen — symlink fix handles ESM resolution",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-06T09:43:29Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/3dab117db403ff0f693eba112a1ff8f27cc93cef"
+  },
+  {
+    "sha": "6772812",
+    "message": "qrcode-gen: skip gracefully when jsdom not in node_modules",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-06T09:37:31Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/6772812bcc61a62757d00779200922d7937a8725"
+  },
+  {
+    "sha": "714a909",
+    "message": "fix(linktree): set NODE_PATH for compiled qrcode generator",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-06T09:31:26Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/714a909d34cd120a73a6d68532f3a65b0350e2d2"
+  },
+  {
+    "sha": "9ae5a08",
+    "message": "fix: always install devDependencies when NODE_ENV=production",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-06T09:26:13Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/9ae5a08180e0b66c7887135b66e54a8599dba731"
+  },
+  {
+    "sha": "ef572ce",
+    "message": "qrcode-gen: skip gracefully when tsc not on system PATH",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-06T09:20:36Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/ef572ce0970323bc76fa2dc5a743e56b78fd82f7"
+  },
+  {
+    "sha": "85a8cd0",
+    "message": "Move qrcode-gen.sh into linktree project; use tsc+node instead of tsx",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-06T08:48:00Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/85a8cd0e2fec8a393867a0ace2bbd2ca0209e2bb"
+  },
+  {
+    "sha": "64fb22f",
+    "message": "ci: persist built dist [skip ci]",
+    "author": "github-actions[bot]",
+    "date": "2026-08-05T23:40:58Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/64fb22f2a66ba7ee1713151850c2175cf2e3ad2d"
+  },
+  {
+    "sha": "ec4ee08",
+    "message": "linktree: restructure projects swiper — add home, labs, portfolio cards",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-05T23:23:49Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/ec4ee08091ef0225f1efbe78a690c23288100f4e"
+  },
+  {
+    "sha": "5080adf",
+    "message": "ci: persist built dist [skip ci]",
+    "author": "github-actions[bot]",
+    "date": "2026-08-04T10:03:28Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/5080adf1690af3994125e54ec2086b1ae613a712"
+  },
+  {
+    "sha": "0332365",
+    "message": "linktree: reorder DMs columns — HUBS first",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-04T10:01:22Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/0332365e91ef71a4efb62a84317416e98e461736"
+  },
+  {
+    "sha": "f056982",
+    "message": "ci: persist built dist [skip ci]",
+    "author": "github-actions[bot]",
+    "date": "2026-08-04T09:51:28Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/f056982eedeb46dc7a11b6f9ec5b187d31207960"
+  },
+  {
+    "sha": "fa6b090",
+    "message": "Merge branch 'main' of github.com:diegonmarcos/diegonmarcos.github.io",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-04T09:48:47Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/fa6b090fbf2f3f43b6e3ba89e614092a164c3a63"
+  },
+  {
+    "sha": "df710e5",
+    "message": "linktree: convert DMs card to tools layout, move profile icons to collapsible, rename MyContact→Contact",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-04T09:42:10Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/df710e5ecc26329b4cb1eee27f35e902afb3adaa"
+  },
+  {
+    "sha": "b8843a9",
+    "message": "ci: persist built dist [skip ci]",
+    "author": "github-actions[bot]",
+    "date": "2026-08-04T09:31:50Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/b8843a9cf61af140c5c0901ff5131a3cbf181f3c"
+  },
+  {
+    "sha": "9882317",
+    "message": "linktree: icon-grid-view with folder navigation, DMs primary_link, mute fix, myTrackers URL",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-04T09:08:13Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/9882317c320781d118f4da2d4390e696d06b6846"
+  },
+  {
+    "sha": "9b84fed",
+    "message": "ci: persist built dist [skip ci]",
+    "author": "github-actions[bot]",
+    "date": "2026-08-03T15:15:12Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/9b84fed383f1f0939f390aa9aa580e65f8cc00f0"
+  },
+  {
+    "sha": "e6c0b89",
+    "message": "Fix DMs card icon paths and url fields",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-03T13:57:48Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/e6c0b895271a30a1d0002c8a97a74fff7b5b7f5d"
+  },
+  {
+    "sha": "be393d0",
+    "message": "ci: persist built dist [skip ci]",
+    "author": "github-actions[bot]",
+    "date": "2026-08-03T13:51:57Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/be393d0721b34b1459e736e89be099e1f333df2b"
+  },
+  {
+    "sha": "7150818",
+    "message": "fix: linktree — fix JS crash causing FABs and swipe to not initialize",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-03T13:49:59Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/7150818627d42ee853df4d09d1b4d738c0febf9c"
+  },
+  {
+    "sha": "fbf7ef1",
+    "message": "ci: persist built dist [skip ci]",
+    "author": "github-actions[bot]",
+    "date": "2026-08-03T12:57:37Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/fbf7ef13054d85d27dd9da3e5e4c009bab34d079"
+  },
+  {
+    "sha": "4d98523",
+    "message": "fix: linktree video — never set src on init, only in playVideo() to prevent autoplay",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-03T12:55:38Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/4d98523423bf6da104c5fe1026682a91dd035295"
+  },
+  {
+    "sha": "c524477",
+    "message": "ci: persist built dist [skip ci]",
+    "author": "github-actions[bot]",
+    "date": "2026-08-03T12:49:02Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/c524477b759df73144dca345550daa252b564dda"
+  },
+  {
+    "sha": "faada4d",
+    "message": "fix: linktree hub icons — strip double public/icons/ prefix, use url not href",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-03T12:46:40Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/faada4dfadbe928068d0e4f3ca6de08dcac50afb"
+  },
+  {
+    "sha": "84cbf0d",
+    "message": "ci: persist built dist [skip ci]",
+    "author": "github-actions[bot]",
+    "date": "2026-08-03T12:39:35Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/84cbf0d2363f1bde1e294244fb5e26e1c8921c9e"
+  },
+  {
+    "sha": "918c120",
+    "message": "fix: remove bottom nav bar from linktree (mySocials-only; was breaking card swipe)",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-03T12:36:30Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/918c120b4b9a8423de99dde72bae8d95174cd987"
+  },
+  {
+    "sha": "020ec92",
+    "message": "ci: persist built dist [skip ci]",
+    "author": "github-actions[bot]",
+    "date": "2026-08-03T12:28:55Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/020ec92dccf1c3fe68143e003998269be7e0f52b"
+  },
+  {
+    "sha": "0d99d14",
+    "message": "fix: linktree video no-autoplay + hub icons on profile card; ig0 74 posts",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-03T12:27:12Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/0d99d14c018a8a3561113bfba813063d2ceafe2b"
+  },
+  {
+    "sha": "9af1495",
+    "message": "ci: persist built dist [skip ci]",
+    "author": "github-actions[bot]",
+    "date": "2026-08-03T12:23:14Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/9af1495dae9bd5ee87b4fa963ce102b66d585b55"
+  },
+  {
+    "sha": "bbd9d50",
+    "message": "fix: linktree DMs card — add banner, fix icon/button layout",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-03T12:21:12Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/bbd9d50afe79b3f31c8076dca34c80506108e884"
+  },
+  {
+    "sha": "2161c93",
+    "message": "ci: persist built dist [skip ci]",
+    "author": "github-actions[bot]",
+    "date": "2026-08-03T12:18:51Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/2161c93b57c785fff30c52df0c677f5aff0ed7ab"
+  },
+  {
+    "sha": "fac7167",
+    "message": "fix: force videoElement.muted=true before every play() in linktree",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-03T12:16:51Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/fac7167c25da75ca4683a31324d898a662279d07"
+  },
+  {
+    "sha": "00da9ca",
+    "message": "ci: persist built dist [skip ci]",
+    "author": "github-actions[bot]",
+    "date": "2026-08-03T12:13:02Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/00da9ca4925239dab259806d2dd2cc86f2f75f2b"
+  },
+  {
+    "sha": "698c5ee",
+    "message": "feat: add DMs hub to bottomnav row 1 across mySocials, myTrackers, linktree",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-03T12:11:07Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/698c5eecfdddd3f45671ed4444294f5956b138f3"
+  },
+  {
+    "sha": "b7c3278",
+    "message": "ci: persist built dist [skip ci]",
+    "author": "github-actions[bot]",
+    "date": "2026-08-03T11:40:59Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/b7c3278f07d657551b113b3e11303155c06dc7f9"
+  },
+  {
+    "sha": "71db0b0",
+    "message": "feat: linktree DMs tab + restore ig0/ig1 post data",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-03T11:39:11Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/71db0b01ab76ed81644b41eb39280ac6c9403058"
+  },
+  {
+    "sha": "0d6e7bb",
+    "message": "ci: persist built dist [skip ci]",
+    "author": "github-actions[bot]",
+    "date": "2026-08-03T09:34:34Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/0d6e7bbac3b9fe57ad1edc6945a9bac582d45caf"
+  },
+  {
+    "sha": "a03ed4b",
+    "message": "fix: remove autoplay from linktree background video",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-03T09:29:49Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/a03ed4baf7b297559200d4b1877d0380abdaa00b"
+  },
+  {
+    "sha": "21b8654",
+    "message": "fleet: add _cloud-data-consolidated.json to build.sh, dist, and data symlinks",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-02T16:42:20Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/21b8654423374aa826f53ede48f56fbbb07c4467"
+  },
+  {
+    "sha": "0dd99e5",
+    "message": "add cloud-fleet-containers-declared.json symlinks + build fetch",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-02T15:55:05Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/0dd99e5847f73fc25872ed9c3b6c8f7ec46501e2"
+  },
+  {
+    "sha": "3d08e40",
+    "message": "fix linktree fleet symlink depth (3→4 levels)",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-02T15:48:28Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/3d08e4064ba09b8ea701b1a4ea333c1fe780c219"
+  },
+  {
+    "sha": "b54a663",
+    "message": "fleet JSONs via symlinks — no runtime fetch",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-02T12:18:37Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/b54a66324300dfe9b995c0cbc33a4c48ebbed403"
+  },
+  {
+    "sha": "0d11a57",
+    "message": "ci: persist built dist [skip ci]",
+    "author": "github-actions[bot]",
+    "date": "2026-08-01T18:17:02Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/0d11a5754a5614f9fdfd3da22aee3b5708c62077"
+  },
+  {
+    "sha": "d4fe159",
+    "message": "Merge remote-tracking branch 'origin/main'",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-01T18:15:20Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/d4fe159394f2a623880bdc98cdb01191827fb543"
+  },
+  {
+    "sha": "d467be7",
+    "message": "linktree: permanently mute background video, hide the audio toggle",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-01T18:15:19Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/d467be78f2bff233bc036940ee5264ba6e372c99"
+  },
+  {
+    "sha": "10f6854",
+    "message": "ci: persist built dist [skip ci]",
+    "author": "github-actions[bot]",
+    "date": "2026-08-01T18:10:47Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/10f68540df0b38e1d2d1622c30adb6eecc057301"
+  },
+  {
+    "sha": "0be5987",
+    "message": "Merge remote-tracking branch 'origin/main'",
+    "author": "Diego Nepomuceno Marcos",
+    "date": "2026-08-01T18:09:07Z",
+    "url": "https://github.com/diegonmarcos/diegonmarcos.github.io/commit/0be59877931330a5048ede88687c51a59872bdb3"
+  }
+]

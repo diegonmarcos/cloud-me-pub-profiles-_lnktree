@@ -1,0 +1,99 @@
+// ==========================================================================
+// Dialog - RPG-style bottom-screen dialog box
+// ==========================================================================
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+#dialog-box {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: $z-dialog;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  padding: $space-md;
+
+  transform: translateY(100%);
+  opacity: 0;
+  @include transition-normal(transform, opacity);
+
+  &.visible {
+    pointer-events: auto;
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+#dialog-border {
+  width: 100%;
+  max-width: 420px;
+  background: $bg-dark;
+  border: 4px solid $color-text;
+  box-shadow:
+    inset 0 0 0 2px $bg-dark,
+    inset 0 0 0 4px rgba(255, 255, 255, 0.15),
+    0 -4px 24px rgba(0, 0, 0, 0.6);
+  image-rendering: pixelated;
+  padding: $space-md;
+  @include flex-col($space-sm);
+}
+
+#dialog-title {
+  font-family: $font-pixel;
+  font-size: $font-size-lg;
+  font-weight: bold;
+  color: $glow-interact;
+  padding-bottom: $space-xs;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+#dialog-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  @include flex-col(0);
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.dialog-link-item {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
+  font-family: $font-pixel;
+  font-size: $font-size-base;
+  color: $color-text-muted;
+  padding: $space-xs $space-sm;
+
+  &.selected {
+    color: $glow-interact;
+    background: rgba(255, 221, 87, 0.08);
+  }
+}
+
+.dialog-arrow {
+  font-family: $font-pixel;
+  font-size: $font-size-base;
+  color: $glow-interact;
+  width: 1ch;
+  flex-shrink: 0;
+  font-weight: bold;
+}
+
+.dialog-link-label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#dialog-hint {
+  font-family: $font-pixel;
+  font-size: $font-size-xs;
+  color: $color-text-dim;
+  text-align: center;
+  padding-top: $space-xs;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}

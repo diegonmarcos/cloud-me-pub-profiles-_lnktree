@@ -1,0 +1,391 @@
+// ==========================================================================
+// Links & Link Sections
+// ==========================================================================
+
+@use '../abstracts/variables' as *;
+
+.link-section {
+    margin-top: 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: $border-radius-md;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+        opacity: 0;
+        transition: opacity $transition-medium;
+        border-radius: $border-radius-md;
+        pointer-events: none;
+    }
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow:
+            0 8px 32px rgba(0, 0, 0, 0.3),
+            0 0 40px rgba(255, 255, 255, 0.1),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        transform: translateY(-4px) scale(1.01);
+        backdrop-filter: blur(12px) brightness(1.1);
+        -webkit-backdrop-filter: blur(12px) brightness(1.1);
+
+        &::before { opacity: 1; }
+    }
+}
+
+.links-container {
+    display: block;
+    margin-top: 1rem;
+}
+
+.link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    color: $color-text;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: $border-radius-lg;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    text-decoration: none;
+    transition: background $transition-fast;
+    font-weight: bold;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.18);
+    }
+
+    .icon {
+        position: absolute;
+        left: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 24px;
+        height: 24px;
+        filter: invert(1);
+    }
+}
+
+.links-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+
+    .link {
+        margin-bottom: 0;
+        padding: 0.75rem 0.5rem 0.75rem 2.5rem;
+        font-size: 0.9rem;
+        font-style: italic;
+
+        .icon {
+            left: 0.5rem;
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+    &.grid-3 {
+        grid-template-columns: repeat(3, 1fr);
+
+        .link {
+            padding: 0.65rem 0.4rem 0.65rem 2rem;
+            font-size: 0.8rem;
+
+            .icon {
+                left: 0.4rem;
+                width: 18px;
+                height: 18px;
+            }
+        }
+    }
+
+    &.grid-4 {
+        grid-template-columns: repeat(4, 1fr);
+
+        .link {
+            padding: 0.6rem 0.3rem 0.6rem 1.8rem;
+            font-size: 0.75rem;
+
+            .icon {
+                left: 0.3rem;
+                width: 16px;
+                height: 16px;
+            }
+        }
+    }
+}
+
+// 3-column tools dashboard layout
+.tools-dashboard {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+
+    @media (min-width: 420px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    &--4 {
+        @media (min-width: 420px) {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+
+    &--5 {
+        @media (min-width: 420px) {
+            grid-template-columns: repeat(5, 1fr);
+        }
+    }
+
+    &--6 {
+        @media (min-width: 420px) {
+            grid-template-columns: repeat(6, 1fr);
+        }
+    }
+}
+
+.tools-column {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    align-items: center;
+
+    .profile-icons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.1rem;
+
+        a {
+            padding: 2px;
+            border-radius: 3px;
+
+            img {
+                width: 12px;
+                height: 12px;
+            }
+        }
+    }
+
+    .link {
+        font-size: 0.7rem;
+        padding: 0.4rem 0.3rem 0.4rem 1.6rem;
+        margin-bottom: 0.25rem;
+
+        .icon {
+            left: 0.3rem;
+            width: 14px;
+            height: 14px;
+        }
+    }
+}
+
+.tools-column__header {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.85);
+    padding: 0.5rem 0.25rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    margin-bottom: 0.25rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+
+    &:hover {
+        color: #fff;
+        border-bottom-color: rgba(255, 255, 255, 0.4);
+        text-decoration: none;
+    }
+}
+
+.tools-column__links {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    text-align: left;
+    padding-left: 0.5rem;
+
+    // Multi-column variants for stand-alone (no .tools-column wrapper)
+    // .tool-links sections — e.g. NEXUS/LEAFY/STARK Cores. 1col on mobile,
+    // N cols at ≥420px to match .tools-dashboard breakpoint.
+    &--2,
+    &--3,
+    &--4,
+    &--5 {
+        display: grid;
+        width: 100%;
+        grid-template-columns: 1fr;
+        column-gap: 0.5rem;
+        padding-left: 0;
+    }
+
+    @media (min-width: 420px) {
+        &--2 { grid-template-columns: repeat(2, 1fr); }
+        &--3 { grid-template-columns: repeat(3, 1fr); }
+        &--4 { grid-template-columns: repeat(4, 1fr); }
+        &--5 { grid-template-columns: repeat(5, 1fr); }
+    }
+}
+
+.tool-link {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.45rem 0.5rem;
+    border-radius: 8px;
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.65);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.08);
+        color: rgba(255, 255, 255, 0.95);
+        text-decoration: none;
+    }
+
+    .icon {
+        width: 15px;
+        height: 15px;
+        flex-shrink: 0;
+        filter: invert(1);
+        opacity: 0.5;
+    }
+
+    &:hover .icon {
+        opacity: 0.9;
+    }
+}
+
+.link-section--title-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+
+    .title-card__title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-align: center;
+        text-transform: uppercase;
+    }
+}
+
+// Reduced padding for venture cards (Nexus, Leafy, Stark)
+.venture-card {
+    padding: 0.75rem;
+
+    .links-container {
+        margin-top: 0.5rem;
+    }
+
+    .subsection-title {
+        margin-top: 0.75rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .link {
+        padding: 0.6rem;
+        margin-bottom: 0.5rem;
+        font-size: 0.8rem;
+    }
+
+    .links-grid {
+        gap: 0.35rem;
+
+        .link {
+            padding: 0.5rem 0.4rem 0.5rem 2rem;
+            margin-bottom: 0;
+            font-size: 0.8rem;
+        }
+    }
+
+    .contact-icons {
+        gap: 0.5rem;
+    }
+}
+
+.featured-image {
+    width: 100%;
+    height: 30dvh;
+    object-fit: cover;
+    border-radius: 16px;
+    margin-top: 1dvh;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    background-color: #000;
+}
+
+// Section break inside a multi-row tools slide. Sits between two
+// stacked .tools-dashboard rows. Subtle gradient line + breathing room.
+.row-divider {
+    width: 100%;
+    height: 1px;
+    margin: 1.25rem 0;
+    border: 0;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.18) 20%,
+        rgba(255, 255, 255, 0.32) 50%,
+        rgba(255, 255, 255, 0.18) 80%,
+        transparent 100%
+    );
+}
+
+// Compact "+" expand toggle for a long .tools-column (reuses the
+// .more-toggle / .collapsible-content JS wiring, just sized down —
+// the default .more-toggle is a full-width divider meant for whole
+// sections, too large for a single dashboard column).
+.tools-column__toggle.more-toggle {
+    width: auto;
+    padding: 0.2rem 0.5rem;
+    margin: 0.15rem 0 0;
+
+    &::before,
+    &::after {
+        display: none;
+    }
+
+    .plus-icon {
+        font-size: 0.75rem;
+        line-height: 1;
+        color: rgba(255, 255, 255, 0.6);
+        transition: color 0.2s ease;
+    }
+
+    &:hover .plus-icon,
+    &.open .plus-icon {
+        color: #fff;
+    }
+}
+
+.tools-column .collapsible-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    align-items: center;
+}

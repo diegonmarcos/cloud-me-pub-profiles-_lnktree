@@ -1,0 +1,50 @@
+// ==========================================================================
+// Canvas Layout - Linktree Pixel World
+// ==========================================================================
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+// WebGL background canvas (starfield)
+#bg-canvas {
+  @include fixed-fill;
+  z-index: $z-bg;
+  pointer-events: none;
+}
+
+// PixiJS game canvas (injected by JS after bg-canvas)
+#pixi-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: $z-static;
+  pointer-events: none;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+// Zone transition overlay
+#zone-transition {
+  @include fixed-fill;
+  z-index: $z-transition;
+  background: $bg-dark;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity $duration-zone $ease-in-out;
+
+  &.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+// UI Overlay container
+#ui-overlay {
+  @include fixed-fill;
+  z-index: $z-ui;
+  pointer-events: none;
+
+  > * {
+    pointer-events: auto;
+  }
+}

@@ -1,0 +1,99 @@
+// ==========================================================================
+// Reset - Linktree Mindmap
+// ==========================================================================
+
+@use '../abstracts/variables' as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  // LOCK viewport - prevent ANY scrolling/bounce
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: $void-bg;
+  // Prevent touch scrolling
+  touch-action: none;
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: none;
+}
+
+body {
+  font-family: $font-main;
+  font-size: $font-size-base;
+  line-height: 1.5;
+  color: $color-text;
+  // LOCK body to viewport
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  // Prevent overscroll bounce
+  overscroll-behavior: none;
+  -webkit-overscroll-behavior: none;
+  -webkit-overflow-scrolling: none;
+  touch-action: pan-x pan-y pinch-zoom;
+  // Rich gradient background
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 20%, rgba(100, 149, 237, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse 70% 70% at 80% 60%, rgba(199, 125, 255, 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 50% at 10% 80%, rgba(80, 200, 170, 0.10) 0%, transparent 50%),
+    radial-gradient(ellipse 100% 100% at 50% 50%, $void-bg-light 0%, $void-bg 100%);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+canvas {
+  display: block;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+// Remove default focus styles, we'll add our own
+:focus {
+  outline: none;
+}
+
+// Selection color
+::selection {
+  background: rgba($color-root, 0.3);
+  color: $color-text;
+}

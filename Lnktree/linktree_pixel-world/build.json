@@ -1,0 +1,89 @@
+{
+  "name": "Linktree Pixel World",
+  "framework": "vanilla",
+  "port": 8019,
+  "src": "src",
+  "dist": "dist",
+  "build": [
+    {
+      "_doc": "Wrap every *.json in src/data/ as a globalThis.PORTAL_DATA[<key>] companion (data-*.json.js). Engine: front-data-json-js-wrapper.sh.",
+      "mod": "data_wrap",
+      "dir": "src/data"
+    },
+    {
+      "_doc": "Ship the wrapped data-*.json.js companions to dist/ root, so HTML can load them with <script src=\"data-<KEY>.json.js\"></script> — no fetch, no CORS.",
+      "mod": "copy",
+      "files": "data-*.json.js",
+      "from": "src/data"
+    },
+    {
+      "mod": "esbuild",
+      "input": "src/typescript/main.ts",
+      "output": "script.js",
+      "format": "iife",
+      "target": "es2020"
+    },
+    {
+      "mod": "sass",
+      "input": "src/scss/main.scss",
+      "output": "style.css"
+    },
+    {
+      "mod": "copy",
+      "files": "*.html",
+      "from": "src"
+    },
+    {
+      "mod": "symlink",
+      "files": "public"
+    },
+    {
+      "_doc": "Inject navigator.serviceWorker.register(...) before </head>. MUST run BEFORE esbuild_sw so the modified HTML feeds into BUILD_HASH.",
+      "mod": "sw_register",
+      "files": "index.html"
+    },
+    {
+      "_doc": "Inject single-namespace observability SDK (Sentry/OpenObserve-style). Mirrors console.* + errors + SW lifecycle to OPFS console.log. window.consoleLogs.{captureException, captureMessage, addBreadcrumb, read, readJSON, tail, clear, download}.",
+      "mod": "console_log",
+      "files": "index.html"
+    },
+    {
+      "_doc": "MUST run last — hashes the dist artifacts above to derive BUILD_HASH and inject it into the SW bundle.",
+      "mod": "esbuild_sw",
+      "input": "src/typescript/script-service-worker.ts",
+      "output": "script-service-worker.js",
+      "format": "iife",
+      "target": "es2020",
+      "hash_of": [
+        "index.html",
+        "script.js",
+        "style.css"
+      ],
+      "precache": [
+        "./",
+        "./index.html",
+        "./script.js",
+        "./style.css"
+      ]
+    }
+  ],
+  "serve": {
+    "mode": "auto",
+    "dir": "src",
+    "watch": [
+      {
+        "mod": "sass",
+        "input": "scss/main.scss",
+        "output": "style.css"
+      },
+      {
+        "mod": "esbuild",
+        "input": "typescript/main.ts",
+        "output": "script.js",
+        "format": "iife",
+        "target": "es2020"
+      }
+    ]
+  },
+  "deploy": {}
+}

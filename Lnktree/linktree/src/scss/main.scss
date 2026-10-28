@@ -1,0 +1,59 @@
+// ==========================================================================
+// Linktree Main Stylesheet
+// ==========================================================================
+// ITCSS Architecture - Inverted Triangle CSS
+// ==========================================================================
+
+// ---------------------------------------------------------------------------
+// 1. ABSTRACTS - Registered custom properties (loaded first so any
+//    component referencing them gets compositor-thread interpolation).
+// ---------------------------------------------------------------------------
+@use 'abstracts/properties';
+
+// ---------------------------------------------------------------------------
+// 2. UTILITIES - Animations + perf (loaded first for use in components)
+// ---------------------------------------------------------------------------
+@use 'utilities/animations';
+@use 'utilities/perf';
+
+// ---------------------------------------------------------------------------
+// 2. BASE - Reset, Typography
+// ---------------------------------------------------------------------------
+@use 'base/reset';
+@use 'base/typography';
+
+// ---------------------------------------------------------------------------
+// 3. LAYOUT - Container, Header
+// ---------------------------------------------------------------------------
+@use 'layout/container';
+@use 'layout/header';
+
+// ---------------------------------------------------------------------------
+// 4. COMPONENTS - UI Elements
+// ---------------------------------------------------------------------------
+@use 'components/loading';
+@use 'components/status-modal';
+@use 'components/background';
+@use 'components/icons';
+@use 'components/links';
+@use 'components/carousel';
+@use 'components/controls';
+@use 'components/collapsible';
+@use 'components/cookie-banner';
+@use 'components/gallery';
+@use 'components/lite-mode';
+@use 'components/theme-light';
+@use 'components/theme-terminal';
+@use 'components/vm-control';
+@use 'components/footer';
+@use 'components/logcat';
+
+// ---------------------------------------------------------------------------
+// 5. UTILITIES - Media Queries (loaded last for overrides)
+// ---------------------------------------------------------------------------
+@use 'utilities/media-queries';
+
+// ---------------------------------------------------------------------------
+// 6. FAB SCOPED CSS - Vue-style isolation (MUST BE LAST)
+// ---------------------------------------------------------------------------
+@use 'components/fab-scoped';

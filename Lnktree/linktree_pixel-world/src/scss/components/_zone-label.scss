@@ -1,0 +1,35 @@
+// ==========================================================================
+// Zone Label - Linktree Pixel World
+// ==========================================================================
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+#zone-label {
+  position: fixed;
+  top: $space-lg;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: $z-ui;
+  @include glass;
+  border-radius: $radius-md;
+  padding: $space-xs $space-lg;
+  @include transition-normal(opacity, transform);
+  opacity: 0;
+  transform: translateX(-50%) translateY(-10px);
+
+  &.visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+#zone-label-text {
+  font-family: $font-pixel;
+  font-size: $font-size-lg;
+  font-weight: bold;
+  color: $color-text;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-shadow: 0 0 8px rgba($color-root, 0.5);
+}
