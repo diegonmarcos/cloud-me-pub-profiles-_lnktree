@@ -1,0 +1,72 @@
+{
+  "schema": "readme-node/v1",
+  "generated_by": "_git-repos-master readme-render.js nodeData() from projects-repos.json; DO NOT EDIT (node repos-sot.js sync-readmes)",
+  "name": "cloud-me-pub-profiles-_lnktree",
+  "label": "cloud-me-pub-profiles-_lnktree",
+  "code": "1.2.1.1.1",
+  "kind": "repo",
+  "description": "Linktree site (split from Me-Profiles)",
+  "visibility": "public",
+  "url": "https://github.com/diegonmarcos/cloud-me-pub-profiles-_lnktree",
+  "developer": "Leaf.y",
+  "farm": "1.2.Cloud-me/Pub/Profiles",
+  "breadcrumb": [
+    {
+      "code": "1",
+      "kind": "area",
+      "label": "Unix",
+      "icon": "🐧"
+    },
+    {
+      "code": "1.2",
+      "kind": "project",
+      "label": "Cloud-Me",
+      "icon": "🙋"
+    },
+    {
+      "code": "1.2.1",
+      "kind": "subcategory",
+      "label": "Pub",
+      "icon": ""
+    },
+    {
+      "code": "1.2.1.1",
+      "kind": "family",
+      "label": "Profiles",
+      "icon": ""
+    }
+  ],
+  "hub": {
+    "name": "cloud-me-pub-profiles-___",
+    "code": "1.2.1.1.0",
+    "url": "https://github.com/diegonmarcos/cloud-me-pub-profiles-___"
+  },
+  "base_dir": "git",
+  "members": [],
+  "tree": [
+    "├── 0_deployer (submodule)",
+    "├── 0_hub/",
+    "│   └── cloud-me-pub-profiles-___ (submodule)",
+    "└── Lnktree/",
+    "    ├── linktree/",
+    "    │   ├── 0.spec/",
+    "    │   ├── 1.ops/",
+    "    │   ├── scripts/",
+    "    │   ├── src/",
+    "    │   └── tests/",
+    "    ├── linktree_icon-view/",
+    "    │   ├── dist/",
+    "    │   ├── public/",
+    "    │   └── src/",
+    "    ├── linktree_mindmap/",
+    "    │   ├── 0.spec/",
+    "    │   ├── dist/",
+    "    │   ├── public/",
+    "    │   ├── src/",
+    "    │   └── tests/",
+    "    └── linktree_pixel-world/",
+    "        ├── dist/",
+    "        ├── public/",
+    "        └── src/"
+  ]
+}
