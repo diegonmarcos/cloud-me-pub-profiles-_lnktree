@@ -141,9 +141,15 @@ for (const [label, viewport] of [["mobile", { width: 390, height: 844 }], ["desk
     await page.locator(".projects-section").scrollIntoViewIfNeeded();
     await page.evaluate(() => document.querySelector(".projects-section").scrollIntoView({ block: "start" }));
     // compare against an xProjects card that has a banner, like every Areas card
-    await page.evaluate(() => { const s = document.querySelector(".projects-swiper").swiper;
-      const i = s.slides.findIndex((x) => x.querySelector("img.featured-image")); if (i >= 0) s.slideTo(i, 0); });
-    await page.waitForFunction(() => !document.querySelector(".projects-swiper").swiper.animating);
+    // (with the next arrow, as a user would: an instant slideTo leaves the creative effect unpainted)
+    for (let k = 0; k < 12; k++) {
+      const has = await page.evaluate(() => { const s = document.querySelector(".projects-swiper").swiper; return !!s.slides[s.activeIndex].querySelector("img.featured-image"); });
+      if (has) break;
+      await page.click(".projects-section .swiper-button-next");
+      await page.waitForFunction(() => !document.querySelector(".projects-swiper").swiper.animating);
+    }
+    await page.waitForFunction(() => { const s = document.querySelector(".projects-swiper").swiper, i = s.slides[s.activeIndex].querySelector("img.featured-image");
+      return !i || (i.complete && i.naturalWidth > 0 && +getComputedStyle(s.slides[s.activeIndex]).opacity > 0.99); }, null, { timeout: 20000 }).catch(() => {});
     await page.screenshot({ path: `${shot}-${label}-xprojects.png` });
     await page.evaluate(() => document.querySelector(".areas-section").scrollIntoView({ block: "start" }));
   }
