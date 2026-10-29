@@ -97,12 +97,7 @@ function resolveInitial(): ThemeName {
   return 'dark';
 }
 
-export function getTheme(): ThemeName {
-  const active = THEMES.find((t) => t.bodyClass && document.body.classList.contains(t.bodyClass));
-  return active ? active.name : 'dark';
-}
-
-export function setTheme(name: ThemeName): void {
+function setTheme(name: ThemeName): void {
   applyTheme(name);
   localStorage.setItem(STORAGE_KEY, name);
   localStorage.removeItem(LEGACY_LITE_KEY);

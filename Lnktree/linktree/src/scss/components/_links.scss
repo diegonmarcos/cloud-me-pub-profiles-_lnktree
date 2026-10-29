@@ -114,20 +114,6 @@
         }
     }
 
-    &.grid-4 {
-        grid-template-columns: repeat(4, 1fr);
-
-        .link {
-            padding: 0.6rem 0.3rem 0.6rem 1.8rem;
-            font-size: 0.75rem;
-
-            .icon {
-                left: 0.3rem;
-                width: 16px;
-                height: 16px;
-            }
-        }
-    }
 }
 
 // 3-column tools dashboard layout

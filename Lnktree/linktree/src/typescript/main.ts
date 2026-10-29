@@ -11,7 +11,6 @@ import { initCommitsPanel } from './modules/commits';
 import { initMindmapOverlay } from './modules/mindmap-overlay';
 import { initIconViewToggle } from './modules/iconViewToggle';
 import { initAudioToggle } from './modules/audioToggle';
-import { initVmControl } from './modules/vmControl';
 import { initScrollFab } from './modules/scrollFab';
 import { initLogcatViewer } from './modules/logcat';
 import { initPortalRender } from './modules/portal-render';
@@ -88,7 +87,6 @@ function initApp(): void {
   onIdle(() => initCommitsPanel());
   onIdle(() => initAboutPanel());
   onIdle(() => initGalleryToggle());
-  onIdle(() => initVmControl());
 
   // Hamburger menu
   const hamburgerBtn = document.getElementById('hamburger-btn');

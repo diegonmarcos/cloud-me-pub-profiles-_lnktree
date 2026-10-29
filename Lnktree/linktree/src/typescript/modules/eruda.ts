@@ -45,10 +45,3 @@ export function closeEruda(): void {
   visible = false;
 }
 
-export function toggleEruda(): Promise<void> {
-  if (visible) {
-    closeEruda();
-    return Promise.resolve();
-  }
-  return openEruda();
-}

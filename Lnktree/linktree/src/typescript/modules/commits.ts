@@ -24,7 +24,7 @@ export interface RepoCommit {
   url: string;
 }
 
-export function getRepoCommits(): RepoCommit[] {
+function getRepoCommits(): RepoCommit[] {
   return commitsData as RepoCommit[];
 }
 

@@ -28,10 +28,7 @@ body.terminal-theme {
     }
 
     // No video, no glass — the whole look is flat by design.
-    #background-video,
-    video.background-video,
-    .video-bg,
-    .video-background {
+    #background-video {
         display: none !important;
     }
 

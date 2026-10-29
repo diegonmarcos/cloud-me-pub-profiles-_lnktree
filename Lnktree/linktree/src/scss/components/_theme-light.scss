@@ -11,10 +11,7 @@ body.light-theme {
 
     // Hide the dark background video — the light theme has no dark-blue
     // backdrop, the video would clash.
-    #background-video,
-    video.background-video,
-    .video-bg,
-    .video-background {
+    #background-video {
         display: none !important;
     }
 

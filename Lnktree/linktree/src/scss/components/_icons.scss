@@ -5,7 +5,7 @@
 @use '../abstracts/variables' as *;
 @use '../abstracts/mixins' as *;
 
-.social-icons, .contact-icons {
+.contact-icons {
     display: flex;
     justify-content: center;
     gap: 3rem;

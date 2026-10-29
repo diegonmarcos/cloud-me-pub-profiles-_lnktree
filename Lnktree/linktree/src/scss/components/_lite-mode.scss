@@ -23,10 +23,7 @@
 
     // Nuke the background video — hidden videos still decode in many
     // browsers; `display:none` is the only reliable stop.
-    #background-video,
-    video.background-video,
-    .video-bg,
-    .video-background {
+    #background-video {
         display: none !important;
     }
 
@@ -68,7 +65,6 @@
     }
 
     // Remove holographic effects from icons
-    .social-icons a,
     .contact-icons a {
         border: none !important;
         box-shadow: none !important;
@@ -114,7 +110,6 @@
     }
 
     // Social icons: lightweight hover
-    .social-icons a,
     .contact-icons a {
         transition: opacity 0.2s ease !important;
 
