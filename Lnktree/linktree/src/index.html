@@ -281,7 +281,7 @@
             <section class="section-box professional-profiles-section">
                 <h2 class="box-title">PROFESSIONAL PROFILES</h2>
                 <div class="carousel-row">
-                <div class="swiper professional-swiper">
+                <div class="swiper professional-swiper" data-carousel="professional">
                     <div class="swiper-wrapper">
 
                         <!-- Slide 1: Profile Card -->
@@ -304,10 +304,10 @@
                     <!-- End Professional Swiper Wrapper -->
 
                     <!-- Navigation -->
-                    <div class="swiper-button-prev professional-prev"></div>
-                    <div class="swiper-button-next professional-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
                 </div>
-                <div class="swiper-pagination professional-pagination"></div>
+                <div class="swiper-pagination"></div>
                 </div>
                 <!-- End Professional Row -->
             </section>
@@ -323,10 +323,14 @@
                     <div class="areas-row" role="tablist" aria-label="Areas" data-areas-row></div>
                     <div class="areas-row areas-row--projects" role="tablist" aria-label="Projects" data-projects-row></div>
                 </nav>
-                <div class="area-cards">
-                    <button type="button" class="area-cards__nav area-cards__nav--prev" aria-label="Previous card" data-cards-prev>&#8249;</button>
-                    <div class="area-cards__row" data-area-cards></div>
-                    <button type="button" class="area-cards__nav area-cards__nav--next" aria-label="Next card" data-cards-next>&#8250;</button>
+                <!-- Cards: same component as xProjects (carousel-row, swiper, swiper-slide > link-section, arrows, dots). -->
+                <div class="carousel-row areas-carousel">
+                    <div class="swiper areas-swiper" data-carousel="areas">
+                    <div class="swiper-wrapper" data-area-cards></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                    </div>
+                <div class="swiper-pagination"></div>
                 </div>
             </section>
 
@@ -375,7 +379,7 @@
             <section class="section-box personal-profiles-section">
                 <h2 class="box-title">PERSONAL PROFILES</h2>
                 <div class="carousel-row">
-                    <div class="swiper personal-swiper">
+                    <div class="swiper personal-swiper" data-carousel="personal">
                     <div class="swiper-wrapper">
 
                         <!-- Slide 1: Profile Card -->
@@ -398,10 +402,10 @@
                     <!-- End Personal Swiper Wrapper -->
 
                     <!-- Navigation -->
-                    <div class="swiper-button-prev personal-prev"></div>
-                    <div class="swiper-button-next personal-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
                     </div>
-                <div class="swiper-pagination personal-pagination"></div>
+                <div class="swiper-pagination"></div>
                 </div>
                 <!-- End Personal Row -->
             </section>
@@ -412,7 +416,7 @@
             <section class="section-box projects-section">
                 <h2 class="box-title">xPROJECTS</h2>
                 <div class="carousel-row">
-                    <div class="swiper projects-swiper">
+                    <div class="swiper projects-swiper" data-carousel="projects">
                     <div class="swiper-wrapper">
 
                         <!-- Slide: Home/Projects -->
@@ -452,10 +456,10 @@
                     <!-- End Projects Swiper Wrapper -->
 
                     <!-- Navigation -->
-                    <div class="swiper-button-prev projects-prev"></div>
-                    <div class="swiper-button-next projects-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
                     </div>
-                <div class="swiper-pagination projects-pagination"></div>
+                <div class="swiper-pagination"></div>
                 </div>
                 <!-- End Projects Row -->
             </section>

@@ -4,8 +4,7 @@ import { initLoader } from './modules/loader';
 import { initStatusModal } from './modules/status/modal';
 import { initCollapsibleSections, initControlsToggle } from './modules/collapsible';
 import { initVideoBackground } from './modules/videoBackground';
-import { initCarousels } from './modules/carousel';
-import { initMobileScrollSelection } from './modules/mobileScroll';
+import { initCarousels, initTapSwipers } from './modules/carousel';
 import { initGalleryToggle } from './modules/gallery';
 import { initAboutPanel } from './modules/about';
 import { initCommitsPanel } from './modules/commits';
@@ -13,10 +12,8 @@ import { initMindmapOverlay } from './modules/mindmap-overlay';
 import { initIconViewToggle } from './modules/iconViewToggle';
 import { initAudioToggle } from './modules/audioToggle';
 import { initVmControl } from './modules/vmControl';
-import { initProfilePicSwiper } from './modules/profilePicSwiper';
 import { initScrollFab } from './modules/scrollFab';
 import { initLogcatViewer } from './modules/logcat';
-import { initCardSwiper } from './modules/cardSwiper';
 import { initPortalRender } from './modules/portal-render';
 import { initAreas } from './modules/areas';
 import { renderMenu } from './modules/menuRender';
@@ -54,8 +51,7 @@ function initApp(): void {
   // Initialize collapsible sections
   initCollapsibleSections();
 
-  initProfilePicSwiper();
-  initCardSwiper();
+  initTapSwipers();
 
   // Initialize controls toggle
   initControlsToggle();
@@ -91,7 +87,6 @@ function initApp(): void {
   onIdle(() => initStatusModal());
   onIdle(() => initCommitsPanel());
   onIdle(() => initAboutPanel());
-  onIdle(() => initMobileScrollSelection());
   onIdle(() => initGalleryToggle());
   onIdle(() => initVmControl());
 

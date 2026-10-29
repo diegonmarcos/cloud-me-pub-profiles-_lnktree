@@ -26,9 +26,8 @@
     }
 }
 
-.professional-swiper,
-.personal-swiper,
-.projects-swiper {
+// Every carousel (index.html .carousel-row > .swiper[data-carousel]) shares this one rule; the height lives here, not in JS.
+.carousel-row > .swiper {
     width: 100%;
     max-width: 100%;
     height: 85dvh;
@@ -124,8 +123,8 @@
     }
 }
 
-.swiper-button-prev, .professional-prev, .personal-prev, .projects-prev { left: 10px; }
-.swiper-button-next, .professional-next, .personal-next, .projects-next { right: 10px; }
+.swiper-button-prev { left: 10px; }
+.swiper-button-next { right: 10px; }
 
 // Swiper Pagination
 .swiper-pagination {

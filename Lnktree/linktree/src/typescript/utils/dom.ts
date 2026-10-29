@@ -8,13 +8,6 @@ export function getElementById<T extends HTMLElement>(id: string): T | null {
 }
 
 /**
- * Type-safe querySelector
- */
-export function querySelector<T extends Element>(selector: string, parent: ParentNode = document): T | null {
-  return parent.querySelector(selector) as T | null;
-}
-
-/**
  * Type-safe querySelectorAll
  */
 export function querySelectorAll<T extends Element>(selector: string, parent: ParentNode = document): NodeListOf<T> {
