@@ -1,7 +1,9 @@
 // #1277/#1281/#1293 Areas: placement, registry + app-manifest coverage, card split and groupings. Dependency-free (node:test), run by the build
 // (build.json npm step "areas") right after scripts/areas-gen.mjs regenerates src/data/areas.json.
 //   node --test tests/areas.test.mjs        (registry: $REPOS_GITHUB_JSON path, else the raw GitHub URL)
-import { test } from "node:test";
+// Also collected by vitest (vitest.config.ts includes *.test.mjs): under vitest ($VITEST set) the same cases run on
+// vitest's test(), whose (name, options, fn) signature matches node:test's.
+const { test } = process.env.VITEST ? await import("vitest") : await import("node:test");
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";

@@ -1,7 +1,8 @@
-// b-s-g-i hierarchy invariants — every node in every slide JSON must
-// carry its scoped number (`box` / `slide` / `group` / `item`), and
-// numbers must be unique per parent (so the composite address
-// `b{box}s{slide}g{group}i{item}` resolves a single node).
+// b-s-g-i hierarchy invariants: every box and slide carries its scoped
+// number; group / item numbers are all-or-none per parent (newer slides such
+// as the generated CLOUD columns omit them, nothing in src/ consumes them) and
+// unique per parent when present, so the composite address
+// `b{box}s{slide}g{group}i{item}` still resolves a single node.
 
 import { describe, it, expect } from 'vitest';
 import { readFileSync } from 'node:fs';
@@ -28,12 +29,21 @@ function expectUnique(nums: number[], ctx: string): void {
 
 function checkItems(items: Item[] | undefined, ctx: string): void {
   if (!items?.length) return;
-  for (const it of items) expect(typeof it.item, `${ctx} item missing 'item' number`).toBe('number');
+  const numbered = items.filter(it => it.item !== undefined);
+  if (!numbered.length) return;
+  for (const it of items) expect(typeof it.item, `${ctx} item missing 'item' number (siblings are numbered)`).toBe('number');
   expectUnique(items.map(i => i.item), ctx);
 }
 
+function checkGroups(gs: Group[] | undefined, ctx: string): void {
+  if (!gs?.length) return;
+  gs.forEach((g, i) => checkGroup(g, `${ctx}[${i}]`));
+  if (!gs.some(g => g.group !== undefined)) return;
+  for (const g of gs) expect(typeof g.group, `${ctx} group missing 'group' number (siblings are numbered)`).toBe('number');
+  expectUnique(gs.map(g => g.group), `${ctx} groups`);
+}
+
 function checkGroup(g: Group, ctx: string): void {
-  expect(typeof g.group, `${ctx} missing 'group' number`).toBe('number');
   checkItems(g.links,      `${ctx}.links`);
   checkItems(g.items,      `${ctx}.items`);
   checkItems(g.icon_links, `${ctx}.icon_links`);
@@ -45,14 +55,12 @@ function checkGroup(g: Group, ctx: string): void {
 
 function checkSlide(s: Slide, ctx: string): void {
   expect(typeof s.slide, `${ctx} missing 'slide' number`).toBe('number');
-  if (s.columns)  s.columns.forEach((g, i) => checkGroup(g, `${ctx}.columns[${i}]`));
-  if (s.sections) s.sections.forEach((g, i) => checkGroup(g, `${ctx}.sections[${i}]`));
-  if (s.columns)  expectUnique(s.columns.map(g => g.group),  `${ctx}.columns groups`);
-  if (s.sections) expectUnique(s.sections.map(g => g.group), `${ctx}.sections groups`);
+  checkGroups(s.columns,  `${ctx}.columns`);
+  checkGroups(s.sections, `${ctx}.sections`);
   checkItems(s.contact_icons?.icons, `${ctx}.contact_icons`);
   checkItems(s.profiles?.icons,      `${ctx}.profiles.icons`);
-  if (s.collapsible?.groups)   s.collapsible.groups.forEach((g, i) => checkGroup(g, `${ctx}.collapsible.groups[${i}]`));
-  if (s.collapsible?.sections) s.collapsible.sections.forEach((g, i) => checkGroup(g, `${ctx}.collapsible.sections[${i}]`));
+  checkGroups(s.collapsible?.groups,   `${ctx}.collapsible.groups`);
+  checkGroups(s.collapsible?.sections, `${ctx}.collapsible.sections`);
   checkItems(s.top_links,   `${ctx}.top_links`);
   checkItems(s.card_swiper, `${ctx}.card_swiper`);
 }

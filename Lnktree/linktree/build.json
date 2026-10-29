@@ -120,6 +120,11 @@
         "./public/swiper.min.css",
         "./public/swiper.min.js"
       ]
+    },
+    {
+      "_doc": "#1305 Unit tests: vitest run (tests/*.test.ts + tests/*.test.mjs, jsdom). Runs after every artefact step because some tests read the fresh dist/ (style.css budget, build output); it writes nothing, so esbuild_sw stays the last step that touches dist. Fails the build on any red test.",
+      "mod": "npm",
+      "script": "test"
     }
   ],
   "serve": {

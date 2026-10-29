@@ -16,7 +16,8 @@
     "watch:css": "sass --watch src/scss/main.scss:src/style.css",
     "watch:ts": "npm run dev:bundle",
     "typecheck": "tsc --noEmit",
-    "areas": "node scripts/areas-gen.mjs && node --test tests/areas.test.mjs"
+    "areas": "node scripts/areas-gen.mjs && node --test tests/areas.test.mjs",
+    "test": "vitest run"
   },
   "author": "Diego Nepomuceno Marcos",
   "license": "ISC",
@@ -34,6 +35,7 @@
     "sass": "^1.77.0",
     "sharp": "^0.33.5",
     "tsx": "^4.19.0",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vitest": "^2.1.0"
   }
 }
