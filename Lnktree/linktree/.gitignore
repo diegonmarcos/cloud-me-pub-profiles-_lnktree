@@ -1,0 +1,16 @@
+# Build outputs: the Pages deploy (diegonmarcos.github.io ship.yml) rebuilds Linktree from source with build.sh.
+node_modules/
+dist/
+# dev-serve outputs (build.json "serve" watch writes the bundle next to index.html)
+src/script.js
+src/style.css
+# data_wrap outputs for the hand-authored JSON in src/data/ (the wrappers WITHOUT a .json source stay tracked: they
+# are consolidated inputs, not outputs)
+src/data/data-banners.json.js
+src/data/data-gh-pages.json.js
+src/data/data-linktree-mindmap.json.js
+src/data/data-linktree.json.js
+src/data/data-personal-profiles.json.js
+src/data/data-professional-profiles.json.js
+src/data/data-projects.json.js
+src/data/data-areas.json.js

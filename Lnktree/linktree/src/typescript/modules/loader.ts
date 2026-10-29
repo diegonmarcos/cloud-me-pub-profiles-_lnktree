@@ -42,7 +42,6 @@ const LOADER_DEADLINE_MS = 6000; // hard cap → page shows no matter what
 const MINDMAP_URL = 'https://diegonmarcos.github.io/linktree_mindmap/';
 
 const CACHE_KEY = 'linktree_assets_cache_v1';
-const SPEED_TEST_SIZE = 500000; // 500KB for speed test
 const SPEED_TEST_URL = 'public/images/background_static.jpg';
 
 // DOM Elements

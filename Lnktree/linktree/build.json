@@ -19,6 +19,11 @@
       "script": "areas"
     },
     {
+      "_doc": "Typecheck the browser TypeScript (tsconfig.json, strict, noUnused*). Fails the build on any type error; esbuild alone does not typecheck.",
+      "mod": "npm",
+      "script": "typecheck"
+    },
+    {
       "_doc": "Wrap every *.json in src/data/ as a globalThis.PORTAL_DATA[<key>] companion (data-*.json.js). Engine: front-data-json-js-wrapper.sh.",
       "mod": "data_wrap",
       "dir": "src/data"
