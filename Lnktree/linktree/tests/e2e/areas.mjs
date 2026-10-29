@@ -9,11 +9,23 @@ const data = JSON.parse(fs.readFileSync(new URL("../../src/data/areas.json", imp
 const url = process.argv[2] || "https://linktree.diegonmarcos.com/";
 const shot = process.argv[3] || "";
 const want = data.areas.flatMap((a) => a.projects.map((p) => p.name));
-const browser = await chromium.launch();
+// Optional: PW_CHROMIUM=<browser binary>, and the HTTPS_PROXY env is passed to the browser when set.
+const proxy = process.env.HTTPS_PROXY ? { server: process.env.HTTPS_PROXY.replace(/\/\/.*@/, "//") } : undefined;
+const browser = await chromium.launch({ ...(process.env.PW_CHROMIUM ? { executablePath: process.env.PW_CHROMIUM } : {}), ...(proxy ? { proxy } : {}) });
 let failed = false;
 for (const [label, viewport] of [["mobile", { width: 412, height: 915 }], ["desktop", { width: 1280, height: 800 }]]) {
   const ctx = await browser.newContext({ viewport, isMobile: label === "mobile", hasTouch: label === "mobile" });
   const page = await ctx.newPage();
+  // E2E_FETCH_VIA_NODE=1: serve every request through Node's fetch (TLS verified against the Node CA bundle),
+  // for sandboxes whose browser trust store lacks the egress proxy CA.
+  if (process.env.E2E_FETCH_VIA_NODE) await page.route("**/*", async (route) => {
+    const req = route.request();
+    try {
+      const res = await fetch(req.url(), { method: req.method(), headers: req.headers(), body: req.postDataBuffer() || undefined, redirect: "manual" });
+      const headers = Object.fromEntries([...res.headers].filter(([k]) => !["content-encoding", "content-length", "transfer-encoding"].includes(k)));
+      await route.fulfill({ status: res.status, headers, body: Buffer.from(await res.arrayBuffer()) });
+    } catch { await route.abort(); }
+  });
   await page.goto(url, { waitUntil: "domcontentloaded" });
   await page.waitForSelector(".areas-row .area-card", { timeout: 45000 });
   const r = await page.evaluate(() => {
