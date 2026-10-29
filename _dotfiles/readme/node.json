@@ -5,6 +5,7 @@
   "label": "cloud-me-pub-profiles-_lnktree",
   "code": "1.2.1.1.1",
   "kind": "repo",
+  "variant": "repo",
   "description": "Linktree site (split from Me-Profiles)",
   "visibility": "public",
   "url": "https://github.com/diegonmarcos/cloud-me-pub-profiles-_lnktree",
