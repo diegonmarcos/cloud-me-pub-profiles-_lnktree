@@ -10,16 +10,18 @@ import { refreshCarousel } from './carousel';
 
 export interface AreaApp { name: string; url: string; description?: string; }
 export interface AreaRepo { name: string; url?: string; hub?: boolean; private?: boolean; family?: string; apps?: AreaApp[]; }
-export interface AreaCard { name: string; kind: 'family' | 'subcategory'; repos: AreaRepo[]; }
+export interface AreaCard { code: string; name: string; kind: 'family' | 'subcategory'; brief?: string; repos: AreaRepo[]; }
 export interface AreaProject {
-  name: string; icon: string; banner?: string; brief: string; repos: number; public: number; url: string | null; private_only: boolean;
+  code: string; name: string; icon: string; banner?: string; brief: string; repos: number; public: number; url: string | null; private_only: boolean;
   home: AreaRepo[]; cards: AreaCard[];
 }
-export interface Area { field: string; icon: string; banner: string; projects: AreaProject[]; }
+export interface Area { code: string; field: string; icon: string; banner: string; brief: string; url: string | null; home: AreaRepo[]; projects: AreaProject[]; }
 export interface AreasData { section: { id: string; title: string }; areas: Area[]; }
 
 export const STORAGE_KEY = 'linktree.area';
 export const PROJECT_KEY = 'linktree.project.';
+// The area's own home card (code N.0) sits first in the projects row of an area that has a hub repo.
+export const AREA_HOME = '#area';
 
 function icon(src: string): HTMLImageElement {
   return el('img', { class: 'icon', src, alt: '', loading: 'lazy', decoding: 'async' });
@@ -69,13 +71,29 @@ function dashboard(repos: AreaRepo[], grouped: boolean, fallback: string): HTMLE
 const note = (text: string): HTMLElement => el('div', { class: 'profile-section' }, [el('h3', { class: 'subsection-title' }, [text])]);
 
 // Every Areas card is the shared card (card.ts) with the project's banner, like an xProjects card.
-function card(kind: string, name: string, p: AreaProject, area: Area, title: string) {
-  return slideCard({ title, image: { src: p.banner || area.banner, alt: name },
-    data: { kind, card: name, project: p.name, field: area.field } });
+// Card title: the outline code (subtle, .card-code) then the name, e.g. "1.1.2 C3".
+function titled(code: string, text: string): DocumentFragment {
+  const f = document.createDocumentFragment();
+  f.append(el('span', { class: 'card-code' }, [code]), text);
+  return f;
+}
+
+function card(kind: string, name: string, code: string, banner: string, project: string, area: Area, title: string) {
+  return slideCard({ title: titled(code, title), image: { src: banner, alt: name },
+    data: { kind, card: name, code, project, field: area.field } });
+}
+
+function areaHomeCard(area: Area): HTMLElement {
+  const { slide, body } = card('area', area.field, `${area.code}.0`, area.banner, AREA_HOME, area, `${area.icon} ${area.field}`);
+  body!.appendChild(note(area.brief));
+  if (area.home.length) body!.appendChild(dashboard(area.home, false, 'Hub'));
+  body!.appendChild(column('Projects', area.projects.map((p) => el('span', { class: 'tool-link' }, [`${p.code} ${p.icon} ${p.name}`]))));
+  if (area.url) body!.appendChild(el('a', { class: 'link', href: area.url, target: '_blank', rel: 'noopener' }, [icon('public/icons/brand-github.svg'), 'Open hub']));
+  return slide;
 }
 
 function homeCard(area: Area, p: AreaProject): HTMLElement {
-  const { slide, body } = card('home', p.name, p, area, `${p.icon} ${p.name}`);
+  const { slide, body } = card('home', p.name, `${p.code}.0`, p.banner || area.banner, p.name, area, `${p.icon} ${p.name}`);
   const about = note(p.brief);
   about.appendChild(el('h3', { class: 'subsection-title' },
     [`${area.icon} ${area.field} · ${plural(p.repos, 'repo')} (${p.public} public) · ${plural(p.cards.length, 'card')}${p.private_only ? ' · private' : ''}`]));
@@ -83,14 +101,16 @@ function homeCard(area: Area, p: AreaProject): HTMLElement {
   if (p.home.length) body!.appendChild(dashboard(p.home, false, 'Hub'));
   if (p.url) body!.appendChild(el('a', { class: 'link', href: p.url, target: '_blank', rel: 'noopener' },
     [icon('public/icons/brand-github.svg'), p.home.some((r) => r.url === p.url) ? 'Open hub' : 'Open repo']));
-  body!.appendChild(note(p.cards.map((c) => c.name).join(' · ')));
+  if (p.cards.length) body!.appendChild(note(p.cards.map((c) => `${c.code} ${c.name}`).join(' · ')));
   return slide;
 }
 
 function familyCard(area: Area, p: AreaProject, c: AreaCard): HTMLElement {
-  const { slide, body } = card(c.kind, c.name, p, area, c.name);
+  const { slide, body } = card(c.kind, c.name, c.code, p.banner || area.banner, p.name, area, c.name);
   const apps = c.repos.reduce((n, r) => n + (r.apps?.length || 0), 0);
-  body!.appendChild(note(`${p.icon} ${p.name} · ${plural(c.repos.length, 'repo')}${apps ? ` · ${plural(apps, 'app')}` : ''}`));
+  const meta = note(`${p.icon} ${p.name} · ${plural(c.repos.length, 'repo')}${apps ? ` · ${plural(apps, 'app')}` : ''}`);
+  if (c.brief) meta.prepend(el('h3', { class: 'subsection-title' }, [c.brief]));
+  body!.appendChild(meta);
   body!.appendChild(dashboard(c.repos, c.kind === 'subcategory', c.name));
   return slide;
 }
@@ -115,16 +135,17 @@ function chip(text: string, ico: string, title: string, onClick: () => void): HT
 export function selectProject(root: HTMLElement, field: string, project: string, data: AreasData = areasData as AreasData): void {
   const area = data.areas.find((a) => a.field === field) || data.areas[0];
   if (!area) return;
-  const p = area.projects.find((x) => x.name === project) || area.projects[0];
-  if (!p) return;
-  setActive(root.querySelector('[data-projects-row]'), 'project', p.name);
+  const p = project === AREA_HOME && area.home.length ? null : area.projects.find((x) => x.name === project) || area.projects[0];
+  if (p === undefined) return;
+  setActive(root.querySelector('[data-projects-row]'), 'project', p ? p.name : AREA_HOME);
   const row = root.querySelector<HTMLElement>('[data-area-cards]');
   if (row) refreshCarousel('areas', () => {
     row.textContent = '';
+    if (!p) { row.appendChild(areaHomeCard(area)); return; }
     row.appendChild(homeCard(area, p));
     for (const c of p.cards) row.appendChild(familyCard(area, p, c));
   });
-  store(PROJECT_KEY + area.field, p.name);
+  store(PROJECT_KEY + area.field, p ? p.name : AREA_HOME);
 }
 
 export function selectArea(root: HTMLElement, field: string, data: AreasData = areasData as AreasData): void {
@@ -134,8 +155,14 @@ export function selectArea(root: HTMLElement, field: string, data: AreasData = a
   const prow = root.querySelector<HTMLElement>('[data-projects-row]');
   if (prow) {
     prow.textContent = '';
+    if (area.home.length) {
+      const h = chip(area.field, area.icon, `${area.code}.0 ${area.field} home: ${plural(area.projects.length, 'project')}`, () => selectProject(root, area.field, AREA_HOME, data));
+      h.dataset.project = AREA_HOME;
+      h.classList.add('area-chip--home');
+      prow.appendChild(h);
+    }
     for (const p of area.projects) {
-      const c = chip(p.name, p.icon, `${p.name}: ${plural(p.repos, 'repo')}`, () => selectProject(root, area.field, p.name, data));
+      const c = chip(p.name, p.icon, `${p.code} ${p.name}: ${plural(p.repos, 'repo')}`, () => selectProject(root, area.field, p.name, data));
       c.dataset.project = p.name;
       prow.appendChild(c);
     }
@@ -143,7 +170,8 @@ export function selectArea(root: HTMLElement, field: string, data: AreasData = a
   }
   store(STORAGE_KEY, area.field);
   const saved = load(PROJECT_KEY + area.field);
-  selectProject(root, area.field, area.projects.some((p) => p.name === saved) ? saved! : area.projects[0]?.name, data);
+  const valid = (saved === AREA_HOME && area.home.length) || area.projects.some((p) => p.name === saved);
+  selectProject(root, area.field, valid ? saved! : area.home.length ? AREA_HOME : area.projects[0]?.name, data);
 }
 
 export function renderAreas(root: HTMLElement, data: AreasData = areasData as AreasData): number {
@@ -151,7 +179,7 @@ export function renderAreas(root: HTMLElement, data: AreasData = areasData as Ar
   if (!bar) return 0;
   bar.textContent = '';
   for (const area of data.areas) {
-    const c = chip(area.field, area.icon, `${area.field} (${plural(area.projects.length, 'project')})`, () => selectArea(root, area.field, data));
+    const c = chip(area.field, area.icon, `${area.code} ${area.field} (${plural(area.projects.length, 'project')})`, () => selectArea(root, area.field, data));
     c.dataset.field = area.field;
     bar.appendChild(c);
   }
