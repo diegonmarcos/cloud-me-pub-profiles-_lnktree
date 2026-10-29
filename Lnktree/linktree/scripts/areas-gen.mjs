@@ -37,6 +37,18 @@ const FIELD_STYLE = {
   "Deep Science": ["🔬", "structural.gif"], 42: ["🎓", "repos.gif"], Front: ["🎨", "lab-tools.gif"],
 };
 const DEFAULT_STYLE = ["📁", "repos.gif"];
+// Card image, same mechanism as xProjects (a banner asset per card): public/images/banners/<project-slug>.{gif,webp,jpg,png}
+// when the project has its own asset, else the area banner, else repos.gif (the xProjects Repos card banner, the default).
+export const BANNER_DIR = "public/images/banners";
+export const DEFAULT_BANNER = `${BANNER_DIR}/repos.gif`;
+const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+export function bannerFor(project, fieldBanner) {
+  for (const ext of ["gif", "webp", "jpg", "png"]) {
+    const rel = `${BANNER_DIR}/${slug(project)}.${ext}`;
+    if (fs.existsSync(path.join(root, "src", rel))) return rel;
+  }
+  return fs.existsSync(path.join(root, "src", fieldBanner)) ? fieldBanner : DEFAULT_BANNER;
+}
 // Presentation only: project index icons (unknown projects get the area icon).
 const PROJECT_ICON = {
   Cloudy: "☁️", "Cloud-Me": "🙋", Galaxy: "🌌", Zirkus: "🎪", "Fin-CM": "📈", "DeepSc-X": "🧬", "CAD-Simulators": "📐",
@@ -89,7 +101,7 @@ export function deriveAreas({ registry, descriptions = {}, apps = {} }) {
       }
       const brief = (target && descriptions[target.name]) || `${field} project: ${cards.length} ${bySub ? "sub-categor" + (cards.length === 1 ? "y" : "ies") : "famil" + (cards.length === 1 ? "y" : "ies")}, ${repos.length} repo${repos.length === 1 ? "" : "s"}.`;
       list.push({
-        name, icon: PROJECT_ICON[name] || icon, brief, repos: repos.length, public: pub.length,
+        name, icon: PROJECT_ICON[name] || icon, banner: bannerFor(name, `${BANNER_DIR}/${banner}`), brief, repos: repos.length, public: pub.length,
         url: target ? target.url : null, private_only: !target, home, cards,
       });
     }

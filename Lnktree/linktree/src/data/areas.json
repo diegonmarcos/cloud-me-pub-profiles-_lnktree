@@ -13,6 +13,7 @@
         {
           "name": "Cloudy",
           "icon": "☁️",
+          "banner": "public/images/banners/cloud.gif",
           "brief": "Unix project: 7 families, 13 repos.",
           "repos": 13,
           "public": 11,
@@ -286,6 +287,7 @@
         {
           "name": "Cloud-Me",
           "icon": "🙋",
+          "banner": "public/images/banners/cloud.gif",
           "brief": "cloud-me hub: the owner's configs across the cloud — links the cloud-me-pub-___ and cloud-me-pvt-___ hubs",
           "repos": 17,
           "public": 10,
@@ -406,6 +408,7 @@
         {
           "name": "Galaxy",
           "icon": "🌌",
+          "banner": "public/images/banners/circus.gif",
           "brief": "Front group b_Projects (split from front-projects, #1072)",
           "repos": 4,
           "public": 2,
@@ -452,6 +455,7 @@
         {
           "name": "Zirkus",
           "icon": "🎪",
+          "banner": "public/images/banners/circus.gif",
           "brief": "Front group c_Circus (split from front-projects, #1072)",
           "repos": 1,
           "public": 1,
@@ -481,6 +485,7 @@
         {
           "name": "Fin-CM",
           "icon": "📈",
+          "banner": "public/images/banners/nexus.webp",
           "brief": "Fin-CM — hub: capital markets (NexusZ, MQPM, Blmbrg)",
           "repos": 4,
           "public": 4,
@@ -533,6 +538,7 @@
         {
           "name": "DeepSc-X",
           "icon": "🧬",
+          "banner": "public/images/banners/structural.gif",
           "brief": "DeepSc-X — deep science projects",
           "repos": 1,
           "public": 1,
@@ -555,6 +561,7 @@
         {
           "name": "CAD-Simulators",
           "icon": "📐",
+          "banner": "public/images/banners/structural.gif",
           "brief": "DeepSc tools: agentic CAD (MCP) and more",
           "repos": 1,
           "public": 1,
@@ -584,6 +591,7 @@
         {
           "name": "42-algo",
           "icon": "🧮",
+          "banner": "public/images/banners/repos.gif",
           "brief": "where dead-ends are just recursive detours and you will try to overcome stack overflows with a `ulimit - s unlimited`",
           "repos": 1,
           "public": 1,
@@ -607,6 +615,7 @@
         {
           "name": "42-graphic",
           "icon": "🖼️",
+          "banner": "public/images/banners/repos.gif",
           "brief": "Filling Wireframes, rendering matrixes and applying ray tracing one pixel at a time, until the GPU begs for mercy.",
           "repos": 1,
           "public": 1,
@@ -630,6 +639,7 @@
         {
           "name": "42-mylibs",
           "icon": "📚",
+          "banner": "public/images/banners/repos.gif",
           "brief": "__\"Every library has its first book, but not the last\"__: MyLibC, MylibC++, MyTools, for Memory Management and Data Manipulation.",
           "repos": 1,
           "public": 1,
@@ -653,6 +663,7 @@
         {
           "name": "42-projects",
           "icon": "🗂️",
+          "banner": "public/images/banners/repos.gif",
           "brief": "42 project: 1 sub-category, 1 repo.",
           "repos": 1,
           "public": 0,
@@ -676,6 +687,7 @@
         {
           "name": "42-system",
           "icon": "⚙️",
+          "banner": "public/images/banners/repos.gif",
           "brief": "The Unix Alchemist: Transmuting recursive pipes into web servers and containers into… well, more containers.\"",
           "repos": 1,
           "public": 1,
@@ -699,6 +711,7 @@
         {
           "name": "42-agentic",
           "icon": "🤖",
+          "banner": "public/images/banners/repos.gif",
           "brief": "It's basically a highly-paid, very fast committee of AIs arguing until a solution pops out.",
           "repos": 1,
           "public": 1,
@@ -722,6 +735,7 @@
         {
           "name": "42-datascience",
           "icon": "📊",
+          "banner": "public/images/banners/repos.gif",
           "brief": "Notebooks > Excel - for people who prefer code cells to pivot tables (and occasional chaos).",
           "repos": 1,
           "public": 1,
@@ -745,6 +759,7 @@
         {
           "name": "42-machinelearning",
           "icon": "🧠",
+          "banner": "public/images/banners/repos.gif",
           "brief": "\"Where I teach computers to be smart so I don't have to be.\"",
           "repos": 1,
           "public": 1,
@@ -768,6 +783,7 @@
         {
           "name": "42-cyberwarfare",
           "icon": "🛡️",
+          "banner": "public/images/banners/repos.gif",
           "brief": "42 project: 1 sub-category, 1 repo.",
           "repos": 1,
           "public": 1,
@@ -791,6 +807,7 @@
         {
           "name": "42-dev",
           "icon": "💻",
+          "banner": "public/images/banners/repos.gif",
           "brief": "42 project: 1 sub-category, 1 repo.",
           "repos": 1,
           "public": 0,
@@ -821,6 +838,7 @@
         {
           "name": "Endeavours",
           "icon": "🚀",
+          "banner": "public/images/banners/lab-tools.gif",
           "brief": "Front group a_Companies (split from front-projects, #1072)",
           "repos": 1,
           "public": 1,
@@ -843,6 +861,7 @@
         {
           "name": "Labtools",
           "icon": "🧪",
+          "banner": "public/images/banners/lab-tools.gif",
           "brief": "Front group c_LabTools (split from front-projects, #1072)",
           "repos": 1,
           "public": 1,
