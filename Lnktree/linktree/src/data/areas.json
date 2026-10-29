@@ -545,10 +545,10 @@
     },
     {
       "code": "3",
-      "field": "Financial",
+      "field": "Capital",
       "icon": "💹",
       "banner": "public/images/banners/nexus.webp",
-      "brief": "Finance: capital markets and corporate finance. The hub Fin-___ is the area home (3.0).",
+      "brief": "Capital: capital markets and corporate finance. The hub Fin-___ is the area home (3.0).",
       "url": "https://github.com/diegonmarcos/Fin-___",
       "home": [
         {
@@ -560,7 +560,7 @@
       "projects": [
         {
           "code": "3.1",
-          "name": "CM-MQPM",
+          "name": "Macro-Central-Bank",
           "icon": "📈",
           "banner": "public/images/banners/nexus.webp",
           "brief": "Capital markets: MQPM, StochBates and quant projects.",
@@ -586,33 +586,7 @@
         },
         {
           "code": "3.2",
-          "name": "CM-Blmbrg",
-          "icon": "📰",
-          "banner": "public/images/banners/nexus.webp",
-          "brief": "Capital markets: Blmbrg terminal, market watch and news.",
-          "repos": 1,
-          "public": 1,
-          "url": "https://github.com/diegonmarcos/Fin-CM-Blmbrg",
-          "private_only": false,
-          "home": [],
-          "cards": [
-            {
-              "code": "3.2.1",
-              "name": "Terminal",
-              "kind": "family",
-              "brief": "",
-              "repos": [
-                {
-                  "name": "Fin-CM-Blmbrg",
-                  "url": "https://github.com/diegonmarcos/Fin-CM-Blmbrg"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "code": "3.3",
-          "name": "CORP-Wacc",
+          "name": "Micro-Asset-Management",
           "icon": "🏢",
           "banner": "public/images/banners/nexus.webp",
           "brief": "Corporate finance (WACC). Fin-Corporate holds only a README so far: no WACC material inside it yet.",
@@ -623,7 +597,7 @@
           "home": [],
           "cards": [
             {
-              "code": "3.3.1",
+              "code": "3.2.1",
               "name": "Corporate",
               "kind": "family",
               "brief": "",
@@ -635,15 +609,41 @@
               ]
             }
           ]
+        },
+        {
+          "code": "3.3",
+          "name": "Stack-Fin-Terminal",
+          "icon": "📰",
+          "banner": "public/images/banners/nexus.webp",
+          "brief": "Capital markets: Blmbrg terminal, market watch and news.",
+          "repos": 1,
+          "public": 1,
+          "url": "https://github.com/diegonmarcos/Fin-CM-Blmbrg",
+          "private_only": false,
+          "home": [],
+          "cards": [
+            {
+              "code": "3.3.1",
+              "name": "Terminal",
+              "kind": "family",
+              "brief": "",
+              "repos": [
+                {
+                  "name": "Fin-CM-Blmbrg",
+                  "url": "https://github.com/diegonmarcos/Fin-CM-Blmbrg"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
     {
       "code": "4",
-      "field": "Deep Science",
+      "field": "HardTech",
       "icon": "🔬",
       "banner": "public/images/banners/structural.gif",
-      "brief": "Deep science projects and CAD / simulation tools.",
+      "brief": "HardTech: deep science projects and CAD / simulation tools.",
       "url": "https://github.com/diegonmarcos/DeepSc-___",
       "home": [
         {
@@ -655,7 +655,21 @@
       "projects": [
         {
           "code": "4.1",
-          "name": "DeepSc-X",
+          "name": "Structural",
+          "icon": "🏗️",
+          "banner": "public/images/banners/structural.gif",
+          "brief": "Structural design (planned): the content lives in CAD-Simulators/Structural-Designer until it gets its own repo.",
+          "repos": 0,
+          "public": 0,
+          "url": "https://github.com/diegonmarcos/CAD-Simulators/tree/main/Structural-Designer",
+          "private_only": false,
+          "planned": true,
+          "home": [],
+          "cards": []
+        },
+        {
+          "code": "4.2",
+          "name": "DeepXTech",
           "icon": "🧬",
           "banner": "public/images/banners/structural.gif",
           "brief": "Deep science projects.",
@@ -666,7 +680,7 @@
           "home": [],
           "cards": [
             {
-              "code": "4.1.1",
+              "code": "4.2.1",
               "name": "Sailytics",
               "kind": "family",
               "brief": "",
@@ -680,8 +694,8 @@
           ]
         },
         {
-          "code": "4.2",
-          "name": "CAD-Simulators",
+          "code": "4.3",
+          "name": "Stack-CAD-Simulators",
           "icon": "📐",
           "banner": "public/images/banners/structural.gif",
           "brief": "Agentic CAD (MCP) and simulators.",
@@ -692,7 +706,7 @@
           "home": [],
           "cards": [
             {
-              "code": "4.2.1",
+              "code": "4.3.1",
               "name": "CAD",
               "kind": "family",
               "brief": "",

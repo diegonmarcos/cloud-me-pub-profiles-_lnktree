@@ -168,13 +168,13 @@ for (const [label, viewport] of [["mobile", { width: 390, height: 844 }], ["desk
   r = await state(page);
   check(r, "Unix", "Cloud-Me", errs, "Unix/Cloud-Me");
   if (!same(gotCards(r), ["home:Cloud-Me:1.2.0", "subcategory:Pub:1.2.1", "subcategory:Pvt:1.2.2"])) errs.push("Cloud-Me Pub/Pvt split");
-  // 3 Financial: flat area, its 3.0 area home card first, then CM-MQPM / CM-Blmbrg / CORP-Wacc
-  await page.click('[data-areas-row] .area-chip[data-field="Financial"]');
+  // 3 Capital: flat area, its 3.0 area home card first, then its three projects
+  await page.click('[data-areas-row] .area-chip[data-field="Capital"]');
   await page.waitForSelector(`[data-projects-row] .area-chip.is-active[data-project="${AREA_HOME}"]`);
   r = await state(page);
-  check(r, "Financial", AREA_HOME, errs, "Financial home");
-  if (!same(r.projects.slice(1).map((c) => c.key), ["CM-MQPM", "CM-Blmbrg", "CORP-Wacc"])) errs.push(`Financial projects ${r.projects.map((c) => c.key)}`);
-  if (shot) await page.screenshot({ path: `${shot}-${label}-financial.png` });
+  check(r, "Capital", AREA_HOME, errs, "Capital home");
+  if (!same(r.projects.slice(1).map((c) => c.key), ["Macro-Central-Bank", "Micro-Asset-Management", "Stack-Fin-Terminal"])) errs.push(`Capital projects ${r.projects.map((c) => c.key)}`);
+  if (shot) await page.screenshot({ path: `${shot}-${label}-capital.png` });
   const pick = data.areas.slice(1).sort((a, b) => b.projects.length - a.projects.length)[0];
   await page.click(`[data-areas-row] .area-chip[data-field="${pick.field}"]`);
   const pp = pick.projects[pick.projects.length - 1].name;

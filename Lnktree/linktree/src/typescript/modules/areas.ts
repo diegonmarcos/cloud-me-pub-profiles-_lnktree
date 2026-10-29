@@ -12,7 +12,7 @@ export interface AreaApp { name: string; url: string; description?: string; }
 export interface AreaRepo { name: string; url?: string; hub?: boolean; private?: boolean; family?: string; apps?: AreaApp[]; }
 export interface AreaCard { code: string; name: string; kind: 'family' | 'subcategory'; brief?: string; repos: AreaRepo[]; }
 export interface AreaProject {
-  code: string; name: string; icon: string; banner?: string; brief: string; repos: number; public: number; url: string | null; private_only: boolean;
+  code: string; name: string; icon: string; banner?: string; brief: string; repos: number; public: number; url: string | null; private_only: boolean; planned?: boolean;
   home: AreaRepo[]; cards: AreaCard[];
 }
 export interface Area { code: string; field: string; icon: string; banner: string; brief: string; url: string | null; home: AreaRepo[]; projects: AreaProject[]; }
@@ -96,11 +96,12 @@ function homeCard(area: Area, p: AreaProject): HTMLElement {
   const { slide, body } = card('home', p.name, `${p.code}.0`, p.banner || area.banner, p.name, area, `${p.icon} ${p.name}`);
   const about = note(p.brief);
   about.appendChild(el('h3', { class: 'subsection-title' },
-    [`${area.icon} ${area.field} · ${plural(p.repos, 'repo')} (${p.public} public) · ${plural(p.cards.length, 'card')}${p.private_only ? ' · private' : ''}`]));
+    [p.planned ? `${area.icon} ${area.field} · planned` : `${area.icon} ${area.field} · ${plural(p.repos, 'repo')} (${p.public} public) · ${plural(p.cards.length, 'card')}${p.private_only ? ' · private' : ''}`]));
+  if (p.planned) about.prepend(el('span', { class: 'card-code card-badge--planned' }, ['planned']));
   body!.appendChild(about);
   if (p.home.length) body!.appendChild(dashboard(p.home, false, 'Hub'));
   if (p.url) body!.appendChild(el('a', { class: 'link', href: p.url, target: '_blank', rel: 'noopener' },
-    [icon('public/icons/brand-github.svg'), p.home.some((r) => r.url === p.url) ? 'Open hub' : 'Open repo']));
+    [icon('public/icons/brand-github.svg'), p.planned ? 'Open content folder' : p.home.some((r) => r.url === p.url) ? 'Open hub' : 'Open repo']));
   if (p.cards.length) body!.appendChild(note(p.cards.map((c) => `${c.code} ${c.name}`).join(' · ')));
   return slide;
 }
@@ -162,7 +163,7 @@ export function selectArea(root: HTMLElement, field: string, data: AreasData = a
       prow.appendChild(h);
     }
     for (const p of area.projects) {
-      const c = chip(p.name, p.icon, `${p.code} ${p.name}: ${plural(p.repos, 'repo')}`, () => selectProject(root, area.field, p.name, data));
+      const c = chip(p.name, p.icon, `${p.code} ${p.name}: ${p.planned ? 'planned' : plural(p.repos, 'repo')}`, () => selectProject(root, area.field, p.name, data));
       c.dataset.project = p.name;
       prow.appendChild(c);
     }

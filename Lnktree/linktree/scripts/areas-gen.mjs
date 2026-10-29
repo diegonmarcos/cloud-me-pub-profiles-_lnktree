@@ -7,7 +7,7 @@
 // Output: src/data/areas.json (data_wrap turns it into data-areas.json.js; esbuild inlines it into script.js).
 //
 // Outline -> cards (the owner's numbered outline, codes shown on every card and index chip):
-//   area   N       an area HOME card (code N.0) when the area has its own hub repo (flat areas like Financial);
+//   area   N       an area HOME card (code N.0) when the area has its own hub repo (flat areas like Capital);
 //   project N.M    a project HOME card (code N.M.0: brief, hub, link, the list of its families/sub-categories),
 //                  then one card per child in outline order:
 //   family N.M.K   its repos (and, for app-fleet repos, their declared apps);
@@ -53,6 +53,15 @@ function entry(r, apps, extra = {}) {
   return e;
 }
 
+// "Repo/path" mention of a public registry repo in a description -> its folder URL (null when none).
+function contentUrl(text, byName) {
+  for (const m of (text || "").matchAll(/([\w.-]+)\/([\w./-]*\w)/g)) {
+    const r = byName.get(m[1]);
+    if (r && r.visibility === "public" && r.url) return `${r.url}/tree/main/${m[2]}`;
+  }
+  return null;
+}
+
 const plural = (n, one, many) => `${n} ${n === 1 ? one : many}`;
 
 // sources: { registry, apps: {repo: apps[]} }
@@ -82,11 +91,15 @@ export function deriveAreas({ registry, apps = {} }) {
       const all = [...home, ...cards.flatMap((c) => c.repos)];
       const pub = all.filter((r) => !r.private);
       const target = home.find((r) => !r.private) || pub[0] || null;
+      // A PLANNED project has no repos yet: its home card carries a "planned" badge and, when the description names a
+      // folder of a public registry repo ("Repo/path"), a link to that content folder. No family cards.
+      const planned = all.length === 0 && cards.length === 0;
+      const content = planned ? contentUrl(p.description, byName) : null;
       const kinds = cards.some((c) => c.kind === "subcategory") ? ["sub-category", "sub-categories"] : ["family", "families"];
       projects.push({
         code: p.code, name: p.label || p.name, icon: p.icon || a.icon, banner: bannerFor(p.name, areaBanner),
         brief: describe(p, target) || `${a.label || a.name} project: ${plural(cards.length, ...kinds)}, ${plural(all.length, "repo", "repos")}.`,
-        repos: all.length, public: pub.length, url: target ? target.url : null, private_only: !target, home, cards,
+        repos: all.length, public: pub.length, url: target ? target.url : content, private_only: !target && !planned, ...(planned ? { planned: true } : {}), home, cards,
       });
     }
     const home = hubOf(a);

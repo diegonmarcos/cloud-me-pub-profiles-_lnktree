@@ -72,10 +72,10 @@ test("every repo of the portfolio areas appears exactly once; apps once, in mani
   }
 });
 
-test("owner's outline: 1 Unix (1.1 Cloudy families, 1.2 Cloud-Me Pub/Pvt), 2 CG, 3 Financial flat with an area home", () => {
+test("owner's outline: 1 Unix (1.1 Cloudy families, 1.2 Cloud-Me Pub/Pvt), 2 CG, 3 Capital and 4 HardTech with area homes", () => {
   const area = (f) => areas.areas.find((a) => a.field === f);
   const proj = (f, n) => area(f)?.projects.find((p) => p.name === n);
-  assert.deepEqual(areas.areas.slice(0, 3).map((a) => `${a.code} ${a.field}`), ["1 Unix", "2 CG", "3 Financial"]);
+  assert.deepEqual(areas.areas.slice(0, 4).map((a) => `${a.code} ${a.field}`), ["1 Unix", "2 CG", "3 Capital", "4 HardTech"]);
   const cloudy = proj("Unix", "Cloudy");
   assert.equal(cloudy.code, "1.1");
   assert.ok(cloudy.home.some((r) => r.hub), "Cloudy home card carries its hub");
@@ -89,15 +89,23 @@ test("owner's outline: 1 Unix (1.1 Cloudy families, 1.2 Cloud-Me Pub/Pvt), 2 CG,
   assert.ok(me.cards.every((c) => c.repos.every((r) => r.family)), "Pub/Pvt repos grouped by family");
   assert.deepEqual(area("CG").projects.map((p) => p.name), ["Galaxy", "Zirkus"]);
   assert.deepEqual(proj("CG", "Zirkus").cards.map((c) => c.name), ["Production"]);
-  const fin = area("Financial");
-  assert.ok(fin.home.some((r) => r.name === "Fin-___" && r.hub), "3.0 Financial area home carries Fin-___");
-  assert.deepEqual(fin.projects.map((p) => `${p.code} ${p.name}`), ["3.1 CM-MQPM", "3.2 CM-Blmbrg", "3.3 CORP-Wacc"]);
+  const fin = area("Capital");
+  assert.ok(fin.home.some((r) => r.name === "Fin-___" && r.hub), "3.0 Capital area home carries Fin-___");
+  assert.deepEqual(fin.projects.map((p) => `${p.code} ${p.name}`), ["3.1 Macro-Central-Bank", "3.2 Micro-Asset-Management", "3.3 Stack-Fin-Terminal"]);
+  const hard = area("HardTech");
+  assert.ok(hard.home.some((r) => r.name === "DeepSc-___" && r.hub), "4.0 HardTech area home carries DeepSc-___");
+  assert.deepEqual(hard.projects.map((p) => `${p.code} ${p.name}`), ["4.1 Structural", "4.2 DeepXTech", "4.3 Stack-CAD-Simulators"]);
+  const st = proj("HardTech", "Structural");
+  assert.equal(st.planned, true, "4.1 Structural is planned");
+  assert.equal(st.repos, 0); assert.deepEqual(st.cards, []); assert.deepEqual(st.home, []);
+  assert.equal(st.url, "https://github.com/diegonmarcos/CAD-Simulators/tree/main/Structural-Designer", "planned card links its content folder");
+  assert.ok(!hard.projects.some((p) => p !== st && p.planned), "only Structural is planned");
   for (const a of areas.areas) {
     assert.match(a.code, /^\d+$/);
     for (const p of a.projects) {
       assert.ok(p.icon && p.brief, `${p.name}: icon and brief`);
       assert.match(p.code, new RegExp(`^${a.code}\\.\\d+$`), `${p.name} code under ${a.code}`);
-      assert.ok(p.cards.length || p.home.length, `${p.name}: a home card with content`);
+      assert.ok(p.cards.length || p.home.length || p.planned, `${p.name}: a home card with content or a planned badge`);
     }
   }
 });
@@ -107,6 +115,7 @@ test("private repos by name with a lock only: no URL, no contents; no archived r
   assert.ok(!committed.includes("z-archived_"));
   for (const a of areas.areas) for (const p of a.projects) {
     if (p.private_only) assert.equal(p.url, null, `${p.name} has no link`);
+    else if (p.planned && !p.url) assert.equal(p.cards.length, 0);
     else assert.match(p.url, /^https:\/\/github\.com\/diegonmarcos\//);
     for (const r of [...p.home, ...p.cards.flatMap((c) => c.repos)]) if (r.private) {
       assert.deepEqual(Object.keys(r).filter((k) => k !== "family" && k !== "hub").sort(), ["name", "private"], `${r.name}: name and lock only`);
