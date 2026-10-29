@@ -314,14 +314,19 @@
 
             <hr class="section-separator">
 
-            <!-- Areas + Projects Section Box (#1277, #1281): area icon bar + the selected area's project cards, one screen.
-                 Rendered by modules/areas.ts from src/data/areas.json (generated from the repo registry by scripts/areas-gen.mjs). -->
+            <!-- Areas Section Box (#1277, #1281, #1293): two-level icon index (areas, then the selected area's projects) and
+                 the selected project's cards (home card, then one per sub-category or family), one card per view, one screen.
+                 Rendered by modules/areas.ts from src/data/areas.json (generated at build time by scripts/areas-gen.mjs). -->
             <section class="section-box areas-section" aria-label="Areas and Projects">
                 <h2 class="box-title">AREAS</h2>
-                <div class="areas-row" role="tablist" aria-label="Areas" data-areas-row></div>
-                <div class="area-projects" aria-label="Projects">
-                    <h3 class="area-projects__title">PROJECTS <span class="area-projects__area" data-area-label></span></h3>
-                    <div class="area-projects__row" data-area-projects></div>
+                <nav class="areas-index" aria-label="Areas and projects index">
+                    <div class="areas-row" role="tablist" aria-label="Areas" data-areas-row></div>
+                    <div class="areas-row areas-row--projects" role="tablist" aria-label="Projects" data-projects-row></div>
+                </nav>
+                <div class="area-cards">
+                    <button type="button" class="area-cards__nav area-cards__nav--prev" aria-label="Previous card" data-cards-prev>&#8249;</button>
+                    <div class="area-cards__row" data-area-cards></div>
+                    <button type="button" class="area-cards__nav area-cards__nav--next" aria-label="Next card" data-cards-next>&#8250;</button>
                 </div>
             </section>
 
