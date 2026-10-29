@@ -1,4 +1,4 @@
-// #1277 Areas section: placement and registry coverage. Dependency-free (node:test), run by the build
+// #1277/#1281 Areas + Projects: placement, registry coverage and groupings. Dependency-free (node:test), run by the build
 // (build.json npm step "areas") right after scripts/areas-gen.mjs regenerates src/data/areas.json.
 //   node --test tests/areas.test.mjs        (registry: $REPOS_GITHUB_JSON path, else the raw GitHub URL)
 import { test } from "node:test";
@@ -16,32 +16,52 @@ const registry = process.env.REPOS_GITHUB_JSON
   ? JSON.parse(fs.readFileSync(process.env.REPOS_GITHUB_JSON, "utf8"))
   : await (await fetch("https://raw.githubusercontent.com/diegonmarcos/_git-repos-master/main/repos-github.json")).json();
 
-test("Areas section sits between Profiles and Projects", () => {
-  const prof = html.indexOf('class="section-box professional-profiles-section"');
-  const area = html.indexOf('class="section-box areas-section"');
-  const proj = html.indexOf('class="section-box projects-section"');
-  assert.ok(prof >= 0 && area >= 0 && proj >= 0, "all three sections exist");
-  assert.ok(prof < area && area < proj, "order: Profiles < Areas < Projects");
+test("section order: Profiles < Areas+Projects < Personal Profiles < xProjects", () => {
+  const at = (c) => html.indexOf(`class="section-box ${c}"`);
+  const prof = at("professional-profiles-section"), area = at("areas-section"), pers = at("personal-profiles-section"), xp = at("projects-section");
+  assert.ok(prof >= 0 && area >= 0 && pers >= 0 && xp >= 0, "all four sections exist");
+  assert.ok(prof < area && area < pers && pers < xp, "order");
   assert.equal(html.split('class="section-box areas-section"').length, 2, "exactly one Areas section");
-  assert.match(html.slice(area, proj), /data-areas-row/, "Areas section has the render mount");
+  const box = html.slice(area, html.indexOf("</section>", area));
+  assert.match(box, /data-areas-row/, "icon bar mount");
+  assert.match(box, /data-area-projects/, "Projects cards mount directly below the icon bar");
+  assert.ok(box.indexOf("data-areas-row") < box.indexOf("data-area-projects"));
+  assert.match(html.slice(xp, html.indexOf("</section>", xp)), /<h2 class="box-title">xPROJECTS<\/h2>/, "old Projects renamed xProjects");
 });
 
 test("areas.json is exactly what the registry derives (no drift)", () => {
   assert.equal(committed, serialize(deriveAreas(registry)));
 });
 
-test("every registry project is listed exactly once", () => {
-  const meta = (r) => ["profile", "deployer"].includes(r.role) || r.family === "Master";
-  const expected = new Set();
-  for (const r of registry.repos) {
-    if (r.name.startsWith("z-archived_") || r.project === "—" || r.field === "—" || meta(r)) continue;
-    expected.add(`${r.field}/${r.project}`);
-  }
+test("every registry project is listed exactly once, with every one of its repos", () => {
+  const skip = (r) => r.name.startsWith("z-archived_") || r.project === "—" || r.field === "—" || ["profile", "deployer"].includes(r.role) || r.family === "Master";
+  const expected = new Map();
+  for (const r of registry.repos) if (!skip(r)) expected.set(`${r.field}/${r.project}`, (expected.get(`${r.field}/${r.project}`) || 0) + 1);
   const listed = areas.areas.flatMap((a) => a.projects.map((p) => `${a.field}/${p.name}`));
   assert.equal(new Set(listed).size, listed.length, "no project listed twice");
-  assert.deepEqual([...listed].sort(), [...expected].sort());
-  const names = areas.areas.flatMap((a) => a.projects.map((p) => p.name));
-  assert.equal(new Set(names).size, names.length, "project names unique across areas");
+  assert.deepEqual([...listed].sort(), [...expected.keys()].sort());
+  for (const a of areas.areas) for (const p of a.projects) {
+    const n = p.subcategories.flatMap((s) => s.families.flatMap((f) => f.repos)).length;
+    assert.equal(n, expected.get(`${a.field}/${p.name}`), `${p.name}: every repo once`);
+    assert.equal(p.repos, n);
+  }
+});
+
+test("groupings (#1281): Cloud-Me one project Pub/Pvt, Financial one project Fin-CM, 42 one area", () => {
+  const fields = areas.areas.map((a) => a.field);
+  for (const f of ["Finance", "Capital Markets", "Low Level", "Machine Learning", "Cybersecurity", "Dev"]) assert.ok(!fields.includes(f), `no area ${f}`);
+  const proj = (f, n) => areas.areas.find((a) => a.field === f)?.projects.find((p) => p.name === n);
+  const subs = (p) => p.subcategories.map((s) => s.name).filter(Boolean);
+  const cm = proj("Unix", "Cloud-Me");
+  assert.ok(cm, "Cloud-Me project");
+  assert.deepEqual(subs(cm), ["Pub", "Pvt"]);
+  assert.ok(!areas.areas.some((a) => a.projects.some((p) => /^Cloud-Me-P/.test(p.name))), "no Cloud-Me-Pub/Pvt projects");
+  const fin = areas.areas.find((a) => a.field === "Financial");
+  assert.deepEqual(fin.projects.map((p) => p.name), ["Fin-CM"]);
+  assert.deepEqual(subs(fin.projects[0]).sort(), ["Capital Markets", "Corporate"]);
+  const school = areas.areas.find((a) => a.field === "42");
+  assert.ok(school && school.projects.length > 0, "one 42 area");
+  assert.ok(areas.areas.every((a) => a.field === "42" || a.projects.every((p) => !/^42-/.test(p.name))), "42 projects only in the 42 area");
 });
 
 test("no private or archived repo leaks; private-only projects have no link", () => {
@@ -54,5 +74,6 @@ test("no private or archived repo leaks; private-only projects have no link", ()
   for (const a of areas.areas) for (const p of a.projects) {
     if (p.private_only) assert.equal(p.url, null, `${p.name} has no link`);
     else assert.match(p.url, /^https:\/\/github\.com\/diegonmarcos\//);
+    for (const s of p.subcategories) for (const f of s.families) for (const r of f.repos) if (r.private) assert.deepEqual(Object.keys(r), ["private"]);
   }
 });

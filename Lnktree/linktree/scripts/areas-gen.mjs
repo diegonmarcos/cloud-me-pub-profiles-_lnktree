@@ -4,11 +4,11 @@
 // Output: src/data/areas.json (data_wrap turns it into data-areas.json.js; esbuild inlines it into script.js).
 //
 // Rules (all derived, no hand-typed project list):
-//   - one card per Project, grouped by Field, in registry order of first appearance;
-//   - excluded repos: z-archived_*, role hub/profile/deployer, family Master/Hub, project "—";
-//     a project is listed when it keeps >= 1 repo, or has a public hub of its own (its project page);
-//   - repo count = the kept repos (public + private); the link is the public hub, else the first public repo;
-//   - private-only projects have no link, and private repo names/URLs are never written.
+//   - one area per Field, one card per Project, in registry order of first appearance;
+//   - excluded repos: z-archived_*, role profile/deployer, family Master, project or field "—";
+//   - a card lists the project's repos grouped by subcategory (optional) then family; hubs included;
+//   - link: the project's public hub, else its first public repo; private-only projects have no link;
+//   - private repos appear only as an anonymous lock entry under their family: no name, no URL.
 //
 // Usage: node scripts/areas-gen.mjs            generate (registry: $REPOS_GITHUB_JSON path, else the raw GitHub URL)
 //        node scripts/areas-gen.mjs --check    exit 1 when src/data/areas.json differs from the registry
@@ -21,53 +21,51 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const OUT = path.join(root, "src/data/areas.json");
 const REGISTRY_URL = "https://raw.githubusercontent.com/diegonmarcos/_git-repos-master/main/repos-github.json";
 
-// Presentation only: one emoji per field (unknown fields get the default).
-const FIELD_ICONS = {
-  Unix: "🐧", CG: "🎮", Finance: "💼", "Capital Markets": "📈", "Deep Science": "🔬",
-  "Low Level": "⚙️", "Machine Learning": "🤖", Cybersecurity: "🛡️", Dev: "🧑‍💻", Front: "🎨",
+// Presentation only: emoji + banner image per field (unknown fields get the defaults).
+const FIELD_STYLE = {
+  Unix: ["🐧", "cloud.gif"], CG: ["🎮", "circus.gif"], Financial: ["💹", "nexus.webp"],
+  "Deep Science": ["🔬", "structural.gif"], 42: ["🎓", "repos.gif"], Front: ["🎨", "lab-tools.gif"],
 };
-const DEFAULT_ICON = "📁";
+const DEFAULT_STYLE = ["📁", "repos.gif"];
 const NONE = "—";
 
 export function isExcluded(r) {
-  return r.name.startsWith("z-archived_") || ["hub", "profile", "deployer"].includes(r.role) ||
-    ["Master", "Hub"].includes(r.family) || !r.project || r.project === NONE || !r.field || r.field === NONE;
+  return r.name.startsWith("z-archived_") || ["profile", "deployer"].includes(r.role) || r.family === "Master" ||
+    !r.project || r.project === NONE || !r.field || r.field === NONE;
 }
 
 export function deriveAreas(registry) {
-  const repos = registry.repos;
   const fields = new Map();
-  for (const r of repos) {
-    if (r.name.startsWith("z-archived_") || !r.project || r.project === NONE || !r.field || r.field === NONE) continue;
-    const isHub = r.role === "hub" || r.family === "Hub";
-    if (!isHub && isExcluded(r)) continue;
+  for (const r of registry.repos) {
+    if (isExcluded(r)) continue;
     if (!fields.has(r.field)) fields.set(r.field, new Map());
     const projects = fields.get(r.field);
-    if (!projects.has(r.project)) projects.set(r.project, { hub: null, kept: [] });
-    const p = projects.get(r.project);
-    if (isHub) { if (!p.hub && r.visibility === "public") p.hub = r; }
-    else p.kept.push(r);
+    if (!projects.has(r.project)) projects.set(r.project, []);
+    projects.get(r.project).push(r);
   }
   const areas = [];
   for (const [field, projects] of fields) {
+    const [icon, banner] = FIELD_STYLE[field] || DEFAULT_STYLE;
     const list = [];
-    for (const [name, p] of projects) {
-      if (p.kept.length === 0 && !p.hub) continue;
-      const pub = p.kept.filter((r) => r.visibility === "public");
-      const target = p.hub || pub[0] || null;
-      list.push({
-        name,
-        repos: p.kept.length,
-        public: pub.length,
-        url: target ? target.url : null,
-        ...(target ? { repo: target.name } : {}),
-        private_only: !target,
-      });
+    for (const [name, repos] of projects) {
+      const isHub = (r) => r.role === "hub" || r.family === "Hub";
+      const pub = repos.filter((r) => r.visibility === "public");
+      const target = pub.find(isHub) || pub[0] || null;
+      const subs = [];
+      for (const r of repos) {
+        const sn = r.subcategory || null;
+        let sub = subs.find((x) => x.name === sn);
+        if (!sub) subs.push(sub = { name: sn, families: [] });
+        let fam = sub.families.find((x) => x.name === r.family);
+        if (!fam) sub.families.push(fam = { name: r.family, repos: [] });
+        fam.repos.push(r.visibility === "public" ? { name: r.name, url: r.url, ...(isHub(r) ? { hub: true } : {}) } : { private: true });
+      }
+      list.push({ name, repos: repos.length, public: pub.length, url: target ? target.url : null, private_only: !target, subcategories: subs });
     }
-    if (list.length) areas.push({ field, icon: FIELD_ICONS[field] || DEFAULT_ICON, projects: list });
+    areas.push({ field, icon, banner: `public/images/banners/${banner}`, projects: list });
   }
   return {
-    _doc: "GENERATED by scripts/areas-gen.mjs from _git-repos-master/repos-github.json (#1277). DO NOT EDIT BY HAND.",
+    _doc: "GENERATED by scripts/areas-gen.mjs from _git-repos-master/repos-github.json (#1277, #1281). DO NOT EDIT BY HAND.",
     section: { id: "areas", title: "Areas" },
     areas,
   };

@@ -1,23 +1,22 @@
-// #1277 Playwright check of the live Areas section (mobile + desktop), with screenshots.
+// #1277/#1281 Playwright check of the live Areas + Projects section (mobile 390x844, desktop 1280x800), with screenshots.
 //   node tests/e2e/areas.mjs [url] [screenshot-prefix]
-// Asserts: Areas box sits between Profiles and Projects, renders one card per project in src/data/areas.json,
-// one chip per area, the row scrolls horizontally with snap, and private-only cards carry no link.
+// Asserts: order Profiles < Areas < Personal Profiles < xProjects; one icon chip per area; first area selected by default;
+// the icon bar AND at least one full project card are inside the viewport together (no vertical scroll between them);
+// the cards row scrolls horizontally with snap; tapping a chip swaps the cards and the choice survives a reload;
+// private repos carry no link or name.
+// Options: PW_CHROMIUM=<browser binary>; HTTPS_PROXY is passed to the browser; E2E_FETCH_VIA_NODE=1 serves every
+// request through Node's fetch (TLS verified against the Node CA bundle) for sandboxes whose browser lacks the proxy CA.
 import fs from "node:fs";
 import { createRequire } from "node:module";
 const { chromium } = createRequire(import.meta.url)("playwright");
 const data = JSON.parse(fs.readFileSync(new URL("../../src/data/areas.json", import.meta.url), "utf8"));
 const url = process.argv[2] || "https://linktree.diegonmarcos.com/";
 const shot = process.argv[3] || "";
-const want = data.areas.flatMap((a) => a.projects.map((p) => p.name));
-// Optional: PW_CHROMIUM=<browser binary>, and the HTTPS_PROXY env is passed to the browser when set.
-const proxy = process.env.HTTPS_PROXY ? { server: process.env.HTTPS_PROXY.replace(/\/\/.*@/, "//") } : undefined;
+const proxy = process.env.HTTPS_PROXY && !process.env.E2E_FETCH_VIA_NODE ? { server: process.env.HTTPS_PROXY.replace(/\/\/.*@/, "//") } : undefined;
 const browser = await chromium.launch({ ...(process.env.PW_CHROMIUM ? { executablePath: process.env.PW_CHROMIUM } : {}), ...(proxy ? { proxy } : {}) });
-let failed = false;
-for (const [label, viewport] of [["mobile", { width: 412, height: 915 }], ["desktop", { width: 1280, height: 800 }]]) {
-  const ctx = await browser.newContext({ viewport, isMobile: label === "mobile", hasTouch: label === "mobile" });
+
+async function open(ctx) {
   const page = await ctx.newPage();
-  // E2E_FETCH_VIA_NODE=1: serve every request through Node's fetch (TLS verified against the Node CA bundle),
-  // for sandboxes whose browser trust store lacks the egress proxy CA.
   if (process.env.E2E_FETCH_VIA_NODE) await page.route("**/*", async (route) => {
     const req = route.request();
     try {
@@ -27,35 +26,60 @@ for (const [label, viewport] of [["mobile", { width: 412, height: 915 }], ["desk
     } catch { await route.abort(); }
   });
   await page.goto(url, { waitUntil: "domcontentloaded" });
-  await page.waitForSelector(".areas-row .area-card", { timeout: 45000 });
-  const r = await page.evaluate(() => {
-    const boxes = [...document.querySelectorAll("main .section-box")].map((b) => b.className);
-    const row = document.querySelector(".areas-row");
-    const cs = getComputedStyle(row);
-    return {
-      boxes,
-      cards: [...row.querySelectorAll(".area-card")].map((c) => ({ name: c.dataset.project, link: !!c.querySelector("a[href]"), w: c.getBoundingClientRect().width })),
-      chips: row.querySelectorAll(".area-chip").length,
-      snap: cs.scrollSnapType, overflowX: cs.overflowX, scrollable: row.scrollWidth > row.clientWidth,
-    };
-  });
-  const i = (k) => r.boxes.findIndex((c) => c.includes(k));
+  await page.waitForSelector(".areas-section .area-project-card", { timeout: 45000 });
+  await page.evaluate(() => document.querySelector(".areas-section").scrollIntoView({ block: "start" }));
+  await page.waitForTimeout(1200);
+  return page;
+}
+
+const state = (page) => page.evaluate(() => {
+  const vw = innerWidth, vh = innerHeight;
+  const inView = (e) => { const r = e.getBoundingClientRect(); return r.width > 0 && r.height > 0 && r.top >= -1 && r.left >= -1 && r.bottom <= vh + 1 && r.right <= vw + 1; };
+  const sec = document.querySelector(".areas-section"), bar = sec.querySelector(".areas-row"), row = sec.querySelector(".area-projects__row");
+  const cards = [...row.querySelectorAll(".area-project-card")];
+  return {
+    boxes: [...document.querySelectorAll("main .section-box")].map((b) => b.className + "|" + (b.querySelector(".box-title")?.textContent || "")),
+    chips: [...bar.querySelectorAll(".area-chip")].map((c) => ({ field: c.dataset.field, active: c.classList.contains("is-active"), title: c.title })),
+    cards: cards.map((c) => ({ name: c.dataset.project, field: c.dataset.field, banner: !!c.querySelector("img.featured-image"), privateLinks: c.querySelectorAll("a.tool-link--private").length })),
+    barInView: inView(bar), fullCardInView: cards.some(inView),
+    snap: getComputedStyle(row).scrollSnapType,
+  };
+});
+
+let failed = false;
+for (const [label, viewport] of [["mobile", { width: 390, height: 844 }], ["desktop", { width: 1280, height: 800 }]]) {
+  const ctx = await browser.newContext({ viewport, isMobile: label === "mobile", hasTouch: label === "mobile" });
+  let page = await open(ctx);
   const errs = [];
-  if (!(i("professional-profiles-section") < i("areas-section") && i("areas-section") < i("projects-section"))) errs.push("order");
-  if (JSON.stringify(r.cards.map((c) => c.name)) !== JSON.stringify(want)) errs.push("cards != areas.json");
-  if (r.chips !== data.areas.length) errs.push("chips");
+  let r = await state(page);
+  const i = (k) => r.boxes.findIndex((c) => c.includes(k));
+  if (!(i("professional-profiles-section") < i("areas-section") && i("areas-section") < i("personal-profiles-section") && i("personal-profiles-section") < i("projects-section"))) errs.push("section order");
+  if (!r.boxes[i("projects-section")].endsWith("xPROJECTS")) errs.push("xProjects title");
+  if (JSON.stringify(r.chips.map((c) => c.field)) !== JSON.stringify(data.areas.map((a) => a.field))) errs.push("chips != areas");
+  if (!r.chips[0]?.active || r.chips.filter((c) => c.active).length !== 1) errs.push("first area not selected by default");
+  if (r.chips.some((c) => !c.title)) errs.push("chip tooltip");
+  if (JSON.stringify(r.cards.map((c) => c.name)) !== JSON.stringify(data.areas[0].projects.map((p) => p.name))) errs.push("cards != first area");
+  if (r.cards.some((c) => !c.banner)) errs.push("card without banner");
+  if (r.cards.some((c) => c.privateLinks)) errs.push("private entry carries a link");
+  if (!r.barInView || !r.fullCardInView) errs.push(`one screen: bar ${r.barInView}, full card ${r.fullCardInView}`);
   if (!r.snap.startsWith("x")) errs.push("snap");
-  if (!r.scrollable) errs.push("not scrollable");
-  if (r.cards.some((c) => c.w <= 0)) errs.push("invisible card");
-  const priv = new Set(data.areas.flatMap((a) => a.projects.filter((p) => p.private_only).map((p) => p.name)));
-  if (r.cards.some((c) => priv.has(c.name) === c.link)) errs.push("link/private mismatch");
-  console.log(label, `${r.cards.length} cards, ${r.chips} chips, snap=${r.snap}`, errs.length ? `FAIL ${errs}` : "OK");
-  if (errs.length) failed = true;
-  if (shot) {
-    await page.locator(".areas-section").scrollIntoViewIfNeeded();
-    await page.waitForTimeout(800);
-    await page.screenshot({ path: `${shot}-${label}.png` });
+  if (shot) await page.screenshot({ path: `${shot}-${label}.png` });
+  // select another area (the one with most projects), check swap + persistence across reload
+  const pick = data.areas.slice(1).sort((a, b) => b.projects.length - a.projects.length)[0];
+  if (pick) {
+    await page.click(`.area-chip[data-field="${pick.field}"]`);
+    await page.waitForTimeout(400);
+    r = await state(page);
+    if (JSON.stringify(r.cards.map((c) => c.name)) !== JSON.stringify(pick.projects.map((p) => p.name))) errs.push("tap does not swap cards");
+    if (shot) await page.screenshot({ path: `${shot}-${label}-${pick.field.replace(/\W+/g, "")}.png` });
+    await page.close();
+    page = await open(ctx);
+    r = await state(page);
+    if (!r.chips.find((c) => c.field === pick.field)?.active) errs.push("selection not persisted");
+    if (!r.barInView || !r.fullCardInView) errs.push("one screen after reload");
   }
+  console.log(label, `${r.chips.length} chips, ${r.cards.length} cards, snap=${r.snap}`, errs.length ? `FAIL ${errs.join("; ")}` : "OK");
+  if (errs.length) failed = true;
   await ctx.close();
 }
 await browser.close();

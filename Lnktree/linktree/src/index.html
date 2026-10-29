@@ -314,65 +314,15 @@
 
             <hr class="section-separator">
 
-            <!-- Areas Section Box (#1277): projects grouped by field, rendered by modules/areas.ts from
-                 src/data/areas.json (generated from the repo registry by scripts/areas-gen.mjs). -->
-            <section class="section-box areas-section" aria-label="Areas">
+            <!-- Areas + Projects Section Box (#1277, #1281): area icon bar + the selected area's project cards, one screen.
+                 Rendered by modules/areas.ts from src/data/areas.json (generated from the repo registry by scripts/areas-gen.mjs). -->
+            <section class="section-box areas-section" aria-label="Areas and Projects">
                 <h2 class="box-title">AREAS</h2>
-                <div class="areas-row" data-areas-row></div>
-            </section>
-
-            <hr class="section-separator">
-
-            <!-- Projects Section Box -->
-            <section class="section-box projects-section">
-                <h2 class="box-title">PROJECTS</h2>
-                <div class="carousel-row">
-                    <div class="swiper projects-swiper">
-                    <div class="swiper-wrapper">
-
-                        <!-- Slide: Home/Projects -->
-                        <div data-portal-mount="home"></div>
-
-                        <!-- Slide: Labs -->
-                        <div data-portal-mount="labs"></div>
-
-                        <!-- Slide: Suite -->
-                        <div data-portal-mount="suite"></div>
-
-                        <!-- Slide: Lab Tools -->
-                        <div data-portal-mount="lab-tools"></div>
-
-                        <!-- Slide: Ducks -->
-                        <div data-portal-mount="ducks"></div>
-
-                        <!-- Slide: Cloud -->
-                        <div data-portal-mount="cloud"></div>
-
-                        <!-- Slide: Portfolio -->
-                        <div data-portal-mount="portfolio"></div>
-
-                        <!-- Slide: Circus -->
-                        <div data-portal-mount="circus"></div>
-
-                        <!-- Slide: Structural -->
-                        <div data-portal-mount="structural"></div>
-
-                        <!-- Slide: PHI -->
-                        <div data-portal-mount="projects"></div>
-
-                        <!-- Slide: Repos -->
-                        <div data-portal-mount="repos"></div>
-
-                    </div>
-                    <!-- End Projects Swiper Wrapper -->
-
-                    <!-- Navigation -->
-                    <div class="swiper-button-prev projects-prev"></div>
-                    <div class="swiper-button-next projects-next"></div>
-                    </div>
-                <div class="swiper-pagination projects-pagination"></div>
+                <div class="areas-row" role="tablist" aria-label="Areas" data-areas-row></div>
+                <div class="area-projects" aria-label="Projects">
+                    <h3 class="area-projects__title">PROJECTS <span class="area-projects__area" data-area-label></span></h3>
+                    <div class="area-projects__row" data-area-projects></div>
                 </div>
-                <!-- End Projects Row -->
             </section>
 
             <hr class="section-separator">
@@ -449,6 +399,60 @@
                 <div class="swiper-pagination personal-pagination"></div>
                 </div>
                 <!-- End Personal Row -->
+            </section>
+
+            <hr class="section-separator">
+
+            <!-- xProjects Section Box (was Projects; moved below Personal Profiles in #1281) -->
+            <section class="section-box projects-section">
+                <h2 class="box-title">xPROJECTS</h2>
+                <div class="carousel-row">
+                    <div class="swiper projects-swiper">
+                    <div class="swiper-wrapper">
+
+                        <!-- Slide: Home/Projects -->
+                        <div data-portal-mount="home"></div>
+
+                        <!-- Slide: Labs -->
+                        <div data-portal-mount="labs"></div>
+
+                        <!-- Slide: Suite -->
+                        <div data-portal-mount="suite"></div>
+
+                        <!-- Slide: Lab Tools -->
+                        <div data-portal-mount="lab-tools"></div>
+
+                        <!-- Slide: Ducks -->
+                        <div data-portal-mount="ducks"></div>
+
+                        <!-- Slide: Cloud -->
+                        <div data-portal-mount="cloud"></div>
+
+                        <!-- Slide: Portfolio -->
+                        <div data-portal-mount="portfolio"></div>
+
+                        <!-- Slide: Circus -->
+                        <div data-portal-mount="circus"></div>
+
+                        <!-- Slide: Structural -->
+                        <div data-portal-mount="structural"></div>
+
+                        <!-- Slide: PHI -->
+                        <div data-portal-mount="projects"></div>
+
+                        <!-- Slide: Repos -->
+                        <div data-portal-mount="repos"></div>
+
+                    </div>
+                    <!-- End Projects Swiper Wrapper -->
+
+                    <!-- Navigation -->
+                    <div class="swiper-button-prev projects-prev"></div>
+                    <div class="swiper-button-next projects-next"></div>
+                    </div>
+                <div class="swiper-pagination projects-pagination"></div>
+                </div>
+                <!-- End Projects Row -->
             </section>
         </main>
 
