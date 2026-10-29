@@ -1,0 +1,92 @@
+// ==========================================================================
+// Areas (#1277): one horizontal snap-scrolling row of small project cards,
+// grouped by field with a label chip before each group. Cards reuse the
+// .link-section glass (and its light/terminal theme overrides).
+// ==========================================================================
+
+@use '../abstracts/variables' as *;
+
+.section-box.areas-section {
+    height: auto;
+    min-height: 0;
+}
+
+.areas-row {
+    display: flex;
+    align-items: stretch;
+    gap: 0.6rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    padding: 0.75rem 0.5rem 1rem;
+    scrollbar-width: thin;
+}
+
+.area-chip {
+    flex: 0 0 auto;
+    align-self: center;
+    scroll-snap-align: start;
+    padding: 0.35rem 0.8rem;
+    margin-left: 0.4rem;
+    border-radius: 999px;
+    border: 1px solid $glass-border;
+    background: rgba(33, 150, 243, 0.18);
+    color: $color-text;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+
+    &:first-child { margin-left: 0; }
+}
+
+.areas-row .link-section.area-card {
+    flex: 0 0 auto;
+    width: 8.5rem;
+    min-height: 6.5rem;
+    margin: 0;
+    padding: 0.75rem 0.7rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.25rem;
+    scroll-snap-align: start;
+    border-radius: $border-radius-sm;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+
+    &:hover { transform: translateY(-2px); }
+}
+
+.area-card__icon { font-size: 1.4rem; line-height: 1; }
+.area-card__name { font-weight: 700; font-size: 0.9rem; line-height: 1.2; word-break: break-word; }
+.area-card__count { font-size: 0.72rem; color: $color-text-muted; }
+
+// Stretched link: the whole card is the click target.
+.area-card__link {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    z-index: 1;
+
+    &:focus-visible { outline: 2px solid $color-accent; outline-offset: 2px; }
+}
+
+.area-card--private { opacity: 0.7; cursor: default; }
+
+body.light-theme {
+    .area-chip {
+        color: #0d3c61 !important;
+        background: rgba(33, 150, 243, 0.12) !important;
+        border-color: rgba(0, 0, 0, 0.1) !important;
+    }
+    .area-card__count { color: #555 !important; }
+}
+
+@media (min-width: 769px) {
+    .areas-row .link-section.area-card { width: 9.5rem; }
+}

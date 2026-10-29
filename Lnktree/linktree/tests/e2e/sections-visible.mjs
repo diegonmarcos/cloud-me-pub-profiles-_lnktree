@@ -8,7 +8,7 @@
 
 export async function checkSections(page, { settleMs = 4000 } = {}) {
   await page.waitForSelector('.section-box', { timeout: 30000 });
-  await page.waitForFunction(() => document.querySelectorAll('.section-box .swiper-initialized').length >= document.querySelectorAll('.section-box').length, null, { timeout: 30000 }).catch(() => undefined);
+  await page.waitForFunction(() => document.querySelectorAll('.section-box .swiper-initialized').length >= document.querySelectorAll('.section-box .swiper').length, null, { timeout: 30000 }).catch(() => undefined);
   await page.waitForTimeout(settleMs);
   const report = await page.evaluate(async () => {
     const out = [];

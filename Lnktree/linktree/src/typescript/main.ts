@@ -18,6 +18,7 @@ import { initScrollFab } from './modules/scrollFab';
 import { initLogcatViewer } from './modules/logcat';
 import { initCardSwiper } from './modules/cardSwiper';
 import { initPortalRender } from './modules/portal-render';
+import { initAreas } from './modules/areas';
 import { renderMenu } from './modules/menuRender';
 import { initZoomToggle } from './modules/zoomToggle';
 import { initThemeSwitcher } from './modules/themeSwitcher';
@@ -48,6 +49,7 @@ function initApp(): void {
   // Hydrate declarative portal slides FIRST so subsequent modules
   // (Swiper carousels in particular) see the rendered DOM.
   initPortalRender();
+  initAreas();
 
   // Initialize collapsible sections
   initCollapsibleSections();

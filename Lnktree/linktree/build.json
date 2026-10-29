@@ -14,6 +14,11 @@
       "limit": 100
     },
     {
+      "_doc": "#1277 Areas section: regenerate src/data/areas.json from the repo registry (_git-repos-master/repos-github.json; keeps the committed file if GitHub is unreachable), then run tests/areas.test.mjs (placement between Profiles and Projects, every registry project once, no private names). MUST run before data_wrap and esbuild, which inline the JSON.",
+      "mod": "npm",
+      "script": "areas"
+    },
+    {
       "_doc": "Wrap every *.json in src/data/ as a globalThis.PORTAL_DATA[<key>] companion (data-*.json.js). Engine: front-data-json-js-wrapper.sh.",
       "mod": "data_wrap",
       "dir": "src/data"

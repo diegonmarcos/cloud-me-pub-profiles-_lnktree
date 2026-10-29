@@ -15,7 +15,8 @@
     "dev": "npm run build:bundle",
     "watch:css": "sass --watch src_static/scss/main.scss:src_static/style.css",
     "watch:ts": "npm run dev:bundle",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "areas": "node scripts/areas-gen.mjs && node --test tests/areas.test.mjs"
   },
   "author": "Diego Nepomuceno Marcos",
   "license": "ISC",
