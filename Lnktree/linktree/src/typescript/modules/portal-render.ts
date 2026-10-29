@@ -9,6 +9,8 @@
 import projects from '../../data/projects.json';
 import personalProfiles from '../../data/personal-profiles.json';
 import professionalProfiles from '../../data/professional-profiles.json';
+import { el } from '../utils/dom';
+import { slideCard } from './card';
 
 // --------------------------------------------------------------------------
 // Schema
@@ -116,16 +118,6 @@ for (const s of SECTIONS) for (const sl of s.slides) {
 // DOM helpers
 // --------------------------------------------------------------------------
 
-function el<E extends HTMLElement = HTMLElement>(tag: string, attrs: Record<string, string> = {}, children: Array<HTMLElement | string> = []): E {
-  const node = document.createElement(tag) as E;
-  for (const [k, v] of Object.entries(attrs)) {
-    if (k === 'class') node.className = v;
-    else node.setAttribute(k, v);
-  }
-  for (const c of children) node.appendChild(typeof c === 'string' ? document.createTextNode(c) : c);
-  return node;
-}
-
 function iconImg(icon: string, alt = ''): HTMLElement {
   return el('img', {
     class: 'icon',
@@ -134,20 +126,6 @@ function iconImg(icon: string, alt = ''): HTMLElement {
     loading: 'lazy',
     decoding: 'async',
   });
-}
-
-// Featured tools/repos/venture images all sit below the fold, so they're
-// always lazy + low-priority. The above-the-fold hero is the active
-// card_swiper image — that path passes eager=true.
-function featuredImg(src: string, alt: string, eager: boolean): HTMLElement {
-  const attrs: Record<string, string> = { src, alt, class: 'featured-image', decoding: 'async' };
-  if (eager) {
-    attrs['fetchpriority'] = 'high';
-  } else {
-    attrs['loading'] = 'lazy';
-    attrs['fetchpriority'] = 'low';
-  }
-  return el('img', attrs);
 }
 
 // --------------------------------------------------------------------------
@@ -190,9 +168,7 @@ function renderColumn(col: Column): HTMLElement {
 }
 
 function renderToolsSlide(slide: SlideTools): HTMLElement {
-  const linkSection = el('div', { class: 'link-section' });
-  linkSection.appendChild(el('h2', { class: 'section-title' }, [slide.title]));
-  if (slide.image) linkSection.appendChild(featuredImg(slide.image.src, slide.image.alt ?? slide.title, false));
+  const card = slideCard({ title: slide.title, image: slide.image, body: false });
 
   // Multi-row layout: when ANY column carries `row`, group columns by row
   // and emit one .tools-dashboard per row with an auto-derived `--N`
@@ -250,8 +226,8 @@ function renderToolsSlide(slide: SlideTools): HTMLElement {
     }
     linksContainer.appendChild(row);
   }
-  linkSection.appendChild(linksContainer);
-  return el('div', { class: 'swiper-slide' }, [linkSection]);
+  card.section.appendChild(linksContainer);
+  return card.slide;
 }
 
 // --------------------------------------------------------------------------
@@ -347,11 +323,8 @@ function renderProfileSection(sec: ProfileSection): HTMLElement {
 // --------------------------------------------------------------------------
 
 function renderProfileCardSlide(slide: SlideProfileCard): HTMLElement {
-  const linkSection = el('div', { class: 'link-section' });
-  linkSection.appendChild(el('h2', { class: 'section-title' }, [slide.title]));
-  linkSection.appendChild(renderCardSwiper(slide.card_swiper));
-
-  const linksContainer = el('div', { class: 'links-container' });
+  const card = slideCard({ title: slide.title, media: renderCardSwiper(slide.card_swiper) });
+  const linksContainer = card.body!;
 
   if (slide.contact_icons) {
     if (slide.contact_icons.subsection) linksContainer.appendChild(el('h3', { class: 'subsection-title' }, [slide.contact_icons.subsection]));
@@ -390,9 +363,7 @@ function renderProfileCardSlide(slide: SlideProfileCard): HTMLElement {
     if (slide.collapsible.sections) for (const sec of slide.collapsible.sections) collapsibleContent.appendChild(renderProfileSection(sec));
     linksContainer.appendChild(collapsibleContent);
   }
-
-  linkSection.appendChild(linksContainer);
-  return el('div', { class: 'swiper-slide' }, [linkSection]);
+  return card.slide;
 }
 
 // --------------------------------------------------------------------------
@@ -400,10 +371,8 @@ function renderProfileCardSlide(slide: SlideProfileCard): HTMLElement {
 // --------------------------------------------------------------------------
 
 function renderReposSlide(slide: SlideRepos): HTMLElement {
-  const linkSection = el('div', { class: 'link-section' });
-  linkSection.appendChild(el('h2', { class: 'section-title' }, [slide.title]));
-  if (slide.image) linkSection.appendChild(featuredImg(slide.image.src, slide.image.alt ?? slide.title, false));
-  const linksContainer = el('div', { class: 'links-container' });
+  const card = slideCard({ title: slide.title, image: slide.image });
+  const linksContainer = card.body!;
   for (const lk of slide.top_links ?? []) linksContainer.appendChild(renderLinkAnchor(lk));
   // Multi-row layout: when ANY column carries `row`, group columns by row
   // and emit one .tools-dashboard per row with an auto-derived `--N`
@@ -433,8 +402,7 @@ function renderReposSlide(slide: SlideRepos): HTMLElement {
     for (const col of slide.columns) dashboard.appendChild(renderColumn(col));
     linksContainer.appendChild(dashboard);
   }
-  linkSection.appendChild(linksContainer);
-  return el('div', { class: 'swiper-slide' }, [linkSection]);
+  return card.slide;
 }
 
 // --------------------------------------------------------------------------
@@ -442,24 +410,15 @@ function renderReposSlide(slide: SlideRepos): HTMLElement {
 // --------------------------------------------------------------------------
 
 function renderVentureCardSlide(slide: SlideVentureCard): HTMLElement {
-  const linkSection = el('div', { class: 'link-section' });
-  linkSection.appendChild(el('h2', { class: 'section-title' }, [slide.title]));
-  if (slide.image) {
-    const imgSrc = typeof slide.image === 'string' ? slide.image : slide.image.src;
-    const imgAlt = typeof slide.image === 'string' ? slide.title : (slide.image.alt ?? slide.title);
-    linkSection.appendChild(featuredImg(imgSrc, imgAlt, false));
-  }
-  const linksContainer = el('div', { class: 'links-container' });
-  for (const sec of slide.sections) linksContainer.appendChild(renderProfileSection(sec));
-  if (slide.primary_link) linksContainer.appendChild(renderLinkAnchor(slide.primary_link));
-  linkSection.appendChild(linksContainer);
-  return el('div', { class: 'swiper-slide' }, [linkSection]);
+  const image = typeof slide.image === 'string' ? { src: slide.image } : slide.image;
+  const card = slideCard({ title: slide.title, image });
+  for (const sec of slide.sections) card.body!.appendChild(renderProfileSection(sec));
+  if (slide.primary_link) card.body!.appendChild(renderLinkAnchor(slide.primary_link));
+  return card.slide;
 }
 
 function renderTitleCardSlide(slide: SlideTitleCard): HTMLElement {
-  const linkSection = el('div', { class: 'link-section link-section--title-card' });
-  linkSection.appendChild(el('h2', { class: 'title-card__title' }, [slide.title]));
-  return el('div', { class: 'swiper-slide' }, [linkSection]);
+  return slideCard({ title: slide.title, titleClass: 'title-card__title', sectionClass: 'link-section--title-card', body: false }).slide;
 }
 
 // --------------------------------------------------------------------------
@@ -501,5 +460,3 @@ export function listSlideIds(): string[] {
   return out;
 }
 export function getSlide(id: string): Slide | undefined { return SLIDES_BY_ID.get(id); }
-export function listSectionIds(): string[] { return SECTIONS.map(s => s.section.id); }
-export function getSection(id: string): SectionCfg | undefined { return SECTIONS.find(s => s.section.id === id); }
