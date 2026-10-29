@@ -120,9 +120,15 @@
     margin-top: 0.2rem;
     padding-right: 0.2rem;
 
-    .tools-column { align-items: stretch; }
-    .tools-column__links { padding-left: 0; }
-    .tool-link { word-break: break-word; }
+    .tools-dashboard {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)) !important;
+        gap: 0.4rem 0.6rem;
+    }
+    .tools-column { align-items: stretch; min-width: 0; }
+    .tools-column__header { overflow-wrap: anywhere; }
+    .tools-column__links { padding-left: 0; min-width: 0; }
+    .tool-link { white-space: normal; overflow-wrap: anywhere; max-width: 100%; }
 }
 
 .area-project-card__sub {
