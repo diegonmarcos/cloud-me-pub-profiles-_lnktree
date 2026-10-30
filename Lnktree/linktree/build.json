@@ -14,7 +14,7 @@
       "limit": 100
     },
     {
-      "_doc": "#1277 Areas section: regenerate src/data/areas.json from the repo registry (_git-repos-master/repos-github.json; keeps the committed file if GitHub is unreachable), then run tests/areas.test.mjs (placement between Profiles and Projects, every registry project once, no private names). MUST run before data_wrap and esbuild, which inline the JSON.",
+      "_doc": "#1277 Areas section: regenerate src/data/areas.json from the repo registry (_git-repos-master/0_registry/repos-github.json; keeps the committed file if GitHub is unreachable), then run tests/areas.test.mjs (placement between Profiles and Projects, every registry project once, no private names). MUST run before data_wrap and esbuild, which inline the JSON.",
       "mod": "npm",
       "script": "areas"
     },
