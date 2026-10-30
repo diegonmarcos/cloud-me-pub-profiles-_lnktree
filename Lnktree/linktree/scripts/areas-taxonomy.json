@@ -1,0 +1,271 @@
+{
+  "_doc": "Declared taxonomy for scripts/areas-gen.mjs (#1308): how Areas cards turn the registry into xProjects-style tools slides (columns of icon + short-label application links). Data, not code: edit here, then node scripts/areas-gen.mjs. Icons are file names in src/public/icons/.",
+  "max_columns": 12,
+  "columns_per_row": 4,
+  "home_links_per_column": 6,
+  "label_max": 20,
+  "fallback_icon": "code.svg",
+  "repo_icon": "brand-github.svg",
+  "private_icon": "lock.svg",
+  "private_url": "https://github.com/diegonmarcos",
+  "android": {
+    "_doc": "cloudy-u-android apps (apk-manifest.json) grouped by category. Category order = the order of `categories`; an app not listed lands in OTHER. Label = `labels[name]`, else the name without its cloud- prefix, title-cased. URL = the cloud-web page when the manifest declares web.portal_slug, else the module folder on GitHub.",
+    "web_url": "https://diegonmarcos.github.io/cloud-web/apps/{slug}/",
+    "categories": {
+      "SYSTEM": [
+        "cloud-superapp",
+        "cloud-account",
+        "cloud-store",
+        "cloud-keyboard",
+        "cloud-search",
+        "cloud-nav"
+      ],
+      "PROD": [
+        "cloud-notes",
+        "cloud-office",
+        "cloud-writer",
+        "cloud-drive",
+        "cloud-calc",
+        "cloud-tasks",
+        "cloud-code"
+      ],
+      "COMMS": [
+        "cloud-mail",
+        "cloud-chat",
+        "cloud-matrix",
+        "cloud-contacts",
+        "cloud-dialer",
+        "cloud-news"
+      ],
+      "MEDIA": [
+        "cloud-camera",
+        "cloud-gallery",
+        "cloud-media-center",
+        "cloud-browser"
+      ],
+      "VAULT": [
+        "cloud-vault",
+        "cloud-wallet",
+        "cloud-me"
+      ],
+      "TOOLS": [
+        "cloud-myterminal",
+        "cloud-terminal-nix",
+        "cloud-terminal-termux"
+      ],
+      "AI": [
+        "cloud-tools-small-llms"
+      ],
+      "C3": [
+        "cloud-c3",
+        "cloud-c3-morpheus",
+        "cloud-c3-watchdog",
+        "cloud-c3-watchtower"
+      ]
+    },
+    "labels": {
+      "cloud-superapp": "SuperApp",
+      "cloud-c3": "C3",
+      "cloud-c3-morpheus": "Morpheus",
+      "cloud-c3-watchdog": "Watchdog",
+      "cloud-c3-watchtower": "Watchtower",
+      "cloud-me": "Me",
+      "cloud-media-center": "Media Center",
+      "cloud-myterminal": "My Terminal",
+      "cloud-terminal-nix": "Nix-on-Droid",
+      "cloud-terminal-termux": "Termux",
+      "cloud-tools-small-llms": "Small LLMs"
+    }
+  },
+  "category_icons": {
+    "SYSTEM": "settings.svg",
+    "PROD": "file-stack.svg",
+    "COMMS": "send.svg",
+    "MEDIA": "video.svg",
+    "VAULT": "lock.svg",
+    "TOOLS": "device-desktop.svg",
+    "AI": "brain.svg",
+    "C3": "rocket.svg",
+    "OTHER": "code.svg"
+  },
+  "app_icons": {
+    "_doc": "Per-app icon by keyword in the app's name (first match wins, case-insensitive); else its category icon; else fallback_icon.",
+    "rules": [
+      [
+        "^code$|code-server|ide$",
+        "code.svg"
+      ],
+      [
+        "my.?terminal|termux|konsole|shell",
+        "device-desktop.svg"
+      ],
+      [
+        "keyboard",
+        "device-mobile.svg"
+      ],
+      [
+        "superapp|store",
+        "device-mobile.svg"
+      ],
+      [
+        "account|me$|profile",
+        "user.svg"
+      ],
+      [
+        "browser|web|site|front|page",
+        "world.svg"
+      ],
+      [
+        "mail|smtp|maddy|stalwart",
+        "mail.svg"
+      ],
+      [
+        "chat|matrix|mattermost|element|whatsapp|send",
+        "send.svg"
+      ],
+      [
+        "contact|dialer",
+        "user.svg"
+      ],
+      [
+        "news|gdelt|feed",
+        "world.svg"
+      ],
+      [
+        "calc|sheet|grist",
+        "database.svg"
+      ],
+      [
+        "drive|file|notes|office|writer|docs|hedgedoc|etherpad|pad",
+        "file-stack.svg"
+      ],
+      [
+        "slide|reveal|gallery|photo",
+        "slideshow.svg"
+      ],
+      [
+        "camera|video|higgsfield|media",
+        "video.svg"
+      ],
+      [
+        "music|daw|mixer|audio|playlist",
+        "headphones.svg"
+      ],
+      [
+        "game|godot|unity|gdevelop|voxel|threlte|galaxy|circus|carto",
+        "device-gamepad.svg"
+      ],
+      [
+        "cad|bim|revit|struct|design|draw",
+        "brush.svg"
+      ],
+      [
+        "sim|sail|physics",
+        "bolt.svg"
+      ],
+      [
+        "fin|market|terminal|bank|bloomberg|blmbrg|quant|mqpm|ledger|wallet|corporate",
+        "ledger.svg"
+      ],
+      [
+        "ai|llm|agent|ml|brain|embedding|kg|hermes|claw|memory|intel",
+        "brain.svg"
+      ],
+      [
+        "mcp|api|proxy|bot",
+        "link.svg"
+      ],
+      [
+        "vault|sec|auth|token|crowdsec|caddy|oauth|lock|pass",
+        "lock.svg"
+      ],
+      [
+        "db|data|redis|postlite|sql|backup|borg|bup|gitea|lfs|cdn|assets",
+        "database.svg"
+      ],
+      [
+        "obs|observ|umami|matomo|ntfy|alert|report|watch|dagu",
+        "checklist.svg"
+      ],
+      [
+        "net|dns|wireguard|cloudflare|mesh|tunnel",
+        "world-longitude.svg"
+      ],
+      [
+        "store|keyboard|search|nav|map",
+        "brand-google-maps.svg"
+      ],
+      [
+        "konsole|shell|nix|termux|linux|desktop|tmux",
+        "device-desktop.svg"
+      ],
+      [
+        "c3|infra|ops|vps|fleet|cloud|builder|runner|deploy",
+        "rocket.svg"
+      ],
+      [
+        "cal|task|todo|plan",
+        "checklist.svg"
+      ],
+      [
+        "libft|algo|leet|push|printf|graphic|system|cyber",
+        "code.svg"
+      ],
+      [
+        "research|science|deep",
+        "bulb.svg"
+      ],
+      [
+        "book|learn|course|curriculum|42",
+        "books.svg"
+      ]
+    ]
+  },
+  "folders": {
+    "_doc": "How a repo's folder tree (registry 1_repo-folders-tree) becomes applications. Skipped: names matching `skip`. Containers (`containers`) are transparent: their children are the repo's apps. A folder WITHOUT a prefix, named with a capital letter, that holds kept sub-folders is a group: one column (its name), its sub-folders the apps (e.g. Game-Production -> Godot, Unity). Any other top-level folder is one app; its `prefix_` (e.g. infra-api_, user-ai_, da_) is dropped from the label and, when present, names its column. Apps with no group or prefix go in a column named after the repo. A repo with no kept folder is itself one app. Prefixes of one or two characters (a_, ca_, C2_) only shorten the label; their apps go in the repo column. A repo that is a single app is listed in a column named after its family. Matching is case-insensitive.",
+    "skip": "^(\\.|_|\\d|[a-z]0_|z_|tests?$|test_|dist|docs?$|scripts?$|licenses?$|build$|vendor$|node_modules$|data$|configs?$|nix$|lib$|libs$|assets$|public$|web$|src-tauri$|src_|tmp$|inc$|includes?$|obj$|log$|results$|.*_{4,})",
+    "containers": [
+      "src",
+      "apps",
+      "b_Projects",
+      "b_projects",
+      "packages",
+      "modules",
+      "Lnktree"
+    ],
+    "prefix": "^([a-z]{1,5}(?:-[a-z]{1,5})?|[A-Z]\\d|[a-z]-[A-Z][a-z]{2})_+(?=[A-Za-z0-9])",
+    "prefix_columns": {
+      "_doc": "Column header per folder prefix (lower-case key); a prefix not listed uses its own name upper-cased.",
+      "da": "UNIX APPS",
+      "db": "BROWSER & VAULT",
+      "ac": "APPS",
+      "aa": "APPS",
+      "ab": "LIBS",
+      "infra-api": "API & MCP",
+      "infra-ai": "AI",
+      "infra-net": "NETWORK",
+      "infra-obs": "OBSERV",
+      "infra-sec": "SECURITY",
+      "infra-dat": "DATA",
+      "infra-db": "DATA",
+      "infra-ops": "OPS",
+      "infra-bld": "OPS",
+      "infra-cloud": "NETWORK",
+      "user-ai": "AI",
+      "user-comm": "COMMS",
+      "user-prod": "PROD",
+      "user-media": "MEDIA",
+      "user-news": "COMMS",
+      "user-fin": "FIN",
+      "user-data": "DATA",
+      "user-vault": "SECURITY",
+      "user-web": "WEB",
+      "ab-mic": "SECURITY",
+      "bc-obs": "OBSERV",
+      "a-lfy": "LEAF.Y",
+      "b-nxs": "NEXUS.Z",
+      "c-stk": "STARK.X"
+    },
+    "repo_label_strip": "^(cloudy[-_](?:[a-z][-_]|db_)?|cloud-me-(?:pub|pvt)-(?:profiles-)?|lecole-42[-_](?:[a-z]+-)?|Fin-CM-|CG-|DeepSc-|Projects-|z-archived_)"
+  }
+}

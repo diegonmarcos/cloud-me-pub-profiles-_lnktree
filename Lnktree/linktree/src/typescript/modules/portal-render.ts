@@ -16,9 +16,9 @@ import { slideCard } from './card';
 // Schema
 // --------------------------------------------------------------------------
 
-interface Link        { label: string; url: string; icon: string; preview?: string; download?: string; }
+export interface Link { label: string; url: string; icon: string; preview?: string; download?: string; }
 interface IconItem    { url: string; title?: string; label?: string; icon: string; preview?: string; }
-interface Column      { header: string; header_url?: string | null; links: Link[]; row?: number; }
+export interface Column { header: string; header_url?: string | null; links: Link[]; row?: number; }
 // `primary_link` is the single large button a tools card has always had.
 // `primary_links` adds any number BELOW it, same styling — the Cloud card
 // needs two (the Cloud portal and Cloud Mobile). Kept as a separate optional
@@ -27,8 +27,11 @@ interface Column      { header: string; header_url?: string | null; links: Link[
 interface ToolsExtras { primary_link?: Link; primary_links?: Link[]; profile_icons?: IconItem[]; }
 
 interface RowHeader   { title?: string; }
-interface SlideTools {
+export interface SlideTools {
   id: string; kind: 'tools'; title: string;
+  // Areas cards (#1308) are tools slides too: `code` is the outline code shown quietly before the title
+  // (.card-code), `tagline` one optional line under the banner, `data` data-* attributes on .link-section.
+  code?: string; tagline?: string; data?: Record<string, string>;
   image?: { src: string; alt?: string };
   dashboard_modifier?: string;
   columns: Column[];
@@ -167,8 +170,15 @@ function renderColumn(col: Column): HTMLElement {
   return el('div', { class: 'tools-column' }, [headerEl, linksWrap, toggle, collapsibleContent]);
 }
 
-function renderToolsSlide(slide: SlideTools): HTMLElement {
-  const card = slideCard({ title: slide.title, image: slide.image, body: false });
+// The ONE tools-card renderer: xProjects slides (projects.json) and every Areas card (areas.ts) go through it.
+export function renderToolsSlide(slide: SlideTools): HTMLElement {
+  let title: string | Node = slide.title;
+  if (slide.code) {
+    const f = document.createDocumentFragment();
+    f.append(el('span', { class: 'card-code' }, [slide.code]), slide.title);
+    title = f;
+  }
+  const card = slideCard({ title, image: slide.image, body: false, ...(slide.data ? { data: slide.data } : {}) });
 
   // Multi-row layout: when ANY column carries `row`, group columns by row
   // and emit one .tools-dashboard per row with an auto-derived `--N`
@@ -176,6 +186,7 @@ function renderToolsSlide(slide: SlideTools): HTMLElement {
   // `row`, fall back to the legacy single-dashboard mode honoring the
   // slide's explicit `dashboard_modifier`.
   const linksContainer = el('div', { class: 'links-container' });
+  if (slide.tagline) linksContainer.appendChild(el('h3', { class: 'subsection-title' }, [slide.tagline]));
   const hasRows = slide.columns.some(c => typeof c.row === 'number');
   if (hasRows) {
     const byRow = new Map<number, Column[]>();
