@@ -2636,7 +2636,7 @@
             "header": "MICRO-ASSET-MANAGEMENT",
             "links": [
               {
-                "label": "Capital-Micro-Asset-Management",
+                "label": "Capital-Micro-Asset…",
                 "url": "https://github.com/diegonmarcos/Capital-Micro-Asset-Management",
                 "icon": "brand-github.svg"
               }
@@ -2731,7 +2731,7 @@
               },
               "columns": [
                 {
-                  "header": "MQPM",
+                  "header": "CAPITAL MACRO CENTR…",
                   "links": [
                     {
                       "label": "central_bank",
@@ -2772,7 +2772,7 @@
                   "header": "CORPORATE",
                   "links": [
                     {
-                      "label": "Capital-Micro-Asset-Management",
+                      "label": "Capital-Micro-Asset…",
                       "url": "https://github.com/diegonmarcos/Capital-Micro-Asset-Management",
                       "icon": "brand-github.svg"
                     }
@@ -2802,7 +2802,7 @@
                   "header": "CORPORATE",
                   "links": [
                     {
-                      "label": "Capital-Micro-Asset-Management",
+                      "label": "Capital-Micro-Asset…",
                       "url": "https://github.com/diegonmarcos/Capital-Micro-Asset-Management",
                       "icon": "brand-github.svg"
                     }
@@ -2887,7 +2887,7 @@
               },
               "columns": [
                 {
-                  "header": "BLMBRG",
+                  "header": "CAPITAL STACK FIN T…",
                   "links": [
                     {
                       "label": "CentralBank",
@@ -2960,7 +2960,7 @@
             "header": "DEEPXTECH",
             "links": [
               {
-                "label": "X",
+                "label": "HardTech-DeepXTech",
                 "url": "https://github.com/diegonmarcos/HardTech-DeepXTech",
                 "icon": "brand-github.svg"
               }
@@ -3063,7 +3063,7 @@
                   "header": "SAILYTICS",
                   "links": [
                     {
-                      "label": "X",
+                      "label": "HardTech-DeepXTech",
                       "url": "https://github.com/diegonmarcos/HardTech-DeepXTech",
                       "icon": "brand-github.svg"
                     }
@@ -3093,7 +3093,7 @@
                   "header": "SAILYTICS",
                   "links": [
                     {
-                      "label": "X",
+                      "label": "HardTech-DeepXTech",
                       "url": "https://github.com/diegonmarcos/HardTech-DeepXTech",
                       "icon": "brand-github.svg"
                     }
@@ -4316,37 +4316,6 @@
             "row": 0
           },
           {
-            "header": "LABTOOLS",
-            "links": [
-              {
-                "label": "C3",
-                "url": "https://github.com/diegonmarcos/z-archived_Projects-labtools/tree/main/a-Lfy_C3",
-                "icon": "rocket.svg"
-              },
-              {
-                "label": "CG-Zirkus",
-                "url": "https://github.com/diegonmarcos/z-archived_Projects-labtools/tree/main/a-Lfy_CG-Zirkus",
-                "icon": "code.svg"
-              },
-              {
-                "label": "Blmmbrg",
-                "url": "https://github.com/diegonmarcos/z-archived_Projects-labtools/tree/main/b-Nxs_Blmmbrg",
-                "icon": "code.svg"
-              },
-              {
-                "label": "PA",
-                "url": "https://github.com/diegonmarcos/z-archived_Projects-labtools/tree/main/b-Nxs_PA",
-                "icon": "code.svg"
-              },
-              {
-                "label": "DsX",
-                "url": "https://github.com/diegonmarcos/z-archived_Projects-labtools/tree/main/c-Stk_DsX",
-                "icon": "code.svg"
-              }
-            ],
-            "row": 0
-          },
-          {
             "header": "DUCKPENG",
             "links": [
               {
@@ -4437,134 +4406,14 @@
         },
         {
           "code": "6.2",
-          "name": "Labtools",
-          "icon": "🧪",
+          "name": "DuckPeng",
+          "icon": "🦆",
           "repos": 1,
           "cards": [
             {
               "id": "area-6.2.0",
               "kind": "tools",
               "code": "6.2.0",
-              "title": "🧪 Labtools",
-              "image": {
-                "src": "public/images/banners/lab-tools.gif",
-                "alt": "🧪 Labtools"
-              },
-              "columns": [
-                {
-                  "header": "LABTOOLS",
-                  "links": [
-                    {
-                      "label": "C3",
-                      "url": "https://github.com/diegonmarcos/z-archived_Projects-labtools/tree/main/a-Lfy_C3",
-                      "icon": "rocket.svg"
-                    },
-                    {
-                      "label": "CG-Zirkus",
-                      "url": "https://github.com/diegonmarcos/z-archived_Projects-labtools/tree/main/a-Lfy_CG-Zirkus",
-                      "icon": "code.svg"
-                    },
-                    {
-                      "label": "Blmmbrg",
-                      "url": "https://github.com/diegonmarcos/z-archived_Projects-labtools/tree/main/b-Nxs_Blmmbrg",
-                      "icon": "code.svg"
-                    },
-                    {
-                      "label": "PA",
-                      "url": "https://github.com/diegonmarcos/z-archived_Projects-labtools/tree/main/b-Nxs_PA",
-                      "icon": "code.svg"
-                    },
-                    {
-                      "label": "DsX",
-                      "url": "https://github.com/diegonmarcos/z-archived_Projects-labtools/tree/main/c-Stk_DsX",
-                      "icon": "code.svg"
-                    }
-                  ],
-                  "row": 0
-                }
-              ],
-              "data": {
-                "kind": "home",
-                "card": "Labtools",
-                "project": "Labtools",
-                "field": "Projects",
-                "code": "6.2.0"
-              }
-            },
-            {
-              "id": "area-6.2.1",
-              "kind": "tools",
-              "code": "6.2.1",
-              "title": "Labtools",
-              "image": {
-                "src": "public/images/banners/lab-tools.gif",
-                "alt": "Labtools"
-              },
-              "columns": [
-                {
-                  "header": "LEAF.Y",
-                  "links": [
-                    {
-                      "label": "C3",
-                      "url": "https://github.com/diegonmarcos/z-archived_Projects-labtools/tree/main/a-Lfy_C3",
-                      "icon": "rocket.svg"
-                    },
-                    {
-                      "label": "CG-Zirkus",
-                      "url": "https://github.com/diegonmarcos/z-archived_Projects-labtools/tree/main/a-Lfy_CG-Zirkus",
-                      "icon": "code.svg"
-                    }
-                  ],
-                  "row": 0
-                },
-                {
-                  "header": "NEXUS.Z",
-                  "links": [
-                    {
-                      "label": "Blmmbrg",
-                      "url": "https://github.com/diegonmarcos/z-archived_Projects-labtools/tree/main/b-Nxs_Blmmbrg",
-                      "icon": "code.svg"
-                    },
-                    {
-                      "label": "PA",
-                      "url": "https://github.com/diegonmarcos/z-archived_Projects-labtools/tree/main/b-Nxs_PA",
-                      "icon": "code.svg"
-                    }
-                  ],
-                  "row": 0
-                },
-                {
-                  "header": "STARK.X",
-                  "links": [
-                    {
-                      "label": "DsX",
-                      "url": "https://github.com/diegonmarcos/z-archived_Projects-labtools/tree/main/c-Stk_DsX",
-                      "icon": "code.svg"
-                    }
-                  ],
-                  "row": 0
-                }
-              ],
-              "data": {
-                "kind": "family",
-                "card": "Labtools",
-                "project": "Labtools",
-                "field": "Projects",
-                "code": "6.2.1"
-              }
-            }
-          ]
-        },
-        {
-          "code": "6.3",
-          "name": "DuckPeng",
-          "icon": "🦆",
-          "repos": 1,
-          "cards": [
-            {
-              "id": "area-6.3.0",
-              "kind": "tools",
-              "code": "6.3.0",
               "title": "🦆 DuckPeng",
               "image": {
                 "src": "public/images/banners/lab-tools.gif",
@@ -4588,7 +4437,7 @@
                 "card": "DuckPeng",
                 "project": "DuckPeng",
                 "field": "Projects",
-                "code": "6.3.0"
+                "code": "6.2.0"
               }
             }
           ]
