@@ -2626,7 +2626,7 @@
             "links": [
               {
                 "label": "central_bank",
-                "url": "https://github.com/diegonmarcos/Fin-CM-mqpm/tree/main/src/central_bank",
+                "url": "https://github.com/diegonmarcos/Capital-Macro-Central-Bank/tree/main/src/central_bank",
                 "icon": "ledger.svg"
               }
             ],
@@ -2636,8 +2636,8 @@
             "header": "MICRO-ASSET-MANAGEMENT",
             "links": [
               {
-                "label": "Fin-Corporate",
-                "url": "https://github.com/diegonmarcos/Fin-Corporate",
+                "label": "Capital-Micro-Asset-Management",
+                "url": "https://github.com/diegonmarcos/Capital-Micro-Asset-Management",
                 "icon": "brand-github.svg"
               }
             ],
@@ -2648,27 +2648,27 @@
             "links": [
               {
                 "label": "CentralBank",
-                "url": "https://github.com/diegonmarcos/Fin-CM-Blmbrg/tree/main/src/CentralBank",
+                "url": "https://github.com/diegonmarcos/Capital-Stack-Fin-Terminal/tree/main/src/CentralBank",
                 "icon": "ledger.svg"
               },
               {
                 "label": "DataScience-ML-Term…",
-                "url": "https://github.com/diegonmarcos/Fin-CM-Blmbrg/tree/main/src/DataScience-ML-Terminal",
+                "url": "https://github.com/diegonmarcos/Capital-Stack-Fin-Terminal/tree/main/src/DataScience-ML-Terminal",
                 "icon": "ledger.svg"
               },
               {
                 "label": "Fin-Terminal",
-                "url": "https://github.com/diegonmarcos/Fin-CM-Blmbrg/tree/main/src/Fin-Terminal",
+                "url": "https://github.com/diegonmarcos/Capital-Stack-Fin-Terminal/tree/main/src/Fin-Terminal",
                 "icon": "ledger.svg"
               },
               {
                 "label": "GDELT-News",
-                "url": "https://github.com/diegonmarcos/Fin-CM-Blmbrg/tree/main/src/GDELT-News",
+                "url": "https://github.com/diegonmarcos/Capital-Stack-Fin-Terminal/tree/main/src/GDELT-News",
                 "icon": "world.svg"
               },
               {
                 "label": "MarketWatch",
-                "url": "https://github.com/diegonmarcos/Fin-CM-Blmbrg/tree/main/src/MarketWatch",
+                "url": "https://github.com/diegonmarcos/Capital-Stack-Fin-Terminal/tree/main/src/MarketWatch",
                 "icon": "ledger.svg"
               }
             ],
@@ -2705,7 +2705,7 @@
                   "links": [
                     {
                       "label": "central_bank",
-                      "url": "https://github.com/diegonmarcos/Fin-CM-mqpm/tree/main/src/central_bank",
+                      "url": "https://github.com/diegonmarcos/Capital-Macro-Central-Bank/tree/main/src/central_bank",
                       "icon": "ledger.svg"
                     }
                   ],
@@ -2735,7 +2735,7 @@
                   "links": [
                     {
                       "label": "central_bank",
-                      "url": "https://github.com/diegonmarcos/Fin-CM-mqpm/tree/main/src/central_bank",
+                      "url": "https://github.com/diegonmarcos/Capital-Macro-Central-Bank/tree/main/src/central_bank",
                       "icon": "ledger.svg"
                     }
                   ],
@@ -2772,8 +2772,8 @@
                   "header": "CORPORATE",
                   "links": [
                     {
-                      "label": "Fin-Corporate",
-                      "url": "https://github.com/diegonmarcos/Fin-Corporate",
+                      "label": "Capital-Micro-Asset-Management",
+                      "url": "https://github.com/diegonmarcos/Capital-Micro-Asset-Management",
                       "icon": "brand-github.svg"
                     }
                   ],
@@ -2802,8 +2802,8 @@
                   "header": "CORPORATE",
                   "links": [
                     {
-                      "label": "Fin-Corporate",
-                      "url": "https://github.com/diegonmarcos/Fin-Corporate",
+                      "label": "Capital-Micro-Asset-Management",
+                      "url": "https://github.com/diegonmarcos/Capital-Micro-Asset-Management",
                       "icon": "brand-github.svg"
                     }
                   ],
@@ -2841,27 +2841,27 @@
                   "links": [
                     {
                       "label": "CentralBank",
-                      "url": "https://github.com/diegonmarcos/Fin-CM-Blmbrg/tree/main/src/CentralBank",
+                      "url": "https://github.com/diegonmarcos/Capital-Stack-Fin-Terminal/tree/main/src/CentralBank",
                       "icon": "ledger.svg"
                     },
                     {
                       "label": "DataScience-ML-Term…",
-                      "url": "https://github.com/diegonmarcos/Fin-CM-Blmbrg/tree/main/src/DataScience-ML-Terminal",
+                      "url": "https://github.com/diegonmarcos/Capital-Stack-Fin-Terminal/tree/main/src/DataScience-ML-Terminal",
                       "icon": "ledger.svg"
                     },
                     {
                       "label": "Fin-Terminal",
-                      "url": "https://github.com/diegonmarcos/Fin-CM-Blmbrg/tree/main/src/Fin-Terminal",
+                      "url": "https://github.com/diegonmarcos/Capital-Stack-Fin-Terminal/tree/main/src/Fin-Terminal",
                       "icon": "ledger.svg"
                     },
                     {
                       "label": "GDELT-News",
-                      "url": "https://github.com/diegonmarcos/Fin-CM-Blmbrg/tree/main/src/GDELT-News",
+                      "url": "https://github.com/diegonmarcos/Capital-Stack-Fin-Terminal/tree/main/src/GDELT-News",
                       "icon": "world.svg"
                     },
                     {
                       "label": "MarketWatch",
-                      "url": "https://github.com/diegonmarcos/Fin-CM-Blmbrg/tree/main/src/MarketWatch",
+                      "url": "https://github.com/diegonmarcos/Capital-Stack-Fin-Terminal/tree/main/src/MarketWatch",
                       "icon": "ledger.svg"
                     }
                   ],
@@ -2891,27 +2891,27 @@
                   "links": [
                     {
                       "label": "CentralBank",
-                      "url": "https://github.com/diegonmarcos/Fin-CM-Blmbrg/tree/main/src/CentralBank",
+                      "url": "https://github.com/diegonmarcos/Capital-Stack-Fin-Terminal/tree/main/src/CentralBank",
                       "icon": "ledger.svg"
                     },
                     {
                       "label": "DataScience-ML-Term…",
-                      "url": "https://github.com/diegonmarcos/Fin-CM-Blmbrg/tree/main/src/DataScience-ML-Terminal",
+                      "url": "https://github.com/diegonmarcos/Capital-Stack-Fin-Terminal/tree/main/src/DataScience-ML-Terminal",
                       "icon": "ledger.svg"
                     },
                     {
                       "label": "Fin-Terminal",
-                      "url": "https://github.com/diegonmarcos/Fin-CM-Blmbrg/tree/main/src/Fin-Terminal",
+                      "url": "https://github.com/diegonmarcos/Capital-Stack-Fin-Terminal/tree/main/src/Fin-Terminal",
                       "icon": "ledger.svg"
                     },
                     {
                       "label": "GDELT-News",
-                      "url": "https://github.com/diegonmarcos/Fin-CM-Blmbrg/tree/main/src/GDELT-News",
+                      "url": "https://github.com/diegonmarcos/Capital-Stack-Fin-Terminal/tree/main/src/GDELT-News",
                       "icon": "world.svg"
                     },
                     {
                       "label": "MarketWatch",
-                      "url": "https://github.com/diegonmarcos/Fin-CM-Blmbrg/tree/main/src/MarketWatch",
+                      "url": "https://github.com/diegonmarcos/Capital-Stack-Fin-Terminal/tree/main/src/MarketWatch",
                       "icon": "ledger.svg"
                     }
                   ],
@@ -2950,7 +2950,7 @@
             "links": [
               {
                 "label": "Structural-Designer",
-                "url": "https://github.com/diegonmarcos/CAD-Simulators/tree/main/Structural-Designer",
+                "url": "https://github.com/diegonmarcos/HardTech-Stack-CAD-Simulators/tree/main/Structural-Designer",
                 "icon": "brush.svg"
               }
             ],
@@ -2961,7 +2961,7 @@
             "links": [
               {
                 "label": "X",
-                "url": "https://github.com/diegonmarcos/DeepSc-X",
+                "url": "https://github.com/diegonmarcos/HardTech-DeepXTech",
                 "icon": "brand-github.svg"
               }
             ],
@@ -2972,22 +2972,22 @@
             "links": [
               {
                 "label": "sailytics",
-                "url": "https://github.com/diegonmarcos/CAD-Simulators/tree/main/Simulators/sailytics",
+                "url": "https://github.com/diegonmarcos/HardTech-Stack-CAD-Simulators/tree/main/Simulators/sailytics",
                 "icon": "bolt.svg"
               },
               {
                 "label": "OpenBIM",
-                "url": "https://github.com/diegonmarcos/CAD-Simulators/tree/main/Structural-Designer/OpenBIM",
+                "url": "https://github.com/diegonmarcos/HardTech-Stack-CAD-Simulators/tree/main/Structural-Designer/OpenBIM",
                 "icon": "brush.svg"
               },
               {
                 "label": "OpenCAD",
-                "url": "https://github.com/diegonmarcos/CAD-Simulators/tree/main/Structural-Designer/OpenCAD",
+                "url": "https://github.com/diegonmarcos/HardTech-Stack-CAD-Simulators/tree/main/Structural-Designer/OpenCAD",
                 "icon": "brush.svg"
               },
               {
                 "label": "OpenRevit",
-                "url": "https://github.com/diegonmarcos/CAD-Simulators/tree/main/Structural-Designer/OpenRevit",
+                "url": "https://github.com/diegonmarcos/HardTech-Stack-CAD-Simulators/tree/main/Structural-Designer/OpenRevit",
                 "icon": "brush.svg"
               }
             ],
@@ -3026,7 +3026,7 @@
                   "links": [
                     {
                       "label": "Structural-Designer",
-                      "url": "https://github.com/diegonmarcos/CAD-Simulators/tree/main/Structural-Designer",
+                      "url": "https://github.com/diegonmarcos/HardTech-Stack-CAD-Simulators/tree/main/Structural-Designer",
                       "icon": "brush.svg"
                     }
                   ],
@@ -3064,7 +3064,7 @@
                   "links": [
                     {
                       "label": "X",
-                      "url": "https://github.com/diegonmarcos/DeepSc-X",
+                      "url": "https://github.com/diegonmarcos/HardTech-DeepXTech",
                       "icon": "brand-github.svg"
                     }
                   ],
@@ -3094,7 +3094,7 @@
                   "links": [
                     {
                       "label": "X",
-                      "url": "https://github.com/diegonmarcos/DeepSc-X",
+                      "url": "https://github.com/diegonmarcos/HardTech-DeepXTech",
                       "icon": "brand-github.svg"
                     }
                   ],
@@ -3132,22 +3132,22 @@
                   "links": [
                     {
                       "label": "sailytics",
-                      "url": "https://github.com/diegonmarcos/CAD-Simulators/tree/main/Simulators/sailytics",
+                      "url": "https://github.com/diegonmarcos/HardTech-Stack-CAD-Simulators/tree/main/Simulators/sailytics",
                       "icon": "bolt.svg"
                     },
                     {
                       "label": "OpenBIM",
-                      "url": "https://github.com/diegonmarcos/CAD-Simulators/tree/main/Structural-Designer/OpenBIM",
+                      "url": "https://github.com/diegonmarcos/HardTech-Stack-CAD-Simulators/tree/main/Structural-Designer/OpenBIM",
                       "icon": "brush.svg"
                     },
                     {
                       "label": "OpenCAD",
-                      "url": "https://github.com/diegonmarcos/CAD-Simulators/tree/main/Structural-Designer/OpenCAD",
+                      "url": "https://github.com/diegonmarcos/HardTech-Stack-CAD-Simulators/tree/main/Structural-Designer/OpenCAD",
                       "icon": "brush.svg"
                     },
                     {
                       "label": "OpenRevit",
-                      "url": "https://github.com/diegonmarcos/CAD-Simulators/tree/main/Structural-Designer/OpenRevit",
+                      "url": "https://github.com/diegonmarcos/HardTech-Stack-CAD-Simulators/tree/main/Structural-Designer/OpenRevit",
                       "icon": "brush.svg"
                     }
                   ],
@@ -3177,7 +3177,7 @@
                   "links": [
                     {
                       "label": "sailytics",
-                      "url": "https://github.com/diegonmarcos/CAD-Simulators/tree/main/Simulators/sailytics",
+                      "url": "https://github.com/diegonmarcos/HardTech-Stack-CAD-Simulators/tree/main/Simulators/sailytics",
                       "icon": "bolt.svg"
                     }
                   ],
@@ -3188,17 +3188,17 @@
                   "links": [
                     {
                       "label": "OpenBIM",
-                      "url": "https://github.com/diegonmarcos/CAD-Simulators/tree/main/Structural-Designer/OpenBIM",
+                      "url": "https://github.com/diegonmarcos/HardTech-Stack-CAD-Simulators/tree/main/Structural-Designer/OpenBIM",
                       "icon": "brush.svg"
                     },
                     {
                       "label": "OpenCAD",
-                      "url": "https://github.com/diegonmarcos/CAD-Simulators/tree/main/Structural-Designer/OpenCAD",
+                      "url": "https://github.com/diegonmarcos/HardTech-Stack-CAD-Simulators/tree/main/Structural-Designer/OpenCAD",
                       "icon": "brush.svg"
                     },
                     {
                       "label": "OpenRevit",
-                      "url": "https://github.com/diegonmarcos/CAD-Simulators/tree/main/Structural-Designer/OpenRevit",
+                      "url": "https://github.com/diegonmarcos/HardTech-Stack-CAD-Simulators/tree/main/Structural-Designer/OpenRevit",
                       "icon": "brush.svg"
                     }
                   ],
@@ -4320,27 +4320,27 @@
             "links": [
               {
                 "label": "C3",
-                "url": "https://github.com/diegonmarcos/Projects-labtools/tree/main/a-Lfy_C3",
+                "url": "https://github.com/diegonmarcos/z-archived_Projects-labtools/tree/main/a-Lfy_C3",
                 "icon": "rocket.svg"
               },
               {
                 "label": "CG-Zirkus",
-                "url": "https://github.com/diegonmarcos/Projects-labtools/tree/main/a-Lfy_CG-Zirkus",
+                "url": "https://github.com/diegonmarcos/z-archived_Projects-labtools/tree/main/a-Lfy_CG-Zirkus",
                 "icon": "code.svg"
               },
               {
                 "label": "Blmmbrg",
-                "url": "https://github.com/diegonmarcos/Projects-labtools/tree/main/b-Nxs_Blmmbrg",
+                "url": "https://github.com/diegonmarcos/z-archived_Projects-labtools/tree/main/b-Nxs_Blmmbrg",
                 "icon": "code.svg"
               },
               {
                 "label": "PA",
-                "url": "https://github.com/diegonmarcos/Projects-labtools/tree/main/b-Nxs_PA",
+                "url": "https://github.com/diegonmarcos/z-archived_Projects-labtools/tree/main/b-Nxs_PA",
                 "icon": "code.svg"
               },
               {
                 "label": "DsX",
-                "url": "https://github.com/diegonmarcos/Projects-labtools/tree/main/c-Stk_DsX",
+                "url": "https://github.com/diegonmarcos/z-archived_Projects-labtools/tree/main/c-Stk_DsX",
                 "icon": "code.svg"
               }
             ],
@@ -4456,27 +4456,27 @@
                   "links": [
                     {
                       "label": "C3",
-                      "url": "https://github.com/diegonmarcos/Projects-labtools/tree/main/a-Lfy_C3",
+                      "url": "https://github.com/diegonmarcos/z-archived_Projects-labtools/tree/main/a-Lfy_C3",
                       "icon": "rocket.svg"
                     },
                     {
                       "label": "CG-Zirkus",
-                      "url": "https://github.com/diegonmarcos/Projects-labtools/tree/main/a-Lfy_CG-Zirkus",
+                      "url": "https://github.com/diegonmarcos/z-archived_Projects-labtools/tree/main/a-Lfy_CG-Zirkus",
                       "icon": "code.svg"
                     },
                     {
                       "label": "Blmmbrg",
-                      "url": "https://github.com/diegonmarcos/Projects-labtools/tree/main/b-Nxs_Blmmbrg",
+                      "url": "https://github.com/diegonmarcos/z-archived_Projects-labtools/tree/main/b-Nxs_Blmmbrg",
                       "icon": "code.svg"
                     },
                     {
                       "label": "PA",
-                      "url": "https://github.com/diegonmarcos/Projects-labtools/tree/main/b-Nxs_PA",
+                      "url": "https://github.com/diegonmarcos/z-archived_Projects-labtools/tree/main/b-Nxs_PA",
                       "icon": "code.svg"
                     },
                     {
                       "label": "DsX",
-                      "url": "https://github.com/diegonmarcos/Projects-labtools/tree/main/c-Stk_DsX",
+                      "url": "https://github.com/diegonmarcos/z-archived_Projects-labtools/tree/main/c-Stk_DsX",
                       "icon": "code.svg"
                     }
                   ],
@@ -4506,12 +4506,12 @@
                   "links": [
                     {
                       "label": "C3",
-                      "url": "https://github.com/diegonmarcos/Projects-labtools/tree/main/a-Lfy_C3",
+                      "url": "https://github.com/diegonmarcos/z-archived_Projects-labtools/tree/main/a-Lfy_C3",
                       "icon": "rocket.svg"
                     },
                     {
                       "label": "CG-Zirkus",
-                      "url": "https://github.com/diegonmarcos/Projects-labtools/tree/main/a-Lfy_CG-Zirkus",
+                      "url": "https://github.com/diegonmarcos/z-archived_Projects-labtools/tree/main/a-Lfy_CG-Zirkus",
                       "icon": "code.svg"
                     }
                   ],
@@ -4522,12 +4522,12 @@
                   "links": [
                     {
                       "label": "Blmmbrg",
-                      "url": "https://github.com/diegonmarcos/Projects-labtools/tree/main/b-Nxs_Blmmbrg",
+                      "url": "https://github.com/diegonmarcos/z-archived_Projects-labtools/tree/main/b-Nxs_Blmmbrg",
                       "icon": "code.svg"
                     },
                     {
                       "label": "PA",
-                      "url": "https://github.com/diegonmarcos/Projects-labtools/tree/main/b-Nxs_PA",
+                      "url": "https://github.com/diegonmarcos/z-archived_Projects-labtools/tree/main/b-Nxs_PA",
                       "icon": "code.svg"
                     }
                   ],
@@ -4538,7 +4538,7 @@
                   "links": [
                     {
                       "label": "DsX",
-                      "url": "https://github.com/diegonmarcos/Projects-labtools/tree/main/c-Stk_DsX",
+                      "url": "https://github.com/diegonmarcos/z-archived_Projects-labtools/tree/main/c-Stk_DsX",
                       "icon": "code.svg"
                     }
                   ],

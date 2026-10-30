@@ -121,7 +121,7 @@ test("Cloudy: home card = its families with their top apps; Android card = the f
   for (const want of ["OpenCAD", "OpenRevit", "OpenBIM"]) assert.ok(cad.includes(want), `CAD lists ${want}`);
   const st = proj("HardTech", "Structural");
   assert.equal(st.planned, true); assert.equal(st.cards.length, 1); assert.equal(st.cards[0].tagline, "planned");
-  assert.equal(st.cards[0].columns[0].links[0].url, "https://github.com/diegonmarcos/CAD-Simulators/tree/main/Structural-Designer");
+  assert.equal(st.cards[0].columns[0].links[0].url, "https://github.com/diegonmarcos/HardTech-Stack-CAD-Simulators/tree/main/Structural-Designer");
   for (const f of ["Capital", "HardTech"]) assert.ok(areas.areas.find((a) => a.field === f).home, `${f} area home card`);
 });
 
