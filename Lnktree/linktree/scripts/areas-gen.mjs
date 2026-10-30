@@ -229,7 +229,7 @@ export async function loadSources() {
   const registry = process.env.REPOS_GITHUB_JSON ? JSON.parse(fs.readFileSync(process.env.REPOS_GITHUB_JSON, "utf8")) : await getJson(REGISTRY_URL);
   const apps = {};
   for (const [repo, file] of Object.entries(APP_MANIFESTS)) {
-    if (registry.repos.find((r) => r.name === repo)?.apps?.length) continue; // the registry carries them
+    if (registry.repos.find((r) => r.name === repo)?.apps?.some((a) => a.module)) continue; // the registry carries them (apps with a module; {name,path} entries are the ad_ family, not the fleet manifest)
     const m = process.env.AREAS_APPS_DIR
       ? JSON.parse(fs.readFileSync(path.join(process.env.AREAS_APPS_DIR, `${repo}.json`), "utf8"))
       : await getJson(`https://raw.githubusercontent.com/${OWNER}/${repo}/main/${file}`);
