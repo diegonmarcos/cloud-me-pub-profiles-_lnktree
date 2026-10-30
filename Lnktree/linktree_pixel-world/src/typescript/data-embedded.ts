@@ -241,7 +241,7 @@ export const GRAPH_DATA: GraphData = {
       "icon": "settings",
       "color": "#F48FB1",
       "links": [
-        { "label": "Portal", "url": "https://diegonmarcos.github.io/cloud", "icon": "settings" }
+        { "label": "Portal", "url": "https://diegonmarcos.github.io/cloudy-c3/", "icon": "settings" }
       ]
     },
     "ai-tools": {
@@ -250,8 +250,8 @@ export const GRAPH_DATA: GraphData = {
       "icon": "robot",
       "color": "#F48FB1",
       "links": [
-        { "label": "Chat Multi-Model", "url": "https://diegonmarcos.github.io/cloud/products.html", "icon": "robot" },
-        { "label": "WebIDE", "url": "https://diegonmarcos.github.io/cloud/products.html", "icon": "device-desktop" }
+        { "label": "Chat Multi-Model", "url": "https://diegonmarcos.github.io/cloudy-c3/portal/products/", "icon": "robot" },
+        { "label": "WebIDE", "url": "https://diegonmarcos.github.io/cloudy-c3/portal/products/", "icon": "device-desktop" }
       ]
     },
     "inbox-tools": {
@@ -280,8 +280,8 @@ export const GRAPH_DATA: GraphData = {
       "icon": "git-branch",
       "color": "#F48FB1",
       "links": [
-        { "label": "API Endpoints", "url": "https://diegonmarcos.github.io/cloud/api", "icon": "git-branch" },
-        { "label": "MCP Tools", "url": "https://diegonmarcos.github.io/cloud/mcp", "icon": "settings" }
+        { "label": "API Endpoints", "url": "https://diegonmarcos.github.io/cloudy-c3/portal/api/", "icon": "git-branch" },
+        { "label": "MCP Tools", "url": "https://diegonmarcos.github.io/cloudy-c3/portal/mcp/", "icon": "settings" }
       ]
     },
     "health-tools": {
