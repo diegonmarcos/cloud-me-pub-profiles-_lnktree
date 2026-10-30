@@ -96,7 +96,8 @@ function repoColumns(r, ctx) {
   if (r.visibility !== "public") return [{ header: null, links: [{ label: repoLabel(r.name), url: T.private_url, icon: T.private_icon }] }];
   const declared = r.apps?.[0]?.module ? r.apps : ctx.apps[r.name];
   if (declared) return androidColumns(r, declared);
-  const found = folderApps(ctx.trees[r.name]);
+  const taken = ctx.claimed?.get(r.name) || [];
+  const found = folderApps(ctx.trees[r.name]).filter((a) => !taken.some((t) => a.path === t || t.startsWith(`${a.path}/`) || a.path.startsWith(`${t}/`)));
   if (!found.length) return [{ header: null, links: [{ label: repoLabel(r.name), url: r.url, icon: T.repo_icon }] }];
   const cols = new Map();
   for (const a of found) {
@@ -140,7 +141,18 @@ function contentUrl(text, byName) {
 export function deriveAreas({ registry, apps = {}, trees = {} }) {
   if (!Array.isArray(registry.areas)) throw new Error("repos-github.json has no areas[] outline");
   const byName = new Map(registry.repos.map((r) => [r.name, r]));
-  const ctx = { apps, trees };
+  const ctx = { apps, trees, claimed: null };
+  // Content families (#1308): no repos, `content.repo` + `apps[{name,path}]` -> links into that repo's folders. Their
+  // paths are claimed: the host repo's own card does not list them again.
+  const claimed = new Map();
+  const claim = (n) => { if (n.content?.repo) for (const a of n.apps || []) { if (!claimed.has(n.content.repo)) claimed.set(n.content.repo, []); claimed.get(n.content.repo).push(a.path); } (n.children || []).forEach(claim); };
+  registry.areas.forEach(claim);
+  ctx.claimed = claimed;
+  const contentCols = (n) => {
+    const r = n.content?.repo && byName.get(n.content.repo);
+    if (!r || !n.apps?.length) return [];
+    return [{ header: (n.label || n.name).toUpperCase(), links: n.apps.map((a) => ({ label: clip(a.name), url: r.visibility === "public" ? `${r.url}/tree/main/${a.path}` : T.private_url, icon: iconFor(a.name, "OTHER") })) }];
+  };
   const reposOf = (node) => [...(node.hub ? [node.hub] : []), ...(node.repos || []), ...(node.children || []).flatMap(reposOf)];
   // A repo that is a single app (private, or no kept folder) goes in a column named after its family (`header`).
   const colsOf = (names, header) => names.map((n) => { const r = byName.get(n); if (!r) throw new Error(`outline lists unknown repo ${n}`); return repoColumns(r, ctx); }).flat()
@@ -159,12 +171,13 @@ export function deriveAreas({ registry, apps = {}, trees = {} }) {
         // A node with children (sub-category, or a family with sub-families): its own repos' columns, then one column
         // per child holding that child's apps. A plain family: its repos' columns.
         const cols = c.children?.length
-          ? [...colsOf([...(c.hub ? [c.hub] : []), ...(c.repos || [])], cname), ...c.children.map((f) => ({ keep: true, header: (f.label || f.name).toUpperCase(), links: colsOf(reposOf(f), cname).flatMap((x) => x.links) }))]
-          : colsOf(reposOf(c), cname);
+          ? [...contentCols(c), ...colsOf([...(c.hub ? [c.hub] : []), ...(c.repos || [])], cname), ...c.children.map((f) => ({ keep: true, header: (f.label || f.name).toUpperCase(),
+              links: [...contentCols(f).flatMap((x) => x.links), ...colsOf(reposOf(f), cname).flatMap((x) => x.links)] }))]
+          : [...contentCols(c), ...colsOf(reposOf(c), cname)];
         return slide(`area-${c.code}`, c.code, cname, banner, cols, { kind: c.kind, card: cname, project: name, field });
       });
       const all = reposOf(p);
-      const planned = all.length === 0;
+      const planned = all.length === 0 && families.length === 0;
       const content = planned ? contentUrl(p.description, byName) : null;
       const homeCols = planned
         ? [{ header: "PLANNED", links: [{ label: clip(content ? content.split("/").pop() : name), url: content || T.private_url, icon: iconFor(name, "OTHER") }] }]

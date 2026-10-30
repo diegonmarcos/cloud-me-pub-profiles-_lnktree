@@ -78,6 +78,32 @@
                       "icon": "rocket.svg"
                     },
                     {
+                      "label": "assets-cdn",
+                      "url": "https://github.com/diegonmarcos/cloudy_db_assets-cdn",
+                      "icon": "brand-github.svg"
+                    },
+                    {
+                      "label": "infra-ops-obsv_conf…",
+                      "url": "https://github.com/diegonmarcos/cloudy_db_infra-ops-obsv_configs-sync",
+                      "icon": "brand-github.svg"
+                    },
+                    {
+                      "label": "LFS",
+                      "url": "https://github.com/diegonmarcos",
+                      "icon": "lock.svg"
+                    },
+                    {
+                      "label": "docs",
+                      "url": "https://github.com/diegonmarcos",
+                      "icon": "lock.svg"
+                    }
+                  ],
+                  "row": 0
+                },
+                {
+                  "header": "LINUX",
+                  "links": [
+                    {
                       "label": "vaultwarden",
                       "url": "https://github.com/diegonmarcos/cloudy-u-containers/tree/main/ab-mic_vaultwarden",
                       "icon": "lock.svg"
@@ -96,103 +122,19 @@
                       "label": "caddy",
                       "url": "https://github.com/diegonmarcos/cloudy-u-containers/tree/main/infra-sec_caddy",
                       "icon": "brush.svg"
+                    },
+                    {
+                      "label": "caddy-l4-image",
+                      "url": "https://github.com/diegonmarcos/cloudy-u-containers/tree/main/infra-sec_caddy-l4-image",
+                      "icon": "brush.svg"
+                    },
+                    {
+                      "label": "caddy-public",
+                      "url": "https://github.com/diegonmarcos/cloudy-u-containers/tree/main/infra-sec_caddy-public",
+                      "icon": "brush.svg"
                     }
                   ],
                   "row": 0
-                },
-                {
-                  "header": "DB",
-                  "links": [
-                    {
-                      "label": "assets-cdn",
-                      "url": "https://github.com/diegonmarcos/cloudy_db_assets-cdn",
-                      "icon": "brand-github.svg"
-                    },
-                    {
-                      "label": "infra-ops-obsv_conf…",
-                      "url": "https://github.com/diegonmarcos/cloudy_db_infra-ops-obsv_configs-sync",
-                      "icon": "brand-github.svg"
-                    },
-                    {
-                      "label": "LFS",
-                      "url": "https://github.com/diegonmarcos",
-                      "icon": "lock.svg"
-                    }
-                  ],
-                  "row": 0
-                },
-                {
-                  "header": "DESKTOP",
-                  "links": [
-                    {
-                      "label": "containers_user",
-                      "url": "https://github.com/diegonmarcos/cloudy-u-desktop/tree/main/ca_containers_user",
-                      "icon": "brain.svg"
-                    },
-                    {
-                      "label": "containers-builders",
-                      "url": "https://github.com/diegonmarcos/cloudy-u-desktop/tree/main/cb_containers-builders",
-                      "icon": "brain.svg"
-                    },
-                    {
-                      "label": "cloud-superapp",
-                      "url": "https://github.com/diegonmarcos/cloudy-u-desktop/tree/main/ea_cloud-superapp",
-                      "icon": "device-mobile.svg"
-                    },
-                    {
-                      "label": "garmin-watchface",
-                      "url": "https://github.com/diegonmarcos/cloudy-u-desktop/tree/main/fa_garmin-watchface",
-                      "icon": "checklist.svg"
-                    }
-                  ],
-                  "row": 0
-                },
-                {
-                  "header": "DOCS",
-                  "links": [
-                    {
-                      "label": "docs",
-                      "url": "https://github.com/diegonmarcos",
-                      "icon": "lock.svg"
-                    }
-                  ],
-                  "row": 1
-                },
-                {
-                  "header": "LINUX",
-                  "links": [
-                    {
-                      "label": "my-konsole",
-                      "url": "https://github.com/diegonmarcos/cloudy-u-linux/tree/main/da__my-konsole",
-                      "icon": "device-desktop.svg"
-                    },
-                    {
-                      "label": "shared",
-                      "url": "https://github.com/diegonmarcos/cloudy-u-linux/tree/main/da__shared",
-                      "icon": "code.svg"
-                    },
-                    {
-                      "label": "c3-morpheus",
-                      "url": "https://github.com/diegonmarcos/cloudy-u-linux/tree/main/da_c3-morpheus",
-                      "icon": "rocket.svg"
-                    },
-                    {
-                      "label": "c3-watchdog",
-                      "url": "https://github.com/diegonmarcos/cloudy-u-linux/tree/main/da_c3-watchdog",
-                      "icon": "checklist.svg"
-                    },
-                    {
-                      "label": "dtk",
-                      "url": "https://github.com/diegonmarcos/cloudy-u-linux/tree/main/da_dtk",
-                      "icon": "code.svg"
-                    },
-                    {
-                      "label": "linux-account",
-                      "url": "https://github.com/diegonmarcos/cloudy-u-linux/tree/main/da_linux-account",
-                      "icon": "user.svg"
-                    }
-                  ],
-                  "row": 1
                 },
                 {
                   "header": "WEBAPPS",
@@ -228,7 +170,7 @@
                       "icon": "database.svg"
                     }
                   ],
-                  "row": 1
+                  "row": 0
                 }
               ],
               "data": {
@@ -503,7 +445,58 @@
                   "row": 0
                 },
                 {
-                  "header": "SECURITY",
+                  "header": "DB",
+                  "links": [
+                    {
+                      "label": "assets-cdn",
+                      "url": "https://github.com/diegonmarcos/cloudy_db_assets-cdn",
+                      "icon": "brand-github.svg"
+                    },
+                    {
+                      "label": "infra-ops-obsv_conf…",
+                      "url": "https://github.com/diegonmarcos/cloudy_db_infra-ops-obsv_configs-sync",
+                      "icon": "brand-github.svg"
+                    },
+                    {
+                      "label": "LFS",
+                      "url": "https://github.com/diegonmarcos",
+                      "icon": "lock.svg"
+                    }
+                  ],
+                  "row": 0
+                },
+                {
+                  "header": "DOCS",
+                  "links": [
+                    {
+                      "label": "docs",
+                      "url": "https://github.com/diegonmarcos",
+                      "icon": "lock.svg"
+                    }
+                  ],
+                  "row": 0
+                }
+              ],
+              "data": {
+                "kind": "family",
+                "card": "C3",
+                "project": "Cloudy",
+                "field": "Unix",
+                "code": "1.1.2"
+              }
+            },
+            {
+              "id": "area-1.1.3",
+              "kind": "tools",
+              "code": "1.1.3",
+              "title": "Linux",
+              "image": {
+                "src": "public/images/banners/cloud.gif",
+                "alt": "Linux"
+              },
+              "columns": [
+                {
+                  "header": "LINUX CONTAINERS",
                   "links": [
                     {
                       "label": "vaultwarden",
@@ -559,13 +552,7 @@
                       "label": "vaultwarden",
                       "url": "https://github.com/diegonmarcos/cloudy-u-containers/tree/main/user-vault_vaultwarden",
                       "icon": "lock.svg"
-                    }
-                  ],
-                  "row": 0
-                },
-                {
-                  "header": "OBSERV",
-                  "links": [
+                    },
                     {
                       "label": "alerts-api",
                       "url": "https://github.com/diegonmarcos/cloudy-u-containers/tree/main/bc-obs_alerts-api",
@@ -615,13 +602,7 @@
                       "label": "umami",
                       "url": "https://github.com/diegonmarcos/cloudy-u-containers/tree/main/infra-obs_umami",
                       "icon": "checklist.svg"
-                    }
-                  ],
-                  "row": 0
-                },
-                {
-                  "header": "AI",
-                  "links": [
+                    },
                     {
                       "label": "embeddings-api",
                       "url": "https://github.com/diegonmarcos/cloudy-u-containers/tree/main/infra-ai_embeddings-api",
@@ -681,13 +662,7 @@
                       "label": "session-memory",
                       "url": "https://github.com/diegonmarcos/cloudy-u-containers/tree/main/user-ai_session-memory",
                       "icon": "brain.svg"
-                    }
-                  ],
-                  "row": 0
-                },
-                {
-                  "header": "API & MCP",
-                  "links": [
+                    },
                     {
                       "label": "c3-infra-api",
                       "url": "https://github.com/diegonmarcos/cloudy-u-containers/tree/main/infra-api_c3-infra-api",
@@ -777,13 +752,7 @@
                       "label": "tools-http-to-smtp-…",
                       "url": "https://github.com/diegonmarcos/cloudy-u-containers/tree/main/infra-api_tools-http-to-smtp-proxy-api",
                       "icon": "mail.svg"
-                    }
-                  ],
-                  "row": 1
-                },
-                {
-                  "header": "OPS",
-                  "links": [
+                    },
                     {
                       "label": "cloud-builder-x",
                       "url": "https://github.com/diegonmarcos/cloudy-u-containers/tree/main/infra-bld_cloud-builder-x",
@@ -803,13 +772,7 @@
                       "label": "disk-janitor",
                       "url": "https://github.com/diegonmarcos/cloudy-u-containers/tree/main/infra-ops_disk-janitor",
                       "icon": "code.svg"
-                    }
-                  ],
-                  "row": 1
-                },
-                {
-                  "header": "NETWORK",
-                  "links": [
+                    },
                     {
                       "label": "cloudflare-worker",
                       "url": "https://github.com/diegonmarcos/cloudy-u-containers/tree/main/infra-cloud_cloudflare-worker",
@@ -849,13 +812,7 @@
                       "label": "wireguard-public",
                       "url": "https://github.com/diegonmarcos/cloudy-u-containers/tree/main/infra-net_wireguard-public",
                       "icon": "world-longitude.svg"
-                    }
-                  ],
-                  "row": 1
-                },
-                {
-                  "header": "DATA",
-                  "links": [
+                    },
                     {
                       "label": "backup-borg",
                       "url": "https://github.com/diegonmarcos/cloudy-u-containers/tree/main/infra-dat_backup-borg",
@@ -885,13 +842,7 @@
                       "label": "scrappers-api",
                       "url": "https://github.com/diegonmarcos/cloudy-u-containers/tree/main/user-data_scrappers-api",
                       "icon": "link.svg"
-                    }
-                  ],
-                  "row": 1
-                },
-                {
-                  "header": "COMMS",
-                  "links": [
+                    },
                     {
                       "label": "chat-mattermost",
                       "url": "https://github.com/diegonmarcos/cloudy-u-containers/tree/main/user-comm_chat-mattermost",
@@ -936,13 +887,7 @@
                       "label": "news-gdelt",
                       "url": "https://github.com/diegonmarcos/cloudy-u-containers/tree/main/user-news_news-gdelt",
                       "icon": "world.svg"
-                    }
-                  ],
-                  "row": 2
-                },
-                {
-                  "header": "FIN",
-                  "links": [
+                    },
                     {
                       "label": "crawlee-cloud",
                       "url": "https://github.com/diegonmarcos/cloudy-u-containers/tree/main/user-fin_crawlee-cloud",
@@ -952,13 +897,17 @@
                       "label": "fin-api",
                       "url": "https://github.com/diegonmarcos/cloudy-u-containers/tree/main/user-fin_fin-api",
                       "icon": "ledger.svg"
-                    }
-                  ],
-                  "row": 2
-                },
-                {
-                  "header": "PROD",
-                  "links": [
+                    },
+                    {
+                      "label": "photoprism",
+                      "url": "https://github.com/diegonmarcos/cloudy-u-containers/tree/main/user-media_photoprism",
+                      "icon": "slideshow.svg"
+                    },
+                    {
+                      "label": "playlist-syncer",
+                      "url": "https://github.com/diegonmarcos/cloudy-u-containers/tree/main/user-media_playlist-syncer",
+                      "icon": "headphones.svg"
+                    },
                     {
                       "label": "calendar-radicale",
                       "url": "https://github.com/diegonmarcos/cloudy-u-containers/tree/main/user-prod_calendar-radicale",
@@ -1013,22 +962,6 @@
                       "label": "send",
                       "url": "https://github.com/diegonmarcos/cloudy-u-containers/tree/main/user-prod_send",
                       "icon": "send.svg"
-                    }
-                  ],
-                  "row": 2
-                },
-                {
-                  "header": "OTHERS",
-                  "links": [
-                    {
-                      "label": "photoprism",
-                      "url": "https://github.com/diegonmarcos/cloudy-u-containers/tree/main/user-media_photoprism",
-                      "icon": "slideshow.svg"
-                    },
-                    {
-                      "label": "playlist-syncer",
-                      "url": "https://github.com/diegonmarcos/cloudy-u-containers/tree/main/user-media_playlist-syncer",
-                      "icon": "headphones.svg"
                     },
                     {
                       "label": "front-end",
@@ -1041,69 +974,10 @@
                       "icon": "brand-github.svg"
                     }
                   ],
-                  "row": 2
-                }
-              ],
-              "data": {
-                "kind": "family",
-                "card": "C3",
-                "project": "Cloudy",
-                "field": "Unix",
-                "code": "1.1.2"
-              }
-            },
-            {
-              "id": "area-1.1.3",
-              "kind": "tools",
-              "code": "1.1.3",
-              "title": "DB",
-              "image": {
-                "src": "public/images/banners/cloud.gif",
-                "alt": "DB"
-              },
-              "columns": [
-                {
-                  "header": "DB",
-                  "links": [
-                    {
-                      "label": "assets-cdn",
-                      "url": "https://github.com/diegonmarcos/cloudy_db_assets-cdn",
-                      "icon": "brand-github.svg"
-                    },
-                    {
-                      "label": "infra-ops-obsv_conf…",
-                      "url": "https://github.com/diegonmarcos/cloudy_db_infra-ops-obsv_configs-sync",
-                      "icon": "brand-github.svg"
-                    },
-                    {
-                      "label": "LFS",
-                      "url": "https://github.com/diegonmarcos",
-                      "icon": "lock.svg"
-                    }
-                  ],
                   "row": 0
-                }
-              ],
-              "data": {
-                "kind": "family",
-                "card": "DB",
-                "project": "Cloudy",
-                "field": "Unix",
-                "code": "1.1.3"
-              }
-            },
-            {
-              "id": "area-1.1.4",
-              "kind": "tools",
-              "code": "1.1.4",
-              "title": "Desktop",
-              "image": {
-                "src": "public/images/banners/cloud.gif",
-                "alt": "Desktop"
-              },
-              "columns": [
+                },
                 {
-                  "header": "DESKTOP",
+                  "header": "LINUX DESKTOP USER",
                   "links": [
                     {
                       "label": "containers_user",
@@ -1124,62 +998,7 @@
                       "label": "garmin-watchface",
                       "url": "https://github.com/diegonmarcos/cloudy-u-desktop/tree/main/fa_garmin-watchface",
                       "icon": "checklist.svg"
-                    }
-                  ],
-                  "row": 0
-                }
-              ],
-              "data": {
-                "kind": "family",
-                "card": "Desktop",
-                "project": "Cloudy",
-                "field": "Unix",
-                "code": "1.1.4"
-              }
-            },
-            {
-              "id": "area-1.1.5",
-              "kind": "tools",
-              "code": "1.1.5",
-              "title": "Docs",
-              "image": {
-                "src": "public/images/banners/cloud.gif",
-                "alt": "Docs"
-              },
-              "columns": [
-                {
-                  "header": "DOCS",
-                  "links": [
-                    {
-                      "label": "docs",
-                      "url": "https://github.com/diegonmarcos",
-                      "icon": "lock.svg"
-                    }
-                  ],
-                  "row": 0
-                }
-              ],
-              "data": {
-                "kind": "family",
-                "card": "Docs",
-                "project": "Cloudy",
-                "field": "Unix",
-                "code": "1.1.5"
-              }
-            },
-            {
-              "id": "area-1.1.6",
-              "kind": "tools",
-              "code": "1.1.6",
-              "title": "Linux",
-              "image": {
-                "src": "public/images/banners/cloud.gif",
-                "alt": "Linux"
-              },
-              "columns": [
-                {
-                  "header": "LINUX",
-                  "links": [
+                    },
                     {
                       "label": "my-konsole",
                       "url": "https://github.com/diegonmarcos/cloudy-u-linux/tree/main/da__my-konsole",
@@ -1259,17 +1078,17 @@
                 "card": "Linux",
                 "project": "Cloudy",
                 "field": "Unix",
-                "code": "1.1.6"
+                "code": "1.1.3"
               }
             },
             {
-              "id": "area-1.1.7",
+              "id": "area-1.1.4",
               "kind": "tools",
-              "code": "1.1.7",
-              "title": "Webapps",
+              "code": "1.1.4",
+              "title": "WebApps",
               "image": {
                 "src": "public/images/banners/cloud.gif",
-                "alt": "Webapps"
+                "alt": "WebApps"
               },
               "columns": [
                 {
@@ -1933,10 +1752,10 @@
               ],
               "data": {
                 "kind": "family",
-                "card": "Webapps",
+                "card": "WebApps",
                 "project": "Cloudy",
                 "field": "Unix",
-                "code": "1.1.7"
+                "code": "1.1.4"
               }
             }
           ]
@@ -2336,26 +2155,6 @@
             "header": "ZIRKUS",
             "links": [
               {
-                "label": "Circus",
-                "url": "https://github.com/diegonmarcos/CG-circus/tree/main/c_Circus",
-                "icon": "device-gamepad.svg"
-              },
-              {
-                "label": "GDevelop",
-                "url": "https://github.com/diegonmarcos/CG-circus/tree/main/Game-Production/GDevelop",
-                "icon": "device-gamepad.svg"
-              },
-              {
-                "label": "Godot",
-                "url": "https://github.com/diegonmarcos/CG-circus/tree/main/Game-Production/Godot",
-                "icon": "device-gamepad.svg"
-              },
-              {
-                "label": "Unity",
-                "url": "https://github.com/diegonmarcos/CG-circus/tree/main/Game-Production/Unity",
-                "icon": "device-gamepad.svg"
-              },
-              {
                 "label": "Music-DAW",
                 "url": "https://github.com/diegonmarcos/CG-circus/tree/main/Music-Production/Music-DAW",
                 "icon": "headphones.svg"
@@ -2364,6 +2163,26 @@
                 "label": "Music-Mixer",
                 "url": "https://github.com/diegonmarcos/CG-circus/tree/main/Music-Production/Music-Mixer",
                 "icon": "headphones.svg"
+              },
+              {
+                "label": "Higgsfield",
+                "url": "https://github.com/diegonmarcos/CG-circus/tree/main/Video-Production/Higgsfield",
+                "icon": "video.svg"
+              },
+              {
+                "label": "Unity",
+                "url": "https://github.com/diegonmarcos/CG-circus/tree/main/Game-Production/Unity",
+                "icon": "device-gamepad.svg"
+              },
+              {
+                "label": "Godot",
+                "url": "https://github.com/diegonmarcos/CG-circus/tree/main/Game-Production/Godot",
+                "icon": "device-gamepad.svg"
+              },
+              {
+                "label": "GDevelop",
+                "url": "https://github.com/diegonmarcos/CG-circus/tree/main/Game-Production/GDevelop",
+                "icon": "device-gamepad.svg"
               }
             ],
             "row": 0
@@ -2581,93 +2400,6 @@
               },
               "columns": [
                 {
-                  "header": "PRODUCTION",
-                  "links": [
-                    {
-                      "label": "Circus",
-                      "url": "https://github.com/diegonmarcos/CG-circus/tree/main/c_Circus",
-                      "icon": "device-gamepad.svg"
-                    },
-                    {
-                      "label": "GDevelop",
-                      "url": "https://github.com/diegonmarcos/CG-circus/tree/main/Game-Production/GDevelop",
-                      "icon": "device-gamepad.svg"
-                    },
-                    {
-                      "label": "Godot",
-                      "url": "https://github.com/diegonmarcos/CG-circus/tree/main/Game-Production/Godot",
-                      "icon": "device-gamepad.svg"
-                    },
-                    {
-                      "label": "Unity",
-                      "url": "https://github.com/diegonmarcos/CG-circus/tree/main/Game-Production/Unity",
-                      "icon": "device-gamepad.svg"
-                    },
-                    {
-                      "label": "Music-DAW",
-                      "url": "https://github.com/diegonmarcos/CG-circus/tree/main/Music-Production/Music-DAW",
-                      "icon": "headphones.svg"
-                    },
-                    {
-                      "label": "Music-Mixer",
-                      "url": "https://github.com/diegonmarcos/CG-circus/tree/main/Music-Production/Music-Mixer",
-                      "icon": "headphones.svg"
-                    }
-                  ],
-                  "row": 0
-                }
-              ],
-              "data": {
-                "kind": "home",
-                "card": "Zirkus",
-                "project": "Zirkus",
-                "field": "CG",
-                "code": "2.2.0"
-              }
-            },
-            {
-              "id": "area-2.2.1",
-              "kind": "tools",
-              "code": "2.2.1",
-              "title": "Production",
-              "image": {
-                "src": "public/images/banners/circus.gif",
-                "alt": "Production"
-              },
-              "columns": [
-                {
-                  "header": "CIRCUS",
-                  "links": [
-                    {
-                      "label": "Circus",
-                      "url": "https://github.com/diegonmarcos/CG-circus/tree/main/c_Circus",
-                      "icon": "device-gamepad.svg"
-                    }
-                  ],
-                  "row": 0
-                },
-                {
-                  "header": "GAME PRODUCTION",
-                  "links": [
-                    {
-                      "label": "GDevelop",
-                      "url": "https://github.com/diegonmarcos/CG-circus/tree/main/Game-Production/GDevelop",
-                      "icon": "device-gamepad.svg"
-                    },
-                    {
-                      "label": "Godot",
-                      "url": "https://github.com/diegonmarcos/CG-circus/tree/main/Game-Production/Godot",
-                      "icon": "device-gamepad.svg"
-                    },
-                    {
-                      "label": "Unity",
-                      "url": "https://github.com/diegonmarcos/CG-circus/tree/main/Game-Production/Unity",
-                      "icon": "device-gamepad.svg"
-                    }
-                  ],
-                  "row": 0
-                },
-                {
                   "header": "MUSIC PRODUCTION",
                   "links": [
                     {
@@ -2693,14 +2425,181 @@
                     }
                   ],
                   "row": 0
+                },
+                {
+                  "header": "GAME PRODUCTION",
+                  "links": [
+                    {
+                      "label": "Unity",
+                      "url": "https://github.com/diegonmarcos/CG-circus/tree/main/Game-Production/Unity",
+                      "icon": "device-gamepad.svg"
+                    },
+                    {
+                      "label": "Godot",
+                      "url": "https://github.com/diegonmarcos/CG-circus/tree/main/Game-Production/Godot",
+                      "icon": "device-gamepad.svg"
+                    },
+                    {
+                      "label": "GDevelop",
+                      "url": "https://github.com/diegonmarcos/CG-circus/tree/main/Game-Production/GDevelop",
+                      "icon": "device-gamepad.svg"
+                    }
+                  ],
+                  "row": 0
+                },
+                {
+                  "header": "WEB GAMES",
+                  "links": [
+                    {
+                      "label": "Circus",
+                      "url": "https://github.com/diegonmarcos/CG-circus/tree/main/c_Circus",
+                      "icon": "device-gamepad.svg"
+                    }
+                  ],
+                  "row": 0
+                }
+              ],
+              "data": {
+                "kind": "home",
+                "card": "Zirkus",
+                "project": "Zirkus",
+                "field": "CG",
+                "code": "2.2.0"
+              }
+            },
+            {
+              "id": "area-2.2.1",
+              "kind": "tools",
+              "code": "2.2.1",
+              "title": "Music Production",
+              "image": {
+                "src": "public/images/banners/circus.gif",
+                "alt": "Music Production"
+              },
+              "columns": [
+                {
+                  "header": "MUSIC PRODUCTION",
+                  "links": [
+                    {
+                      "label": "Music-DAW",
+                      "url": "https://github.com/diegonmarcos/CG-circus/tree/main/Music-Production/Music-DAW",
+                      "icon": "headphones.svg"
+                    },
+                    {
+                      "label": "Music-Mixer",
+                      "url": "https://github.com/diegonmarcos/CG-circus/tree/main/Music-Production/Music-Mixer",
+                      "icon": "headphones.svg"
+                    }
+                  ],
+                  "row": 0
                 }
               ],
               "data": {
                 "kind": "family",
-                "card": "Production",
+                "card": "Music Production",
                 "project": "Zirkus",
                 "field": "CG",
                 "code": "2.2.1"
+              }
+            },
+            {
+              "id": "area-2.2.2",
+              "kind": "tools",
+              "code": "2.2.2",
+              "title": "Video Production",
+              "image": {
+                "src": "public/images/banners/circus.gif",
+                "alt": "Video Production"
+              },
+              "columns": [
+                {
+                  "header": "VIDEO PRODUCTION",
+                  "links": [
+                    {
+                      "label": "Higgsfield",
+                      "url": "https://github.com/diegonmarcos/CG-circus/tree/main/Video-Production/Higgsfield",
+                      "icon": "video.svg"
+                    }
+                  ],
+                  "row": 0
+                }
+              ],
+              "data": {
+                "kind": "family",
+                "card": "Video Production",
+                "project": "Zirkus",
+                "field": "CG",
+                "code": "2.2.2"
+              }
+            },
+            {
+              "id": "area-2.2.3",
+              "kind": "tools",
+              "code": "2.2.3",
+              "title": "Game Production",
+              "image": {
+                "src": "public/images/banners/circus.gif",
+                "alt": "Game Production"
+              },
+              "columns": [
+                {
+                  "header": "GAME PRODUCTION",
+                  "links": [
+                    {
+                      "label": "Unity",
+                      "url": "https://github.com/diegonmarcos/CG-circus/tree/main/Game-Production/Unity",
+                      "icon": "device-gamepad.svg"
+                    },
+                    {
+                      "label": "Godot",
+                      "url": "https://github.com/diegonmarcos/CG-circus/tree/main/Game-Production/Godot",
+                      "icon": "device-gamepad.svg"
+                    },
+                    {
+                      "label": "GDevelop",
+                      "url": "https://github.com/diegonmarcos/CG-circus/tree/main/Game-Production/GDevelop",
+                      "icon": "device-gamepad.svg"
+                    }
+                  ],
+                  "row": 0
+                }
+              ],
+              "data": {
+                "kind": "family",
+                "card": "Game Production",
+                "project": "Zirkus",
+                "field": "CG",
+                "code": "2.2.3"
+              }
+            },
+            {
+              "id": "area-2.2.4",
+              "kind": "tools",
+              "code": "2.2.4",
+              "title": "Web Games",
+              "image": {
+                "src": "public/images/banners/circus.gif",
+                "alt": "Web Games"
+              },
+              "columns": [
+                {
+                  "header": "CIRCUS",
+                  "links": [
+                    {
+                      "label": "Circus",
+                      "url": "https://github.com/diegonmarcos/CG-circus/tree/main/c_Circus",
+                      "icon": "device-gamepad.svg"
+                    }
+                  ],
+                  "row": 0
+                }
+              ],
+              "data": {
+                "kind": "family",
+                "card": "Web Games",
+                "project": "Zirkus",
+                "field": "CG",
+                "code": "2.2.4"
               }
             }
           ]

@@ -112,8 +112,9 @@ test("Cloudy: home card = its families with their top apps; Android card = the f
   if (sources?.apps["cloudy-u-android"]) assert.equal(labels.length, sources.apps["cloudy-u-android"].length, "every declared app once");
   const drive = android.columns.flatMap((c) => c.links).find((l) => l.label === "Drive");
   assert.equal(drive.url, "https://diegonmarcos.github.io/cloud-web/apps/cloud-drive/", "web app -> its cloud-web page");
-  const zirkus = proj("CG", "Zirkus").cards[1];
-  assert.deepEqual(zirkus.columns.find((c) => c.header === "GAME PRODUCTION")?.links.map((l) => l.label), ["GDevelop", "Godot", "Unity"]);
+  const game = proj("CG", "Zirkus").cards.flatMap((c) => c.columns).find((c) => c.header === "GAME PRODUCTION");
+  assert.deepEqual(game?.links.map((l) => l.label).sort(), ["GDevelop", "Godot", "Unity"]);
+  assert.ok(game.links.every((l) => l.url.startsWith("https://github.com/diegonmarcos/CG-circus/tree/main/Game-Production/")), "content family apps link into CG-circus");
   const fin = proj("Capital", "Stack-Fin-Terminal").cards[1].columns.flatMap((c) => c.links.map((l) => l.label));
   for (const want of ["Fin-Terminal", "GDELT-News", "MarketWatch"]) assert.ok(fin.includes(want), `Fin terminal lists ${want}`);
   const cad = proj("HardTech", "Stack-CAD-Simulators").cards[1].columns.flatMap((c) => c.links.map((l) => l.label));
