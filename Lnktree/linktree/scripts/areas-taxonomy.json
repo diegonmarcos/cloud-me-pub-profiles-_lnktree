@@ -2,7 +2,26 @@
   "_doc": "Declared taxonomy for scripts/areas-gen.mjs (#1308): how Areas cards turn the registry into xProjects-style tools slides (columns of icon + short-label application links). Data, not code: edit here, then node scripts/areas-gen.mjs. Icons are file names in src/public/icons/.",
   "max_columns": 12,
   "columns_per_row": 4,
-  "home_links_per_column": 6,
+  "home": {
+    "_doc": "Home cards (area and project) list their CHILDREN, never applications: one column per child with the rows card (in-page jump to the child's card), repo (hub repo, else the first repo) and webapp (only where the registry declares `webapp`); the node's registry `landing` URL is the large link at the bottom. Labels and icons live here, URLs come from the registry.",
+    "card": {
+      "label": "Card",
+      "icon": "slideshow.svg"
+    },
+    "repo": {
+      "label": "Repo",
+      "icon": "brand-github.svg"
+    },
+    "webapp": {
+      "label": "Webapp",
+      "icon": "world.svg"
+    },
+    "landing": {
+      "icon": "world.svg",
+      "area": "{name} Area Landpage",
+      "project": "{name} Project Landpage"
+    }
+  },
   "label_max": 20,
   "fallback_icon": "code.svg",
   "repo_icon": "brand-github.svg",

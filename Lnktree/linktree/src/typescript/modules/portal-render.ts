@@ -16,7 +16,8 @@ import { slideCard } from './card';
 // Schema
 // --------------------------------------------------------------------------
 
-export interface Link { label: string; url: string; icon: string; preview?: string; download?: string; }
+// `card` (Areas home cards, #1330): id of another card of the same carousel; the link then jumps in-page instead of opening a tab.
+export interface Link { label: string; url: string; icon: string; preview?: string; download?: string; card?: string; }
 interface IconItem    { url: string; title?: string; label?: string; icon: string; preview?: string; }
 export interface Column { header: string; header_url?: string | null; links: Link[]; row?: number; }
 // `primary_link` is the single large button a tools card has always had.
@@ -136,7 +137,9 @@ function iconImg(icon: string, alt = ''): HTMLElement {
 // --------------------------------------------------------------------------
 
 function renderToolLink(link: Link): HTMLElement {
-  const a = el('a', { class: 'tool-link', href: link.url, target: '_blank' });
+  const a = link.card
+    ? el('a', { class: 'tool-link', href: link.url, 'data-card': link.card })
+    : el('a', { class: 'tool-link', href: link.url, target: '_blank' });
   a.appendChild(iconImg(link.icon));
   a.appendChild(document.createTextNode(link.label));
   return a;

@@ -6,11 +6,13 @@
 // other source is the declared app list of an app-fleet repo that does not carry `apps` itself (APP_MANIFESTS).
 // Output: src/data/areas.json (data_wrap turns it into data-areas.json.js; esbuild inlines it into script.js).
 //
-// Outline -> cards (#1308): EVERY card is an xProjects tools slide (projects.json kind "tools"), rendered by
-// portal-render.ts renderToolsSlide: banner, title with its outline code, columns = application categories, links =
-// applications (icon + short label + url where the app runs or lives). No repo lists, no long descriptions.
-//   area   N       area HOME card (N.0) when the area has a hub: one column per project, its top apps;
-//   project N.M    project HOME card (N.M.0): one column per family, its top apps; then one card per child:
+// Outline -> cards (#1308, #1330): EVERY card is an xProjects tools slide (projects.json kind "tools"), rendered by
+// portal-render.ts renderToolsSlide: banner, title with its outline code, columns, links. No long descriptions.
+//   area   N       area HOME card (N.0), FIRST in every area: one column per PROJECT with the rows card (in-page jump), repo
+//                  (project hub, else the area hub) and webapp (only where the registry declares `webapp`); at the bottom
+//                  the area's registry `landing` link when declared;
+//   project N.M    project HOME card (N.M.0): one column per FAMILY with the same rows (repo = family hub, else its first
+//                  repo); NO application lists; at the bottom "<Project> Project Landpage" (registry `landing`); then one card per child:
 //   family N.M.K   app-fleet repos: the declared app manifest by category; other repos: their folder tree
 //                  (registry 0_repo-folders-tree) grouped by parent folder / prefix; children (sub-families,
 //                  sub-category families) become one column each.
@@ -123,10 +125,22 @@ function tidy(cols) {
 }
 
 // The tools slide (projects.json kind "tools" schema) of one card.
-function slide(id, code, title, banner, columns, data, tagline) {
-  return { id, kind: "tools", code, title, image: { src: banner, alt: title }, ...(tagline ? { tagline } : {}), columns: tidy(columns), data: { ...data, code } };
+function slide(id, code, title, banner, columns, data, tagline, landing) {
+  return { id, kind: "tools", code, title, image: { src: banner, alt: title }, ...(tagline ? { tagline } : {}), columns: tidy(columns), ...(landing ? { extras: { primary_link: landing } } : {}), data: { ...data, code } };
 }
-const overview = (header, cols) => ({ header: header.toUpperCase(), links: cols.flatMap((c) => c.links).slice(0, T.home_links_per_column) });
+// Home cards (#1330) list CHILDREN, never applications. One column per child: its card (in-page jump), its repo and,
+// only where the registry declares `webapp`, its web app. The node's registry `landing` is the large link at the bottom.
+const H = T.home;
+const repoLink = (r) => (r.visibility === "public" && r.url ? { label: H.repo.label, url: r.url, icon: H.repo.icon } : { label: H.repo.label, url: T.private_url, icon: T.private_icon });
+const homeRow = (name, cardId, repo, webapp) => ({
+  header: name.toUpperCase(),
+  links: [
+    { label: H.card.label, url: `#${cardId}`, icon: H.card.icon, card: cardId },
+    ...(repo ? [repoLink(repo)] : []),
+    ...(webapp ? [{ label: H.webapp.label, url: webapp, icon: H.webapp.icon }] : []),
+  ],
+});
+const landingLink = (url, kind, name) => (url ? { label: H.landing[kind].replace("{name}", name), url, icon: H.landing.icon } : null);
 
 // "Repo/path" mention of a public registry repo in a description -> its folder URL (null when none).
 function contentUrl(text, byName) {
@@ -179,15 +193,22 @@ export function deriveAreas({ registry, apps = {}, trees = {} }) {
       const all = reposOf(p);
       const planned = all.length === 0 && families.length === 0;
       const content = planned ? contentUrl(p.description, byName) : null;
+      // Repo of a child row: its hub, else the first repo under it (content family: its host repo), else the nearest hub up.
+      const hubUp = byName.get(p.hub) || byName.get(a.hub);
+      const rowRepo = (n) => byName.get(n.hub) || byName.get(reposOf(n)[0]) || byName.get(n.content?.repo) || hubUp;
       const homeCols = planned
         ? [{ header: "PLANNED", links: [{ label: clip(content ? content.split("/").pop() : name), url: content || T.private_url, icon: iconFor(name, "OTHER") }] }]
-        : families.length ? families.map((f) => overview(f.title, f.columns)) : colsOf(all, name);
-      const home = slide(`area-${p.code}.0`, `${p.code}.0`, `${p.icon || a.icon} ${name}`, banner, homeCols, { kind: "home", card: name, project: name, field }, planned ? "planned" : undefined);
+        : families.length ? (p.children || []).map((c, i) => homeRow(c.label || c.name, families[i].id, rowRepo(c), c.webapp))
+        : [{ header: name.toUpperCase(), links: [repoLink(hubUp || byName.get(all[0]))] }];
+      const home = slide(`area-${p.code}.0`, `${p.code}.0`, `${p.icon || a.icon} ${name}`, banner, homeCols, { kind: "home", card: name, project: name, field }, planned ? "planned" : undefined, landingLink(p.landing, "project", name));
       projects.push({ code: p.code, name, icon: p.icon || a.icon, repos: all.length, ...(planned ? { planned: true } : {}), cards: [home, ...families] });
     }
     const banner = exists(areaBanner) ? areaBanner : DEFAULT_BANNER;
-    const home = a.hub ? slide(`area-${a.code}.0`, `${a.code}.0`, `${a.icon} ${field}`, banner,
-      projects.map((p) => overview(p.name, p.cards[0].columns)), { kind: "area", card: field, project: "#area", field }) : null;
+    // The area home card (N.0), first in every area: its PROJECTS as rows (card, hub repo, webapp), the area landing at the bottom.
+    const areaHub = byName.get(a.hub);
+    const home = slide(`area-${a.code}.0`, `${a.code}.0`, `${a.icon} ${field}`, banner,
+      projects.map((pr, i) => homeRow(pr.name, pr.cards[0].id, byName.get(a.children[i].hub) || areaHub || byName.get(reposOf(a.children[i])[0]), a.children[i].webapp)),
+      { kind: "area", card: field, project: "#area", field }, undefined, landingLink(a.landing, "area", field));
     areas.push({ code: a.code, field, icon: a.icon, banner, home, projects });
   }
   return {

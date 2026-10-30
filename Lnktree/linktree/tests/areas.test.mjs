@@ -48,7 +48,7 @@ test("outline (#1293): areas, projects and cards follow repos-github.json areas[
   for (const [i, a] of want.entries()) {
     const got = areas.areas[i];
     assert.equal(got.icon, a.icon, `${a.name} icon`);
-    assert.equal(!!got.home, !!a.hub, `${a.name}: area home card iff the area has a hub`);
+    assert.ok(got.home, `${a.name}: every area has a home card`);
     assert.deepEqual(got.projects.map((p) => `${p.code} ${p.name}`), a.children.map((p) => `${p.code} ${p.label || p.name}`), `${a.name} projects`);
     for (const [j, p] of a.children.entries()) {
       const gp = got.projects[j];
@@ -78,7 +78,7 @@ test("every Areas card is a kind:tools slide; every link has label (<= 20 chars)
       for (const l of col.links) {
         assert.ok(l.label && l.url && l.icon, `${tag}/${col.header}: ${JSON.stringify(l)}`);
         assert.ok(l.label.length <= 20, `${tag}: label "${l.label}" > 20 chars`);
-        assert.match(l.url, /^https:\/\//, `${tag}: ${l.label} url`);
+        assert.match(l.url, l.card ? /^#area-[\d.]+$/ : /^https:\/\//, `${tag}: ${l.label} url`);
         assert.ok(icons.has(l.icon), `${tag}: icon ${l.icon} exists`);
         assert.ok(!("description" in l), `${tag}: ${l.label} has no description`);
       }
@@ -92,17 +92,16 @@ test("Areas renders with the xProjects tools renderer (renderToolsSlide), no own
   assert.match(portal, /export function renderToolsSlide\(slide: SlideTools\)/, "portal-render exports the tools renderer");
   assert.match(portal, /case 'tools':\s+return renderToolsSlide\(slide\)/, "xProjects tools slides use it");
   assert.match(ts, /import \{ renderToolsSlide, type SlideTools \} from '\.\/portal-render'/, "areas.ts imports it");
-  assert.match(ts, /row\.appendChild\(renderToolsSlide\(s\)\)/, "every Areas card goes through it");
+  assert.match(ts, /renderToolsSlide\(s\)/, "every Areas card goes through it");
   assert.doesNotMatch(ts, /slideCard|tools-column|tools-dashboard|tool-link|featured-image|section-title/, "areas.ts builds no card markup itself");
 });
 
-test("Cloudy: home card = its families with their top apps; Android card = the fleet apps by category", () => {
+test("Cloudy: home card = its families as rows, no apps; Android card = the fleet apps by category", () => {
   const proj = (f, n) => areas.areas.find((a) => a.field === f)?.projects.find((p) => p.name === n);
   const cloudy = proj("Unix", "Cloudy");
   assert.equal(cloudy.cards[0].code, "1.1.0");
   const [home] = cloudy.cards, android = cloudy.cards.find((c) => c.title === "Android");
-  assert.deepEqual(home.columns.map((c) => c.header), cloudy.cards.slice(1).map((c) => c.title.toUpperCase()).slice(0, 12), "home columns = families");
-  for (const c of home.columns) assert.ok(c.links.length <= 6, `home ${c.header}: top apps only`);
+  assert.deepEqual(home.columns.map((c) => c.header), cloudy.cards.slice(1).map((c) => c.title.toUpperCase()), "home columns = families");
   const tax = JSON.parse(fs.readFileSync(path.join(root, "scripts/areas-taxonomy.json"), "utf8"));
   const order = [...Object.keys(tax.android.categories), "OTHER"];
   const headers = android.columns.map((c) => c.header);
@@ -112,7 +111,7 @@ test("Cloudy: home card = its families with their top apps; Android card = the f
   if (sources?.apps["cloudy-u-android"]) assert.equal(labels.length, sources.apps["cloudy-u-android"].length, "every declared app once");
   const drive = android.columns.flatMap((c) => c.links).find((l) => l.label === "Drive");
   assert.equal(drive.url, "https://diegonmarcos.github.io/cloud-web/apps/cloud-drive/", "web app -> its cloud-web page");
-  const game = proj("CG", "Zirkus").cards.flatMap((c) => c.columns).find((c) => c.header === "GAME PRODUCTION");
+  const game = proj("CG", "Zirkus").cards.slice(1).flatMap((c) => c.columns).find((c) => c.header === "GAME PRODUCTION");
   assert.deepEqual(game?.links.map((l) => l.label).sort(), ["GDevelop", "Godot", "Unity"]);
   assert.ok(game.links.every((l) => l.url.startsWith("https://github.com/diegonmarcos/CG-circus/tree/main/Game-Production/")), "content family apps link into CG-circus");
   const fin = proj("Capital", "Stack-Fin-Terminal").cards[1].columns.flatMap((c) => c.links.map((l) => l.label));
@@ -122,7 +121,6 @@ test("Cloudy: home card = its families with their top apps; Android card = the f
   const st = proj("HardTech", "Structural");
   assert.equal(st.planned, true); assert.equal(st.cards.length, 1); assert.equal(st.cards[0].tagline, "planned");
   assert.equal(st.cards[0].columns[0].links[0].url, "https://github.com/diegonmarcos/HardTech-Stack-CAD-Simulators/tree/main/Structural-Designer");
-  for (const f of ["Capital", "HardTech"]) assert.ok(areas.areas.find((a) => a.field === f).home, `${f} area home card`);
 });
 
 test("private repos: name with a lock, no repo URL; no archived repo", () => {
@@ -168,4 +166,115 @@ test("one carousel and one card for every section; no per-section swipe or card 
   assert.match(ts, /refreshCarousel\('areas', \(\) => \{/, "Areas re-mounts the shared carousel on project change");
   assert.doesNotMatch(scss, /scroll-snap-stop|\.area-card|swiper-slide|link-section|featured-image/, "no Areas card/swipe styles");
   assert.match(shared, /\.carousel-row > \.swiper \{/, "one swiper rule for every section");
+});
+
+// ---------------------------------------------------------------------------------------------------------------
+// #1330 home cards: area home first in every area; home cards list children (card / repo / webapp) and a landing link.
+// ---------------------------------------------------------------------------------------------------------------
+const tax = JSON.parse(fs.readFileSync(path.join(root, "scripts/areas-taxonomy.json"), "utf8"));
+const H = tax.home;
+const kindOf = (l) => (l.card ? "card" : l.label === H.repo.label ? "repo" : l.label === H.webapp.label ? "webapp" : "other");
+const rowsOf = (card) => card.columns.map((c) => ({ header: c.header, links: c.links, kinds: c.links.map(kindOf) }));
+const landingOf = (card) => card.extras?.primary_link;
+const plannedProject = (p) => p.planned;
+const allHomes = () => areas.areas.flatMap((a) => [{ a, card: a.home, node: a, children: a.projects }, ...a.projects.map((p) => ({ a, card: p.cards[0], node: p, children: p.cards.slice(1) }))]);
+
+test("every area's first card is its home card, titled with the area name (Unix first)", () => {
+  for (const a of areas.areas) {
+    assert.ok(a.home, `${a.field} has a home card`);
+    assert.equal(a.home.code, `${a.code}.0`);
+    assert.equal(a.home.id, `area-${a.code}.0`);
+    assert.equal(a.home.title.replace(/^\S+\s/, ""), a.field, `${a.field}: title = area name`);
+    assert.equal(a.home.data.kind, "area");
+    assert.deepEqual(a.home.columns.map((c) => c.header), a.projects.map((p) => p.name.toUpperCase()), `${a.field}: home rows = its projects, in order`);
+  }
+  assert.equal(areas.areas[0].field, "Unix");
+  assert.deepEqual(areas.areas[0].home.columns.map((c) => c.header), ["CLOUDY", "CLOUD-ME"]);
+});
+
+test("home cards (area and project) contain no application links: only card, repo, webapp rows and the landing", () => {
+  for (const { card, node } of allHomes()) {
+    if (plannedProject(node)) continue; // a planned project has no children yet: its one link is the folder where it will live
+    for (const r of rowsOf(card)) for (const [i, l] of r.links.entries()) {
+      assert.notEqual(r.kinds[i], "other", `${card.title}/${r.header}: link "${l.label}" is not a card/repo/webapp row`);
+      assert.ok(!/\/tree\//.test(l.url), `${card.title}/${r.header}: no folder (app) URL ${l.url}`);
+    }
+    assert.ok(card.columns.every((c) => c.links.length <= 3), `${card.title}: at most card + repo + webapp per row`);
+  }
+});
+
+test("every child row has its card link (to an existing card) and its repo link, in order", () => {
+  for (const { a, card, node, children } of allHomes()) {
+    if (plannedProject(node) || !children.length) continue;
+    const rows = rowsOf(card);
+    assert.equal(rows.length, children.length, `${card.title}: one row per child`);
+    for (const [i, r] of rows.entries()) {
+      assert.deepEqual(r.kinds.slice(0, 2), ["card", "repo"], `${card.title}/${r.header}: card then repo`);
+      const child = children[i];
+      const target = child.cards ? child.cards[0] : child;
+      assert.equal(r.links[0].card, target.id, `${card.title}/${r.header}: card link -> ${target.id}`);
+      assert.equal(r.links[0].url, `#${target.id}`);
+      const same = allCards().filter((c) => c.id === target.id);
+      assert.equal(same.length, 1, `${target.id} is a unique card`);
+      assert.ok(a.home.id === target.id || a.projects.some((p) => p.cards.some((c) => c.id === target.id)), "target card is in the same area");
+      assert.match(r.links[1].url, /^https:\/\/github\.com\/diegonmarcos(\/[\w.-]+)?$/, `${card.title}/${r.header}: repo url`);
+    }
+  }
+});
+
+test("repo links: the project hub (else the area hub) for projects; webapp links only where the registry declares webapp", { skip: !sources }, () => {
+  const byName = new Map(registry.repos.map((r) => [r.name, r]));
+  for (const [ai, a] of outline(registry).entries()) {
+    const got = areas.areas[ai];
+    for (const [pi, p] of a.children.entries()) {
+      const row = got.home.columns[pi];
+      const hub = byName.get(p.hub) || byName.get(a.hub);
+      if (hub) assert.equal(row.links[1].url, hub.visibility === "public" ? hub.url : tax.private_url, `${a.name}/${p.name}: repo = hub ${hub.name}`);
+      const w = row.links.find((l) => kindOf(l) === "webapp");
+      assert.equal(w?.url, p.webapp, `${a.name}/${p.name}: project webapp = registry`);
+      const pcard = got.projects[pi].cards[0];
+      for (const [fi, f] of (p.children || []).entries()) {
+        const r = pcard.columns[fi];
+        assert.equal(r.links.find((l) => kindOf(l) === "webapp")?.url, f.webapp, `${p.name}/${f.name}: family webapp = registry`);
+        const fh = byName.get(f.hub) || byName.get([f.hub, ...(f.repos || [])][0] ?? "");
+        if (fh && fh.visibility === "public") assert.equal(r.links[1].url, fh.url, `${p.name}/${f.name}: repo = ${fh.name}`);
+      }
+    }
+  }
+  // the owner's two examples
+  const cloudy = areas.areas[0].projects[0].cards[0];
+  const web = (h) => cloudy.columns.find((c) => c.header === h).links.find((l) => kindOf(l) === "webapp")?.url;
+  assert.equal(web("ANDROID"), "https://diegonmarcos.github.io/cloud-webapps/");
+  assert.equal(web("C3"), "https://diegonmarcos.github.io/cloudy-c3/");
+  assert.equal(web("LINUX"), undefined);
+  assert.equal(web("WEBAPPS"), undefined);
+});
+
+test("the landing link is the last element of a home card, only where the registry declares landing", { skip: !sources }, () => {
+  for (const [ai, a] of outline(registry).entries()) {
+    const got = areas.areas[ai];
+    assert.equal(landingOf(got.home)?.url, a.landing, `${a.name}: area landing`);
+    if (a.landing) assert.equal(landingOf(got.home).label, `${a.label || a.name} Area Landpage`);
+    for (const [pi, p] of a.children.entries()) {
+      const c = got.projects[pi].cards[0];
+      assert.equal(landingOf(c)?.url, p.landing, `${p.name}: project landing`);
+      if (p.landing) assert.equal(landingOf(c).label, `${p.label || p.name} Project Landpage`);
+    }
+  }
+  const cloudy = areas.areas[0].projects[0].cards[0];
+  assert.equal(landingOf(cloudy).label, "Cloudy Project Landpage");
+  // the renderer puts extras.primary_link after the columns, i.e. at the bottom of the card
+  const portal = fs.readFileSync(path.join(root, "src/typescript/modules/portal-render.ts"), "utf8");
+  const fn = portal.slice(portal.indexOf("export function renderToolsSlide"));
+  assert.ok(fn.indexOf("for (const col of cols)") < fn.indexOf("for (const lk of primaryLinks)"), "columns first, landing link after");
+});
+
+test("in-page card links are wired: renderer emits a no-tab anchor with data-card, areas.ts jumps to the card", () => {
+  const read = (f) => fs.readFileSync(path.join(root, f), "utf8");
+  const portal = read("src/typescript/modules/portal-render.ts"), ts = read("src/typescript/modules/areas.ts");
+  assert.match(portal, /link\.card\s*\?\s*el\('a', \{ class: 'tool-link', href: link\.url, 'data-card': link\.card \}\)/, "card link: same-tab anchor with data-card");
+  assert.match(ts, /export function gotoCard/);
+  assert.match(ts, /closest<HTMLElement>\('a\[data-card\]'\)/, "click delegation");
+  assert.match(ts, /swiper\?\.slideTo\(i, 0\)/, "the carousel moves to the card");
+  assert.match(ts, /dataset\['cardId'\] = s\.id/, "slides carry their card id");
 });

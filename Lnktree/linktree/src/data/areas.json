@@ -10,7 +10,59 @@
       "field": "Unix",
       "icon": "🐧",
       "banner": "public/images/banners/cloud.gif",
-      "home": null,
+      "home": {
+        "id": "area-1.0",
+        "kind": "tools",
+        "code": "1.0",
+        "title": "🐧 Unix",
+        "image": {
+          "src": "public/images/banners/cloud.gif",
+          "alt": "🐧 Unix"
+        },
+        "columns": [
+          {
+            "header": "CLOUDY",
+            "links": [
+              {
+                "label": "Card",
+                "url": "#area-1.1.0",
+                "icon": "slideshow.svg",
+                "card": "area-1.1.0"
+              },
+              {
+                "label": "Repo",
+                "url": "https://github.com/diegonmarcos/cloudy-___",
+                "icon": "brand-github.svg"
+              }
+            ],
+            "row": 0
+          },
+          {
+            "header": "CLOUD-ME",
+            "links": [
+              {
+                "label": "Card",
+                "url": "#area-1.2.0",
+                "icon": "slideshow.svg",
+                "card": "area-1.2.0"
+              },
+              {
+                "label": "Repo",
+                "url": "https://github.com/diegonmarcos/cloud-me-___",
+                "icon": "brand-github.svg"
+              }
+            ],
+            "row": 0
+          }
+        ],
+        "data": {
+          "kind": "area",
+          "card": "Unix",
+          "project": "#area",
+          "field": "Unix",
+          "code": "1.0"
+        }
+      },
       "projects": [
         {
           "code": "1.1",
@@ -32,34 +84,20 @@
                   "header": "ANDROID",
                   "links": [
                     {
-                      "label": "Account",
-                      "url": "https://diegonmarcos.github.io/cloud-web/apps/cloud-account/",
-                      "icon": "user.svg"
+                      "label": "Card",
+                      "url": "#area-1.1.1",
+                      "icon": "slideshow.svg",
+                      "card": "area-1.1.1"
                     },
                     {
-                      "label": "Keyboard",
-                      "url": "https://github.com/diegonmarcos/cloudy-u-android/tree/main/ac_cloud-keyboard",
-                      "icon": "device-mobile.svg"
+                      "label": "Repo",
+                      "url": "https://github.com/diegonmarcos/cloudy-u-android",
+                      "icon": "brand-github.svg"
                     },
                     {
-                      "label": "Nav",
-                      "url": "https://diegonmarcos.github.io/cloud-web/apps/cloud-nav/",
-                      "icon": "brand-google-maps.svg"
-                    },
-                    {
-                      "label": "Search",
-                      "url": "https://diegonmarcos.github.io/cloud-web/apps/cloud-search/",
-                      "icon": "brand-google-maps.svg"
-                    },
-                    {
-                      "label": "Store",
-                      "url": "https://diegonmarcos.github.io/cloud-web/apps/cloud-store/",
-                      "icon": "device-mobile.svg"
-                    },
-                    {
-                      "label": "SuperApp",
-                      "url": "https://github.com/diegonmarcos/cloudy-u-android/tree/main/aa_cloud-superapp",
-                      "icon": "device-mobile.svg"
+                      "label": "Webapp",
+                      "url": "https://diegonmarcos.github.io/cloud-webapps/",
+                      "icon": "world.svg"
                     }
                   ],
                   "row": 0
@@ -68,34 +106,20 @@
                   "header": "C3",
                   "links": [
                     {
-                      "label": "infra",
-                      "url": "https://github.com/diegonmarcos/cloudy-t-infra/tree/main/b_infra",
-                      "icon": "rocket.svg"
+                      "label": "Card",
+                      "url": "#area-1.1.2",
+                      "icon": "slideshow.svg",
+                      "card": "area-1.1.2"
                     },
                     {
-                      "label": "vps",
-                      "url": "https://github.com/diegonmarcos/cloudy-t-infra/tree/main/c_vps",
-                      "icon": "rocket.svg"
-                    },
-                    {
-                      "label": "assets-cdn",
-                      "url": "https://github.com/diegonmarcos/cloudy_db_assets-cdn",
+                      "label": "Repo",
+                      "url": "https://github.com/diegonmarcos/cloudy-t-infra",
                       "icon": "brand-github.svg"
                     },
                     {
-                      "label": "infra-ops-obsv_conf…",
-                      "url": "https://github.com/diegonmarcos/cloudy_db_infra-ops-obsv_configs-sync",
-                      "icon": "brand-github.svg"
-                    },
-                    {
-                      "label": "LFS",
-                      "url": "https://github.com/diegonmarcos",
-                      "icon": "lock.svg"
-                    },
-                    {
-                      "label": "docs",
-                      "url": "https://github.com/diegonmarcos",
-                      "icon": "lock.svg"
+                      "label": "Webapp",
+                      "url": "https://diegonmarcos.github.io/cloudy-c3/",
+                      "icon": "world.svg"
                     }
                   ],
                   "row": 0
@@ -104,34 +128,15 @@
                   "header": "LINUX",
                   "links": [
                     {
-                      "label": "vaultwarden",
-                      "url": "https://github.com/diegonmarcos/cloudy-u-containers/tree/main/ab-mic_vaultwarden",
-                      "icon": "lock.svg"
+                      "label": "Card",
+                      "url": "#area-1.1.3",
+                      "icon": "slideshow.svg",
+                      "card": "area-1.1.3"
                     },
                     {
-                      "label": "auth-broker",
-                      "url": "https://github.com/diegonmarcos/cloudy-u-containers/tree/main/infra-sec_auth-broker",
-                      "icon": "lock.svg"
-                    },
-                    {
-                      "label": "authelia",
-                      "url": "https://github.com/diegonmarcos/cloudy-u-containers/tree/main/infra-sec_authelia",
-                      "icon": "lock.svg"
-                    },
-                    {
-                      "label": "caddy",
-                      "url": "https://github.com/diegonmarcos/cloudy-u-containers/tree/main/infra-sec_caddy",
-                      "icon": "brush.svg"
-                    },
-                    {
-                      "label": "caddy-l4-image",
-                      "url": "https://github.com/diegonmarcos/cloudy-u-containers/tree/main/infra-sec_caddy-l4-image",
-                      "icon": "brush.svg"
-                    },
-                    {
-                      "label": "caddy-public",
-                      "url": "https://github.com/diegonmarcos/cloudy-u-containers/tree/main/infra-sec_caddy-public",
-                      "icon": "brush.svg"
+                      "label": "Repo",
+                      "url": "https://github.com/diegonmarcos/cloudy-u-containers",
+                      "icon": "brand-github.svg"
                     }
                   ],
                   "row": 0
@@ -140,39 +145,27 @@
                   "header": "WEBAPPS",
                   "links": [
                     {
-                      "label": "agents-tmp-reaper",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/agents-tmp-reaper",
-                      "icon": "brain.svg"
+                      "label": "Card",
+                      "url": "#area-1.1.4",
+                      "icon": "slideshow.svg",
+                      "card": "area-1.1.4"
                     },
                     {
-                      "label": "ai-chat",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/ai-chat",
-                      "icon": "send.svg"
-                    },
-                    {
-                      "label": "alerts-api",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/alerts-api",
-                      "icon": "link.svg"
-                    },
-                    {
-                      "label": "auth-broker",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/auth-broker",
-                      "icon": "lock.svg"
-                    },
-                    {
-                      "label": "authelia",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/authelia",
-                      "icon": "lock.svg"
-                    },
-                    {
-                      "label": "backup-borg",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/backup-borg",
-                      "icon": "database.svg"
+                      "label": "Repo",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps",
+                      "icon": "brand-github.svg"
                     }
                   ],
                   "row": 0
                 }
               ],
+              "extras": {
+                "primary_link": {
+                  "label": "Cloudy Project Landpage",
+                  "url": "https://diegonmarcos.github.io/cloud-webapps/",
+                  "icon": "world.svg"
+                }
+              },
               "data": {
                 "kind": "home",
                 "card": "Cloudy",
@@ -1780,34 +1773,15 @@
                   "header": "PUB",
                   "links": [
                     {
-                      "label": "cloud-me-pub-___",
+                      "label": "Card",
+                      "url": "#area-1.2.1",
+                      "icon": "slideshow.svg",
+                      "card": "area-1.2.1"
+                    },
+                    {
+                      "label": "Repo",
                       "url": "https://github.com/diegonmarcos/cloud-me-pub-___",
                       "icon": "brand-github.svg"
-                    },
-                    {
-                      "label": "cloud-me-pub-profil…",
-                      "url": "https://github.com/diegonmarcos/cloud-me-pub-profiles-___",
-                      "icon": "brand-github.svg"
-                    },
-                    {
-                      "label": "linktree",
-                      "url": "https://github.com/diegonmarcos/cloud-me-pub-profiles-_lnktree/tree/main/Lnktree/linktree",
-                      "icon": "code.svg"
-                    },
-                    {
-                      "label": "linktree_icon-view",
-                      "url": "https://github.com/diegonmarcos/cloud-me-pub-profiles-_lnktree/tree/main/Lnktree/linktree_icon-view",
-                      "icon": "code.svg"
-                    },
-                    {
-                      "label": "linktree_mindmap",
-                      "url": "https://github.com/diegonmarcos/cloud-me-pub-profiles-_lnktree/tree/main/Lnktree/linktree_mindmap",
-                      "icon": "brand-google-maps.svg"
-                    },
-                    {
-                      "label": "linktree_pixel-world",
-                      "url": "https://github.com/diegonmarcos/cloud-me-pub-profiles-_lnktree/tree/main/Lnktree/linktree_pixel-world",
-                      "icon": "code.svg"
                     }
                   ],
                   "row": 0
@@ -1816,39 +1790,27 @@
                   "header": "PVT",
                   "links": [
                     {
-                      "label": "my-account",
-                      "url": "https://github.com/diegonmarcos/cloud-me-pvt-___/tree/main/my-account",
-                      "icon": "user.svg"
+                      "label": "Card",
+                      "url": "#area-1.2.2",
+                      "icon": "slideshow.svg",
+                      "card": "area-1.2.2"
                     },
                     {
-                      "label": "my-ai",
-                      "url": "https://github.com/diegonmarcos",
-                      "icon": "lock.svg"
-                    },
-                    {
-                      "label": "cgc",
-                      "url": "https://github.com/diegonmarcos",
-                      "icon": "lock.svg"
-                    },
-                    {
-                      "label": "configs",
-                      "url": "https://github.com/diegonmarcos",
-                      "icon": "lock.svg"
-                    },
-                    {
-                      "label": "data",
-                      "url": "https://github.com/diegonmarcos",
-                      "icon": "lock.svg"
-                    },
-                    {
-                      "label": "notes",
-                      "url": "https://github.com/diegonmarcos",
-                      "icon": "lock.svg"
+                      "label": "Repo",
+                      "url": "https://github.com/diegonmarcos/cloud-me-pvt-___",
+                      "icon": "brand-github.svg"
                     }
                   ],
                   "row": 0
                 }
               ],
+              "extras": {
+                "primary_link": {
+                  "label": "Cloud-Me Project Landpage",
+                  "url": "https://diegonmarcos.com/",
+                  "icon": "world.svg"
+                }
+              },
               "data": {
                 "kind": "home",
                 "card": "Cloud-Me",
@@ -2108,33 +2070,14 @@
             "header": "GALAXY",
             "links": [
               {
-                "label": "galaxy",
-                "url": "https://github.com/diegonmarcos/CG-galaxy/tree/main/b_Projects/galaxy",
-                "icon": "device-gamepad.svg"
+                "label": "Card",
+                "url": "#area-2.1.0",
+                "icon": "slideshow.svg",
+                "card": "area-2.1.0"
               },
               {
-                "label": "galaxy-earth",
-                "url": "https://github.com/diegonmarcos/CG-galaxy/tree/main/b_Projects/galaxy-earth",
-                "icon": "device-gamepad.svg"
-              },
-              {
-                "label": "galaxy-x1",
-                "url": "https://github.com/diegonmarcos/CG-galaxy/tree/main/b_Projects/galaxy-x1",
-                "icon": "device-gamepad.svg"
-              },
-              {
-                "label": "galaxy-gaia",
-                "url": "https://github.com/diegonmarcos",
-                "icon": "lock.svg"
-              },
-              {
-                "label": "unity",
-                "url": "https://github.com/diegonmarcos",
-                "icon": "lock.svg"
-              },
-              {
-                "label": "voxel-rust",
-                "url": "https://github.com/diegonmarcos/CG-voxel-rust",
+                "label": "Repo",
+                "url": "https://github.com/diegonmarcos/CG-___",
                 "icon": "brand-github.svg"
               }
             ],
@@ -2144,34 +2087,15 @@
             "header": "ZIRKUS",
             "links": [
               {
-                "label": "Music-DAW",
-                "url": "https://github.com/diegonmarcos/CG-circus/tree/main/Music-Production/Music-DAW",
-                "icon": "headphones.svg"
+                "label": "Card",
+                "url": "#area-2.2.0",
+                "icon": "slideshow.svg",
+                "card": "area-2.2.0"
               },
               {
-                "label": "Music-Mixer",
-                "url": "https://github.com/diegonmarcos/CG-circus/tree/main/Music-Production/Music-Mixer",
-                "icon": "headphones.svg"
-              },
-              {
-                "label": "Higgsfield",
-                "url": "https://github.com/diegonmarcos/CG-circus/tree/main/Video-Production/Higgsfield",
-                "icon": "video.svg"
-              },
-              {
-                "label": "Unity",
-                "url": "https://github.com/diegonmarcos/CG-circus/tree/main/Game-Production/Unity",
-                "icon": "device-gamepad.svg"
-              },
-              {
-                "label": "Godot",
-                "url": "https://github.com/diegonmarcos/CG-circus/tree/main/Game-Production/Godot",
-                "icon": "device-gamepad.svg"
-              },
-              {
-                "label": "GDevelop",
-                "url": "https://github.com/diegonmarcos/CG-circus/tree/main/Game-Production/GDevelop",
-                "icon": "device-gamepad.svg"
+                "label": "Repo",
+                "url": "https://github.com/diegonmarcos/CG-___",
+                "icon": "brand-github.svg"
               }
             ],
             "row": 0
@@ -2206,24 +2130,20 @@
                   "header": "THRELTE",
                   "links": [
                     {
-                      "label": "galaxy",
-                      "url": "https://github.com/diegonmarcos/CG-galaxy/tree/main/b_Projects/galaxy",
-                      "icon": "device-gamepad.svg"
+                      "label": "Card",
+                      "url": "#area-2.1.1",
+                      "icon": "slideshow.svg",
+                      "card": "area-2.1.1"
                     },
                     {
-                      "label": "galaxy-earth",
-                      "url": "https://github.com/diegonmarcos/CG-galaxy/tree/main/b_Projects/galaxy-earth",
-                      "icon": "device-gamepad.svg"
+                      "label": "Repo",
+                      "url": "https://github.com/diegonmarcos/CG-galaxy",
+                      "icon": "brand-github.svg"
                     },
                     {
-                      "label": "galaxy-x1",
-                      "url": "https://github.com/diegonmarcos/CG-galaxy/tree/main/b_Projects/galaxy-x1",
-                      "icon": "device-gamepad.svg"
-                    },
-                    {
-                      "label": "galaxy-gaia",
-                      "url": "https://github.com/diegonmarcos",
-                      "icon": "lock.svg"
+                      "label": "Webapp",
+                      "url": "https://diegonmarcos.github.io/galaxy/",
+                      "icon": "world.svg"
                     }
                   ],
                   "row": 0
@@ -2232,7 +2152,13 @@
                   "header": "UNITY",
                   "links": [
                     {
-                      "label": "unity",
+                      "label": "Card",
+                      "url": "#area-2.1.2",
+                      "icon": "slideshow.svg",
+                      "card": "area-2.1.2"
+                    },
+                    {
+                      "label": "Repo",
                       "url": "https://github.com/diegonmarcos",
                       "icon": "lock.svg"
                     }
@@ -2243,7 +2169,13 @@
                   "header": "VOXEL-RUST",
                   "links": [
                     {
-                      "label": "voxel-rust",
+                      "label": "Card",
+                      "url": "#area-2.1.3",
+                      "icon": "slideshow.svg",
+                      "card": "area-2.1.3"
+                    },
+                    {
+                      "label": "Repo",
                       "url": "https://github.com/diegonmarcos/CG-voxel-rust",
                       "icon": "brand-github.svg"
                     }
@@ -2392,14 +2324,15 @@
                   "header": "MUSIC PRODUCTION",
                   "links": [
                     {
-                      "label": "Music-DAW",
-                      "url": "https://github.com/diegonmarcos/CG-circus/tree/main/Music-Production/Music-DAW",
-                      "icon": "headphones.svg"
+                      "label": "Card",
+                      "url": "#area-2.2.1",
+                      "icon": "slideshow.svg",
+                      "card": "area-2.2.1"
                     },
                     {
-                      "label": "Music-Mixer",
-                      "url": "https://github.com/diegonmarcos/CG-circus/tree/main/Music-Production/Music-Mixer",
-                      "icon": "headphones.svg"
+                      "label": "Repo",
+                      "url": "https://github.com/diegonmarcos/CG-circus",
+                      "icon": "brand-github.svg"
                     }
                   ],
                   "row": 0
@@ -2408,9 +2341,15 @@
                   "header": "VIDEO PRODUCTION",
                   "links": [
                     {
-                      "label": "Higgsfield",
-                      "url": "https://github.com/diegonmarcos/CG-circus/tree/main/Video-Production/Higgsfield",
-                      "icon": "video.svg"
+                      "label": "Card",
+                      "url": "#area-2.2.2",
+                      "icon": "slideshow.svg",
+                      "card": "area-2.2.2"
+                    },
+                    {
+                      "label": "Repo",
+                      "url": "https://github.com/diegonmarcos/CG-circus",
+                      "icon": "brand-github.svg"
                     }
                   ],
                   "row": 0
@@ -2419,19 +2358,15 @@
                   "header": "GAME PRODUCTION",
                   "links": [
                     {
-                      "label": "Unity",
-                      "url": "https://github.com/diegonmarcos/CG-circus/tree/main/Game-Production/Unity",
-                      "icon": "device-gamepad.svg"
+                      "label": "Card",
+                      "url": "#area-2.2.3",
+                      "icon": "slideshow.svg",
+                      "card": "area-2.2.3"
                     },
                     {
-                      "label": "Godot",
-                      "url": "https://github.com/diegonmarcos/CG-circus/tree/main/Game-Production/Godot",
-                      "icon": "device-gamepad.svg"
-                    },
-                    {
-                      "label": "GDevelop",
-                      "url": "https://github.com/diegonmarcos/CG-circus/tree/main/Game-Production/GDevelop",
-                      "icon": "device-gamepad.svg"
+                      "label": "Repo",
+                      "url": "https://github.com/diegonmarcos/CG-circus",
+                      "icon": "brand-github.svg"
                     }
                   ],
                   "row": 0
@@ -2440,9 +2375,15 @@
                   "header": "WEB GAMES",
                   "links": [
                     {
-                      "label": "Circus",
-                      "url": "https://github.com/diegonmarcos/CG-circus/tree/main/c_Circus",
-                      "icon": "device-gamepad.svg"
+                      "label": "Card",
+                      "url": "#area-2.2.4",
+                      "icon": "slideshow.svg",
+                      "card": "area-2.2.4"
+                    },
+                    {
+                      "label": "Repo",
+                      "url": "https://github.com/diegonmarcos/CG-circus",
+                      "icon": "brand-github.svg"
                     }
                   ],
                   "row": 0
@@ -2614,9 +2555,15 @@
             "header": "MACRO-CENTRAL-BANK",
             "links": [
               {
-                "label": "central_bank",
-                "url": "https://github.com/diegonmarcos/Capital-Macro-Central-Bank/tree/main/src/central_bank",
-                "icon": "ledger.svg"
+                "label": "Card",
+                "url": "#area-3.1.0",
+                "icon": "slideshow.svg",
+                "card": "area-3.1.0"
+              },
+              {
+                "label": "Repo",
+                "url": "https://github.com/diegonmarcos/Capital-___",
+                "icon": "brand-github.svg"
               }
             ],
             "row": 0
@@ -2625,8 +2572,14 @@
             "header": "MICRO-ASSET-MANAGEMENT",
             "links": [
               {
-                "label": "Capital-Micro-Asset…",
-                "url": "https://github.com/diegonmarcos/Capital-Micro-Asset-Management",
+                "label": "Card",
+                "url": "#area-3.2.0",
+                "icon": "slideshow.svg",
+                "card": "area-3.2.0"
+              },
+              {
+                "label": "Repo",
+                "url": "https://github.com/diegonmarcos/Capital-___",
                 "icon": "brand-github.svg"
               }
             ],
@@ -2636,29 +2589,15 @@
             "header": "STACK-FIN-TERMINAL",
             "links": [
               {
-                "label": "CentralBank",
-                "url": "https://github.com/diegonmarcos/Capital-Stack-Fin-Terminal/tree/main/src/CentralBank",
-                "icon": "ledger.svg"
+                "label": "Card",
+                "url": "#area-3.3.0",
+                "icon": "slideshow.svg",
+                "card": "area-3.3.0"
               },
               {
-                "label": "DataScience-ML-Term…",
-                "url": "https://github.com/diegonmarcos/Capital-Stack-Fin-Terminal/tree/main/src/DataScience-ML-Terminal",
-                "icon": "ledger.svg"
-              },
-              {
-                "label": "Fin-Terminal",
-                "url": "https://github.com/diegonmarcos/Capital-Stack-Fin-Terminal/tree/main/src/Fin-Terminal",
-                "icon": "ledger.svg"
-              },
-              {
-                "label": "GDELT-News",
-                "url": "https://github.com/diegonmarcos/Capital-Stack-Fin-Terminal/tree/main/src/GDELT-News",
-                "icon": "world.svg"
-              },
-              {
-                "label": "MarketWatch",
-                "url": "https://github.com/diegonmarcos/Capital-Stack-Fin-Terminal/tree/main/src/MarketWatch",
-                "icon": "ledger.svg"
+                "label": "Repo",
+                "url": "https://github.com/diegonmarcos/Capital-___",
+                "icon": "brand-github.svg"
               }
             ],
             "row": 0
@@ -2693,9 +2632,20 @@
                   "header": "MQPM",
                   "links": [
                     {
-                      "label": "central_bank",
-                      "url": "https://github.com/diegonmarcos/Capital-Macro-Central-Bank/tree/main/src/central_bank",
-                      "icon": "ledger.svg"
+                      "label": "Card",
+                      "url": "#area-3.1.1",
+                      "icon": "slideshow.svg",
+                      "card": "area-3.1.1"
+                    },
+                    {
+                      "label": "Repo",
+                      "url": "https://github.com/diegonmarcos/Capital-Macro-Central-Bank",
+                      "icon": "brand-github.svg"
+                    },
+                    {
+                      "label": "Webapp",
+                      "url": "https://diegonmarcos.github.io/central_bank/",
+                      "icon": "world.svg"
                     }
                   ],
                   "row": 0
@@ -2761,7 +2711,13 @@
                   "header": "CORPORATE",
                   "links": [
                     {
-                      "label": "Capital-Micro-Asset…",
+                      "label": "Card",
+                      "url": "#area-3.2.1",
+                      "icon": "slideshow.svg",
+                      "card": "area-3.2.1"
+                    },
+                    {
+                      "label": "Repo",
                       "url": "https://github.com/diegonmarcos/Capital-Micro-Asset-Management",
                       "icon": "brand-github.svg"
                     }
@@ -2829,29 +2785,20 @@
                   "header": "TERMINAL",
                   "links": [
                     {
-                      "label": "CentralBank",
-                      "url": "https://github.com/diegonmarcos/Capital-Stack-Fin-Terminal/tree/main/src/CentralBank",
-                      "icon": "ledger.svg"
+                      "label": "Card",
+                      "url": "#area-3.3.1",
+                      "icon": "slideshow.svg",
+                      "card": "area-3.3.1"
                     },
                     {
-                      "label": "DataScience-ML-Term…",
-                      "url": "https://github.com/diegonmarcos/Capital-Stack-Fin-Terminal/tree/main/src/DataScience-ML-Terminal",
-                      "icon": "ledger.svg"
+                      "label": "Repo",
+                      "url": "https://github.com/diegonmarcos/Capital-Stack-Fin-Terminal",
+                      "icon": "brand-github.svg"
                     },
                     {
-                      "label": "Fin-Terminal",
-                      "url": "https://github.com/diegonmarcos/Capital-Stack-Fin-Terminal/tree/main/src/Fin-Terminal",
-                      "icon": "ledger.svg"
-                    },
-                    {
-                      "label": "GDELT-News",
-                      "url": "https://github.com/diegonmarcos/Capital-Stack-Fin-Terminal/tree/main/src/GDELT-News",
+                      "label": "Webapp",
+                      "url": "https://diegonmarcos.github.io/fin-terminal/",
                       "icon": "world.svg"
-                    },
-                    {
-                      "label": "MarketWatch",
-                      "url": "https://github.com/diegonmarcos/Capital-Stack-Fin-Terminal/tree/main/src/MarketWatch",
-                      "icon": "ledger.svg"
                     }
                   ],
                   "row": 0
@@ -2938,9 +2885,15 @@
             "header": "STRUCTURAL",
             "links": [
               {
-                "label": "Structural-Designer",
-                "url": "https://github.com/diegonmarcos/HardTech-Stack-CAD-Simulators/tree/main/Structural-Designer",
-                "icon": "brush.svg"
+                "label": "Card",
+                "url": "#area-4.1.0",
+                "icon": "slideshow.svg",
+                "card": "area-4.1.0"
+              },
+              {
+                "label": "Repo",
+                "url": "https://github.com/diegonmarcos/HardTech-___",
+                "icon": "brand-github.svg"
               }
             ],
             "row": 0
@@ -2949,8 +2902,14 @@
             "header": "DEEPXTECH",
             "links": [
               {
-                "label": "HardTech-DeepXTech",
-                "url": "https://github.com/diegonmarcos/HardTech-DeepXTech",
+                "label": "Card",
+                "url": "#area-4.2.0",
+                "icon": "slideshow.svg",
+                "card": "area-4.2.0"
+              },
+              {
+                "label": "Repo",
+                "url": "https://github.com/diegonmarcos/HardTech-___",
                 "icon": "brand-github.svg"
               }
             ],
@@ -2960,24 +2919,15 @@
             "header": "STACK-CAD-SIMULATORS",
             "links": [
               {
-                "label": "sailytics",
-                "url": "https://github.com/diegonmarcos/HardTech-Stack-CAD-Simulators/tree/main/Simulators/sailytics",
-                "icon": "bolt.svg"
+                "label": "Card",
+                "url": "#area-4.3.0",
+                "icon": "slideshow.svg",
+                "card": "area-4.3.0"
               },
               {
-                "label": "OpenBIM",
-                "url": "https://github.com/diegonmarcos/HardTech-Stack-CAD-Simulators/tree/main/Structural-Designer/OpenBIM",
-                "icon": "brush.svg"
-              },
-              {
-                "label": "OpenCAD",
-                "url": "https://github.com/diegonmarcos/HardTech-Stack-CAD-Simulators/tree/main/Structural-Designer/OpenCAD",
-                "icon": "brush.svg"
-              },
-              {
-                "label": "OpenRevit",
-                "url": "https://github.com/diegonmarcos/HardTech-Stack-CAD-Simulators/tree/main/Structural-Designer/OpenRevit",
-                "icon": "brush.svg"
+                "label": "Repo",
+                "url": "https://github.com/diegonmarcos/HardTech-___",
+                "icon": "brand-github.svg"
               }
             ],
             "row": 0
@@ -3052,9 +3002,20 @@
                   "header": "SAILYTICS",
                   "links": [
                     {
-                      "label": "HardTech-DeepXTech",
+                      "label": "Card",
+                      "url": "#area-4.2.1",
+                      "icon": "slideshow.svg",
+                      "card": "area-4.2.1"
+                    },
+                    {
+                      "label": "Repo",
                       "url": "https://github.com/diegonmarcos/HardTech-DeepXTech",
                       "icon": "brand-github.svg"
+                    },
+                    {
+                      "label": "Webapp",
+                      "url": "https://diegonmarcos.github.io/sailytics/",
+                      "icon": "world.svg"
                     }
                   ],
                   "row": 0
@@ -3120,24 +3081,15 @@
                   "header": "CAD",
                   "links": [
                     {
-                      "label": "sailytics",
-                      "url": "https://github.com/diegonmarcos/HardTech-Stack-CAD-Simulators/tree/main/Simulators/sailytics",
-                      "icon": "bolt.svg"
+                      "label": "Card",
+                      "url": "#area-4.3.1",
+                      "icon": "slideshow.svg",
+                      "card": "area-4.3.1"
                     },
                     {
-                      "label": "OpenBIM",
-                      "url": "https://github.com/diegonmarcos/HardTech-Stack-CAD-Simulators/tree/main/Structural-Designer/OpenBIM",
-                      "icon": "brush.svg"
-                    },
-                    {
-                      "label": "OpenCAD",
-                      "url": "https://github.com/diegonmarcos/HardTech-Stack-CAD-Simulators/tree/main/Structural-Designer/OpenCAD",
-                      "icon": "brush.svg"
-                    },
-                    {
-                      "label": "OpenRevit",
-                      "url": "https://github.com/diegonmarcos/HardTech-Stack-CAD-Simulators/tree/main/Structural-Designer/OpenRevit",
-                      "icon": "brush.svg"
+                      "label": "Repo",
+                      "url": "https://github.com/diegonmarcos/HardTech-Stack-CAD-Simulators",
+                      "icon": "brand-github.svg"
                     }
                   ],
                   "row": 0
@@ -3225,14 +3177,15 @@
             "header": "42-ALGO",
             "links": [
               {
-                "label": "push_swap",
-                "url": "https://github.com/diegonmarcos/lecole-42_back-Algo/tree/main/C2_push_swap",
-                "icon": "code.svg"
+                "label": "Card",
+                "url": "#area-5.1.0",
+                "icon": "slideshow.svg",
+                "card": "area-5.1.0"
               },
               {
-                "label": "LeetC",
-                "url": "https://github.com/diegonmarcos/lecole-42_back-Algo/tree/main/S2_LeetC",
-                "icon": "code.svg"
+                "label": "Repo",
+                "url": "https://github.com/diegonmarcos/lecole-42-___",
+                "icon": "brand-github.svg"
               }
             ],
             "row": 0
@@ -3241,9 +3194,15 @@
             "header": "42-GRAPHIC",
             "links": [
               {
-                "label": "fdf",
-                "url": "https://github.com/diegonmarcos/lecole-42_back-Graphic/tree/main/C2_fdf",
-                "icon": "code.svg"
+                "label": "Card",
+                "url": "#area-5.2.0",
+                "icon": "slideshow.svg",
+                "card": "area-5.2.0"
+              },
+              {
+                "label": "Repo",
+                "url": "https://github.com/diegonmarcos/lecole-42-___",
+                "icon": "brand-github.svg"
               }
             ],
             "row": 0
@@ -3252,24 +3211,15 @@
             "header": "42-SYSTEM",
             "links": [
               {
-                "label": "c1_born2beroot",
-                "url": "https://github.com/diegonmarcos/lecole-42_back-System/tree/main/c1_born2beroot",
-                "icon": "settings.svg"
+                "label": "Card",
+                "url": "#area-5.3.0",
+                "icon": "slideshow.svg",
+                "card": "area-5.3.0"
               },
               {
-                "label": "c2_pipex",
-                "url": "https://github.com/diegonmarcos/lecole-42_back-System/tree/main/c2_pipex",
-                "icon": "settings.svg"
-              },
-              {
-                "label": "c2_websrv",
-                "url": "https://github.com/diegonmarcos/lecole-42_back-System/tree/main/c2_websrv",
-                "icon": "world.svg"
-              },
-              {
-                "label": "s2_docker",
-                "url": "https://github.com/diegonmarcos/lecole-42_back-System/tree/main/d_s2_docker",
-                "icon": "settings.svg"
+                "label": "Repo",
+                "url": "https://github.com/diegonmarcos/lecole-42-___",
+                "icon": "brand-github.svg"
               }
             ],
             "row": 0
@@ -3278,29 +3228,15 @@
             "header": "42-MYLIBS",
             "links": [
               {
-                "label": "mylibc",
-                "url": "https://github.com/diegonmarcos/lecole-42_ops-Mylibs/tree/main/mylibc",
-                "icon": "code.svg"
+                "label": "Card",
+                "url": "#area-5.4.0",
+                "icon": "slideshow.svg",
+                "card": "area-5.4.0"
               },
               {
-                "label": "mylibcpp",
-                "url": "https://github.com/diegonmarcos/lecole-42_ops-Mylibs/tree/main/mylibcpp",
-                "icon": "code.svg"
-              },
-              {
-                "label": "mylibx",
-                "url": "https://github.com/diegonmarcos/lecole-42_ops-Mylibs/tree/main/mylibx",
-                "icon": "code.svg"
-              },
-              {
-                "label": "mytools",
-                "url": "https://github.com/diegonmarcos/lecole-42_ops-Mylibs/tree/main/mytools",
-                "icon": "code.svg"
-              },
-              {
-                "label": "myunittest",
-                "url": "https://github.com/diegonmarcos/lecole-42_ops-Mylibs/tree/main/myunittest",
-                "icon": "code.svg"
+                "label": "Repo",
+                "url": "https://github.com/diegonmarcos/lecole-42-___",
+                "icon": "brand-github.svg"
               }
             ],
             "row": 0
@@ -3309,9 +3245,15 @@
             "header": "42-PROJECTS",
             "links": [
               {
-                "label": "projects",
-                "url": "https://github.com/diegonmarcos",
-                "icon": "lock.svg"
+                "label": "Card",
+                "url": "#area-5.5.0",
+                "icon": "slideshow.svg",
+                "card": "area-5.5.0"
+              },
+              {
+                "label": "Repo",
+                "url": "https://github.com/diegonmarcos/lecole-42-___",
+                "icon": "brand-github.svg"
               }
             ],
             "row": 1
@@ -3320,34 +3262,15 @@
             "header": "42-AGENTIC",
             "links": [
               {
-                "label": "mcp-servers",
-                "url": "https://github.com/diegonmarcos/lecole-42_ml-Agentic/tree/main/mcp-servers",
-                "icon": "link.svg"
+                "label": "Card",
+                "url": "#area-5.6.0",
+                "icon": "slideshow.svg",
+                "card": "area-5.6.0"
               },
               {
-                "label": "n8n-llm-orchestrator",
-                "url": "https://github.com/diegonmarcos/lecole-42_ml-Agentic/tree/main/n8n-llm-orchestrator",
-                "icon": "brain.svg"
-              },
-              {
-                "label": "servers",
-                "url": "https://github.com/diegonmarcos/lecole-42_ml-Agentic/tree/main/servers",
-                "icon": "code.svg"
-              },
-              {
-                "label": "agents",
-                "url": "https://github.com/diegonmarcos/lecole-42_ml-Agentic/tree/main/src/agents",
-                "icon": "brain.svg"
-              },
-              {
-                "label": "analytics",
-                "url": "https://github.com/diegonmarcos/lecole-42_ml-Agentic/tree/main/src/analytics",
-                "icon": "code.svg"
-              },
-              {
-                "label": "api",
-                "url": "https://github.com/diegonmarcos/lecole-42_ml-Agentic/tree/main/src/api",
-                "icon": "link.svg"
+                "label": "Repo",
+                "url": "https://github.com/diegonmarcos/lecole-42-___",
+                "icon": "brand-github.svg"
               }
             ],
             "row": 1
@@ -3356,8 +3279,14 @@
             "header": "42-DATASCIENCE",
             "links": [
               {
-                "label": "DataScience",
-                "url": "https://github.com/diegonmarcos/lecole-42_ml-DataScience",
+                "label": "Card",
+                "url": "#area-5.7.0",
+                "icon": "slideshow.svg",
+                "card": "area-5.7.0"
+              },
+              {
+                "label": "Repo",
+                "url": "https://github.com/diegonmarcos/lecole-42-___",
                 "icon": "brand-github.svg"
               }
             ],
@@ -3367,8 +3296,14 @@
             "header": "42-MACHINELEARNING",
             "links": [
               {
-                "label": "MachineLearning",
-                "url": "https://github.com/diegonmarcos/lecole-42_ml-MachineLearning",
+                "label": "Card",
+                "url": "#area-5.8.0",
+                "icon": "slideshow.svg",
+                "card": "area-5.8.0"
+              },
+              {
+                "label": "Repo",
+                "url": "https://github.com/diegonmarcos/lecole-42-___",
                 "icon": "brand-github.svg"
               }
             ],
@@ -3378,8 +3313,14 @@
             "header": "42-CYBERWARFARE",
             "links": [
               {
-                "label": "Cyberwarfare",
-                "url": "https://github.com/diegonmarcos/lecole-42_cyber-Cyberwarfare",
+                "label": "Card",
+                "url": "#area-5.9.0",
+                "icon": "slideshow.svg",
+                "card": "area-5.9.0"
+              },
+              {
+                "label": "Repo",
+                "url": "https://github.com/diegonmarcos/lecole-42-___",
                 "icon": "brand-github.svg"
               }
             ],
@@ -3389,9 +3330,15 @@
             "header": "42-DEV",
             "links": [
               {
-                "label": "dev",
-                "url": "https://github.com/diegonmarcos",
-                "icon": "lock.svg"
+                "label": "Card",
+                "url": "#area-5.10.0",
+                "icon": "slideshow.svg",
+                "card": "area-5.10.0"
+              },
+              {
+                "label": "Repo",
+                "url": "https://github.com/diegonmarcos/lecole-42-___",
+                "icon": "brand-github.svg"
               }
             ],
             "row": 2
@@ -3426,14 +3373,15 @@
                   "header": "BACK",
                   "links": [
                     {
-                      "label": "push_swap",
-                      "url": "https://github.com/diegonmarcos/lecole-42_back-Algo/tree/main/C2_push_swap",
-                      "icon": "code.svg"
+                      "label": "Card",
+                      "url": "#area-5.1.1",
+                      "icon": "slideshow.svg",
+                      "card": "area-5.1.1"
                     },
                     {
-                      "label": "LeetC",
-                      "url": "https://github.com/diegonmarcos/lecole-42_back-Algo/tree/main/S2_LeetC",
-                      "icon": "code.svg"
+                      "label": "Repo",
+                      "url": "https://github.com/diegonmarcos/lecole-42_back-Algo",
+                      "icon": "brand-github.svg"
                     }
                   ],
                   "row": 0
@@ -3504,9 +3452,15 @@
                   "header": "BACK",
                   "links": [
                     {
-                      "label": "fdf",
-                      "url": "https://github.com/diegonmarcos/lecole-42_back-Graphic/tree/main/C2_fdf",
-                      "icon": "code.svg"
+                      "label": "Card",
+                      "url": "#area-5.2.1",
+                      "icon": "slideshow.svg",
+                      "card": "area-5.2.1"
+                    },
+                    {
+                      "label": "Repo",
+                      "url": "https://github.com/diegonmarcos/lecole-42_back-Graphic",
+                      "icon": "brand-github.svg"
                     }
                   ],
                   "row": 0
@@ -3572,24 +3526,15 @@
                   "header": "BACK",
                   "links": [
                     {
-                      "label": "c1_born2beroot",
-                      "url": "https://github.com/diegonmarcos/lecole-42_back-System/tree/main/c1_born2beroot",
-                      "icon": "settings.svg"
+                      "label": "Card",
+                      "url": "#area-5.3.1",
+                      "icon": "slideshow.svg",
+                      "card": "area-5.3.1"
                     },
                     {
-                      "label": "c2_pipex",
-                      "url": "https://github.com/diegonmarcos/lecole-42_back-System/tree/main/c2_pipex",
-                      "icon": "settings.svg"
-                    },
-                    {
-                      "label": "c2_websrv",
-                      "url": "https://github.com/diegonmarcos/lecole-42_back-System/tree/main/c2_websrv",
-                      "icon": "world.svg"
-                    },
-                    {
-                      "label": "s2_docker",
-                      "url": "https://github.com/diegonmarcos/lecole-42_back-System/tree/main/d_s2_docker",
-                      "icon": "settings.svg"
+                      "label": "Repo",
+                      "url": "https://github.com/diegonmarcos/lecole-42_back-System",
+                      "icon": "brand-github.svg"
                     }
                   ],
                   "row": 0
@@ -3670,29 +3615,15 @@
                   "header": "OPS",
                   "links": [
                     {
-                      "label": "mylibc",
-                      "url": "https://github.com/diegonmarcos/lecole-42_ops-Mylibs/tree/main/mylibc",
-                      "icon": "code.svg"
+                      "label": "Card",
+                      "url": "#area-5.4.1",
+                      "icon": "slideshow.svg",
+                      "card": "area-5.4.1"
                     },
                     {
-                      "label": "mylibcpp",
-                      "url": "https://github.com/diegonmarcos/lecole-42_ops-Mylibs/tree/main/mylibcpp",
-                      "icon": "code.svg"
-                    },
-                    {
-                      "label": "mylibx",
-                      "url": "https://github.com/diegonmarcos/lecole-42_ops-Mylibs/tree/main/mylibx",
-                      "icon": "code.svg"
-                    },
-                    {
-                      "label": "mytools",
-                      "url": "https://github.com/diegonmarcos/lecole-42_ops-Mylibs/tree/main/mytools",
-                      "icon": "code.svg"
-                    },
-                    {
-                      "label": "myunittest",
-                      "url": "https://github.com/diegonmarcos/lecole-42_ops-Mylibs/tree/main/myunittest",
-                      "icon": "code.svg"
+                      "label": "Repo",
+                      "url": "https://github.com/diegonmarcos/lecole-42_ops-Mylibs",
+                      "icon": "brand-github.svg"
                     }
                   ],
                   "row": 0
@@ -3778,7 +3709,13 @@
                   "header": "CURRICULUM",
                   "links": [
                     {
-                      "label": "projects",
+                      "label": "Card",
+                      "url": "#area-5.5.1",
+                      "icon": "slideshow.svg",
+                      "card": "area-5.5.1"
+                    },
+                    {
+                      "label": "Repo",
                       "url": "https://github.com/diegonmarcos",
                       "icon": "lock.svg"
                     }
@@ -3846,34 +3783,15 @@
                   "header": "ML",
                   "links": [
                     {
-                      "label": "mcp-servers",
-                      "url": "https://github.com/diegonmarcos/lecole-42_ml-Agentic/tree/main/mcp-servers",
-                      "icon": "link.svg"
+                      "label": "Card",
+                      "url": "#area-5.6.1",
+                      "icon": "slideshow.svg",
+                      "card": "area-5.6.1"
                     },
                     {
-                      "label": "n8n-llm-orchestrator",
-                      "url": "https://github.com/diegonmarcos/lecole-42_ml-Agentic/tree/main/n8n-llm-orchestrator",
-                      "icon": "brain.svg"
-                    },
-                    {
-                      "label": "servers",
-                      "url": "https://github.com/diegonmarcos/lecole-42_ml-Agentic/tree/main/servers",
-                      "icon": "code.svg"
-                    },
-                    {
-                      "label": "agents",
-                      "url": "https://github.com/diegonmarcos/lecole-42_ml-Agentic/tree/main/src/agents",
-                      "icon": "brain.svg"
-                    },
-                    {
-                      "label": "analytics",
-                      "url": "https://github.com/diegonmarcos/lecole-42_ml-Agentic/tree/main/src/analytics",
-                      "icon": "code.svg"
-                    },
-                    {
-                      "label": "api",
-                      "url": "https://github.com/diegonmarcos/lecole-42_ml-Agentic/tree/main/src/api",
-                      "icon": "link.svg"
+                      "label": "Repo",
+                      "url": "https://github.com/diegonmarcos/lecole-42_ml-Agentic",
+                      "icon": "brand-github.svg"
                     }
                   ],
                   "row": 0
@@ -4024,7 +3942,13 @@
                   "header": "ML",
                   "links": [
                     {
-                      "label": "DataScience",
+                      "label": "Card",
+                      "url": "#area-5.7.1",
+                      "icon": "slideshow.svg",
+                      "card": "area-5.7.1"
+                    },
+                    {
+                      "label": "Repo",
                       "url": "https://github.com/diegonmarcos/lecole-42_ml-DataScience",
                       "icon": "brand-github.svg"
                     }
@@ -4092,7 +4016,13 @@
                   "header": "ML",
                   "links": [
                     {
-                      "label": "MachineLearning",
+                      "label": "Card",
+                      "url": "#area-5.8.1",
+                      "icon": "slideshow.svg",
+                      "card": "area-5.8.1"
+                    },
+                    {
+                      "label": "Repo",
                       "url": "https://github.com/diegonmarcos/lecole-42_ml-MachineLearning",
                       "icon": "brand-github.svg"
                     }
@@ -4160,7 +4090,13 @@
                   "header": "CYBER",
                   "links": [
                     {
-                      "label": "Cyberwarfare",
+                      "label": "Card",
+                      "url": "#area-5.9.1",
+                      "icon": "slideshow.svg",
+                      "card": "area-5.9.1"
+                    },
+                    {
+                      "label": "Repo",
                       "url": "https://github.com/diegonmarcos/lecole-42_cyber-Cyberwarfare",
                       "icon": "brand-github.svg"
                     }
@@ -4228,7 +4164,13 @@
                   "header": "DEV",
                   "links": [
                     {
-                      "label": "dev",
+                      "label": "Card",
+                      "url": "#area-5.10.1",
+                      "icon": "slideshow.svg",
+                      "card": "area-5.10.1"
+                    },
+                    {
+                      "label": "Repo",
                       "url": "https://github.com/diegonmarcos",
                       "icon": "lock.svg"
                     }
@@ -4297,9 +4239,15 @@
             "header": "ENDEAVOURS",
             "links": [
               {
-                "label": "Companies",
-                "url": "https://github.com/diegonmarcos/Projects-endeavours/tree/main/a_Companies",
-                "icon": "code.svg"
+                "label": "Card",
+                "url": "#area-6.1.0",
+                "icon": "slideshow.svg",
+                "card": "area-6.1.0"
+              },
+              {
+                "label": "Repo",
+                "url": "https://github.com/diegonmarcos/Projects-___",
+                "icon": "brand-github.svg"
               }
             ],
             "row": 0
@@ -4308,7 +4256,13 @@
             "header": "DUCKPENG",
             "links": [
               {
-                "label": "DuckPeng-___",
+                "label": "Card",
+                "url": "#area-6.2.0",
+                "icon": "slideshow.svg",
+                "card": "area-6.2.0"
+              },
+              {
+                "label": "Repo",
                 "url": "https://github.com/diegonmarcos/DuckPeng-___",
                 "icon": "brand-github.svg"
               }
@@ -4345,9 +4299,15 @@
                   "header": "ENDEAVOURS",
                   "links": [
                     {
-                      "label": "Companies",
-                      "url": "https://github.com/diegonmarcos/Projects-endeavours/tree/main/a_Companies",
-                      "icon": "code.svg"
+                      "label": "Card",
+                      "url": "#area-6.1.1",
+                      "icon": "slideshow.svg",
+                      "card": "area-6.1.1"
+                    },
+                    {
+                      "label": "Repo",
+                      "url": "https://github.com/diegonmarcos/Projects-endeavours",
+                      "icon": "brand-github.svg"
                     }
                   ],
                   "row": 0
@@ -4413,7 +4373,7 @@
                   "header": "DUCKPENG",
                   "links": [
                     {
-                      "label": "DuckPeng-___",
+                      "label": "Repo",
                       "url": "https://github.com/diegonmarcos/DuckPeng-___",
                       "icon": "brand-github.svg"
                     }

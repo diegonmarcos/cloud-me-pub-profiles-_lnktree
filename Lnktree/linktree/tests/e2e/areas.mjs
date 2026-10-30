@@ -131,6 +131,28 @@ for (const [label, viewport] of [["mobile", { width: 390, height: 844 }], ["desk
   const a0 = data.areas[0];
   check(r, a0.field, firstProject(a0), errs, "default");
   if (shot) await page.screenshot({ path: `${shot}-${label}.png` });
+  // #1330 in-page card links: Unix home -> Cloudy home -> Android card, each click lands on (and shows) the target card
+  const jump = async (from, to, want) => {
+    await page.click(`.areas-swiper .swiper-slide-active a[data-card="${to}"]`);
+    await page.waitForFunction(() => !document.querySelector(".areas-swiper").swiper.animating);
+    const g = await state(page);
+    const on = g.cards[g.realIndex];
+    if (on?.name !== want || g.visible.join() !== want) errs.push(`card link ${from} -> ${to}: landed on ${on?.name}, in view ${g.visible.join()}`);
+    return g;
+  };
+  let g = await jump("Unix", "area-1.1.0", "Cloudy");
+  if (g.projects.filter((c) => c.active).map((c) => c.key).join() !== "Cloudy") errs.push("card link: Cloudy chip not active");
+  if (g.cards[g.realIndex].code !== "1.1.0") errs.push("card link: not the Cloudy home card");
+  if (shot) await page.screenshot({ path: `${shot}-${label}-cloudy-home.png` });
+  g = await jump("Cloudy", "area-1.1.1", "Android");
+  if (g.realIndex !== 1) errs.push(`card link: Android is card ${g.realIndex}, want 1`);
+  if (shot) await page.screenshot({ path: `${shot}-${label}-card-link-android.png` });
+  await page.click('[data-areas-row] .area-chip[data-field="Unix"]');
+  await page.click('[data-projects-row] .area-chip[data-project="#area"]');
+  await page.waitForFunction(() => !document.querySelector(".areas-swiper").swiper.animating);
+  // a home card has no application links: only card / repo / webapp rows and the landing link
+  const hc = await page.evaluate(() => [...document.querySelectorAll(".areas-swiper .swiper-slide-active .tool-link")].map((a) => a.textContent.trim()));
+  if (hc.some((t) => !["Card", "Repo", "Webapp"].includes(t))) errs.push(`Unix home links ${hc.join(",")}`);
   // Next arrow: one card further (swipe/drag/arrow behaviour of every carousel: tests/e2e/carousels.mjs).
   const before = r.realIndex;
   await page.click(".areas-section .swiper-button-next");
