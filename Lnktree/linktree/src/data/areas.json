@@ -152,7 +152,7 @@
                     },
                     {
                       "label": "Repo",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob",
                       "icon": "brand-github.svg"
                     }
                   ],
@@ -1085,636 +1085,636 @@
               },
               "columns": [
                 {
-                  "header": "WEBAPPS",
+                  "header": "WEBAPPS MOB",
                   "links": [
                     {
                       "label": "agents-tmp-reaper",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/agents-tmp-reaper",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/agents-tmp-reaper",
                       "icon": "brain.svg"
                     },
                     {
                       "label": "ai-chat",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/ai-chat",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/ai-chat",
                       "icon": "send.svg"
                     },
                     {
                       "label": "alerts-api",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/alerts-api",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/alerts-api",
                       "icon": "link.svg"
                     },
                     {
                       "label": "auth-broker",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/auth-broker",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/auth-broker",
                       "icon": "lock.svg"
                     },
                     {
                       "label": "authelia",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/authelia",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/authelia",
                       "icon": "lock.svg"
                     },
                     {
                       "label": "backup-borg",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/backup-borg",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/backup-borg",
                       "icon": "database.svg"
                     },
                     {
                       "label": "backup-bup",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/backup-bup",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/backup-bup",
                       "icon": "database.svg"
                     },
                     {
                       "label": "c3-bot",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/c3-bot",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/c3-bot",
                       "icon": "link.svg"
                     },
                     {
                       "label": "c3-dns-routing",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/c3-dns-routing",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/c3-dns-routing",
                       "icon": "world-longitude.svg"
                     },
                     {
                       "label": "c3-infra-api",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/c3-infra-api",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/c3-infra-api",
                       "icon": "link.svg"
                     },
                     {
                       "label": "c3-mail",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/c3-mail",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/c3-mail",
                       "icon": "mail.svg"
                     },
                     {
                       "label": "c3-mcp-apis",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/c3-mcp-apis",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/c3-mcp-apis",
                       "icon": "link.svg"
                     },
                     {
                       "label": "c3-observability",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/c3-observability",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/c3-observability",
                       "icon": "checklist.svg"
                     },
                     {
                       "label": "c3-public-api",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/c3-public-api",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/c3-public-api",
                       "icon": "link.svg"
                     },
                     {
                       "label": "c3-security-network",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/c3-security-network",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/c3-security-network",
                       "icon": "lock.svg"
                     },
                     {
                       "label": "c3-services-api",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/c3-services-api",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/c3-services-api",
                       "icon": "link.svg"
                     },
                     {
                       "label": "caddy",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/caddy",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/caddy",
                       "icon": "brush.svg"
                     },
                     {
                       "label": "caddy-l4-image",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/caddy-l4-image",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/caddy-l4-image",
                       "icon": "brush.svg"
                     },
                     {
                       "label": "caddy-public",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/caddy-public",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/caddy-public",
                       "icon": "brush.svg"
                     },
                     {
                       "label": "calendar-radicale",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/calendar-radicale",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/calendar-radicale",
                       "icon": "checklist.svg"
                     },
                     {
                       "label": "chat-mattermost",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/chat-mattermost",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/chat-mattermost",
                       "icon": "send.svg"
                     },
                     {
                       "label": "cloud-browser",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/cloud-browser",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/cloud-browser",
                       "icon": "world.svg"
                     },
                     {
                       "label": "cloud-builder-x",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/cloud-builder-x",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/cloud-builder-x",
                       "icon": "rocket.svg"
                     },
                     {
                       "label": "cloud-c3",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/cloud-c3",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/cloud-c3",
                       "icon": "rocket.svg"
                     },
                     {
                       "label": "cloud-calc",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/cloud-calc",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/cloud-calc",
                       "icon": "database.svg"
                     },
                     {
                       "label": "cloud-camera",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/cloud-camera",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/cloud-camera",
                       "icon": "video.svg"
                     },
                     {
                       "label": "cloud-cgc-pub-mcp",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/cloud-cgc-pub-mcp",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/cloud-cgc-pub-mcp",
                       "icon": "link.svg"
                     },
                     {
                       "label": "cloud-chat",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/cloud-chat",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/cloud-chat",
                       "icon": "send.svg"
                     },
                     {
                       "label": "cloud-code",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/cloud-code",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/cloud-code",
                       "icon": "rocket.svg"
                     },
                     {
                       "label": "cloud-contacts",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/cloud-contacts",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/cloud-contacts",
                       "icon": "user.svg"
                     },
                     {
                       "label": "cloud-dialer",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/cloud-dialer",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/cloud-dialer",
                       "icon": "user.svg"
                     },
                     {
                       "label": "cloud-drive",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/cloud-drive",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/cloud-drive",
                       "icon": "file-stack.svg"
                     },
                     {
                       "label": "cloud-drive-mcp",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/cloud-drive-mcp",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/cloud-drive-mcp",
                       "icon": "file-stack.svg"
                     },
                     {
                       "label": "cloud-gallery",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/cloud-gallery",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/cloud-gallery",
                       "icon": "slideshow.svg"
                     },
                     {
                       "label": "cloud-infra-mcp",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/cloud-infra-mcp",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/cloud-infra-mcp",
                       "icon": "link.svg"
                     },
                     {
                       "label": "cloud-keyboard",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/cloud-keyboard",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/cloud-keyboard",
                       "icon": "device-mobile.svg"
                     },
                     {
                       "label": "cloud-kg-store",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/cloud-kg-store",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/cloud-kg-store",
                       "icon": "device-mobile.svg"
                     },
                     {
                       "label": "cloud-mail",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/cloud-mail",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/cloud-mail",
                       "icon": "mail.svg"
                     },
                     {
                       "label": "cloud-mail-mcp",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/cloud-mail-mcp",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/cloud-mail-mcp",
                       "icon": "mail.svg"
                     },
                     {
                       "label": "cloud-matrix",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/cloud-matrix",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/cloud-matrix",
                       "icon": "send.svg"
                     },
                     {
                       "label": "cloud-mattermost-mcp",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/cloud-mattermost-mcp",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/cloud-mattermost-mcp",
                       "icon": "send.svg"
                     },
                     {
                       "label": "cloud-me",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/cloud-me",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/cloud-me",
                       "icon": "user.svg"
                     },
                     {
                       "label": "cloud-me-api",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/cloud-me-api",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/cloud-me-api",
                       "icon": "link.svg"
                     },
                     {
                       "label": "cloud-media",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/cloud-media",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/cloud-media",
                       "icon": "video.svg"
                     },
                     {
                       "label": "cloud-myterminal",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/cloud-myterminal",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/cloud-myterminal",
                       "icon": "device-desktop.svg"
                     },
                     {
                       "label": "cloud-nav",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/cloud-nav",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/cloud-nav",
                       "icon": "brand-google-maps.svg"
                     },
                     {
                       "label": "cloud-news",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/cloud-news",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/cloud-news",
                       "icon": "world.svg"
                     },
                     {
                       "label": "cloud-notes",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/cloud-notes",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/cloud-notes",
                       "icon": "file-stack.svg"
                     },
                     {
                       "label": "cloud-notes-sync",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/cloud-notes-sync",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/cloud-notes-sync",
                       "icon": "file-stack.svg"
                     },
                     {
                       "label": "cloud-notes-web",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/cloud-notes-web",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/cloud-notes-web",
                       "icon": "world.svg"
                     },
                     {
                       "label": "cloud-office",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/cloud-office",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/cloud-office",
                       "icon": "file-stack.svg"
                     },
                     {
                       "label": "cloud-search",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/cloud-search",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/cloud-search",
                       "icon": "brand-google-maps.svg"
                     },
                     {
                       "label": "cloud-services-mcp",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/cloud-services-mcp",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/cloud-services-mcp",
                       "icon": "link.svg"
                     },
                     {
                       "label": "cloud-spec",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/cloud-spec",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/cloud-spec",
                       "icon": "rocket.svg"
                     },
                     {
                       "label": "cloud-store",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/cloud-store",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/cloud-store",
                       "icon": "device-mobile.svg"
                     },
                     {
                       "label": "cloud-superapp",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/cloud-superapp",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/cloud-superapp",
                       "icon": "device-mobile.svg"
                     },
                     {
                       "label": "cloud-superapp-mcp",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/cloud-superapp-mcp",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/cloud-superapp-mcp",
                       "icon": "device-mobile.svg"
                     },
                     {
                       "label": "cloud-superintel",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/cloud-superintel",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/cloud-superintel",
                       "icon": "brain.svg"
                     },
                     {
                       "label": "cloud-tasks",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/cloud-tasks",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/cloud-tasks",
                       "icon": "rocket.svg"
                     },
                     {
                       "label": "cloud-terminal",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/cloud-terminal",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/cloud-terminal",
                       "icon": "ledger.svg"
                     },
                     {
                       "label": "cloud-tools-small-l…",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/cloud-tools-small-llms",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/cloud-tools-small-llms",
                       "icon": "brain.svg"
                     },
                     {
                       "label": "cloud-vault",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/cloud-vault",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/cloud-vault",
                       "icon": "lock.svg"
                     },
                     {
                       "label": "cloud-vault-mcp",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/cloud-vault-mcp",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/cloud-vault-mcp",
                       "icon": "link.svg"
                     },
                     {
                       "label": "cloud-wallet",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/cloud-wallet",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/cloud-wallet",
                       "icon": "ledger.svg"
                     },
                     {
                       "label": "cloud-webmail",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/cloud-webmail",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/cloud-webmail",
                       "icon": "world.svg"
                     },
                     {
                       "label": "cloud-writer",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/cloud-writer",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/cloud-writer",
                       "icon": "file-stack.svg"
                     },
                     {
                       "label": "cloudflare-worker",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/cloudflare-worker",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/cloudflare-worker",
                       "icon": "world-longitude.svg"
                     },
                     {
                       "label": "cloudflared",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/cloudflared",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/cloudflared",
                       "icon": "world-longitude.svg"
                     },
                     {
                       "label": "code-server",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/code-server",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/code-server",
                       "icon": "code.svg"
                     },
                     {
                       "label": "configs-sync",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/configs-sync",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/configs-sync",
                       "icon": "code.svg"
                     },
                     {
                       "label": "contacts-radicale",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/contacts-radicale",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/contacts-radicale",
                       "icon": "user.svg"
                     },
                     {
                       "label": "crowdsec",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/crowdsec",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/crowdsec",
                       "icon": "lock.svg"
                     },
                     {
                       "label": "dagu",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/dagu",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/dagu",
                       "icon": "checklist.svg"
                     },
                     {
                       "label": "db-agent",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/db-agent",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/db-agent",
                       "icon": "brain.svg"
                     },
                     {
                       "label": "dbgate",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/dbgate",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/dbgate",
                       "icon": "database.svg"
                     },
                     {
                       "label": "disk-janitor",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/disk-janitor",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/disk-janitor",
                       "icon": "code.svg"
                     },
                     {
                       "label": "embeddings-api",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/embeddings-api",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/embeddings-api",
                       "icon": "brain.svg"
                     },
                     {
                       "label": "etherpad",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/etherpad",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/etherpad",
                       "icon": "file-stack.svg"
                     },
                     {
                       "label": "filebrowser",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/filebrowser",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/filebrowser",
                       "icon": "world.svg"
                     },
                     {
                       "label": "fin-api",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/fin-api",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/fin-api",
                       "icon": "ledger.svg"
                     },
                     {
                       "label": "front-end",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/front-end",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/front-end",
                       "icon": "world.svg"
                     },
                     {
                       "label": "gcloud",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/gcloud",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/gcloud",
                       "icon": "rocket.svg"
                     },
                     {
                       "label": "gha-runner",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/gha-runner",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/gha-runner",
                       "icon": "rocket.svg"
                     },
                     {
                       "label": "git-proxy-api",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/git-proxy-api",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/git-proxy-api",
                       "icon": "link.svg"
                     },
                     {
                       "label": "gitea",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/gitea",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/gitea",
                       "icon": "database.svg"
                     },
                     {
                       "label": "google-personal-mcp",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/google-personal-mcp",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/google-personal-mcp",
                       "icon": "link.svg"
                     },
                     {
                       "label": "google-workspace-mcp",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/google-workspace-mcp",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/google-workspace-mcp",
                       "icon": "link.svg"
                     },
                     {
                       "label": "grist",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/grist",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/grist",
                       "icon": "database.svg"
                     },
                     {
                       "label": "hedgedoc",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/hedgedoc",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/hedgedoc",
                       "icon": "file-stack.svg"
                     },
                     {
                       "label": "hermes-agent",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/hermes-agent",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/hermes-agent",
                       "icon": "brain.svg"
                     },
                     {
                       "label": "hickory-dns",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/hickory-dns",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/hickory-dns",
                       "icon": "world-longitude.svg"
                     },
                     {
                       "label": "http-to-smtp-proxy-…",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/http-to-smtp-proxy-api",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/http-to-smtp-proxy-api",
                       "icon": "mail.svg"
                     },
                     {
                       "label": "introspect-proxy",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/introspect-proxy",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/introspect-proxy",
                       "icon": "link.svg"
                     },
                     {
                       "label": "jev-sidecar",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/jev-sidecar",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/jev-sidecar",
                       "icon": "code.svg"
                     },
                     {
                       "label": "kg-store",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/kg-store",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/kg-store",
                       "icon": "device-mobile.svg"
                     },
                     {
                       "label": "kg-store-pub",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/kg-store-pub",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/kg-store-pub",
                       "icon": "device-mobile.svg"
                     },
                     {
                       "label": "languagetool",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/languagetool",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/languagetool",
                       "icon": "code.svg"
                     },
                     {
                       "label": "maddy",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/maddy",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/maddy",
                       "icon": "mail.svg"
                     },
                     {
                       "label": "mail-puller",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/mail-puller",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/mail-puller",
                       "icon": "mail.svg"
                     },
                     {
                       "label": "matomo",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/matomo",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/matomo",
                       "icon": "checklist.svg"
                     },
                     {
                       "label": "matrix-continuwuity",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/matrix-continuwuity",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/matrix-continuwuity",
                       "icon": "send.svg"
                     },
                     {
                       "label": "matrix-element",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/matrix-element",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/matrix-element",
                       "icon": "send.svg"
                     },
                     {
                       "label": "matrix-mautrix-what…",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/matrix-mautrix-whatsapp",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/matrix-mautrix-whatsapp",
                       "icon": "send.svg"
                     },
                     {
                       "label": "mcp-oauth",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/mcp-oauth",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/mcp-oauth",
                       "icon": "link.svg"
                     },
                     {
                       "label": "my-ai-api",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/my-ai-api",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/my-ai-api",
                       "icon": "brain.svg"
                     },
                     {
                       "label": "news-gdelt",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/news-gdelt",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/news-gdelt",
                       "icon": "world.svg"
                     },
                     {
                       "label": "ntfy",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/ntfy",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/ntfy",
                       "icon": "checklist.svg"
                     },
                     {
                       "label": "openclaw",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/openclaw",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/openclaw",
                       "icon": "brain.svg"
                     },
                     {
                       "label": "openobserve",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/openobserve",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/openobserve",
                       "icon": "checklist.svg"
                     },
                     {
                       "label": "photoprism",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/photoprism",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/photoprism",
                       "icon": "slideshow.svg"
                     },
                     {
                       "label": "playlist-syncer",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/playlist-syncer",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/playlist-syncer",
                       "icon": "headphones.svg"
                     },
                     {
                       "label": "postlite",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/postlite",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/postlite",
                       "icon": "database.svg"
                     },
                     {
                       "label": "redis",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/redis",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/redis",
                       "icon": "database.svg"
                     },
                     {
                       "label": "reports",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/reports",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/reports",
                       "icon": "checklist.svg"
                     },
                     {
                       "label": "revealmd",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/revealmd",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/revealmd",
                       "icon": "slideshow.svg"
                     },
                     {
                       "label": "scrappers-api",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/scrappers-api",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/scrappers-api",
                       "icon": "link.svg"
                     },
                     {
                       "label": "send",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/send",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/send",
                       "icon": "send.svg"
                     },
                     {
                       "label": "session-memory",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/session-memory",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/session-memory",
                       "icon": "brain.svg"
                     },
                     {
                       "label": "stalwart",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/stalwart",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/stalwart",
                       "icon": "mail.svg"
                     },
                     {
                       "label": "tokens-api",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/tokens-api",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/tokens-api",
                       "icon": "link.svg"
                     },
                     {
                       "label": "umami",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/umami",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/umami",
                       "icon": "checklist.svg"
                     },
                     {
                       "label": "unbound-dns64",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/unbound-dns64",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/unbound-dns64",
                       "icon": "world-longitude.svg"
                     },
                     {
                       "label": "vaultwarden",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/vaultwarden",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/vaultwarden",
                       "icon": "lock.svg"
                     },
                     {
                       "label": "wireguard-mesh",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/wireguard-mesh",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/wireguard-mesh",
                       "icon": "world-longitude.svg"
                     },
                     {
                       "label": "wireguard-mesh-ws-t…",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/wireguard-mesh-ws-tunnel",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/wireguard-mesh-ws-tunnel",
                       "icon": "world-longitude.svg"
                     },
                     {
                       "label": "wireguard-public",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/wireguard-public",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/wireguard-public",
                       "icon": "world-longitude.svg"
                     }
                   ],
@@ -1725,18 +1725,18 @@
                   "links": [
                     {
                       "label": "claude-api",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps/tree/main/my-ai_claude-api",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-mob/tree/main/my-ai_claude-api",
                       "icon": "link.svg"
                     }
                   ],
                   "row": 0
                 },
                 {
-                  "header": "WEBAPPS 2",
+                  "header": "WEBAPPS DESK",
                   "links": [
                     {
                       "label": "Suite",
-                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-2/tree/main/c_Suite",
+                      "url": "https://github.com/diegonmarcos/cloudy-h-webapps-desk/tree/main/c_Suite",
                       "icon": "code.svg"
                     }
                   ],
