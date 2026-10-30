@@ -1764,7 +1764,7 @@
           "code": "1.2",
           "name": "Cloud-Me",
           "icon": "🙋",
-          "repos": 17,
+          "repos": 16,
           "cards": [
             {
               "id": "area-1.2.0",
@@ -1836,12 +1836,12 @@
                       "icon": "lock.svg"
                     },
                     {
-                      "label": "containers",
+                      "label": "data",
                       "url": "https://github.com/diegonmarcos",
                       "icon": "lock.svg"
                     },
                     {
-                      "label": "data",
+                      "label": "notes",
                       "url": "https://github.com/diegonmarcos",
                       "icon": "lock.svg"
                     }
@@ -2042,17 +2042,6 @@
                     }
                   ],
                   "row": 0
-                },
-                {
-                  "header": "CONTAINERS",
-                  "links": [
-                    {
-                      "label": "containers",
-                      "url": "https://github.com/diegonmarcos",
-                      "icon": "lock.svg"
-                    }
-                  ],
-                  "row": 1
                 },
                 {
                   "header": "DATA",
