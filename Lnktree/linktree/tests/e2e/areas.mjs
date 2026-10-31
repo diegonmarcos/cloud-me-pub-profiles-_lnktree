@@ -1,7 +1,8 @@
 // #1277/#1281/#1293 Playwright check of the live Areas section (mobile 390x844, desktop 1280x800), with screenshots.
 //   node tests/e2e/areas.mjs [url] [screenshot-prefix]
-// Asserts: order Profiles < Areas < Personal Profiles < xProjects; two-level index (row 1 one chip per area, row 2 the
-// selected area's projects), first area and first project selected by default; cards = home card first, then one card per
+// Asserts: order Profiles < Areas < Personal Profiles < xProjects; three-level index (row 1 one chip per area, then "|"
+// and the direct entries (Repos); row 2 the selected area's projects, no area-home chip; row 3 the selected project's
+// families), first area selected by default with its home card; cards = home card first, then one card per
 // sub-category/family exactly as in areas.json (Cloud-Me: home, Pub, Pvt); every card is an xProjects tools card (#1308); exactly ONE card per view (full row width,
 // snap, the next arrow moves one card); index + one full card inside the viewport together; Cloudy Android lists the
 // fleet apps; private repos carry no link; selection persists across reload.
@@ -56,7 +57,7 @@ const state = (page) => align(page).then(() => page.evaluate(() => {
   const vw = innerWidth, vh = innerHeight;
   const inView = (e) => { const r = e.getBoundingClientRect(); return r.width > 0 && r.height > 0 && r.top >= -1 && r.left >= -1 && r.bottom <= vh + 1 && r.right <= vw + 1; };
   const sec = document.querySelector(".areas-section");
-  const areaRow = sec.querySelector("[data-areas-row]"), projRow = sec.querySelector("[data-projects-row]");
+  const areaRow = sec.querySelector("[data-areas-row]"), projRow = sec.querySelector("[data-projects-row]"), famRow = sec.querySelector("[data-families-row]");
   const host = sec.querySelector(".areas-swiper"), sw = host.swiper, xp = document.querySelector(".projects-swiper").swiper;
   const hr = host.getBoundingClientRect();
   const slides = [...host.querySelectorAll(".swiper-wrapper > .swiper-slide")]
@@ -72,7 +73,7 @@ const state = (page) => align(page).then(() => page.evaluate(() => {
   const xpCard = document.querySelector(".projects-swiper .swiper-slide-active .link-section");
   return {
     boxes: [...document.querySelectorAll("main .section-box")].map((b) => b.className + "|" + (b.querySelector(".box-title")?.textContent || "")),
-    areas: chips(areaRow, "field"), projects: chips(projRow, "project"),
+    areas: chips(areaRow, "field"), projects: chips(projRow, "project"), families: chips(famRow, "family"), sep: !!areaRow.querySelector(".areas-sep"),
     cards: cards.map((c) => ({ kind: c.dataset.kind, name: c.dataset.card, code: c.dataset.code, shownCode: c.querySelector(".section-title .card-code")?.textContent, project: c.dataset.project, field: c.dataset.field,
       banner: !!c.querySelector("img.featured-image"), columns: [...c.querySelectorAll(".tools-column > .tools-column__header")].map((h) => h.textContent),
       toolLinks: c.querySelectorAll(".tools-column a.tool-link > img.icon").length,
@@ -101,10 +102,12 @@ const same = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 
 function check(r, field, project, errs, tag) {
   const area = data.areas.find((a) => a.field === field);
-  if (!same(r.areas.map((c) => c.key), data.areas.map((a) => a.field))) errs.push(`${tag}: area chips != areas`);
+  if (!same(r.areas.map((c) => c.key), [...data.areas.map((a) => a.field), ...(data.direct || []).map((d) => d.field)]) || !r.sep) errs.push(`${tag}: area chips != areas | direct`);
   if (r.areas.filter((c) => c.active).map((c) => c.key).join() !== field) errs.push(`${tag}: active area != ${field}`);
-  if (!same(r.projects.map((c) => c.key), [...(area.home ? [AREA_HOME] : []), ...area.projects.map((p) => p.name)])) errs.push(`${tag}: project chips != ${field} projects`);
-  if (r.projects.filter((c) => c.active).map((c) => c.key).join() !== project) errs.push(`${tag}: active project != ${project}`);
+  if (!same(r.projects.map((c) => c.key), area.projects.map((p) => p.name))) errs.push(`${tag}: project chips != ${field} projects`);
+  if (r.projects.filter((c) => c.active).map((c) => c.key).join() !== (project === AREA_HOME ? "" : project)) errs.push(`${tag}: active project != ${project}`);
+  const fams = project === AREA_HOME ? [] : area.projects.find((p) => p.name === project).cards.slice(1).map((c) => c.data.card);
+  if (!same(r.families.map((c) => c.key), fams)) errs.push(`${tag}: family chips ${r.families.map((c) => c.key)} != ${fams}`);
   if (r.areas.some((c) => !c.title) || r.projects.some((c) => !c.title)) errs.push(`${tag}: chip tooltip`);
   if (!same(gotCards(r), expectCards(field, project))) errs.push(`${tag}: cards ${gotCards(r).join(",")} != data`);
   if (!["home", "area"].includes(r.cards[0]?.kind) || !r.cards[0].banner) errs.push(`${tag}: home card first with banner`);
@@ -145,6 +148,7 @@ for (const [label, viewport] of [["mobile", { width: 390, height: 844 }], ["desk
   };
   let g = await jump("Unix", "area-1.1.0", "Cloudy");
   if (g.projects.filter((c) => c.active).map((c) => c.key).join() !== "Cloudy") errs.push("card link: Cloudy chip not active");
+  if (g.families.map((c) => c.key).join() !== "Android,Linux,WebApps,C3") errs.push(`Cloudy families ${g.families.map((c) => c.key)}`);
   if (g.cards[g.realIndex].code !== "1.1.0") errs.push("card link: not the Cloudy home card");
   if (shot) await page.screenshot({ path: `${shot}-${label}-cloudy-home.png` });
   g = await jump("Cloudy", "area-1.1.1", "Android");
@@ -209,11 +213,20 @@ for (const [label, viewport] of [["mobile", { width: 390, height: 844 }], ["desk
   if (!same(gotCards(r), ["home:Cloud-Me:1.2.0", "subcategory:Pub:1.2.1", "subcategory:Pvt:1.2.2"])) errs.push("Cloud-Me Pub/Pvt split");
   // 3 Capital: flat area, its 3.0 area home card first, then its three projects
   await page.click('[data-areas-row] .area-chip[data-field="Capital"]');
-  await page.waitForSelector(`[data-projects-row] .area-chip.is-active[data-project="${AREA_HOME}"]`);
+  await page.waitForSelector('[data-areas-row] .area-chip.is-active[data-field="Capital"]');
   r = await state(page);
   check(r, "Capital", AREA_HOME, errs, "Capital home");
-  if (!same(r.projects.slice(1).map((c) => c.key), ["Macro-Central-Bank", "Micro-Asset-Management", "Stack-Fin-Terminal"])) errs.push(`Capital projects ${r.projects.map((c) => c.key)}`);
+  if (!same(r.projects.map((c) => c.key), ["Macro-Central-Bank", "Micro-Asset-Management", "Stack-Fin-Terminal"])) errs.push(`Capital projects ${r.projects.map((c) => c.key)}`);
   if (shot) await page.screenshot({ path: `${shot}-${label}-capital.png` });
+  // Row 1 direct entry: Repos opens the (moved xProjects) Repos card, no project or family chips.
+  for (const d of data.direct || []) {
+    await page.click(`[data-areas-row] .area-chip[data-field="${d.field}"]`);
+    await page.waitForSelector(`[data-areas-row] .area-chip.is-active[data-field="${d.field}"]`);
+    const t = await page.evaluate(() => ({ title: document.querySelector(".areas-swiper .swiper-slide .section-title")?.textContent.trim(),
+      n: document.querySelectorAll(".areas-swiper .swiper-slide").length, rows: document.querySelectorAll("[data-projects-row] .area-chip, [data-families-row] .area-chip").length }));
+    if (t.title !== d.card.title || t.n !== 1 || t.rows) errs.push(`${d.field}: ${JSON.stringify(t)}`);
+    if (shot) await page.screenshot({ path: `${shot}-${label}-${d.field.toLowerCase()}.png` });
+  }
   const pick = data.areas.slice(1).sort((a, b) => b.projects.length - a.projects.length)[0];
   await page.click(`[data-areas-row] .area-chip[data-field="${pick.field}"]`);
   const pp = pick.projects[pick.projects.length - 1].name;

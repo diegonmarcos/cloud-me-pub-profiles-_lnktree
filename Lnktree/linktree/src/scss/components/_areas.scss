@@ -1,6 +1,7 @@
 // ==========================================================================
-// Areas (#1277, #1281, #1293): one screen. A two-level icon index on top
-// (row 1 areas, row 2 the selected area's projects); below it the selected
+// Areas (#1277, #1281, #1293): one screen. A three-level icon index on top
+// (row 1 areas, a separator and the direct entries; row 2 the selected area's
+// projects; row 3 the selected project's families); below it the selected
 // project's cards (home card, then one per sub-category or family). The
 // cards are the shared card (card.ts) on the shared carousel (carousel.ts, the
 // .carousel-row > .swiper rule in _carousel.scss): no card or swipe styles
@@ -33,10 +34,13 @@
     scrollbar-width: none;
     &::-webkit-scrollbar { display: none; }
 }
-.areas-row--projects {
+.areas-row--projects, .areas-row--families {
     border-top: 1px solid $glass-border;
     .area-chip { font-size: 0.7rem; padding: 0.28rem 0.6rem; }
 }
+.areas-row--families:empty { display: none; }
+// Row 1: the "|" between the areas and the direct entries (Repos).
+.areas-sep { flex: 0 0 auto; align-self: center; opacity: 0.5; font-weight: 700; padding: 0 0.1rem; }
 
 .area-chip {
     flex: 0 0 auto;

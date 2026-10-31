@@ -76,7 +76,7 @@ interface SlideProfileCard {
   collapsible?: CollapsibleBlock;
 }
 
-interface SlideRepos {
+export interface SlideRepos {
   id: string; kind: 'repos'; title: string;
   image?: { src: string; alt?: string };
   top_links?: Link[];
@@ -384,7 +384,7 @@ function renderProfileCardSlide(slide: SlideProfileCard): HTMLElement {
 // kind: repos
 // --------------------------------------------------------------------------
 
-function renderReposSlide(slide: SlideRepos): HTMLElement {
+export function renderReposSlide(slide: SlideRepos): HTMLElement {
   const card = slideCard({ title: slide.title, image: slide.image });
   const linksContainer = card.body!;
   for (const lk of slide.top_links ?? []) linksContainer.appendChild(renderLinkAnchor(lk));

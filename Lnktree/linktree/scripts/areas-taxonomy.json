@@ -30,6 +30,13 @@
   "android": {
     "_doc": "cloudy-u-android apps (apk-manifest.json) grouped by category. Category order = the order of `categories`; an app not listed lands in OTHER. Label = `labels[name]`, else the name without its cloud- prefix, title-cased. URL = the cloud-web page when the manifest declares web.portal_slug, else the module folder on GitHub.",
     "web_url": "https://diegonmarcos.github.io/cloud-web/apps/{slug}/",
+    "superapp": {
+      "_doc": "The Cloudy > Android card shows the SuperApp's Cloud categories: the tile_groups of ui.sections[id=section] in <repo>/<file> (cloud-superapp > Cloud > Apps), one column per group in declared order, '|' tiles skipped. Tile target -> URL: extapp:<app> (manifest or registry app, case-insensitive) -> its cloud-web page, else its module or path folder; a URL or an intent with S.browser_fallback_url -> that URL; anything else (in-app page:, app://) -> fallback_url.",
+      "repo": "cloudy-u-android",
+      "file": "aa_cloud-superapp/build.json",
+      "section": "cloud",
+      "fallback_url": "https://github.com/diegonmarcos/cloudy-u-android/tree/main/aa_cloud-superapp"
+    },
     "categories": {
       "SYSTEM": [
         "cloud-superapp",

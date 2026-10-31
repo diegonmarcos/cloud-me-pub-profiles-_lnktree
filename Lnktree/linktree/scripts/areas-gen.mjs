@@ -16,6 +16,10 @@
 //   family N.M.K   app-fleet repos: the declared app manifest by category; other repos: their folder tree
 //                  (registry 0_repo-folders-tree) grouped by parent folder / prefix; children (sub-families,
 //                  sub-category families) become one column each.
+//   Cloudy > Android shows the SuperApp's Cloud categories (aa_cloud-superapp/build.json tile_groups, taxonomy
+//                  android.superapp), not the fleet manifest.
+// Declared cards (scripts/areas-cards.json, data): family order per project, family cards moved from xProjects (Linux =
+// Ducks&Penguins, C3 = Cloud), and the direct row-1 entries after the separator (Repos), each one card.
 // Categories, order, icons and folder rules: scripts/areas-taxonomy.json (data). Private repos: label + lock, no URL.
 // Sources: 0_registry/repos-github.json, 0_repo-folders-tree/repo-folders-tree.json ($AREAS_TREE_JSON), app manifests.
 // Usage: node scripts/areas-gen.mjs            generate ($REPOS_GITHUB_JSON / $AREAS_APPS_DIR override the network
@@ -50,6 +54,7 @@ export function bannerFor(project, fieldBanner) {
   return exists(fieldBanner) ? fieldBanner : DEFAULT_BANNER;
 }
 export const TAXONOMY = JSON.parse(fs.readFileSync(path.join(root, "scripts/areas-taxonomy.json"), "utf8"));
+export const CARDS = JSON.parse(fs.readFileSync(path.join(root, "scripts/areas-cards.json"), "utf8"));
 const T = TAXONOMY;
 const clip = (s) => (s.length > T.label_max ? s.slice(0, T.label_max - 1) + "…" : s);
 const titleCase = (s) => s.split(/[-_ ]+/).filter(Boolean).map((w) => w[0].toUpperCase() + w.slice(1)).join(" ");
@@ -72,6 +77,27 @@ export function androidColumns(repo, apps) {
     cols.get(cat).push({ label, url: slug ? A.web_url.replace("{slug}", slug) : a.url || `${repo.url}/tree/main/${a.module}`, icon: iconFor(label, cat) });
   }
   return [...cols].filter(([, l]) => l.length).map(([header, links]) => ({ header, links }));
+}
+
+// Cloudy > Android: the SuperApp Cloud tile_groups (taxonomy android.superapp), one column per group; tile target -> URL.
+export function superappColumns(groups, apps, repoUrl) {
+  const A = T.android, S = A.superapp, byName = new Map((apps || []).map((a) => [a.name.toLowerCase(), a]));
+  const urlOf = (target = "") => {
+    const ext = target.match(/^extapp:([\w-]+)/);
+    if (ext) {
+      const a = byName.get(ext[1].toLowerCase());
+      if (a?.web?.portal_slug) return A.web_url.replace("{slug}", a.web.portal_slug);
+      if (a?.module || a?.path) return `${repoUrl}/tree/main/${a.module || a.path}`;
+      return S.fallback_url;
+    }
+    if (/^https:\/\//.test(target)) return target;
+    const fb = target.match(/S\.browser_fallback_url=([^;]+)/);
+    return fb ? decodeURIComponent(fb[1]) : S.fallback_url;
+  };
+  return groups.map((g) => {
+    const header = g.title.toUpperCase();
+    return { header, links: g.tiles.filter((t) => t.label && t.label !== "|").map((t) => ({ label: clip(t.label), url: urlOf(t.target), icon: iconFor(t.label, header) })) };
+  }).filter((c) => c.links.length);
 }
 
 // Any other repo: its folder tree (registry) -> [{group, label, path}], see taxonomy folders._doc.
@@ -151,8 +177,8 @@ function contentUrl(text, byName) {
   return null;
 }
 
-// sources: { registry, apps: {repo: apps[]}, trees: {repo: entries[]} }
-export function deriveAreas({ registry, apps = {}, trees = {} }) {
+// sources: { registry, apps: {repo: apps[]}, trees: {repo: entries[]}, superapp: tile_groups[] }
+export function deriveAreas({ registry, apps = {}, trees = {}, superapp = null }, cards = CARDS) {
   if (!Array.isArray(registry.areas)) throw new Error("repos-github.json has no areas[] outline");
   const byName = new Map(registry.repos.map((r) => [r.name, r]));
   const ctx = { apps, trees, claimed: null };
@@ -179,8 +205,20 @@ export function deriveAreas({ registry, apps = {}, trees = {} }) {
     const projects = [];
     for (const p of a.children || []) {
       const name = p.label || p.name, banner = bannerFor(p.name, areaBanner);
-      const families = (p.children || []).map((c) => {
+      // Family order (areas-cards.json family_order): listed families first in that order, the rest in registry order.
+      const order = cards.family_order?.[p.code] || [];
+      const rank = (c) => { const i = order.indexOf(c.label || c.name); return i < 0 ? order.length : i; };
+      const kids = (p.children || []).map((c, i) => [c, i]).sort((x, y) => rank(x[0]) - rank(y[0]) || x[1] - y[1]).map(([c]) => c);
+      const families = kids.map((c) => {
         const cname = c.label || c.name;
+        const data = { kind: c.kind, card: cname, project: name, field };
+        // A declared card (moved from xProjects) replaces the derived one; it keeps its own title, banner and columns.
+        const moved = cards.family_cards?.[`${p.code}/${cname}`];
+        if (moved) return { ...moved, id: `area-${c.code}`, code: c.code, data: { ...data, code: c.code } };
+        if (cname === "Android" && superapp) {
+          const fleet = byName.get(T.android.superapp.repo);
+          return slide(`area-${c.code}`, c.code, cname, banner, superappColumns(superapp, [...(apps[T.android.superapp.repo] || []), ...(fleet?.apps || [])], fleet?.url || T.android.superapp.fallback_url.replace(/\/tree\/.*/, "")), data);
+        }
         // sub-category: one column group per family; family: its repos' columns.
         // A node with children (sub-category, or a family with sub-families): its own repos' columns, then one column
         // per child holding that child's apps. A plain family: its repos' columns.
@@ -188,7 +226,7 @@ export function deriveAreas({ registry, apps = {}, trees = {} }) {
           ? [...contentCols(c), ...colsOf([...(c.hub ? [c.hub] : []), ...(c.repos || [])], cname), ...c.children.map((f) => ({ keep: true, header: (f.label || f.name).toUpperCase(),
               links: [...contentCols(f).flatMap((x) => x.links), ...colsOf(reposOf(f), cname).flatMap((x) => x.links)] }))]
           : [...contentCols(c), ...colsOf(reposOf(c), cname)];
-        return slide(`area-${c.code}`, c.code, cname, banner, cols, { kind: c.kind, card: cname, project: name, field });
+        return slide(`area-${c.code}`, c.code, cname, banner, cols, data);
       });
       const all = reposOf(p);
       const planned = all.length === 0 && families.length === 0;
@@ -198,7 +236,7 @@ export function deriveAreas({ registry, apps = {}, trees = {} }) {
       const rowRepo = (n) => byName.get(n.hub) || byName.get(reposOf(n)[0]) || byName.get(n.content?.repo) || hubUp;
       const homeCols = planned
         ? [{ header: "PLANNED", links: [{ label: clip(content ? content.split("/").pop() : name), url: content || T.private_url, icon: iconFor(name, "OTHER") }] }]
-        : families.length ? (p.children || []).map((c, i) => homeRow(c.label || c.name, families[i].id, rowRepo(c), c.webapp))
+        : families.length ? kids.map((c, i) => homeRow(c.label || c.name, families[i].id, rowRepo(c), c.webapp))
         : [{ header: name.toUpperCase(), links: [repoLink(hubUp || byName.get(all[0]))] }];
       const home = slide(`area-${p.code}.0`, `${p.code}.0`, `${p.icon || a.icon} ${name}`, banner, homeCols, { kind: "home", card: name, project: name, field }, planned ? "planned" : undefined, landingLink(p.landing, "project", name));
       projects.push({ code: p.code, name, icon: p.icon || a.icon, repos: all.length, ...(planned ? { planned: true } : {}), cards: [home, ...families] });
@@ -212,9 +250,11 @@ export function deriveAreas({ registry, apps = {}, trees = {} }) {
     areas.push({ code: a.code, field, icon: a.icon, banner, home, projects });
   }
   return {
-    _doc: "GENERATED by scripts/areas-gen.mjs from the _git-repos-master registry (0_registry/repos-github.json areas[] outline, 0_repo-folders-tree), the cloudy-u-android app manifest and scripts/areas-taxonomy.json (#1277, #1293, #1308). Every card is an xProjects kind:\"tools\" slide. DO NOT EDIT BY HAND.",
+    _doc: "GENERATED by scripts/areas-gen.mjs from the _git-repos-master registry (0_registry/repos-github.json areas[] outline, 0_repo-folders-tree), the cloudy-u-android app manifest, the SuperApp Cloud tile_groups, scripts/areas-taxonomy.json and scripts/areas-cards.json (declared and moved cards) (#1277, #1293, #1308). Every card is an xProjects kind:\"tools\" slide. DO NOT EDIT BY HAND.",
     section: { id: "areas", title: "Areas" },
     areas,
+    // Row 1 after the separator: entries that open one declared card directly (areas-cards.json direct).
+    direct: (cards.direct || []).map((d) => ({ field: d.field, icon: d.icon, card: { ...d.card, id: `area-${slug(d.field)}`, data: { kind: "direct", card: d.field, project: "#direct", field: d.field } } })),
   };
 }
 
@@ -236,11 +276,16 @@ export async function loadSources() {
     if (!Array.isArray(m.apps) || !m.apps.length) throw new Error(`${repo}/${file}: empty app list`);
     apps[repo] = m.apps.map((a) => ({ name: a.name, module: a.module, ...(a.web?.portal_slug ? { web: { portal_slug: a.web.portal_slug } } : {}) }));
   }
+  // The SuperApp Cloud tile_groups (Cloudy > Android card).
+  const S = T.android.superapp;
+  const sa = process.env.AREAS_SUPERAPP_JSON ? JSON.parse(fs.readFileSync(process.env.AREAS_SUPERAPP_JSON, "utf8")) : await getJson(`https://raw.githubusercontent.com/${OWNER}/${S.repo}/main/${S.file}`);
+  const superapp = sa.ui?.sections?.find((x) => x.id === S.section)?.tile_groups;
+  if (!Array.isArray(superapp) || !superapp.length) throw new Error(`${S.repo}/${S.file}: no ${S.section} tile_groups`);
   const ft = process.env.AREAS_TREE_JSON ? JSON.parse(fs.readFileSync(process.env.AREAS_TREE_JSON, "utf8")) : await getJson(TREE_URL);
   const trees = {};
   const walk = (n) => { if (n.entries && n.name) trees[n.name] = n.entries; for (const c of n.children || []) walk(c); };
   walk(ft.tree);
-  return { registry, apps, trees };
+  return { registry, apps, trees, superapp: superapp.map((g) => ({ title: g.title, tiles: g.tiles.map((t) => ({ label: t.label, target: t.target })) })) };
 }
 
 export const serialize = (data) => JSON.stringify(data, null, 2) + "\n";

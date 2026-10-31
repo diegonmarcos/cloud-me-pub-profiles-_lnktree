@@ -8,7 +8,7 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { deriveAreas, serialize, loadSources, SKIP_AREAS } from "../scripts/areas-gen.mjs";
+import { deriveAreas, serialize, loadSources, SKIP_AREAS, CARDS } from "../scripts/areas-gen.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const html = fs.readFileSync(path.join(root, "src/index.html"), "utf8");
@@ -21,15 +21,15 @@ try { sources = await loadSources(); } catch (e) { sourceError = e.message; }
 test("sources reachable in CI", { skip: process.env.CI ? false : "local run" }, () => assert.ok(sources, `areas sources unavailable in CI: ${sourceError}`));
 const registry = sources?.registry;
 
-test("section order: Profiles < Areas < Personal Profiles < xProjects; two-level index above the cards", () => {
+test("section order: Profiles < Areas < Personal Profiles < xProjects; three-level index above the cards", () => {
   const at = (c) => html.indexOf(`class="section-box ${c}"`);
   const prof = at("professional-profiles-section"), area = at("areas-section"), pers = at("personal-profiles-section"), xp = at("projects-section");
   assert.ok(prof >= 0 && area >= 0 && pers >= 0 && xp >= 0, "all four sections exist");
   assert.ok(prof < area && area < pers && pers < xp, "order");
   assert.equal(html.split('class="section-box areas-section"').length, 2, "exactly one Areas section");
   const box = html.slice(area, html.indexOf("</section>", area));
-  const pos = ["data-areas-row", "data-projects-row", "data-area-cards"].map((m) => box.indexOf(m));
-  assert.ok(pos.every((x) => x >= 0) && pos[0] < pos[1] && pos[1] < pos[2], "areas row, projects row, then cards");
+  const pos = ["data-areas-row", "data-projects-row", "data-families-row", "data-area-cards"].map((m) => box.indexOf(m));
+  assert.ok(pos.every((x) => x >= 0) && pos.every((x, i) => i === 0 || pos[i - 1] < x), "areas row, projects row, families row, then cards");
   assert.match(box, /class="swiper-button-prev"/); assert.match(box, /class="swiper-button-next"/);
   assert.match(html.slice(xp, html.indexOf("</section>", xp)), /<h2 class="box-title">xPROJECTS<\/h2>/, "old Projects renamed xProjects");
 });
@@ -38,9 +38,16 @@ test("areas.json is exactly what the sources derive (no drift)", { skip: sources
   assert.equal(committed, serialize(deriveAreas(sources)));
 });
 
-// Every node of the registry outline in order, with its code.
+// Every node of the registry outline in order, with its code. Families follow areas-cards.json family_order.
 const outline = (reg) => reg.areas.filter((a) => !SKIP_AREAS.includes(a.name));
+const famName = (c) => c.label || c.name;
+const ordered = (p) => { const o = CARDS.family_order?.[p.code] || [], r = (c) => (o.includes(famName(c)) ? o.indexOf(famName(c)) : o.length);
+  return (p.children || []).map((c, i) => [c, i]).sort((x, y) => r(x[0]) - r(y[0]) || x[1] - y[1]).map(([c]) => c); };
+const movedKey = (p, c) => `${p.code}/${famName(c)}`;
 const allCards = () => areas.areas.flatMap((a) => [...(a.home ? [a.home] : []), ...a.projects.flatMap((p) => p.cards)]);
+// Declared cards moved from xProjects (areas-cards.json): rendered as-is, so the derived-card format rules do not apply.
+const movedTitles = new Set(Object.values(CARDS.family_cards || {}).map((c) => c.title));
+const isMoved = (c) => movedTitles.has(c.title) && Object.keys(CARDS.family_cards || {}).some((k) => k.endsWith(`/${c.data.card}`));
 
 test("outline (#1293): areas, projects and cards follow repos-github.json areas[] in order, with its codes", { skip: !sources }, () => {
   const want = outline(registry);
@@ -53,8 +60,9 @@ test("outline (#1293): areas, projects and cards follow repos-github.json areas[
     for (const [j, p] of a.children.entries()) {
       const gp = got.projects[j];
       assert.equal(gp.icon, p.icon || a.icon, `${p.name} icon`);
-      assert.deepEqual(gp.cards.map((c) => `${c.code} ${c.data.kind}`), [`${p.code}.0 home`, ...(p.children || []).map((c) => `${c.code} ${c.kind}`)], `${p.name} cards`);
-      assert.deepEqual(gp.cards.slice(1).map((c) => c.title), (p.children || []).map((c) => c.label || c.name), `${p.name} card titles`);
+      assert.deepEqual(gp.cards.map((c) => `${c.code} ${c.data.kind}`), [`${p.code}.0 home`, ...ordered(p).map((c) => `${c.code} ${c.kind}`)], `${p.name} cards`);
+      assert.deepEqual(gp.cards.slice(1).map((c) => c.data.card), ordered(p).map(famName), `${p.name} family names`);
+      assert.deepEqual(gp.cards.slice(1).map((c) => c.title), ordered(p).map((c) => CARDS.family_cards?.[movedKey(p, c)]?.title || famName(c)), `${p.name} card titles (moved cards keep their own)`);
     }
   }
 });
@@ -64,7 +72,7 @@ test("every Areas card is a kind:tools slide; every link has label (<= 20 chars)
   const icons = new Set(fs.readdirSync(path.join(root, "src/public/icons")));
   const cards = allCards();
   assert.ok(cards.length >= 30, `${cards.length} cards`);
-  for (const c of cards) {
+  for (const c of cards.filter((x) => !isMoved(x))) {
     const tag = `${c.code} ${c.title}`;
     assert.equal(c.kind, "tools", `${tag}: kind tools`);
     assert.ok(c.id && c.title && c.code, `${tag}: id, title, code`);
@@ -91,24 +99,27 @@ test("Areas renders with the xProjects tools renderer (renderToolsSlide), no own
   const ts = read("src/typescript/modules/areas.ts"), portal = read("src/typescript/modules/portal-render.ts");
   assert.match(portal, /export function renderToolsSlide\(slide: SlideTools\)/, "portal-render exports the tools renderer");
   assert.match(portal, /case 'tools':\s+return renderToolsSlide\(slide\)/, "xProjects tools slides use it");
-  assert.match(ts, /import \{ renderToolsSlide, type SlideTools \} from '\.\/portal-render'/, "areas.ts imports it");
+  assert.match(ts, /import \{ renderToolsSlide, renderReposSlide, type SlideTools, type SlideRepos \} from '\.\/portal-render'/, "areas.ts imports it (and the xProjects repos renderer for the moved Repos card)");
+  assert.match(portal, /export function renderReposSlide\(slide: SlideRepos\)/, "portal-render exports the repos renderer");
   assert.match(ts, /renderToolsSlide\(s\)/, "every Areas card goes through it");
   assert.doesNotMatch(ts, /slideCard|tools-column|tools-dashboard|tool-link|featured-image|section-title/, "areas.ts builds no card markup itself");
 });
 
-test("Cloudy: home card = its families as rows, no apps; Android card = the fleet apps by category", () => {
+test("Cloudy: families Android, Linux, WebApps, C3 (C3 last); home card = them as rows; Android = the SuperApp Cloud groups", () => {
   const proj = (f, n) => areas.areas.find((a) => a.field === f)?.projects.find((p) => p.name === n);
   const cloudy = proj("Unix", "Cloudy");
   assert.equal(cloudy.cards[0].code, "1.1.0");
   const [home] = cloudy.cards, android = cloudy.cards.find((c) => c.title === "Android");
-  assert.deepEqual(home.columns.map((c) => c.header), cloudy.cards.slice(1).map((c) => c.title.toUpperCase()), "home columns = families");
-  const tax = JSON.parse(fs.readFileSync(path.join(root, "scripts/areas-taxonomy.json"), "utf8"));
-  const order = [...Object.keys(tax.android.categories), "OTHER"];
+  assert.deepEqual(home.columns.map((c) => c.header), cloudy.cards.slice(1).map((c) => c.data.card.toUpperCase()), "home columns = families");
+  assert.deepEqual(cloudy.cards.slice(1).map((c) => c.data.card), ["Android", "Linux", "WebApps", "C3"], "family order, C3 last");
+  assert.deepEqual(home.columns.map((c) => c.header), ["ANDROID", "LINUX", "WEBAPPS", "C3"]);
   const headers = android.columns.map((c) => c.header);
-  assert.deepEqual(headers, order.filter((h) => headers.includes(h)), "Android columns in declared category order");
+  if (sources?.superapp) assert.deepEqual(headers, sources.superapp.map((g) => g.title.toUpperCase()).filter((h) => headers.includes(h)), "Android columns = SuperApp Cloud tile_groups, in order");
+  if (sources?.superapp) assert.equal(headers.length, sources.superapp.filter((g) => g.tiles.some((t) => t.label && t.label !== "|")).length, "every group once");
+  for (const want of ["INBOXES", "TOOLS PRIMARY", "DATA APPS", "CONFIGS"]) assert.ok(headers.includes(want), `Android shows the ${want} group`);
   const labels = android.columns.flatMap((c) => c.links.map((l) => l.label));
-  for (const want of ["Account", "Browser", "C3", "Drive", "Mail"]) assert.ok(labels.includes(want), `Android lists ${want}`);
-  if (sources?.apps["cloudy-u-android"]) assert.equal(labels.length, sources.apps["cloudy-u-android"].length, "every declared app once");
+  for (const want of ["Browser", "C3", "Drive", "Mail"]) assert.ok(labels.includes(want), `Android lists ${want}`);
+  assert.ok(!labels.includes("|"), "separator tiles skipped");
   const drive = android.columns.flatMap((c) => c.links).find((l) => l.label === "Drive");
   assert.equal(drive.url, "https://diegonmarcos.github.io/cloud-web/apps/cloud-drive/", "web app -> its cloud-web page");
   const game = proj("CG", "Zirkus").cards.slice(1).flatMap((c) => c.columns).find((c) => c.header === "GAME PRODUCTION");
@@ -233,8 +244,8 @@ test("repo links: the project hub (else the area hub) for projects; webapp links
       const w = row.links.find((l) => kindOf(l) === "webapp");
       assert.equal(w?.url, p.webapp, `${a.name}/${p.name}: project webapp = registry`);
       const pcard = got.projects[pi].cards[0];
-      for (const [fi, f] of (p.children || []).entries()) {
-        const r = pcard.columns[fi];
+      for (const f of p.children || []) {
+        const r = pcard.columns.find((c) => c.header === famName(f).toUpperCase());
         assert.equal(r.links.find((l) => kindOf(l) === "webapp")?.url, f.webapp, `${p.name}/${f.name}: family webapp = registry`);
         const fh = byName.get(f.hub) || byName.get([f.hub, ...(f.repos || [])][0] ?? "");
         if (fh && fh.visibility === "public") assert.equal(r.links[1].url, fh.url, `${p.name}/${f.name}: repo = ${fh.name}`);
@@ -277,4 +288,40 @@ test("in-page card links are wired: renderer emits a no-tab anchor with data-car
   assert.match(ts, /closest<HTMLElement>\('a\[data-card\]'\)/, "click delegation");
   assert.match(ts, /swiper\?\.slideTo\(i, 0\)/, "the carousel moves to the card");
   assert.match(ts, /dataset\['cardId'\] = s\.id/, "slides carry their card id");
+});
+
+// ---------------------------------------------------------------------------------------------------------------
+// Three rows + moved cards: Linux = xProjects Ducks&Penguins, C3 = xProjects Cloud (renamed), Repos = a direct row-1 entry
+// opening the xProjects Repos card. Each card lives in one place: none of them is left in xProjects.
+// ---------------------------------------------------------------------------------------------------------------
+test("moved cards: Linux = Ducks and Pengs, C3 = the Cloud card renamed, Repos = direct entry; none left in xProjects", () => {
+  const projects = JSON.parse(fs.readFileSync(path.join(root, "src/data/projects.json"), "utf8"));
+  const ids = projects.slides.map((x) => x.id);
+  for (const gone of ["ducks", "cloud", "repos"]) {
+    assert.ok(!ids.includes(gone), `xProjects no longer has ${gone}`);
+    assert.ok(!html.includes(`data-portal-mount="${gone}"`), `no ${gone} mount left in index.html`);
+  }
+  const cloudy = areas.areas[0].projects[0].cards;
+  const linux = cloudy.find((c) => c.data.card === "Linux"), c3 = cloudy.find((c) => c.data.card === "C3");
+  assert.equal(linux.title, "DUCKS AND PENGS"); assert.equal(linux.image.src, "public/images/banners/ducks.gif");
+  assert.equal(c3.title, "C3"); assert.equal(c3.image.src, "public/images/banners/cloud.gif");
+  assert.deepEqual(areas.direct.map((d) => d.field), ["Repos"]);
+  const repos = areas.direct[0].card;
+  assert.equal(repos.kind, "repos"); assert.equal(repos.title, "REPOS"); assert.equal(repos.id, "area-repos");
+  const icons = new Set(fs.readdirSync(path.join(root, "src/public/icons")));
+  for (const c of [linux, c3, repos]) {
+    assert.ok(fs.existsSync(path.join(root, "src", c.image.src)), `${c.title}: banner exists`);
+    for (const l of [...(c.top_links || []), ...c.columns.flatMap((x) => x.links)]) {
+      assert.ok(l.label && l.url && l.icon, `${c.title}: ${JSON.stringify(l)}`);
+      assert.ok(icons.has(l.icon), `${c.title}: icon ${l.icon}`);
+    }
+  }
+});
+
+test("renderer: row 2 has no area-home chip, row 3 lists the families, row 1 has the separator then the direct entries", () => {
+  const ts = fs.readFileSync(path.join(root, "src/typescript/modules/areas.ts"), "utf8");
+  assert.doesNotMatch(ts, /area-chip--home/, "no area-home chip in the projects row");
+  assert.match(ts, /\[data-families-row\]/, "families row");
+  assert.match(ts, /class: 'areas-sep'/, "separator before the direct entries");
+  assert.match(ts, /export function selectDirect/, "direct entries open their card");
 });

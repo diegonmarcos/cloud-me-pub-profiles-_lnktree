@@ -49,7 +49,7 @@ describe('Phase A — image perf attributes', () => {
   });
 
   it('every rendered icon-anchor img inside profile-icons is lazy', () => {
-    const tree = renderSlide('cloud')!;
+    const tree = renderSlide('suite')!; // 'cloud' moved to Areas (Cloudy > C3)
     const profileIconImgs = tree.querySelectorAll<HTMLImageElement>('.profile-icons img');
     expect(profileIconImgs.length).toBeGreaterThan(0);
     for (const img of Array.from(profileIconImgs)) {

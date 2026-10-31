@@ -314,14 +314,16 @@
 
             <hr class="section-separator">
 
-            <!-- Areas Section Box (#1277, #1281, #1293): two-level icon index (areas, then the selected area's projects) and
-                 the selected project's cards (home card, then one per sub-category or family), one card per view, one screen.
+            <!-- Areas Section Box (#1277, #1281, #1293): three-level icon index (row 1 areas, then a separator and the direct
+                 entries such as Repos; row 2 the selected area's projects; row 3 the selected project's families) and the
+                 selected project's cards (home card, then one per sub-category or family), one card per view, one screen.
                  Rendered by modules/areas.ts from src/data/areas.json (generated at build time by scripts/areas-gen.mjs). -->
             <section class="section-box areas-section" aria-label="Areas and Projects">
                 <h2 class="box-title">AREAS</h2>
                 <nav class="areas-index" aria-label="Areas and projects index">
                     <div class="areas-row" role="tablist" aria-label="Areas" data-areas-row></div>
                     <div class="areas-row areas-row--projects" role="tablist" aria-label="Projects" data-projects-row></div>
+                    <div class="areas-row areas-row--families" role="tablist" aria-label="Families" data-families-row></div>
                 </nav>
                 <!-- Cards: same component as xProjects (carousel-row, swiper, swiper-slide > link-section, arrows, dots). -->
                 <div class="carousel-row areas-carousel">
@@ -431,12 +433,6 @@
                         <!-- Slide: Lab Tools -->
                         <div data-portal-mount="lab-tools"></div>
 
-                        <!-- Slide: Ducks -->
-                        <div data-portal-mount="ducks"></div>
-
-                        <!-- Slide: Cloud -->
-                        <div data-portal-mount="cloud"></div>
-
                         <!-- Slide: Portfolio -->
                         <div data-portal-mount="portfolio"></div>
 
@@ -448,9 +444,6 @@
 
                         <!-- Slide: PHI -->
                         <div data-portal-mount="projects"></div>
-
-                        <!-- Slide: Repos -->
-                        <div data-portal-mount="repos"></div>
 
                     </div>
                     <!-- End Projects Swiper Wrapper -->
