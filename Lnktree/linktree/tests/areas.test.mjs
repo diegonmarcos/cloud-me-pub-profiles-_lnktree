@@ -116,7 +116,7 @@ test("Cloudy: families Android, Linux, WebApps, C3 (C3 last); home card = them a
   const headers = android.columns.map((c) => c.header);
   if (sources?.superapp) assert.deepEqual(headers, sources.superapp.map((g) => g.title.toUpperCase()).filter((h) => headers.includes(h)), "Android columns = SuperApp Cloud tile_groups, in order");
   if (sources?.superapp) assert.equal(headers.length, sources.superapp.filter((g) => g.tiles.some((t) => t.label && t.label !== "|")).length, "every group once");
-  for (const want of ["INBOXES", "TOOLS PRIMARY", "DATA APPS", "CONFIGS"]) assert.ok(headers.includes(want), `Android shows the ${want} group`);
+  for (const want of ["COMMUNICATION", "TOOLS PRIMARY", "DATA APPS", "CONFIGS"]) assert.ok(headers.includes(want), `Android shows the ${want} group`);
   const labels = android.columns.flatMap((c) => c.links.map((l) => l.label));
   for (const want of ["Browser", "C3", "Drive", "Mail"]) assert.ok(labels.includes(want), `Android lists ${want}`);
   assert.ok(!labels.includes("|"), "separator tiles skipped");
