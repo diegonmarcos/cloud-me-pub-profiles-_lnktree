@@ -35,7 +35,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const OUT = path.join(root, "src/data/areas.json");
 const OWNER = "diegonmarcos";
 const REGISTRY_URL = `https://raw.githubusercontent.com/${OWNER}/_git-repos-master/main/0_registry/repos-github.json`;
-const TREE_URL = `https://raw.githubusercontent.com/${OWNER}/_git-repos-master/main/01_repo-folders-tree/repo-folders-tree.json`;
+const TREE_URL = `https://raw.githubusercontent.com/${OWNER}/_git-repos-master/main/repo-folders-tree.json`;
 // repo -> declared app list (path in that repo, schema apk-manifest/v1: apps[].{name,module,description}).
 export const APP_MANIFESTS = { "cloudy-u-android": "2_configs/apk-manifest.json" };
 
