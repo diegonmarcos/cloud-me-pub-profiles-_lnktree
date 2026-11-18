@@ -213,14 +213,14 @@
                       "icon": "video.svg"
                     },
                     {
+                      "label": "Canvas",
+                      "url": "https://github.com/diegonmarcos/cloudy-u-android/tree/main/aa_cloud-superapp",
+                      "icon": "code.svg"
+                    },
+                    {
                       "label": "Keyboard",
                       "url": "https://github.com/diegonmarcos/cloudy-u-android/tree/main/ac_cloud-keyboard",
                       "icon": "device-mobile.svg"
-                    },
-                    {
-                      "label": "Writer",
-                      "url": "https://diegonmarcos.github.io/cloud-web/apps/cloud-writer/",
-                      "icon": "file-stack.svg"
                     },
                     {
                       "label": "||",
@@ -295,11 +295,6 @@
                       "icon": "slideshow.svg"
                     },
                     {
-                      "label": "Media Center",
-                      "url": "https://github.com/diegonmarcos/cloudy-u-android/tree/main/ac_cloud-media-center",
-                      "icon": "video.svg"
-                    },
-                    {
                       "label": "||",
                       "url": "https://github.com/diegonmarcos/cloudy-u-android/tree/main/aa_cloud-superapp",
                       "icon": "code.svg"
@@ -321,9 +316,9 @@
                   "header": "ME",
                   "links": [
                     {
-                      "label": "Me",
+                      "label": "Lnktree",
                       "url": "https://diegonmarcos.github.io/cloud-web/apps/cloud-me/",
-                      "icon": "user.svg"
+                      "icon": "code.svg"
                     },
                     {
                       "label": "Me-Health",
@@ -336,9 +331,9 @@
                       "icon": "code.svg"
                     },
                     {
-                      "label": "Tasks",
+                      "label": "Socials",
                       "url": "https://diegonmarcos.github.io/cloud-web/apps/cloud-me/",
-                      "icon": "checklist.svg"
+                      "icon": "code.svg"
                     },
                     {
                       "label": "Me-Invent.",
@@ -364,7 +359,48 @@
                   "row": 0
                 },
                 {
-                  "header": "WEBY SERVICES & MARKETS",
+                  "header": "PROJECTS",
+                  "links": [
+                    {
+                      "label": "Wiki",
+                      "url": "https://github.com/diegonmarcos/cloudy-u-android/tree/main/aa_cloud-superapp",
+                      "icon": "code.svg"
+                    },
+                    {
+                      "label": "SuperApp",
+                      "url": "https://github.com/diegonmarcos/cloudy-u-android/tree/main/aa_cloud-superapp",
+                      "icon": "device-mobile.svg"
+                    },
+                    {
+                      "label": "Omniverse",
+                      "url": "https://github.com/diegonmarcos/cloudy-u-android/tree/main/ad_CG-Omniverse",
+                      "icon": "code.svg"
+                    },
+                    {
+                      "label": "FinTerm",
+                      "url": "https://github.com/diegonmarcos/cloudy-u-android/tree/main/ad_Capital-Stack-FinTerminal",
+                      "icon": "ledger.svg"
+                    },
+                    {
+                      "label": "BioMed",
+                      "url": "https://github.com/diegonmarcos/cloudy-u-android/tree/main/ad_Hardtech-BioMed",
+                      "icon": "code.svg"
+                    },
+                    {
+                      "label": "CAD",
+                      "url": "https://github.com/diegonmarcos/cloudy-u-android/tree/main/ad_Hardtech-CAD",
+                      "icon": "brush.svg"
+                    },
+                    {
+                      "label": "Circusverse",
+                      "url": "https://github.com/diegonmarcos/cloudy-u-android/tree/main/aa_cloud-superapp",
+                      "icon": "device-gamepad.svg"
+                    }
+                  ],
+                  "row": 1
+                },
+                {
+                  "header": "SERVICES",
                   "links": [
                     {
                       "label": "Search",
@@ -380,6 +416,11 @@
                       "label": "Events",
                       "url": "https://github.com/diegonmarcos/cloudy-u-android/tree/main/aa_cloud-superapp",
                       "icon": "code.svg"
+                    },
+                    {
+                      "label": "Media Center",
+                      "url": "https://github.com/diegonmarcos/cloudy-u-android/tree/main/ac_cloud-media-center",
+                      "icon": "video.svg"
                     },
                     {
                       "label": "Shopping",
@@ -451,38 +492,7 @@
                   "row": 1
                 },
                 {
-                  "header": "LNKTREE",
-                  "links": [
-                    {
-                      "label": "SuperApp",
-                      "url": "https://github.com/diegonmarcos/cloudy-u-android/tree/main/aa_cloud-superapp",
-                      "icon": "device-mobile.svg"
-                    },
-                    {
-                      "label": "Omniverse",
-                      "url": "https://github.com/diegonmarcos/cloudy-u-android/tree/main/ad_CG-Omniverse",
-                      "icon": "code.svg"
-                    },
-                    {
-                      "label": "FinTerm",
-                      "url": "https://github.com/diegonmarcos/cloudy-u-android/tree/main/ad_Capital-Stack-FinTerminal",
-                      "icon": "ledger.svg"
-                    },
-                    {
-                      "label": "CAD",
-                      "url": "https://github.com/diegonmarcos/cloudy-u-android/tree/main/ad_Hardtech-CAD",
-                      "icon": "brush.svg"
-                    },
-                    {
-                      "label": "BioMed",
-                      "url": "https://github.com/diegonmarcos/cloudy-u-android/tree/main/ad_Hardtech-BioMed",
-                      "icon": "bolt.svg"
-                    }
-                  ],
-                  "row": 1
-                },
-                {
-                  "header": "CONFIGS",
+                  "header": "SETUP",
                   "links": [
                     {
                       "label": "Quick Actions",
@@ -495,12 +505,7 @@
                       "icon": "code.svg"
                     },
                     {
-                      "label": "Firewall",
-                      "url": "https://github.com/diegonmarcos/cloudy-u-android/tree/main/aa_cloud-superapp",
-                      "icon": "code.svg"
-                    },
-                    {
-                      "label": "WiFi",
+                      "label": "NG Firewall",
                       "url": "https://github.com/diegonmarcos/cloudy-u-android/tree/main/aa_cloud-superapp",
                       "icon": "code.svg"
                     },
@@ -520,9 +525,9 @@
                       "icon": "rocket.svg"
                     },
                     {
-                      "label": "Watchdog",
-                      "url": "https://github.com/diegonmarcos/cloudy-u-android/tree/main/aa_cloud-superapp",
-                      "icon": "checklist.svg"
+                      "label": "Profile",
+                      "url": "https://diegonmarcos.github.io/cloud-web/apps/cloud-account/",
+                      "icon": "user.svg"
                     },
                     {
                       "label": "About",
@@ -1938,7 +1943,7 @@
           "code": "1.2",
           "name": "Cloud-Me",
           "icon": "🙋",
-          "repos": 16,
+          "repos": 17,
           "cards": [
             {
               "id": "area-1.2.0",
@@ -2213,6 +2218,17 @@
                   "links": [
                     {
                       "label": "vault",
+                      "url": "https://github.com/diegonmarcos",
+                      "icon": "lock.svg"
+                    }
+                  ],
+                  "row": 1
+                },
+                {
+                  "header": "TASKS",
+                  "links": [
+                    {
+                      "label": "tasks",
                       "url": "https://github.com/diegonmarcos",
                       "icon": "lock.svg"
                     }
